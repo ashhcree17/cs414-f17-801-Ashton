@@ -1,3 +1,6 @@
+******** NOTE ******** 
+Artifact deliverables for each iteration (1.0, 2.0, ...) can be found in the docs directory.
+
 CS 414 Object Oriented Design - Fall 2017
 
 In this project, I am to develop a software system, Globo Gym Management System (GGMS), to support the management of an indoors gym. 
