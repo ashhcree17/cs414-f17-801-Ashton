@@ -1,7 +1,6 @@
 package globoGymMS;
 
 import java.time.DayOfWeek;
-import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -12,8 +11,6 @@ public class TrainerTest {
 	@Test
 	public final void getWorkSchedule() {
 		Address a = new Address("123 Main St", "Apt 123", "Town", "CO", 12345);
-		ArrayList<Routine> rs = new ArrayList<Routine>();
-		ArrayList<Exercise> es = new ArrayList<Exercise>();
 		ArrayList<WorkSchedule> ws = new ArrayList<WorkSchedule>();
 		ArrayList<Qualification> qs = new ArrayList<Qualification>();
 		

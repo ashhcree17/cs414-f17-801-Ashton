@@ -1,8 +1,5 @@
 package globoGymMS;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-
 import org.junit.Assert;
 import org.junit.Test;
 

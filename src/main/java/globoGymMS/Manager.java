@@ -1,8 +1,5 @@
 package globoGymMS;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Manager {
 	private String username;
 	private String password;
@@ -37,6 +34,7 @@ public class Manager {
 		this.insurance = insurance;
 	}
 
+	/* Start of getters & setters */
 	public String getUsername() {
 		return username;
 	}
@@ -88,4 +86,5 @@ public class Manager {
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
 	}
+	/* End of getters & setters */
 }

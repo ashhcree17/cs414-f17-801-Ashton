@@ -3,7 +3,6 @@ package globoGymMS;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.awt.List;
 import java.time.Duration;
 import java.util.ArrayList;
 
