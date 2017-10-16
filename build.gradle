@@ -39,11 +39,16 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot'
  	compile 'org.springframework.boot:spring-boot-autoconfigure'
  	compile 'org.springframework:spring-web'
+ 	compile 'org.springframework.boot:spring-boot-starter'
+ 	compile 'com.fasterxml.jackson.core:jackson-databind'
+ 	compile 'org.springframework.boot:spring-boot-starter-web'
 
- 	compile('org.springframework.boot:spring-boot-starter-web') {
-        exclude module: "spring-boot-starter-tomcat"
-    }
- 	  
+	compile 'org.springframework.boot:spring-boot-starter-tomcat' 	
+  	compile 'org.springframework.boot:spring-boot-starter-actuator'
+  	compile 'org.springframework.boot:spring-boot-devtools'
+  	compile 'org.springframework.security:spring-security-test'
+  	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'junit:junit:4.12'
 	testCompile 'com.jayway.jsonpath:json-path'

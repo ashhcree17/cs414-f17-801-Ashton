@@ -31,22 +31,30 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GreetingControllerTests {
-
-    @Autowired
+public class GreetingControllerTest {
+    
     private MockMvc mockMvc;
 
     @Test
-    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, World!"));
+    public void noParamGreetingShouldReturnDefaultMessage() throws NullPointerException {
+        try {
+			this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
+			        .andExpect(jsonPath("$.content").value("Hello, World!"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Test
-    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
-        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
-                .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+    public void paramGreetingShouldReturnTailoredMessage() throws NullPointerException {
+        try {
+			this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
+			        .andDo(print()).andExpect(status().isOk())
+			        .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
-
 }
