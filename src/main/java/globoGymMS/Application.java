@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         SpringApplication.run(Application.class, args);
     }
     

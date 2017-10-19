@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry excluding="main/java/|test/java/|main/resources/|main/resources/static/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry excluding="static/|static/" kind="src" path="src/main/resources"/>
-	<classpathentry kind="src" path="src/main/resources/static"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-webmvc-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-boot-starter-security-1.5.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-boot-starter-thymeleaf-1.5.8.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
