@@ -13,7 +13,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}'
+        classpath 'org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:1.0.2'
     }
 }
 
@@ -22,6 +23,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'org.unbroken-dome.test-sets'
 
 jar {
 	baseName = 'globoGymMS'
@@ -49,7 +51,7 @@ dependencies {
  	 
  	compile 'com.fasterxml.jackson.core:jackson-databind'
  	compile 'mysql:mysql-connector-java'
- 	//compile 'org.springframework:spring-context:5.0.0.RELEASE'
+ 	compile 'org.springframework:spring-context:5.0.0.RELEASE'
  	compile 'org.springframework:spring-web'
  	compile 'org.springframework:spring-webmvc'
  	

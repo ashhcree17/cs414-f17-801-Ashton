@@ -15,7 +15,7 @@ public class TrainerTest {
 		ArrayList<WorkSchedule> ws = new ArrayList<WorkSchedule>();
 		ArrayList<Qualification> qs = new ArrayList<Qualification>();
 		
-		WorkSchedule w = new WorkSchedule(DayOfWeek.MONDAY, 
+		WorkSchedule w = new WorkSchedule(00, DayOfWeek.MONDAY, 
 				LocalTime.of(1, 10), LocalTime.of(7, 10));
 		ws.add(w);
 		

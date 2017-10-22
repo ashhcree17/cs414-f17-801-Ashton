@@ -6,7 +6,7 @@ import org.junit.Test;
 public class QualificationTest {
 	@Test
 	public final void getName() {
-		Qualification q = new Qualification("QU1");
+		Qualification q = new Qualification(001, "QU1");
 				
 		Assert.assertEquals("QU1", q.getName());
 	}

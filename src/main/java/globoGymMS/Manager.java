@@ -1,15 +1,17 @@
 package globoGymMS;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+//import javax.persistence.SequenceGenerator;
+//import javax.persistence.Table;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Entity
-@Table(name="Manager")
+//@Entity
+//@Table(name="Manager")
 public class Manager extends User {
 	private Integer id;			// Starts with 0
 	private String username;
@@ -33,23 +35,24 @@ public class Manager extends User {
 	}
 
 	/* Start of getters & setters */
-	@Id
-	@GeneratedValue  
-	@Column(name="id")
+//	@Id
+//	@SequenceGenerator(name="EMP_SEQ_0", allocationSize=1, initialValue=000)
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
+//	@Column(name="id")
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@Column(name="username")
+//	@Column(name="username")
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	@Column(name="password") // ***** hesdfjaslfjaslfjl STOP **/
+//	@Column(name="password") 
 	public String getPassword() {
 		return password;
 	}
@@ -57,42 +60,42 @@ public class Manager extends User {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		this.password = passwordEncoder.encode(password);
 	}
-	@Column(name="name")
+//	@Column(name="name")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(name="lastName")
+//	@Column(name="lastName")
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	@Column(name="phoneNumber")
+//	@Column(name="phoneNumber")
 	public Integer getPhoneNumber() {
 		return phoneNumber;
 	}
 	public void setPhoneNumber(Integer phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	@Column(name="email")
+//	@Column(name="email")
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Column(name="address")
+//	@Column(name="address")
 	public Address getAddress() {
 		return address;
 	}
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	@Column(name="insurance")
+//	@Column(name="insurance")
 	public String getInsurance() {
 		return insurance;
 	}

@@ -14,10 +14,10 @@ public class CustomerTest {
 		ArrayList<Routine> rs = new ArrayList<Routine>();
 		ArrayList<Exercise> es = new ArrayList<Exercise>();
 
-		Exercise e = new Exercise("E1", Duration.ofSeconds(120));
+		Exercise e = new Exercise(001, "E1", Duration.ofSeconds(120));
 		es.add(e);
 		
-		Routine r = new Routine("R1", es);
+		Routine r = new Routine(00, "R1", es);
 		rs.add(r);
 		
 		Customer c = new Customer(200, "Joe", "Blow", a, 1234567890, 

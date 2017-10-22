@@ -1,8 +1,5 @@
 package globoGymMS;
 
-import java.time.Duration;
-import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.Test;
 
