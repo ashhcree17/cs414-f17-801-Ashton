@@ -3,6 +3,14 @@ package globoGymMS;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity // This tells Hibernate to make a table out of this class
+@Table(name="WorkSchedule")
 public class WorkSchedule {
 	private DayOfWeek day;
 	private LocalTime startTime;
@@ -17,18 +25,23 @@ public class WorkSchedule {
 	}
 	
 	/* Start of getters & setters */
+	@Id
+	@GeneratedValue  
+	@Column(name="day")
 	public DayOfWeek getDay() {
 		return day;
 	}
 	public void setDay(DayOfWeek day) {
 		this.day = day;
 	}
+	@Column(name="startTime")
 	public LocalTime getStartTime() {
 		return startTime;
 	}
 	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
+	@Column(name="endTime")
 	public LocalTime getEndTime() {
 		return endTime;
 	}

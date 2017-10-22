@@ -1,6 +1,16 @@
 package globoGymMS;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+@Entity
+@Table(name="Address")
 public class Address {
+	private Integer address_id;
 	private String street1;		// main street (i.e., 123 Main St.)
 	private String street2;		// secondary street (i.e., Apt. 123)
 	private String city;
@@ -8,8 +18,10 @@ public class Address {
 	private Integer zipCode;
 	
 	// Creates an Address instance and sets its attributes
-	public Address(String street1, String street2, String city, String state, Integer zipCode) {
+	public Address(Integer address_id, String street1, String street2, String city, 
+			String state, Integer zipCode) {
 		super();
+		this.address_id = address_id;
 		this.street1 = street1;
 		this.street2 = street2;
 		this.city = city;
@@ -17,7 +29,15 @@ public class Address {
 		this.zipCode = zipCode;
 	}
 	
-	/* Start of getters & setters */
+	/* Start of getters & setters */	@Id
+	@GeneratedValue  
+	@Column(name="address_id")
+	public Integer getId() {
+		return address_id;
+	}
+	public void setId(Integer address_id) {
+		this.address_id = address_id;
+	}	
 	public String getStreet1() {
 		return street1;
 	}

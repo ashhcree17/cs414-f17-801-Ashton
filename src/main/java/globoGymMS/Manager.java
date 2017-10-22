@@ -1,85 +1,98 @@
 package globoGymMS;
 
-public class Manager {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+@Entity
+@Table(name="Manager")
+public class Manager extends User {
+	private Integer id;			// Starts with 0
 	private String username;
 	private String password;
 	
-	private String name;		// first name
+	private String name;			// First name
 	private String lastName;
-	private Integer phoneNumber;	// primary phone number
+	private Integer phoneNumber;	// Primary phone number
 	private String email;
 	private Address address;
-	private String id;
 	private String insurance;
 	
-	/* Creates a Manager instance by using the username and password
-	   set by the User during sign in (credentials must NOT be connected
-	   to a Trainer id attribute) */
-	public Manager(String username, String password) {
+	/* Creates a Manager instance with username and password set 
+	 * by User during no-id sign in 
+	 */
+	public Manager(Integer id, String username, String password) {
 		super();
+		this.id = id;
 		this.username = username;
 		this.password = password;
 	}
-	
-	// Creates a Trainer instance and sets its attributes
-	public Manager(String name, String lastName, Address address, Integer phoneNumber, String email, String id,
-			String insurance) {
-		super();
-		this.name = name;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.address = address;
-		this.id = id;
-		this.insurance = insurance;
-	}
 
 	/* Start of getters & setters */
+	@Id
+	@GeneratedValue  
+	@Column(name="id")
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	@Column(name="username")
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	@Column(name="password") // ***** hesdfjaslfjaslfjl STOP **/
+	public String getPassword() {
+		return password;
 	}
+	public void setPassword(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		this.password = passwordEncoder.encode(password);
+	}
+	@Column(name="name")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Column(name="lastName")
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	@Column(name="phoneNumber")
 	public Integer getPhoneNumber() {
 		return phoneNumber;
 	}
 	public void setPhoneNumber(Integer phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	@Column(name="email")
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@Column(name="address")
 	public Address getAddress() {
 		return address;
 	}
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	@Column(name="insurance")
 	public String getInsurance() {
 		return insurance;
 	}
@@ -87,4 +100,22 @@ public class Manager {
 		this.insurance = insurance;
 	}
 	/* End of getters & setters */
+
+	@Override
+	public <T extends User> void create(T type) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <T extends User> void modify(T type) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <T extends User> T search(T type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

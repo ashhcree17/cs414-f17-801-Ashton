@@ -3,33 +3,39 @@ package globoGymMS;
 import java.util.ArrayList;
 
 public class Customer {
-	private String name;		// first name
+	private Integer id;			// Starts with 2
+	private String name;			// First name
 	private String lastName;
 	private Address address;
-	private Integer phoneNumber;	// primary phone number
+	private Integer phoneNumber;	// Primary phone number
 	private String email;
-	private String id;
 	private String insurance;
 	private MembershipStatus membership;
 	private ArrayList<Routine> assignedRoutines;
 	
 	// Creates a Customer instance and sets its attributes
-	public Customer(String name, String lastName, Address address, 
-			Integer phoneNumber, String email, String id, String insurance,
+	public Customer(Integer id, String name, String lastName, Address address, 
+			Integer phoneNumber, String email, String insurance,
 			MembershipStatus membership, ArrayList<Routine> assignedRoutines) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.id = id;
 		this.insurance = insurance;
 		this.membership = membership;
 		this.assignedRoutines = assignedRoutines;
 	}
 	
 	/* Start of getters & setters */
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -59,12 +65,6 @@ public class Customer {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	public String getInsurance() {
 		return insurance;
