@@ -30,7 +30,7 @@ abstract public class User {
 	/* End of getters & setters */
 
 	// Abstract classes to be Overridden by Manager and Trainer classes
-	abstract public <T extends User> void create(T type);
-	abstract public <T extends User> void modify(T type);
-	abstract public <T extends User> T search(T type);
+	abstract public <T> void create(T type);
+	abstract public <T> void modify(T type);
+	abstract public <T> T search(T type);
 }

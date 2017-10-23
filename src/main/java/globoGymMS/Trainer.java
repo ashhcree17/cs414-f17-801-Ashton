@@ -129,19 +129,19 @@ public class Trainer extends User {
 	/* End of getters & setters */
 
 	@Override
-	public <T extends User> void create(T type) {
+	public <T> void create(T type) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public <T extends User> void modify(T type) {
+	public <T> void modify(T type) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public <T extends User> T search(T type) {
+	public <T> T search(T type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
