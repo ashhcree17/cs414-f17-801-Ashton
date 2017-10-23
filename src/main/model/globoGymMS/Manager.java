@@ -1,17 +1,17 @@
 package globoGymMS;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.SequenceGenerator;
-//import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.SequenceGenerator;
 
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-//@Entity
-//@Table(name="Manager")
+@Entity
+@Table(name="Manager")
 public class Manager {
 //	private Integer id;			// Starts with 0
 //	private String username;
@@ -35,13 +35,56 @@ public class Manager {
 //	}
 //
 //	/* Start of getters & setters */
-////	@Id
-////	@SequenceGenerator(name="EMP_SEQ_0", allocationSize=1, initialValue=000)
-////	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
-////	@Column(name="id")
-//	public Integer getId() {
-//		return id;
-//	}
+	@Id
+	@SequenceGenerator(name="EMP_SEQ_0", allocationSize=1, initialValue=000)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
+	@Column(name="id")
+	private Integer id;
+	
+	@Column(name="username")
+	private String username;
+	
+	@Column(name="password")
+	private String password;
+	
+	@Column(name="name")
+	private String name;			// First name
+	
+	@Column(name="lastName")
+	private String lastName;
+
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		this.password = passwordEncoder.encode(password);
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
 //	public void setId(Integer id) {
 //		this.id = id;
 //	}
