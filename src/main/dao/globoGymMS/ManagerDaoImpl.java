@@ -17,7 +17,7 @@ public class ManagerDaoImpl {
 		sessionFactory.getCurrentSession().saveOrUpdate(manager);
 	}
 	
-	@SuppressWarnings({ "deprecation", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	public List<Manager> listManagers() {
 		return (List<Manager>) sessionFactory.getCurrentSession()
 				.createCriteria(Manager.class).list();

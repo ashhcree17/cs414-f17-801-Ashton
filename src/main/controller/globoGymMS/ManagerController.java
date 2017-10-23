@@ -66,7 +66,7 @@ public class ManagerController {
 			BindingResult result) {
 		Manager manager = prepareModel(managerBean);
 		managerService.addManager(manager);
-		return new ModelAndView("redirect:/add.html");
+		return new ModelAndView("addManager");
 	}
 	
 	@RequestMapping(value = "/managers", method = RequestMethod.GET) 
