@@ -6,9 +6,9 @@ public class ManagerBean {
 	private Integer id;			// Starts with 0
 	private String username;
 	private String password;
-	
 	private String name;			// First name
 	private String lastName;
+	
 	public Integer getId() {
 		return id;
 	}
