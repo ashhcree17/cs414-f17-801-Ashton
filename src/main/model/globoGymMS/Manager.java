@@ -13,33 +13,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Entity
 @Table(name="Manager")
 public class Manager {
-//	private Integer id;			// REQUIRED, starts with 0
-//	private String username;
-//	private String password;
-//	
-//	private String name;			// REQUIRED, First name
-//	private String lastName;		// REQUIRED
 //	private Integer phoneNumber;	// Primary phone number
 //	private String email;		// REQUIRED
 //	private Address address;
 //	private String insurance;
-//	
-//	/* Creates a Manager instance with username and password set 
-//	 * by User during no-id sign in 
-//	 */
-//	public Manager(Integer id, String username, String password) {
-//		super();
-//		this.id = id;
-//		this.username = username;
-//		this.password = password;
-//	}
-//
+
 //	/* Start of getters & setters */
 	@Id
 	@SequenceGenerator(name="EMP_SEQ_0", allocationSize=1, initialValue=000)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
 	@Column(name="id")
-	private Integer id;
+	private Integer id;			// REQUIRED, starts with 0
 	
 	@Column(name="username")
 	private String username;
@@ -48,10 +32,10 @@ public class Manager {
 	private String password;
 	
 	@Column(name="name")
-	private String name;			// First name
+	private String name;			// REQUIRED, First name
 	
 	@Column(name="lastName")
-	private String lastName;
+	private String lastName;		// REQUIRED
 
 	public Integer getId() {
 		return id;

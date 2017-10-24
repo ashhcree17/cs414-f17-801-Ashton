@@ -3,11 +3,11 @@ package globoGymMS;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class ManagerBean {
-	private Integer id;			// Starts with 0
+	private Integer id;			// REQUIRED, starts with 0
 	private String username;
 	private String password;
-	private String name;			// First name
-	private String lastName;
+	private String name;			// REQUIRED, first name
+	private String lastName;		// REQUIRED
 	
 	public Integer getId() {
 		return id;
