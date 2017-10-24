@@ -23,8 +23,8 @@ public class AddressDaoImpl {
 				.createCriteria(Address.class).list();
 	}
 	
-	public Address getAddress(int id) {
-		return (Address) sessionFactory.getCurrentSession().get(Address.class, id);
+	public Address getAddress(int addressId) {
+		return (Address) sessionFactory.getCurrentSession().get(Address.class, addressId);
 	}
 	
 	public void deleteAddress(Address address) {

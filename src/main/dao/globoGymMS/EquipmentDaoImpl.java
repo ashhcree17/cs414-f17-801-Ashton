@@ -23,8 +23,8 @@ public class EquipmentDaoImpl {
 				.createCriteria(Equipment.class).list();
 	}
 	
-	public Equipment getEquipment(int id) {
-		return (Equipment) sessionFactory.getCurrentSession().get(Equipment.class, id);
+	public Equipment getEquipment(int equipmentId) {
+		return (Equipment) sessionFactory.getCurrentSession().get(Equipment.class, equipmentId);
 	}
 	
 	public void deleteEquipment(Equipment equipment) {
