@@ -1,6 +1,7 @@
 package globoGymMS;
 
 import java.util.List;
+import globoGymMS.Routine;
 
 public interface RoutineDao {
 	public void addRoutine(Routine routine);

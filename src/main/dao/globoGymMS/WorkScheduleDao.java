@@ -1,6 +1,7 @@
 package globoGymMS;
 
 import java.util.List;
+import globoGymMS.WorkSchedule;
 
 public interface WorkScheduleDao {
 	public void addWorkSchedule(WorkSchedule workSchedule);

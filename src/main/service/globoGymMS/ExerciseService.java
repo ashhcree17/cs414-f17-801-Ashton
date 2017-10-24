@@ -1,5 +1,11 @@
 package globoGymMS;
 
-public interface ExerciseService {
+import java.util.List;
+import globoGymMS.Exercise;
 
+public interface ExerciseService {
+	public void addExercise(Exercise exercise);
+	public List<Exercise> listExercises();
+	public Exercise getExercise(int exerciseId);
+	public void deleteExercise(Exercise exercise);
 }

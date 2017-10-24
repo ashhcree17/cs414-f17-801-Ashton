@@ -1,5 +1,11 @@
 package globoGymMS;
 
-public interface RoutineService {
+import java.util.List;
+import globoGymMS.Routine;
 
+public interface RoutineService {
+	public void addRoutine(Routine routine);
+	public List<Routine> listRoutines();
+	public Routine getRoutine(int routineId);
+	public void deleteRoutine(Routine routine);
 }

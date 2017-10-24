@@ -18,7 +18,7 @@ public class EquipmentDaoImpl {
 	}
 	
 	@SuppressWarnings({ "unchecked" })
-	public List<Equipment> listEquipments() {
+	public List<Equipment> listInventory() {
 		return (List<Equipment>) sessionFactory.getCurrentSession()
 				.createCriteria(Equipment.class).list();
 	}

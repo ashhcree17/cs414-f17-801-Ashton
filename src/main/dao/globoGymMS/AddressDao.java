@@ -1,6 +1,7 @@
 package globoGymMS;
 
 import java.util.List;
+import globoGymMS.Address;
 
 public interface AddressDao {
 	public void addAddress(Address address);

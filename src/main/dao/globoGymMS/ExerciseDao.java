@@ -1,6 +1,7 @@
 package globoGymMS;
 
 import java.util.List;
+import globoGymMS.Exercise;
 
 public interface ExerciseDao {
 	public void addExercise(Exercise exercise);

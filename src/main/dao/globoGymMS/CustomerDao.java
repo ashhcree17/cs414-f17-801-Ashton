@@ -1,6 +1,7 @@
 package globoGymMS;
 
 import java.util.List;
+import globoGymMS.Customer;
 
 public interface CustomerDao {
 	public void addCustomer(Customer customer);
