@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import globoGymMS.Equipment;
 import globoGymMS.EquipmentBean;
 import globoGymMS.EquipmentService;
 
+@Controller
 public class EquipmentController {
 	@Autowired
 	private EquipmentService equipmentService;
@@ -100,6 +102,6 @@ public class EquipmentController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("equipment", prepareEquipmentBean(equipmentService.getEquipment(equipmentBean.getEquipmentId())));
 		model.put("inventory", prepareListOfBean(equipmentService.listInventory()));
-		return new ModelAndView("addEmployee", model);
+		return new ModelAndView("addEquipment", model);
 	}
 }

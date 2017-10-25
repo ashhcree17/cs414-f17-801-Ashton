@@ -117,6 +117,6 @@ public class ManagerController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("manager", prepareManagerBean(managerService.getManager(managerBean.getId())));
 		model.put("managers", prepareListOfBean(managerService.listManagers()));
-		return new ModelAndView("addEmployee", model);
+		return new ModelAndView("addManager", model);
 	}
 }

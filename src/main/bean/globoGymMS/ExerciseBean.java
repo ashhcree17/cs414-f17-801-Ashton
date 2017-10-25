@@ -7,7 +7,7 @@ public class ExerciseBean {
 	private String name;
 	private Duration duration;
 	private Integer numberOfSets;
-	private Integer repetitionsPerSet;
+	private Integer repsPerSet;
 	
 	public Integer getExerciseId() {
 		return exerciseId;
@@ -33,10 +33,10 @@ public class ExerciseBean {
 	public void setNumberOfSets(Integer numberOfSets) {
 		this.numberOfSets = numberOfSets;
 	}
-	public Integer getRepetitionsPerSet() {
-		return repetitionsPerSet;
+	public Integer getRepsPerSet() {
+		return repsPerSet;
 	}
-	public void setRepetitionsPerSet(Integer repetitionsPerSet) {
-		this.repetitionsPerSet = repetitionsPerSet;
+	public void setRepsPerSet(Integer repsPerSet) {
+		this.repsPerSet = repsPerSet;
 	}
 }

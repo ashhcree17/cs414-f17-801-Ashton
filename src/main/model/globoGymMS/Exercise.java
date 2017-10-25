@@ -25,8 +25,8 @@ public class Exercise {
 	@Column(name="numberOfSets")
 	private Integer numberOfSets;
 	
-	@Column(name="repetitionsPerSet")
-	private Integer repetitionsPerSet;
+	@Column(name="repsPerSet")
+	private Integer repsPerSet;
 
 	/* Start of getters & setters */
 	public Integer getExerciseId() {
@@ -53,11 +53,11 @@ public class Exercise {
 	public void setNumberOfSets(Integer numberOfSets) {
 		this.numberOfSets = numberOfSets;
 	}
-	public Integer getRepetitionsPerSet() {
-		return repetitionsPerSet;
+	public Integer getRepsPerSet() {
+		return repsPerSet;
 	}
-	public void setRepetitionsPerSet(Integer repetitionsPerSet) {
-		this.repetitionsPerSet = repetitionsPerSet;
+	public void setRepsPerSet(Integer repsPerSet) {
+		this.repsPerSet = repsPerSet;
 	}
 	/* End of getters & setters */
 }

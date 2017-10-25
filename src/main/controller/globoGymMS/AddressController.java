@@ -108,6 +108,6 @@ public class AddressController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("address", prepareAddressBean(addressService.getAddress(addressBean.getAddressId())));
 		model.put("addresses", prepareListOfBean(addressService.listAddresses()));
-		return new ModelAndView("addEmployee", model);
+		return new ModelAndView("addAddress", model);
 	}
 }

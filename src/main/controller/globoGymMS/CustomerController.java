@@ -117,6 +117,6 @@ public class CustomerController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("customer", prepareCustomerBean(customerService.getCustomer(customerBean.getId())));
 		model.put("customers", prepareListOfBean(customerService.listCustomers()));
-		return new ModelAndView("addEmployee", model);
+		return new ModelAndView("addCustomer", model);
 	}
 }
