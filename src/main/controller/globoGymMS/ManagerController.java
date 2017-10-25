@@ -29,6 +29,10 @@ public class ManagerController {
 		manager.setPassword(managerBean.getPassword());
 		manager.setName(managerBean.getName());
 		manager.setLastName(managerBean.getLastName());
+		manager.setAddress(managerBean.getAddress());
+		manager.setPhoneNumber(managerBean.getPhoneNumber());
+		manager.setEmail(managerBean.getEmail());
+		manager.setInsurance(managerBean.getInsurance());
 		managerBean.setId(null);
 		return manager;
 	}
@@ -45,6 +49,10 @@ public class ManagerController {
 				bean.setPassword(manager.getPassword());
 				bean.setName(manager.getName());
 				bean.setLastName(manager.getLastName());
+				bean.setAddress(manager.getAddress());
+				bean.setPhoneNumber(manager.getPhoneNumber());
+				bean.setEmail(manager.getEmail());
+				bean.setInsurance(manager.getInsurance());
 				beans.add(bean);
 			}
 		}
@@ -58,6 +66,10 @@ public class ManagerController {
 		bean.setPassword(manager.getPassword());
 		bean.setName(manager.getName());
 		bean.setLastName(manager.getLastName());
+		bean.setAddress(manager.getAddress());
+		bean.setPhoneNumber(manager.getPhoneNumber());
+		bean.setEmail(manager.getEmail());
+		bean.setInsurance(manager.getInsurance());
 		return bean;
 	}
 	

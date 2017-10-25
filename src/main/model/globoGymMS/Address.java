@@ -28,19 +28,6 @@ public class Address {
 	@Column(name="zipCode")
 	private Integer zipCode;
 	
-	
-	// Creates an Address instance and sets its attributes
-//	public Address(Integer addressId, String street1, String street2, String city, 
-//			String state, Integer zipCode) {
-//		super();
-//		this.addressId = addressId;
-//		this.street1 = street1;
-//		this.street2 = street2;
-//		this.city = city;
-//		this.state = state;
-//		this.zipCode = zipCode;
-//	}
-	
 	/* Start of getters & setters */	
 	public Integer getAddressId() {
 		return addressId;

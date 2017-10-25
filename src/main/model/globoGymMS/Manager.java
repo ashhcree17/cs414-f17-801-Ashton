@@ -13,12 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Entity
 @Table(name="Manager")
 public class Manager {
-//	private Integer phoneNumber;	// Primary phone number
-//	private String email;		// REQUIRED
-//	private Address address;
-//	private String insurance;
-
-//	/* Start of getters & setters */
 	@Id
 	@SequenceGenerator(name="EMP_SEQ_0", allocationSize=1, initialValue=000)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
@@ -36,6 +30,18 @@ public class Manager {
 	
 	@Column(name="lastName")
 	private String lastName;		// REQUIRED
+	
+	@Column(name="address")
+	private Address address;
+	
+	@Column(name="phoneNumber")
+	private Integer phoneNumber;	// Primary phone number
+	
+	@Column(name="email")
+	private String email;		// REQUIRED
+	
+	@Column(name="insurance")
+	private String insurance;
 
 	public Integer getId() {
 		return id;
@@ -68,7 +74,31 @@ public class Manager {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-//
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	public Integer getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(Integer phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getInsurance() {
+		return insurance;
+	}
+	public void setInsurance(String insurance) {
+		this.insurance = insurance;
+	}
+
 //	@Override
 //	public <T> void create(T type) {
 //		if (type == Trainer.class) {
