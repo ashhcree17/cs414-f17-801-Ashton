@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Spring MVC Form Handling</title>
+		<title>Manager Form</title>
 	</head>
 	<body>
 		<h2>Add Manager Data</h2>
@@ -18,10 +18,12 @@
 				</tr>
 				<tr>
 					<td><form:label path="name">Username:</form:label></td>
+					<!-- Below will need to be prepopulated with previously entered username -->
 					<td><form:input path="name" value="${manager.username}"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="name">Password:</form:label></td>
+					<!-- Below will need to be prepopulated with previously entered password -->
 					<td><form:input path="name" value="${manager.password}"/></td>
 				</tr>
 				<tr>
@@ -59,27 +61,27 @@
 			<table align="left" border="1">
 				<tr>
 					<th>Manager ID</th>
-					<th>Manager Username</th>
-					<th>Manager Password</th>
-					<th>Manager First Name</th>
-					<th>Manager Last Name</th>
-					<th>Manager Address</th>
-					<th>Manager Phone Number</th>
-					<th>Manager Email Address</th>
-					<th>Manager Health Insurance Provider</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Address</th>
+					<th>Phone Number</th>
+					<th>Email Address</th>
+					<th>Health Insurance Provider</th>
 					<th>Actions on Row</th>
 				</tr>
 				<c:forEach items="${managers}" var="manager">
 					<tr>
-						<td><c:out value="${employee.id}"/></td>
-						<td><c:out value="${employee.username}"/></td>
-						<td><c:out value="${employee.password}"/></td>
-						<td><c:out value="${employee.name}"/></td>
-						<td><c:out value="${employee.lastName}"/></td>
-						<td><c:out value="${employee.address}"/></td>
-						<td><c:out value="${employee.phoneNumber}"/></td>
-						<td><c:out value="${employee.email}"/></td>
-						<td><c:out value="${employee.insurance}"/></td>
+						<td><c:out value="${manager.id}"/></td>
+						<td><c:out value="${manager.username}"/></td>
+						<td><c:out value="${manager.password}"/></td>
+						<td><c:out value="${manager.name}"/></td>
+						<td><c:out value="${manager.lastName}"/></td>
+						<td><c:out value="${manager.address}"/></td>
+						<td><c:out value="${manager.phoneNumber}"/></td>
+						<td><c:out value="${manager.email}"/></td>
+						<td><c:out value="${manager.insurance}"/></td>
 						<td align="center"><a href="edit.html?id=${manager.id}">Edit</a> | <a href="delete.html?id=${manager.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
