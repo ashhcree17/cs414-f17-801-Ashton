@@ -45,7 +45,9 @@ public class ManagerDaoImpl implements ManagerDao {
 	
 	@Override
 	public void deleteManager(Manager manager) {
-		sessionFactory.getCurrentSession()
-			.createQuery("DELETE FROM Manager WHERE managerId = " + manager.getManagerId());
+		Manager eq = (Manager) sessionFactory.getCurrentSession().load(Manager.class, new Integer(manager.getManagerId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }

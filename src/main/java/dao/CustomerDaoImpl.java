@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import model.Customer;
 
-@Repository("customerDao")
+@Repository
 public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -37,6 +37,9 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	@Override
 	public void deleteCustomer(Customer customer) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Customer WHERE customerId = "+customer.getCustomerId());
+		Customer eq = (Customer) sessionFactory.getCurrentSession().load(Customer.class, new Integer(customer.getCustomerId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }

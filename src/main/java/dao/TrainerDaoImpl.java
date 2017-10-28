@@ -4,6 +4,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import model.Trainer;
 
 @Repository("trainerDao")
@@ -35,6 +36,9 @@ public class TrainerDaoImpl implements TrainerDao {
 	
 	@Override
 	public void deleteTrainer(Trainer trainer) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Trainer WHERE trainerId = "+trainer.getId());
+		Trainer eq = (Trainer) sessionFactory.getCurrentSession().load(Trainer.class, new Integer(trainer.getTrainerId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }

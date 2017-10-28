@@ -4,6 +4,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import model.Exercise;
 
 @Repository("exerciseDao")
@@ -35,6 +36,9 @@ public class ExerciseDaoImpl implements ExerciseDao {
 	
 	@Override
 	public void deleteExercise(Exercise exercise) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Exercise WHERE exerciseId = "+exercise.getExerciseId());
+		Exercise eq = (Exercise) sessionFactory.getCurrentSession().load(Exercise.class, new Integer(exercise.getExerciseId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }

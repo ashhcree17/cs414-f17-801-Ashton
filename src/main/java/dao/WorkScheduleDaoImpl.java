@@ -4,9 +4,10 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import model.WorkSchedule;
 
-@Repository("workScheduleDao")
+@Repository
 public class WorkScheduleDaoImpl implements WorkScheduleDao {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -35,6 +36,9 @@ public class WorkScheduleDaoImpl implements WorkScheduleDao {
 	
 	@Override
 	public void deleteWorkSchedule(WorkSchedule workSchedule) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM WorkSchedule WHERE workScheduleId = "+workSchedule.getWorkScheduleId());
+		WorkSchedule eq = (WorkSchedule) sessionFactory.getCurrentSession().load(WorkSchedule.class, new Integer(workSchedule.getWorkScheduleId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}	
 	}
 }

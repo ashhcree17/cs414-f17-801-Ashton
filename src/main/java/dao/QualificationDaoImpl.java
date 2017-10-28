@@ -4,9 +4,10 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import model.Qualification;
 
-@Repository("qualificationDao")
+@Repository
 public class QualificationDaoImpl implements QualificationDao {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -35,6 +36,9 @@ public class QualificationDaoImpl implements QualificationDao {
 	
 	@Override
 	public void deleteQualification(Qualification qualification) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Qualification WHERE qualId = "+qualification.getQualId());
+		Qualification eq = (Qualification) sessionFactory.getCurrentSession().load(Qualification.class, new Integer(qualification.getQualId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }

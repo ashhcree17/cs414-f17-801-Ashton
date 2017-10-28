@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import model.Equipment;
 
-@Repository("equipmentDao")
+@Repository
 public class EquipmentDaoImpl implements EquipmentDao {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -35,6 +35,9 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	
 	@Override
 	public void deleteEquipment(Equipment equipment) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Equipment WHERE equipmentId = "+equipment.getEquipmentId());
+		Equipment eq = (Equipment) sessionFactory.getCurrentSession().load(Equipment.class, new Integer(equipment.getEquipmentId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }

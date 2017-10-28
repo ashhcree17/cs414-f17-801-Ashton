@@ -4,6 +4,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import model.Routine;
 
 @Repository("routineDao")
@@ -35,6 +36,9 @@ public class RoutineDaoImpl implements RoutineDao {
 	
 	@Override
 	public void deleteRoutine(Routine routine) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Routine WHERE routineId = "+routine.getRoutineId());
+		Routine eq = (Routine) sessionFactory.getCurrentSession().load(Routine.class, new Integer(routine.getRoutineId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }

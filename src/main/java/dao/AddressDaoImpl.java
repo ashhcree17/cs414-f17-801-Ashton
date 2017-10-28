@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import model.Address;
 
-@Repository("addressDao")
+@Repository
 public class AddressDaoImpl implements AddressDao {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -37,6 +37,10 @@ public class AddressDaoImpl implements AddressDao {
 	
 	@Override
 	public void deleteAddress(Address address) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Address WHERE addressId = "+address.getAddressId());
+//		sessionFactory.getCurrentSession().createQuery("DELETE FROM Address WHERE addressId = "+address.getAddressId());
+		Address eq = (Address) sessionFactory.getCurrentSession().load(Address.class, new Integer(address.getAddressId()));
+		if (eq != null) {
+			sessionFactory.getCurrentSession().delete(eq);
+		}
 	}
 }
