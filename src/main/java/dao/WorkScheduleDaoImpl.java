@@ -7,15 +7,20 @@ import org.springframework.stereotype.Repository;
 import model.WorkSchedule;
 
 @Repository("workScheduleDao")
-public class WorkScheduleDaoImpl {
+public class WorkScheduleDaoImpl implements WorkScheduleDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void addWorkSchedule(WorkSchedule workSchedule) {
-		sessionFactory.getCurrentSession().saveOrUpdate(workSchedule);
+		sessionFactory.getCurrentSession().persist(workSchedule);
+	}
+
+	@Override
+	public void updateWorkSchedule(WorkSchedule workSchedule) {
+		sessionFactory.getCurrentSession().update(workSchedule);
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<WorkSchedule> listWorkSchedules() {
 		return (List<WorkSchedule>) sessionFactory.getCurrentSession()
 				.createCriteria(WorkSchedule.class).list();
@@ -26,6 +31,6 @@ public class WorkScheduleDaoImpl {
 	}
 	
 	public void deleteWorkSchedule(WorkSchedule workSchedule) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM WorkSchedule WHERE id = "+workSchedule.getWorkScheduleId());
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM WorkSchedule WHERE workScheduleId = "+workSchedule.getWorkScheduleId());
 	}
 }

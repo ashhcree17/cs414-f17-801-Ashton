@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import model.Manager;
 
 @Repository("managerDao")
-public class ManagerDaoImpl {
+public class ManagerDaoImpl implements ManagerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -19,7 +19,7 @@ public class ManagerDaoImpl {
 		sessionFactory.getCurrentSession().update(manager);
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Manager> listManagers() {
 		return (List<Manager>) sessionFactory.getCurrentSession()
 				.createCriteria(Manager.class).list();

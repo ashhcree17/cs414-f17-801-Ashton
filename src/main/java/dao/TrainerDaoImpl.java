@@ -7,15 +7,20 @@ import org.springframework.stereotype.Repository;
 import model.Trainer;
 
 @Repository("trainerDao")
-public class TrainerDaoImpl {
+public class TrainerDaoImpl implements TrainerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void addTrainer(Trainer trainer) {
-		sessionFactory.getCurrentSession().saveOrUpdate(trainer);
+		sessionFactory.getCurrentSession().persist(trainer);
+	}
+
+	@Override
+	public void updateTrainer(Trainer trainer) {
+		sessionFactory.getCurrentSession().update(trainer);
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Trainer> listTrainers() {
 		return (List<Trainer>) sessionFactory.getCurrentSession()
 				.createCriteria(Trainer.class).list();
@@ -26,6 +31,6 @@ public class TrainerDaoImpl {
 	}
 	
 	public void deleteTrainer(Trainer trainer) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Trainer WHERE id = "+trainer.getId());
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM Trainer WHERE trainerId = "+trainer.getId());
 	}
 }

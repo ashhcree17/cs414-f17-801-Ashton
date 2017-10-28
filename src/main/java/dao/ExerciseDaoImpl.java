@@ -7,25 +7,32 @@ import org.springframework.stereotype.Repository;
 import model.Exercise;
 
 @Repository("exerciseDao")
-public class ExerciseDaoImpl {
+public class ExerciseDaoImpl implements ExerciseDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public void addEquipment(Exercise exercise) {
-		sessionFactory.getCurrentSession().saveOrUpdate(exercise);
+	@Override
+	public void addExercise(Exercise exercise) {
+		sessionFactory.getCurrentSession().persist(exercise);		
 	}
 	
-	@SuppressWarnings({ "unchecked" })
-	public List<Exercise> listEquipments() {
+	@Override
+	public void updateExercise(Exercise exercise) {
+		sessionFactory.getCurrentSession().update(exercise);
+	}
+	
+	@Override
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	public List<Exercise> listExercises() {
 		return (List<Exercise>) sessionFactory.getCurrentSession()
 				.createCriteria(Exercise.class).list();
 	}
 	
-	public Exercise getEquipment(int exerciseId) {
+	public Exercise getExercise(int exerciseId) {
 		return (Exercise) sessionFactory.getCurrentSession().get(Exercise.class, exerciseId);
 	}
 	
-	public void deleteEquipment(Exercise exercise) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Exercise WHERE id = "+exercise.getExerciseId());
+	public void deleteExercise(Exercise exercise) {
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM Exercise WHERE exerciseId = "+exercise.getExerciseId());
 	}
 }

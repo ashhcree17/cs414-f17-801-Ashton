@@ -2,21 +2,22 @@ package service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import dao.WorkScheduleDao;
 import model.WorkSchedule;
 
-@Service("workScheduleService")
-@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-public class WorkScheduleServiceImpl {
+@Service
+public class WorkScheduleServiceImpl implements WorkScheduleService {
 	@Autowired
 	private WorkScheduleDao workScheduleDao;
 	
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addWorkSchedule(WorkSchedule workSchedule) {
 		workScheduleDao.addWorkSchedule(workSchedule);
+	}
+
+	@Override
+	public void updateWorkSchedule(WorkSchedule workSchedule) {
+		workScheduleDao.updateWorkSchedule(workSchedule);
 	}
 	
 	public List<WorkSchedule> listWorkSchedules() {

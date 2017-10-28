@@ -2,31 +2,42 @@ package service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import dao.EquipmentDao;
 import model.Equipment;
 
-@Service("equipmentService")
-@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-public class EquipmentServiceImpl {
+@Service
+public class EquipmentServiceImpl implements EquipmentService {
 	@Autowired
 	private EquipmentDao equipmentDao;
 	
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	@Override
+	@Transactional
 	public void addEquipment(Equipment equipment) {
 		equipmentDao.addEquipment(equipment);
 	}
+
+	@Override
+	@Transactional
+	public void updateEquipment(Equipment equipment) {
+		equipmentDao.updateEquipment(equipment);
+	}
 	
+	@Override
+	@Transactional
 	public List<Equipment> listInventory() {
 		return equipmentDao.listInventory();
 	}
 	
+	@Override
+	@Transactional
 	public Equipment getEquipment(int equipmentId) {
 		return equipmentDao.getEquipment(equipmentId);
 	}
 	
+	@Override
+	@Transactional
 	public void deleteEquipment(Equipment equipment) {
 		equipmentDao.deleteEquipment(equipment);
 	}

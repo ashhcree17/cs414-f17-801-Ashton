@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +16,8 @@ public class Trainer extends User {
 	@Id
 	@SequenceGenerator(name="EMP_SEQ_1", allocationSize=1, initialValue=100)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ_1")   
-	@Column(name="id")
-	private Integer id;			// REQUIRED, starts with 1
+	@Column(name="trainerId")
+	private Integer trainerId;	// REQUIRED, starts with 1
 	
 	@Column(name="username")
 	private String username;
@@ -53,11 +51,11 @@ public class Trainer extends User {
 //	private ArrayList<Qualification> qualifications;
 	
 //	/* Start of getters & setters */
-	public Integer getId() {
-		return id;
+	public Integer getTrainerId() {
+		return trainerId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setTrainerId(Integer trainerId) {
+		this.trainerId = trainerId;
 	}
 	public String getUsername() {
 		return username;

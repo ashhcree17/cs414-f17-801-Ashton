@@ -9,15 +9,20 @@ import org.springframework.stereotype.Repository;
 import model.Customer;
 
 @Repository("customerDao")
-public class CustomerDaoImpl {
+public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void addCustomer(Customer customer) {
-		sessionFactory.getCurrentSession().saveOrUpdate(customer);
+		sessionFactory.getCurrentSession().persist(customer);
+	}
+
+	@Override
+	public void updateCustomer(Customer customer) {
+		sessionFactory.getCurrentSession().update(customer);
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Customer> listCustomers() {
 		return (List<Customer>) sessionFactory.getCurrentSession()
 				.createCriteria(Customer.class).list();
@@ -28,6 +33,6 @@ public class CustomerDaoImpl {
 	}
 	
 	public void deleteCustomer(Customer customer) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Customer WHERE id = "+customer.getCustomerId());
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM Customer WHERE customerId = "+customer.getCustomerId());
 	}
 }

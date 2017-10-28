@@ -7,15 +7,20 @@ import org.springframework.stereotype.Repository;
 import model.Equipment;
 
 @Repository("equipmentDao")
-public class EquipmentDaoImpl {
+public class EquipmentDaoImpl implements EquipmentDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void addEquipment(Equipment equipment) {
-		sessionFactory.getCurrentSession().saveOrUpdate(equipment);
+		sessionFactory.getCurrentSession().persist(equipment);
+	}
+
+	@Override
+	public void updateEquipment(Equipment equipment) {
+		sessionFactory.getCurrentSession().update(equipment);		
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Equipment> listInventory() {
 		return (List<Equipment>) sessionFactory.getCurrentSession()
 				.createCriteria(Equipment.class).list();
@@ -26,6 +31,6 @@ public class EquipmentDaoImpl {
 	}
 	
 	public void deleteEquipment(Equipment equipment) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Equipment WHERE id = "+equipment.getEquipmentId());
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM Equipment WHERE equipmentId = "+equipment.getEquipmentId());
 	}
 }

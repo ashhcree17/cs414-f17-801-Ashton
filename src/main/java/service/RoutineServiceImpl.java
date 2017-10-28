@@ -11,23 +11,36 @@ import model.Routine;
 @Service("routineService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 
-public class RoutineServiceImpl {
+public class RoutineServiceImpl implements RoutineService {
 	@Autowired
 	private RoutineDao routineDao;
 	
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	@Override
+	@Transactional
 	public void addRoutine(Routine routine) {
 		routineDao.addRoutine(routine);
 	}
+
+	@Override
+	@Transactional
+	public void updateRoutine(Routine routine) {
+		routineDao.updateRoutine(routine);
+	}
 	
+	@Override
+	@Transactional
 	public List<Routine> listRoutines() {
 		return routineDao.listRoutines();
 	}
 	
+	@Override
+	@Transactional
 	public Routine getRoutine(int routineId) {
 		return routineDao.getRoutine(routineId);
 	}
 	
+	@Override
+	@Transactional
 	public void deleteRoutine(Routine routine) {
 		routineDao.deleteRoutine(routine);
 	}

@@ -9,15 +9,20 @@ import org.springframework.stereotype.Repository;
 import model.Address;
 
 @Repository("addressDao")
-public class AddressDaoImpl {
+public class AddressDaoImpl implements AddressDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void addAddress(Address address) {
-		sessionFactory.getCurrentSession().saveOrUpdate(address);
+		sessionFactory.getCurrentSession().persist(address);
+	}
+
+	@Override
+	public void updateAddress(Address address) {
+		sessionFactory.getCurrentSession().update(address);
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<Address> listAddresses() {
 		return (List<Address>) sessionFactory.getCurrentSession()
 				.createCriteria(Address.class).list();

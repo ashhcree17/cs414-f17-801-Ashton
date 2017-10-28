@@ -7,12 +7,17 @@ import org.springframework.stereotype.Repository;
 import model.Routine;
 
 @Repository("routineDao")
-public class RoutineDaoImpl {
+public class RoutineDaoImpl implements RoutineDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void addRoutine(Routine routine) {
-		sessionFactory.getCurrentSession().saveOrUpdate(routine);
+		sessionFactory.getCurrentSession().persist(routine);
+	}
+
+	@Override
+	public void updateRoutine(Routine routine) {
+		sessionFactory.getCurrentSession().update(routine);
 	}
 	
 	@SuppressWarnings({ "deprecation", "unchecked" })
@@ -26,6 +31,6 @@ public class RoutineDaoImpl {
 	}
 	
 	public void deleteRoutine(Routine routine) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Routine WHERE id = "+routine.getRoutineId());
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM Routine WHERE routineId = "+routine.getRoutineId());
 	}
 }

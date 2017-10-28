@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

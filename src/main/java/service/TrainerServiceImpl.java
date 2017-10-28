@@ -2,21 +2,22 @@ package service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import dao.TrainerDao;
 import model.Trainer;
 
-@Service("trainerService")
-@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-public class TrainerServiceImpl {
+@Service
+public class TrainerServiceImpl implements TrainerService {
 	@Autowired
 	private TrainerDao trainerDao;
 	
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addTrainer(Trainer trainer) {
 		trainerDao.addTrainer(trainer);
+	}
+
+	@Override
+	public void updateTrainer(Trainer trainer) {
+		trainerDao.updateTrainer(trainer);
 	}
 	
 	public List<Trainer> listTrainers() {

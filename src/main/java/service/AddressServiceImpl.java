@@ -1,34 +1,44 @@
 package service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import dao.AddressDao;
 import model.Address;
 
-@Service("addressService")
-@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-public class AddressServiceImpl {
+@Service
+public class AddressServiceImpl implements AddressService {
 	@Autowired
 	private AddressDao addressDao;
 	
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	@Override
+	@Transactional
 	public void addAddress(Address address) {
 		addressDao.addAddress(address);
 	}
+
+	@Override
+	@Transactional
+	public void updateAddress(Address address) {
+		addressDao.updateAddress(address);
+	}
 	
+	@Override
+	@Transactional
 	public List<Address> listAddresses() {
 		return addressDao.listAddresses();
 	}
-	
+
+	@Override
+	@Transactional
 	public Address getAddress(int addressId) {
 		return addressDao.getAddress(addressId);
 	}
 	
+	@Override
+	@Transactional
 	public void deleteAddress(Address address) {
 		addressDao.deleteAddress(address);
 	}

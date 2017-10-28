@@ -1,17 +1,13 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import model.Routine;
 import service.RoutineService;
@@ -21,83 +17,43 @@ public class RoutineController {
 	@Autowired
 	private RoutineService routineService;
 	
-//	private Routine prepareModel(RoutineBean routineBean) {
-//		Routine routine = new Routine();
-//		routine.setRoutineId(routineBean.getRoutineId());
-//		routine.setName(routineBean.getName());
-//		routine.setExercises(routineBean.getExercises());
-//		routineBean.setRoutineId(null);
-//		return routine;
-//	}
-//	
-//	private List<RoutineBean> prepareListOfBean(List<Routine> routines) {
-//		List<RoutineBean> beans = null;
-//		if (routines != null && !routines.isEmpty()) {
-//			beans = new ArrayList<RoutineBean>();
-//			RoutineBean bean = null;
-//			for (Routine routine : routines) {
-//				bean = new RoutineBean();
-//				bean.setRoutineId(routine.getRoutineId());
-//				bean.setName(routine.getName());
-//				bean.setExercises(routine.getExercises());
-//				beans.add(bean);
-//			}
-//		}
-//		return beans;
-//	}
-//	
-//	private RoutineBean prepareRoutineBean(Routine routine) {
-//		RoutineBean bean = new RoutineBean();
-//		bean.setRoutineId(routine.getRoutineId());
-//		bean.setName(routine.getName());
-//		bean.setExercises(routine.getExercises());
-//		return bean;
-//	}
-//	
-//	@RequestMapping(value = "/save", method = RequestMethod.POST)
-//	public ModelAndView saveRoutine(@ModelAttribute("command")RoutineBean routineBean,
-//			BindingResult result) {
-//		Routine routine = prepareModel(routineBean);
-//		routineService.addRoutine(routine);
-//		return new ModelAndView("addRoutine");
-//	}
-//	
-//	@RequestMapping(value = "/routines", method = RequestMethod.GET) 
-//	public ModelAndView listRoutines() {
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("routines", prepareListOfBean(routineService.listRoutines()));
-//		return new ModelAndView("addRoutine", model);
-//	}
-//	
-//	@RequestMapping(value = "/add", method = RequestMethod.GET) 
-//	public ModelAndView addRoutine(@ModelAttribute("command")RoutineBean routineBean,
-//			BindingResult result){
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("routines", prepareListOfBean(routineService.listRoutines()));
-//		return new ModelAndView("addRoutine", model);
-//	}
-//	
-//	@RequestMapping(value = "/index", method = RequestMethod.GET) 
-//	public ModelAndView welcome() {
-//		return new ModelAndView("index");
-//	}
-//	
-//	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-//	public ModelAndView editRoutine(@ModelAttribute("command")RoutineBean routineBean,
-//			BindingResult result) {
-//		routineService.deleteRoutine(prepareModel(routineBean));
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("routine", null);
-//		model.put("routines", prepareListOfBean(routineService.listRoutines()));
-//		return new ModelAndView("addRoutine", model);
-//	}
-//	
-//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-//	public ModelAndView deleteRoutine(@ModelAttribute("command")RoutineBean routineBean,
-//			BindingResult result) {
-//		Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("routine", prepareRoutineBean(routineService.getRoutine(routineBean.getRoutineId())));
-//		model.put("routines", prepareListOfBean(routineService.listRoutines()));
-//		return new ModelAndView("addRoutine", model);
-//	}
+	@Autowired(required=true)
+	@Qualifier(value="routineService")
+	public void setPersonService(RoutineService routineService){
+		this.routineService = routineService;
+	}
+	
+	@RequestMapping(value = "/routines", method = RequestMethod.GET)
+	public String listRoutines(Model model) {
+		model.addAttribute("routine", new Routine());
+		model.addAttribute("listRoutines", this.routineService.listRoutines());
+		return "routine";
+	}
+	
+	//For add and update person both
+	@RequestMapping(value= "/routine/add", method = RequestMethod.POST)
+	public String addRoutine(@ModelAttribute("routine") Routine routine){
+		if (routine.getRoutineId() == 0) {
+			//new person, add it
+			this.routineService.addRoutine(routine);
+		} else {
+			//existing person, call update
+			this.routineService.updateRoutine(routine);
+		}
+		
+		return "redirect:/routines";
+	}
+	
+	@RequestMapping("/delete/{routineId}")
+    public String deleteRoutine(@ModelAttribute("routine") Routine routine){
+        this.routineService.deleteRoutine(routine);
+        return "redirect:/routines";
+    }
+ 
+    @RequestMapping("/edit/{id}")
+    public String editRoutine(@PathVariable("routineId") int routineId, Model model){
+        model.addAttribute("person", this.routineService.getRoutine(routineId));
+        model.addAttribute("listRoutines", this.routineService.listRoutines());
+        return "routine";
+    }
 }

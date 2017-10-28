@@ -7,12 +7,17 @@ import org.springframework.stereotype.Repository;
 import model.Qualification;
 
 @Repository("qualificationDao")
-public class QualificationDaoImpl {
+public class QualificationDaoImpl implements QualificationDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void addQualification(Qualification qualification) {
-		sessionFactory.getCurrentSession().saveOrUpdate(qualification);
+		sessionFactory.getCurrentSession().persist(qualification);
+	}
+
+	@Override
+	public void updateQualification(Qualification qualification) {
+		sessionFactory.getCurrentSession().update(qualification);
 	}
 	
 	@SuppressWarnings({ "deprecation", "unchecked" })
@@ -26,6 +31,6 @@ public class QualificationDaoImpl {
 	}
 	
 	public void deleteQualification(Qualification qualification) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Qualification WHERE id = "+qualification.getQualId());
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM Qualification WHERE qualId = "+qualification.getQualId());
 	}
 }
