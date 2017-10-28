@@ -1,4 +1,4 @@
-package globoGymMS;
+package main.service.globoGymMS;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import globoGymMS.Trainer;
-import globoGymMS.TrainerDao;
+import main.model.globoGymMS.Trainer;
+import main.dao.globoGymMS.TrainerDao;
 
 @Service("trainerService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false)

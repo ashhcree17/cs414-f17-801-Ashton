@@ -1,4 +1,4 @@
-package globoGymMS;
+package main.dao.globoGymMS;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import globoGymMS.Exercise;
+import main.model.globoGymMS.Exercise;
 
 @Repository("exerciseDao")
 public class ExerciseDaoImpl {

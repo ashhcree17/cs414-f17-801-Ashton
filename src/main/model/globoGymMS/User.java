@@ -1,4 +1,4 @@
-package globoGymMS;
+package main.model.globoGymMS;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

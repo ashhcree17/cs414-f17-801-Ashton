@@ -1,7 +1,7 @@
-package globoGymMS;
+package main.service.globoGymMS;
 
 import java.util.List;
-import globoGymMS.Qualification;
+import main.model.globoGymMS.Qualification;
 
 public interface QualificationService {
 	public void addQualification(Qualification qualification);

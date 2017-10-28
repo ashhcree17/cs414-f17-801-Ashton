@@ -1,7 +1,7 @@
-package globoGymMS;
+package main.service.globoGymMS;
 
 import java.util.List;
-import globoGymMS.Trainer;
+import main.model.globoGymMS.Trainer;
 
 public interface TrainerService {
 	public void addTrainer(Trainer trainer);

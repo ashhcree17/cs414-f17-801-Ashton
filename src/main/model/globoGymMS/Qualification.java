@@ -1,4 +1,4 @@
-package globoGymMS;
+package main.model.globoGymMS;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

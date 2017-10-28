@@ -1,4 +1,4 @@
-package globoGymMS;
+package main.controller.globoGymMS;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 
-import globoGymMS.Manager;
-import globoGymMS.ManagerService;
+import main.model.globoGymMS.Manager;
+import main.service.globoGymMS.ManagerService;
 
 @Controller
 public class ManagerController {

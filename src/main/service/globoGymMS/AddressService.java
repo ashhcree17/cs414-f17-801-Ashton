@@ -1,7 +1,7 @@
-package globoGymMS;
+package main.service.globoGymMS;
 
 import java.util.List;
-import globoGymMS.Address;
+import main.model.globoGymMS.Address;
 
 public interface AddressService {
 	public void addAddress(Address address);

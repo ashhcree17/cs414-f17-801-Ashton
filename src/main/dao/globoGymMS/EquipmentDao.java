@@ -1,7 +1,7 @@
-package globoGymMS;
+package main.dao.globoGymMS;
 
 import java.util.List;
-import globoGymMS.Equipment;
+import main.model.globoGymMS.Equipment;
 
 public interface EquipmentDao {
 	public void addEquipment(Equipment equipment);

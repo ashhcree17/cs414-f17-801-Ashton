@@ -4,11 +4,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/controller"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/dao"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/model"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/service"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="context-root" value="globoGymMS"/>
         <property name="java-output-path" value="/globoGymMS/bin"/>
     </wb-module>

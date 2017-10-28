@@ -1,7 +1,7 @@
-package globoGymMS;
+package main.service.globoGymMS;
 
 import java.util.List;
-import globoGymMS.Manager;
+import main.model.globoGymMS.Manager;
 
 public interface ManagerService {
 	public void addManager(Manager manager);

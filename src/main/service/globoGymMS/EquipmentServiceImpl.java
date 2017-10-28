@@ -1,4 +1,4 @@
-package globoGymMS;
+package main.service.globoGymMS;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import globoGymMS.Equipment;
-import globoGymMS.EquipmentDao;
+import main.model.globoGymMS.Equipment;
+import main.dao.globoGymMS.EquipmentDao;
 
 @Service("equipmentService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
