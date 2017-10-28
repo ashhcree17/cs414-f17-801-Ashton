@@ -1,0 +1,12 @@
+package main.globoGymMS.dao;
+
+import java.util.List;
+
+import main.globoGymMS.model.Address;
+
+public interface AddressDao {
+	public void addAddress(Address address);
+	public List<Address> listAddresses();
+	public Address getAddress(int addressId);
+	public void deleteAddress(Address address);
+}
