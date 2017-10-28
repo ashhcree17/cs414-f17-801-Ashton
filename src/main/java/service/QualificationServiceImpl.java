@@ -1,14 +1,12 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-
-import main.java.globoGymMS.dao.QualificationDao;
-import main.java.globoGymMS.model.Qualification;
+import dao.QualificationDao;
+import model.Qualification;
 
 @Service("qualificationService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false)

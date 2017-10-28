@@ -1,8 +1,8 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
-import main.java.globoGymMS.model.Equipment;
+import model.Equipment;
 
 public interface EquipmentService {
 	public void addEquipment(Equipment equipment);

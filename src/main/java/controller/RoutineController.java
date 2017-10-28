@@ -1,4 +1,4 @@
-package main.globoGymMS.controller;
+package controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import main.globoGymMS.model.Routine;
-import main.globoGymMS.service.RoutineService;
+import model.Routine;
+import service.RoutineService;
 
 @Controller
 public class RoutineController {

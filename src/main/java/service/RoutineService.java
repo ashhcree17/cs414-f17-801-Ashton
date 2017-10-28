@@ -1,8 +1,8 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
-import main.java.globoGymMS.model.Routine;
+import model.Routine;
 
 public interface RoutineService {
 	public void addRoutine(Routine routine);

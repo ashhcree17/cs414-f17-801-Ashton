@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.Exercise;
+import model.Exercise;
 
 public interface ExerciseDao {
 	public void addExercise(Exercise exercise);

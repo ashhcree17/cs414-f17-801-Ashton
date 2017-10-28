@@ -1,8 +1,8 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
-import main.java.globoGymMS.model.Exercise;
+import model.Exercise;
 
 public interface ExerciseService {
 	public void addExercise(Exercise exercise);

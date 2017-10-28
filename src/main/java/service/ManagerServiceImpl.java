@@ -1,13 +1,11 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-
-import main.java.globoGymMS.dao.ManagerDao;
-import main.java.globoGymMS.model.Manager;
+import dao.ManagerDao;
+import model.Manager;
 
 @Service
 public class ManagerServiceImpl implements ManagerService {

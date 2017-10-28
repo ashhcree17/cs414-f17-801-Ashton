@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.WorkSchedule;
+import model.WorkSchedule;
 
 public interface WorkScheduleDao {
 	public void addWorkSchedule(WorkSchedule workSchedule);

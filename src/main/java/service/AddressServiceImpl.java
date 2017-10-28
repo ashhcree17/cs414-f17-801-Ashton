@@ -1,4 +1,4 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import main.java.globoGymMS.dao.AddressDao;
-import main.java.globoGymMS.model.Address;
+import dao.AddressDao;
+import model.Address;
 
 @Service("addressService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false)

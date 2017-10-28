@@ -1,4 +1,4 @@
-package main.globoGymMS.controller;
+package controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import main.globoGymMS.model.Equipment;
-import main.globoGymMS.service.EquipmentService;
+import model.Equipment;
+import service.EquipmentService;
 
 @Controller
 public class EquipmentController {

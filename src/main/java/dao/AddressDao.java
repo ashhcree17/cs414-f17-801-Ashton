@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.Address;
+import model.Address;
 
 public interface AddressDao {
 	public void addAddress(Address address);

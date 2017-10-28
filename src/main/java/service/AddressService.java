@@ -1,9 +1,8 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
-//import main.java.globoGymMS.model.Addres;
-import main.globoGymMS.model.Address;
+import model.Address;
 
 public interface AddressService {
 	public void addAddress(Address address);

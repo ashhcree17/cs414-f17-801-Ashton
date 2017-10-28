@@ -1,12 +1,10 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import main.globoGymMS.model.Routine;
+import model.Routine;
 
 @Repository("routineDao")
 public class RoutineDaoImpl {
@@ -17,7 +15,7 @@ public class RoutineDaoImpl {
 		sessionFactory.getCurrentSession().saveOrUpdate(routine);
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	public List<Routine> listRoutines() {
 		return (List<Routine>) sessionFactory.getCurrentSession()
 				.createCriteria(Routine.class).list();

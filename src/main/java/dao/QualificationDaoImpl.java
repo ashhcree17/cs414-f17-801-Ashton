@@ -1,12 +1,10 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import main.globoGymMS.model.Qualification;
+import model.Qualification;
 
 @Repository("qualificationDao")
 public class QualificationDaoImpl {
@@ -17,7 +15,7 @@ public class QualificationDaoImpl {
 		sessionFactory.getCurrentSession().saveOrUpdate(qualification);
 	}
 	
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	public List<Qualification> listQualifications() {
 		return (List<Qualification>) sessionFactory.getCurrentSession()
 				.createCriteria(Qualification.class).list();

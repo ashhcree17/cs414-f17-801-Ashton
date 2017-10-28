@@ -1,8 +1,8 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
-import main.java.globoGymMS.model.Customer;
+import model.Customer;
 
 public interface CustomerService {
 	public void addCustomer(Customer customer);

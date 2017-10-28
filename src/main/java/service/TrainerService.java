@@ -1,8 +1,8 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
-import main.java.globoGymMS.model.Trainer;
+import model.Trainer;
 
 public interface TrainerService {
 	public void addTrainer(Trainer trainer);

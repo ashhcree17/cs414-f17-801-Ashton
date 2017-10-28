@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.Routine;
+import model.Routine;
 
 public interface RoutineDao {
 	public void addRoutine(Routine routine);

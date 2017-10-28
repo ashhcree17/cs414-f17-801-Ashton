@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.Manager;
+import model.Manager;
 
 public interface ManagerDao {
 	public void addManager(Manager manager);

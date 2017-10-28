@@ -1,12 +1,10 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import main.globoGymMS.model.WorkSchedule;
+import model.WorkSchedule;
 
 @Repository("workScheduleDao")
 public class WorkScheduleDaoImpl {

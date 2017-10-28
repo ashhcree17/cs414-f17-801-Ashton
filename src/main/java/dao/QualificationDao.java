@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.Qualification;
+import model.Qualification;
 
 public interface QualificationDao {
 	public void addQualification(Qualification qualification);

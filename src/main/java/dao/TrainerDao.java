@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.Trainer;
+import model.Trainer;
 
 public interface TrainerDao {
 	public void addTrainer(Trainer trainer);

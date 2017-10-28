@@ -1,8 +1,7 @@
-package main.globoGymMS.dao;
+package dao;
 
 import java.util.List;
-
-import main.globoGymMS.model.Customer;
+import model.Customer;
 
 public interface CustomerDao {
 	public void addCustomer(Customer customer);

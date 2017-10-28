@@ -1,8 +1,8 @@
-package main.globoGymMS.service;
+package service;
 
 import java.util.List;
 
-import main.java.globoGymMS.model.WorkSchedule;
+import model.WorkSchedule;
 
 public interface WorkScheduleService {
 	public void addWorkSchedule(WorkSchedule workSchedule);
