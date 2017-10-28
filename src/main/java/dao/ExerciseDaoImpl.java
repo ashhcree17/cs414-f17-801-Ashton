@@ -22,16 +22,18 @@ public class ExerciseDaoImpl implements ExerciseDao {
 	}
 	
 	@Override
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked" })
 	public List<Exercise> listExercises() {
 		return (List<Exercise>) sessionFactory.getCurrentSession()
-				.createCriteria(Exercise.class).list();
+				.createQuery("from Exercise").list();
 	}
 	
+	@Override
 	public Exercise getExercise(int exerciseId) {
 		return (Exercise) sessionFactory.getCurrentSession().get(Exercise.class, exerciseId);
 	}
 	
+	@Override
 	public void deleteExercise(Exercise exercise) {
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM Exercise WHERE exerciseId = "+exercise.getExerciseId());
 	}

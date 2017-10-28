@@ -11,6 +11,7 @@ public class WorkScheduleDaoImpl implements WorkScheduleDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Override
 	public void addWorkSchedule(WorkSchedule workSchedule) {
 		sessionFactory.getCurrentSession().persist(workSchedule);
 	}
@@ -20,16 +21,19 @@ public class WorkScheduleDaoImpl implements WorkScheduleDao {
 		sessionFactory.getCurrentSession().update(workSchedule);
 	}
 	
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked" })
+	@Override
 	public List<WorkSchedule> listWorkSchedules() {
 		return (List<WorkSchedule>) sessionFactory.getCurrentSession()
-				.createCriteria(WorkSchedule.class).list();
+				.createQuery("from WorkSchedule").list();
 	}
 	
+	@Override
 	public WorkSchedule getWorkSchedule(int id) {
 		return (WorkSchedule) sessionFactory.getCurrentSession().get(WorkSchedule.class, id);
 	}
 	
+	@Override
 	public void deleteWorkSchedule(WorkSchedule workSchedule) {
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM WorkSchedule WHERE workScheduleId = "+workSchedule.getWorkScheduleId());
 	}

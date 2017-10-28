@@ -11,6 +11,7 @@ public class TrainerDaoImpl implements TrainerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Override
 	public void addTrainer(Trainer trainer) {
 		sessionFactory.getCurrentSession().persist(trainer);
 	}
@@ -20,16 +21,19 @@ public class TrainerDaoImpl implements TrainerDao {
 		sessionFactory.getCurrentSession().update(trainer);
 	}
 	
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked" })
+	@Override
 	public List<Trainer> listTrainers() {
 		return (List<Trainer>) sessionFactory.getCurrentSession()
-				.createCriteria(Trainer.class).list();
+				.createQuery("from Trainer").list();
 	}
 	
+	@Override
 	public Trainer getTrainer(int id) {
 		return (Trainer) sessionFactory.getCurrentSession().get(Trainer.class, id);
 	}
 	
+	@Override
 	public void deleteTrainer(Trainer trainer) {
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM Trainer WHERE trainerId = "+trainer.getId());
 	}

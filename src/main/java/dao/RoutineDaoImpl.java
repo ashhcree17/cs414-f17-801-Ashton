@@ -11,6 +11,7 @@ public class RoutineDaoImpl implements RoutineDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Override
 	public void addRoutine(Routine routine) {
 		sessionFactory.getCurrentSession().persist(routine);
 	}
@@ -20,16 +21,19 @@ public class RoutineDaoImpl implements RoutineDao {
 		sessionFactory.getCurrentSession().update(routine);
 	}
 	
-	@SuppressWarnings({ "deprecation", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
+	@Override
 	public List<Routine> listRoutines() {
 		return (List<Routine>) sessionFactory.getCurrentSession()
-				.createCriteria(Routine.class).list();
+				.createQuery("from Routine").list();
 	}
 	
+	@Override
 	public Routine getRoutine(int routineId) {
 		return (Routine) sessionFactory.getCurrentSession().get(Routine.class, routineId);
 	}
 	
+	@Override
 	public void deleteRoutine(Routine routine) {
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM Routine WHERE routineId = "+routine.getRoutineId());
 	}

@@ -13,6 +13,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Override
 	public void addCustomer(Customer customer) {
 		sessionFactory.getCurrentSession().persist(customer);
 	}
@@ -22,16 +23,19 @@ public class CustomerDaoImpl implements CustomerDao {
 		sessionFactory.getCurrentSession().update(customer);
 	}
 	
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked" })
+	@Override
 	public List<Customer> listCustomers() {
 		return (List<Customer>) sessionFactory.getCurrentSession()
-				.createCriteria(Customer.class).list();
+				.createQuery("from Customer").list();
 	}
 	
+	@Override
 	public Customer getCustomer(int id) {
 		return (Customer) sessionFactory.getCurrentSession().get(Customer.class, id);
 	}
 	
+	@Override
 	public void deleteCustomer(Customer customer) {
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM Customer WHERE customerId = "+customer.getCustomerId());
 	}

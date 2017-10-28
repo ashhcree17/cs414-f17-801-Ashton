@@ -11,6 +11,7 @@ public class QualificationDaoImpl implements QualificationDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Override
 	public void addQualification(Qualification qualification) {
 		sessionFactory.getCurrentSession().persist(qualification);
 	}
@@ -20,16 +21,19 @@ public class QualificationDaoImpl implements QualificationDao {
 		sessionFactory.getCurrentSession().update(qualification);
 	}
 	
-	@SuppressWarnings({ "deprecation", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
+	@Override
 	public List<Qualification> listQualifications() {
 		return (List<Qualification>) sessionFactory.getCurrentSession()
-				.createCriteria(Qualification.class).list();
+				.createQuery("from Qualification").list();
 	}
 	
+	@Override
 	public Qualification getQualification(int qualId) {
 		return (Qualification) sessionFactory.getCurrentSession().get(Qualification.class, qualId);
 	}
 	
+	@Override
 	public void deleteQualification(Qualification qualification) {
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM Qualification WHERE qualId = "+qualification.getQualId());
 	}

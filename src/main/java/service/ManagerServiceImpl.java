@@ -19,11 +19,11 @@ public class ManagerServiceImpl implements ManagerService {
 		managerDao.addManager(manager);
 	}
 	
-	@Override
-	@Transactional
-	public void updateManager(Manager manager) {
-		managerDao.updateManager(manager);
-	}
+//	@Override
+//	@Transactional
+//	public void updateManager(Manager manager) {
+//		managerDao.updateManager(manager);
+//	}
 	
 	@Override
 	@Transactional
@@ -31,15 +31,15 @@ public class ManagerServiceImpl implements ManagerService {
 		return managerDao.listManagers();
 	}
 	
-	@Override
-	@Transactional
-	public Manager getManager(int id) {
-		return managerDao.getManager(id);
-	}
-	
-	@Override
-	@Transactional
-	public void deleteManager(Manager manager) {
-		managerDao.deleteManager(manager);
-	}
+//	@Override
+//	@Transactional
+//	public Manager getManager(int id) {
+//		return managerDao.getManager(id);
+//	}
+//	
+//	@Override
+//	@Transactional
+//	public void deleteManager(Manager manager) {
+//		managerDao.deleteManager(manager);
+//	}
 }

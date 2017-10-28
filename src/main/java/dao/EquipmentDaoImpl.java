@@ -11,6 +11,7 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@Override
 	public void addEquipment(Equipment equipment) {
 		sessionFactory.getCurrentSession().persist(equipment);
 	}
@@ -20,16 +21,19 @@ public class EquipmentDaoImpl implements EquipmentDao {
 		sessionFactory.getCurrentSession().update(equipment);		
 	}
 	
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings({ "unchecked" })
+	@Override
 	public List<Equipment> listInventory() {
 		return (List<Equipment>) sessionFactory.getCurrentSession()
-				.createCriteria(Equipment.class).list();
+				.createQuery("from Equipment").list();
 	}
 	
+	@Override
 	public Equipment getEquipment(int equipmentId) {
 		return (Equipment) sessionFactory.getCurrentSession().get(Equipment.class, equipmentId);
 	}
 	
+	@Override
 	public void deleteEquipment(Equipment equipment) {
 		sessionFactory.getCurrentSession().createQuery("DELETE FROM Equipment WHERE equipmentId = "+equipment.getEquipmentId());
 	}
