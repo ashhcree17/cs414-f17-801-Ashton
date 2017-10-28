@@ -16,8 +16,8 @@ public class Customer {
 	@Id
 	@SequenceGenerator(name="EMP_SEQ_2", allocationSize=1, initialValue=200)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
-	@Column(name="id")
-	private Integer id;			// REQUIRED, starts with 2
+	@Column(name="customerId")
+	private Integer customerId;	// REQUIRED, starts with 2
 	
 	@Column(name="name")
 	private String name;			// REQUIRED, first name
@@ -40,15 +40,15 @@ public class Customer {
 	@Column(name="membership")
 	private MembershipStatus membership;
 	
-	@Column(name="name")
-	private ArrayList<Routine> assignedRoutines;
+	//@Column(name="assignedRoutines")
+	//private ArrayList<Routine> assignedRoutines;
 	
 	/* Start of getters & setters */
-	public Integer getId() {
-		return id;
+	public Integer getCustomerId() {
+		return customerId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 	public String getName() {
 		return name;
@@ -92,11 +92,11 @@ public class Customer {
 	public void setMembership(MembershipStatus membership) {
 		this.membership = membership;
 	}
-	public ArrayList<Routine> getAssignedRoutines() {
-		return assignedRoutines;
-	}
-	public void setAssignedRoutines(ArrayList<Routine> assignedRoutines) {
-		this.assignedRoutines = assignedRoutines;
-	}	
+//	public ArrayList<Routine> getAssignedRoutines() {
+//		return assignedRoutines;
+//	}
+//	public void setAssignedRoutines(ArrayList<Routine> assignedRoutines) {
+//		this.assignedRoutines = assignedRoutines;
+//	}	
 	/* End of getters & setters */
 }

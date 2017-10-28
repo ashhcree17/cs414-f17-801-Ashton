@@ -28,6 +28,6 @@ public class CustomerDaoImpl {
 	}
 	
 	public void deleteCustomer(Customer customer) {
-		sessionFactory.getCurrentSession().createQuery("DELETE FROM Customer WHERE id = "+customer.getId());
+		sessionFactory.getCurrentSession().createQuery("DELETE FROM Customer WHERE id = "+customer.getCustomerId());
 	}
 }

@@ -14,7 +14,11 @@ public class ManagerDaoImpl {
 	private SessionFactory sessionFactory;
 	
 	public void addManager(Manager manager) {
-		sessionFactory.getCurrentSession().saveOrUpdate(manager);
+		sessionFactory.getCurrentSession().persist(manager);
+	}
+	
+	public void updateManager(Manager manager) {
+		sessionFactory.getCurrentSession().update(manager);
 	}
 	
 	@SuppressWarnings({ "unchecked" })

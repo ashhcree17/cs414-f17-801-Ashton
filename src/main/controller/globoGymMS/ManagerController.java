@@ -1,20 +1,15 @@
 package globoGymMS;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
 import globoGymMS.Manager;
-import globoGymMS.ManagerBean;
 import globoGymMS.ManagerService;
 
 @Controller
@@ -22,101 +17,92 @@ public class ManagerController {
 	@Autowired
 	private ManagerService managerService;
 	
-	private Manager prepareModel(ManagerBean managerBean) {
-		Manager manager = new Manager();
-		manager.setId(managerBean.getId());
-		manager.setUsername(managerBean.getUsername());
-		manager.setPassword(managerBean.getPassword());
-		manager.setName(managerBean.getName());
-		manager.setLastName(managerBean.getLastName());
-		manager.setAddress(managerBean.getAddress());
-		manager.setPhoneNumber(managerBean.getPhoneNumber());
-		manager.setEmail(managerBean.getEmail());
-		manager.setInsurance(managerBean.getInsurance());
-		managerBean.setId(null);
-		return manager;
+	@Autowired(required=true)
+	@Qualifier(value="managerService")
+	public void setPersonService(ManagerService managerService){
+		this.managerService = managerService;
 	}
 	
-	private List<ManagerBean> prepareListOfBean(List<Manager> managers) {
-		List<ManagerBean> beans = null;
-		if (managers != null && !managers.isEmpty()) {
-			beans = new ArrayList<ManagerBean>();
-			ManagerBean bean = null;
-			for (Manager manager : managers) {
-				bean = new ManagerBean();
-				bean.setId(manager.getId());
-				bean.setUsername(manager.getUsername());
-				bean.setPassword(manager.getPassword());
-				bean.setName(manager.getName());
-				bean.setLastName(manager.getLastName());
-				bean.setAddress(manager.getAddress());
-				bean.setPhoneNumber(manager.getPhoneNumber());
-				bean.setEmail(manager.getEmail());
-				bean.setInsurance(manager.getInsurance());
-				beans.add(bean);
-			}
+	@RequestMapping(value = "/managers", method = RequestMethod.GET)
+	public String listManagers(Model model) {
+		model.addAttribute("manager", new Manager());
+		model.addAttribute("listManagers", this.managerService.listManagers());
+		return "manager";
+	}
+	
+	//For add and update person both
+	@RequestMapping(value= "/manager/add", method = RequestMethod.POST)
+	public String addManager(@ModelAttribute("manager") Manager manager){
+		if (manager.getManagerId() == 0) {
+			//new person, add it
+			this.managerService.addManager(manager);
+		} else {
+			//existing person, call update
+			this.managerService.updateManager(manager);
 		}
-		return beans;
+		
+		return "redirect:/managers";
 	}
 	
-	private ManagerBean prepareManagerBean(Manager manager) {
-		ManagerBean bean = new ManagerBean();
-		bean.setId(manager.getId());
-		bean.setUsername(manager.getUsername());
-		bean.setPassword(manager.getPassword());
-		bean.setName(manager.getName());
-		bean.setLastName(manager.getLastName());
-		bean.setAddress(manager.getAddress());
-		bean.setPhoneNumber(manager.getPhoneNumber());
-		bean.setEmail(manager.getEmail());
-		bean.setInsurance(manager.getInsurance());
-		return bean;
-	}
+	@RequestMapping("/delete/{managerId}")
+    public String deleteManager(@ModelAttribute("manager") Manager manager){
+        this.managerService.deleteManager(manager);
+        return "redirect:/managers";
+    }
+ 
+    @RequestMapping("/edit/{id}")
+    public String editManager(@PathVariable("managerId") int managerId, Model model){
+        model.addAttribute("person", this.managerService.getManager(managerId));
+        model.addAttribute("listManagers", this.managerService.listManagers());
+        return "manager";
+    }
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveManager(@ModelAttribute("command")ManagerBean managerBean,
-			BindingResult result) {
-		Manager manager = prepareModel(managerBean);
-		managerService.addManager(manager);
-		return new ModelAndView("addManager");
-	}
+    // OLD OLD OLD //
 	
-	@RequestMapping(value = "/managers", method = RequestMethod.GET) 
-	public ModelAndView listManagers() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("managers", prepareListOfBean(managerService.listManagers()));
-		return new ModelAndView("addManager", model);
-	}
-	
-	@RequestMapping(value = "/add", method = RequestMethod.GET) 
-	public ModelAndView addManager(@ModelAttribute("command")ManagerBean managerBean,
-			BindingResult result){
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("managers", prepareListOfBean(managerService.listManagers()));
-		return new ModelAndView("addManager", model);
-	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET) 
-	public ModelAndView welcome() {
-		return new ModelAndView("index");
-	}
-	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView editManager(@ModelAttribute("command")ManagerBean managerBean,
-			BindingResult result) {
-		managerService.deleteManager(prepareModel(managerBean));
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("manager", null);
-		model.put("managers", prepareListOfBean(managerService.listManagers()));
-		return new ModelAndView("addManager", model);
-	}
-	
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView deleteManager(@ModelAttribute("command")ManagerBean managerBean,
-			BindingResult result) {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("manager", prepareManagerBean(managerService.getManager(managerBean.getId())));
-		model.put("managers", prepareListOfBean(managerService.listManagers()));
-		return new ModelAndView("addManager", model);
-	}
+//	@RequestMapping(value = "/save", method = RequestMethod.POST)
+//	public ModelAndView saveManager(@ModelAttribute("command")ManagerBean managerBean,
+//			BindingResult result) {
+//		Manager manager = prepareModel(managerBean);
+//		managerService.addManager(manager);
+//		return new ModelAndView("redirect:/add.html");
+//	}
+//	
+//	@RequestMapping(value = "/managers", method = RequestMethod.GET) 
+//	public ModelAndView listManagers() {
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		model.put("managers", prepareListOfBean(managerService.listManagers()));
+//		return new ModelAndView("managersList", model);
+//	}
+//	
+//	@RequestMapping(value = "/add", method = RequestMethod.GET) 
+//	public ModelAndView addManager(@ModelAttribute("command")ManagerBean managerBean,
+//			BindingResult result){
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		model.put("managers", prepareListOfBean(managerService.listManagers()));
+//		return new ModelAndView("addManager", model);
+//	}
+//	
+//	@RequestMapping(value = "/index", method = RequestMethod.GET) 
+//	public ModelAndView welcome() {
+//		return new ModelAndView("index");
+//	}
+//	
+//	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+//	public ModelAndView deleteManager(@ModelAttribute("command")ManagerBean managerBean,
+//			BindingResult result) {
+//		managerService.deleteManager(prepareModel(managerBean));
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		model.put("manager", null);
+//		model.put("managers", prepareListOfBean(managerService.listManagers()));
+//		return new ModelAndView("addManager", model);
+//	}
+//	
+//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+//	public ModelAndView editManager(@ModelAttribute("command")ManagerBean managerBean,
+//			BindingResult result) {
+//		Map<String, Object> model = new HashMap<String, Object>();
+//		model.put("manager", prepareManagerBean(managerService.getManager(managerBean.getId())));
+//		model.put("managers", prepareListOfBean(managerService.listManagers()));
+//		return new ModelAndView("addManager", model);
+//	}
 }

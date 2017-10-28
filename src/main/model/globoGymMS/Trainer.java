@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name="Trainer")
-public class Trainer {
+public class Trainer extends User {
 	@Id
 	@SequenceGenerator(name="EMP_SEQ_1", allocationSize=1, initialValue=100)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ_1")   
@@ -44,13 +44,13 @@ public class Trainer {
 	
 	@Column(name="insurance")
 	private String insurance;
-	
-	@Column(name="workSchedule")
-//	@ElementCollection(targetClass=WorkSchedule.class)
-	private ArrayList<WorkSchedule> workSchedule;
-	
-	@Column(name="qualifications")
-	private ArrayList<Qualification> qualifications;
+//	
+//	@Column(name="workSchedule")
+////	@ElementCollection(targetClass=WorkSchedule.class)
+//	private ArrayList<WorkSchedule> workSchedule;
+//	
+//	@Column(name="qualifications")
+//	private ArrayList<Qualification> qualifications;
 	
 //	/* Start of getters & setters */
 	public Integer getId() {
@@ -108,35 +108,33 @@ public class Trainer {
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
 	}
-	public ArrayList<WorkSchedule> getWorkSchedule() {
-		return workSchedule;
-	}
-	public void setWorkSchedule(ArrayList<WorkSchedule> workSchedule) {
-		this.workSchedule = workSchedule;
-	}
-	public ArrayList<Qualification> getQualifications() {
-		return qualifications;
-	}
-	public void setQualifications(ArrayList<Qualification> qualifications) {
-		this.qualifications = qualifications;
-	}
+//	public ArrayList<WorkSchedule> getWorkSchedule() {
+//		return workSchedule;
+//	}
+//	public void setWorkSchedule(ArrayList<WorkSchedule> workSchedule) {
+//		this.workSchedule = workSchedule;
+//	}
+//	public ArrayList<Qualification> getQualifications() {
+//		return qualifications;
+//	}
+//	public void setQualifications(ArrayList<Qualification> qualifications) {
+//		this.qualifications = qualifications;
+//	}
 //	/* End of getters & setters */
-//
-//	@Override
-//	public <T> void create(T type) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public <T> void modify(T type) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public <T> T search(T type) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
+	@Override
+	public <T> void create(T type) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public <T> void modify(T type) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public <T> T search(T type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

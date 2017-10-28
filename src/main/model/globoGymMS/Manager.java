@@ -12,12 +12,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name="Manager")
-public class Manager {
+public class Manager extends User {
 	@Id
 	@SequenceGenerator(name="EMP_SEQ_0", allocationSize=1, initialValue=000)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
-	@Column(name="id")
-	private Integer id;			// REQUIRED, starts with 0
+	@Column(name="managerId")
+	private Integer managerId;	// REQUIRED, starts with 0
 	
 	@Column(name="username")
 	private String username;
@@ -43,11 +43,11 @@ public class Manager {
 	@Column(name="insurance")
 	private String insurance;
 
-	public Integer getId() {
-		return id;
+	public Integer getManagerId() {
+		return managerId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setManagerId(Integer managerId) {
+		this.managerId = managerId;
 	}
 	public String getUsername() {
 		return username;
@@ -98,27 +98,19 @@ public class Manager {
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
 	}
-
-//	@Override
-//	public <T> void create(T type) {
-//		if (type == Trainer.class) {
-//			// take type.attributes and add to db?
-//		} else if (type == Customer.class) {
-//			
-//		} else if (type == Equipment.class) {
-//			
-//		}
-//	}
-//
-//	@Override
-//	public <T> void modify(T type) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public <T> T search(T type) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public <T> void create(T type) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public <T> void modify(T type) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public <T> T search(T type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
