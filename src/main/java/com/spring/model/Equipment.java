@@ -1,6 +1,5 @@
 package com.spring.model;
 
-import java.awt.Image;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -20,8 +19,9 @@ public class Equipment {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="picture")
-	private Image picture;
+	// Will add in later iteration
+//	@Column(name="picture")
+//	private Blob picture;
 	
 	@Column(name="quantity")
 	private Integer quantity;
@@ -42,12 +42,12 @@ public class Equipment {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Image getPicture() {
-		return picture;
-	}
-	public void setPicture(Image picture) {
-		this.picture = picture;
-	}
+//	public Blob getPicture() {
+//		return picture;
+//	}
+//	public void setPicture(Blob picture) {
+//		this.picture = picture;
+//	}
 	public Integer getQuantity() {
 		return quantity;
 	}

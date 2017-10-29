@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@page session="false"%>
+<%@page session="false""%>
 <html>
 	<head>
 		<title>Equipment Page</title>
@@ -45,16 +45,6 @@
 				</tr>
 				<tr>
 					<td>
-						<form:label path="picture">
-							<spring:message text="Picture"/>
-						</form:label>
-					</td>
-					<td>
-						<form:input path="picture" type="file" value="Upload"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
 						<form:label path="quantity">
 							<spring:message text="Quantity"/>
 						</form:label>
@@ -84,7 +74,6 @@
 				<tr>
 					<th width="80">Equipment ID</th>
 					<th width="120">Name</th>
-					<th width="120">Picture</th>
 					<th width="120">Quantity</th>
 					<th width="60">Edit</th>
 					<th width="60">Delete</th>
@@ -93,7 +82,6 @@
 					<tr>
 						<td>${equipment.equipmentId}</td>
 						<td>${equipment.name}</td>
-						<td>${equipment.picture}</td>
 						<td>${equipment.quantity}</td>
 						<td><a href="<c:url value='/edit/${equipment.equipmentId}' />" >Edit</a></td>
 						<td><a href="<c:url value='/remove/${equipment.equipmentId}' />" >Delete</a></td>
