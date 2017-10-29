@@ -1,11 +1,11 @@
-package globoGymMS;
-
+//package globoGymMS;
+//
 //import java.util.ArrayList;
 //
 //import org.junit.Assert;
 //import org.junit.Test;
-
-public class InventoryTest {
+//
+//public class InventoryTest {
 //	@Test
 //	public final void getEquipment() {
 //		Equipment eq = new Equipment(001, "EQ1", null, 2);
@@ -16,4 +16,4 @@ public class InventoryTest {
 //		
 //		Assert.assertEquals(eqs, i.getEquipment());
 //	}
-}
+//}

@@ -1,12 +1,12 @@
-package globoGymMS;
-
+//package globoGymMS;
+//
 //import java.time.Duration;
 //import java.util.ArrayList;
 //
 //import org.junit.Assert;
 //import org.junit.Test;
-
-public class RoutineTest {
+//
+//public class RoutineTest {
 //	@Test
 //	public final void getExercises() {
 //		Exercise e = new Exercise(001, "E1", Duration.ZERO);
@@ -17,4 +17,4 @@ public class RoutineTest {
 //
 //		Assert.assertEquals(es, r.getExercises());
 //	}
-}
+//}

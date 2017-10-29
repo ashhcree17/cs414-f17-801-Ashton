@@ -1,13 +1,13 @@
-package globoGymMS;
-
+//package globoGymMS;
+//
 //import java.time.DayOfWeek;
 //import java.time.LocalTime;
 //import java.util.ArrayList;
 //
 //import org.junit.Assert;
 //import org.junit.Test;
-
-public class TrainerTest {
+//
+//public class TrainerTest {
 //	@Test
 //	public final void getWorkSchedule() {
 //		Address a = new Address(100, "123 Main St", "Apt 123", "Town",
@@ -24,4 +24,4 @@ public class TrainerTest {
 //		
 //		Assert.assertEquals(ws, t.getWorkSchedule());
 //	}
-}
+//}

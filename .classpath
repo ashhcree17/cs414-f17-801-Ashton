@@ -4,17 +4,11 @@
 	<classpathentry excluding="static/|static/" kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/main/webapp"/>
-	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-webmvc-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-boot-starter-security-1.5.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-boot-starter-thymeleaf-1.5.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/persistence-api-1.0.2.jar"/>
-	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-data-commons-2.0.0.RELEASE.jar"/>
-	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-security-crypto-3.1.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/hibernate-core-5.2.12.Final.jar"/>
-	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-tx-2.5.4.jar"/>
-	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/org.springframework.web.servlet-3.2.5.RELEASE.jar"/>
-	<classpathentry excluding="main/" kind="src" path="src/main/java"/>
+	<classpathentry excluding="main/|springconfig/|springconfig/" kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
@@ -24,5 +18,10 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-beans-5.0.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-webmvc-3.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-security-crypto-3.1.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

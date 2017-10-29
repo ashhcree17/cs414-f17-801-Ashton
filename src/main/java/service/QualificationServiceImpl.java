@@ -3,10 +3,11 @@ package service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
 
 import dao.QualificationDao;
 import model.Qualification;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class QualificationServiceImpl implements QualificationService {

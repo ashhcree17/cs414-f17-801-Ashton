@@ -19,74 +19,152 @@
 		<c:url var="addAction" value="/Manager/add" ></c:url>
 
 		<form:form action="${addAction}" commandName="Manager">
-		<table>
-			<c:if test="${!empty Manager.name}">
-			<tr>
-				<td>
-					<form:label path="id">
-						<spring:message text="ID"/>
-					</form:label>
-				</td>
-				<td>
-					<form:input path="id" readonly="true" size="8"  disabled="true" />
-					<form:hidden path="id" />
-				</td> 
-			</tr>
-			</c:if>
-			<tr>
-				<td>
-					<form:label path="name">
-						<spring:message text="Name"/>
-					</form:label>
-				</td>
-				<td>
-					<form:input path="name" />
-				</td> 
-			</tr>
-			<tr>
-				<td>
-					<form:label path="country">
-						<spring:message text="Country"/>
-					</form:label>
-				</td>
-				<td>
-					<form:input path="country" />
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<c:if test="${!empty Manager.name}">
-						<input type="submit"
-							value="<spring:message text="Edit Manager"/>" />
-					</c:if>
-					<c:if test="${empty Manager.name}">
-						<input type="submit"
-							value="<spring:message text="Add Manager"/>" />
-					</c:if>
-				</td>
-			</tr>
-		</table>	
+			<table>
+				<c:if test="${!empty Manager.name}">
+					<tr>
+						<td>
+							<form:label path="managerId">
+								<spring:message text="Manager ID (Must begin with '0')"/>
+							</form:label>
+						</td>
+						<td>
+							<form:input path="managerId" readonly="true" size="8"  disabled="true" />
+							<form:hidden path="managerId" />
+						</td> 
+					</tr>
+				</c:if>
+				<tr>
+					<td>
+						<form:label path="username">
+							<spring:message text="Username"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="username" />
+					</td> 
+				</tr>
+				<tr>
+					<td>
+						<form:label path="password">
+							<spring:message text="Password"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="password" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form:label path="name">
+							<spring:message text="First Name"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="name" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form:label path="lastName">
+							<spring:message text="Last Name"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="lastName" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form:label path="address">
+							<spring:message text="Mailing Address"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="address" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form:label path="phoneNumber">
+							<spring:message text="Phone Number"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="phoneNumber" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form:label path="email">
+							<spring:message text="Email Address"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="email" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form:label path="insurance">
+							<spring:message text="Health Insurance Provider"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="insurance" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<c:if test="${!empty Manager.name}">
+							<input type="submit"
+								value="<spring:message text="Edit Manager"/>" />
+						</c:if>
+						<c:if test="${empty Manager.name}">
+							<input type="submit"
+								value="<spring:message text="Add Manager"/>" />
+						</c:if>
+					</td>
+				</tr>
+			</table>	
 		</form:form>
 		<br>
 		<h3>Managers List</h3>
 		<c:if test="${!empty listManagers}">
 			<table class="tg">
-			<tr>
-				<th width="80">Manager ID</th>
-				<th width="120">Manager Name</th>
-				<th width="120">Manager Country</th>
-				<th width="60">Edit</th>
-				<th width="60">Delete</th>
-			</tr>
-			<c:forEach items="${listManagers}" var="Manager">
 				<tr>
-					<td>${Manager.id}</td>
-					<td>${Manager.name}</td>
-					<td>${Manager.country}</td>
-					<td><a href="<c:url value='/edit/${Manager.id}' />" >Edit</a></td>
-					<td><a href="<c:url value='/remove/${Manager.id}' />" >Delete</a></td>
+					<th width="80">Manager ID</th>
+					<th width="120">Username</th>
+					<th width="120">First Name</th>
+					<th width="120">Last Name</th>
+					<th width="120">Mailing Address</th>
+					<th width="120">Phone Number</th>
+					<th width="120">Email Address</th>
+					<th width="120">Health Insurance Provider</th>
+					<th width="60">Edit</th>
+					<th width="60">Delete</th>
 				</tr>
-			</c:forEach>
+				<c:forEach items="${listManagers}" var="Manager">
+					<tr>
+						<td>${Manager.id}</td>
+						<td>${Manager.username}</td>
+						<td>${Manager.name}</td>
+						<td>${Manager.lastName}</td>
+						<td>${Manager.address}</td>
+						<td>${Manager.phoneNumber}</td>
+						<td>${Manager.email}</td>
+						<td>${Manager.insurance}</td>
+						<td><a href="<c:url value='/edit/${Manager.id}' />" >Edit</a></td>
+						<td><a href="<c:url value='/remove/${Manager.id}' />" >Delete</a></td>
+					</tr>
+				</c:forEach>
 			</table>
 		</c:if>
 	</body>

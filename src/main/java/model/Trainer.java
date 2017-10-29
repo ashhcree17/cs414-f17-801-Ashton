@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,9 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Table(name="Trainer")
 public class Trainer extends User {
 	@Id
-	@SequenceGenerator(name="EMP_SEQ_1", allocationSize=1, initialValue=100)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ_1")   
 	@Column(name="trainerId")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer trainerId;	// REQUIRED, starts with 1
 	
 	@Column(name="username")

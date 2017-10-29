@@ -1,5 +1,5 @@
-package globoGymMS;
-
+//package globoGymMS;
+//
 //import java.time.DayOfWeek;
 //import java.time.LocalTime;
 //import java.util.ArrayList;
@@ -7,8 +7,8 @@ package globoGymMS;
 //import org.junit.Assert;
 //import org.junit.Before;
 //import org.junit.Test;
-
-public class ManagerTest {
+//
+//public class ManagerTest {
 //	Manager m;
 //	
 //	@Before 
@@ -36,4 +36,4 @@ public class ManagerTest {
 //		m.create(new Trainer(100, "Kyle", "Neal", a, 1234567890, "kyleneal@email.com", "Aetna", ws, qs));
 //		
 //	}
-}
+//}

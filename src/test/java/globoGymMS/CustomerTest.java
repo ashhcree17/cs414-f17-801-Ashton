@@ -1,12 +1,12 @@
-package globoGymMS;
-
+//package globoGymMS;
+//
 //import org.junit.Assert;
 //import org.junit.Test;
 //
 //import java.time.Duration;
 //import java.util.ArrayList;
-
-public class CustomerTest {
+//
+//public class CustomerTest {
 //	@Test
 //	public final void getStreet1() {
 //		Address a = new Address(200, "123 Main St", "Apt 123", 
@@ -24,4 +24,4 @@ public class CustomerTest {
 //				"joe@email.com", "Aetna", MembershipStatus.ACTIVE, rs);
 //		Assert.assertEquals(MembershipStatus.ACTIVE, c.getMembership());
 //	}
-}
+//}

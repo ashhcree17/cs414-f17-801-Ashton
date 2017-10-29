@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.SequenceGenerator;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -14,9 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Table(name="Manager")
 public class Manager extends User {
 	@Id
-	@SequenceGenerator(name="EMP_SEQ_0", allocationSize=1, initialValue=000)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
 	@Column(name="managerId")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer managerId;	// REQUIRED, starts with 0
 	
 	@Column(name="username")
@@ -31,8 +29,8 @@ public class Manager extends User {
 	@Column(name="lastName")
 	private String lastName;		// REQUIRED
 	
-	@Column(name="address")
-	private Address address;
+	@Column(name="managerAddressId")
+	private Integer managerAddressId;
 	
 	@Column(name="phoneNumber")
 	private Integer phoneNumber;	// Primary phone number
@@ -74,11 +72,11 @@ public class Manager extends User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Address getAddress() {
-		return address;
+	public Integer getManagerAddressId() {
+		return managerAddressId;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setManagerAddressId(Integer managerAddressId) {
+		this.managerAddressId = managerAddressId;
 	}
 	public Integer getPhoneNumber() {
 		return phoneNumber;

@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -12,9 +11,8 @@ import javax.persistence.Table;
 @Table(name="Customer")
 public class Customer {
 	@Id
-	@SequenceGenerator(name="EMP_SEQ_2", allocationSize=1, initialValue=200)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMP_SEQ")  
 	@Column(name="customerId")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer customerId;	// REQUIRED, starts with 2
 	
 	@Column(name="name")
