@@ -4,7 +4,7 @@
 <%@page session="false"%>
 <html>
 	<head>
-		<title>Manager Page</title>
+		<title>Customer Page</title>
 		<style type="text/css">
 			.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 			.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -14,47 +14,25 @@
 	</head>
 	
 	<body>
-		<h1>Add a Manager</h1>
+		<h1>Add a Customer</h1>
 
-		<c:url var="addAction" value="/manager/add" ></c:url>
+		<c:url var="addAction" value="/customer/add" ></c:url>
 
-		<form:form action="${addAction}" commandName="manager">
+		<form:form action="${addAction}" commandName="customer">
 			<table>
-				<c:if test="${!empty manager.name}">
+				<c:if test="${!empty customer.name}">
 					<tr>
 						<td>
-							<form:label path="managerId">
-								<spring:message text="Manager ID (Must begin with '0')"/>
+							<form:label path="customerId">
+								<spring:message text="Customer ID (Must begin with '0')"/>
 							</form:label>
 						</td>
 						<td>
-							<form:input path="managerId" readonly="true" size="8"  disabled="true" />
-							<form:hidden path="managerId" />
+							<form:input path="customerId" readonly="true" size="8"  disabled="true" />
+							<form:hidden path="customerId" />
 						</td> 
 					</tr>
 				</c:if>
-				<tr>
-					<td>
-						<form:label path="username">
-							<spring:message text="Username"/>
-						</form:label>
-					</td>
-					<td>
-						<!-- This will need to be prepopulated -->
-						<form:input path="username" />
-					</td> 
-				</tr>
-				<tr>
-					<td>
-						<form:label path="password">
-							<spring:message text="Password"/>
-						</form:label>
-					</td>
-					<td>
-						<!-- This will need to be prepopulated -->
-						<form:input path="password" />
-					</td>
-				</tr>
 				<tr>
 					<td>
 						<form:label path="name">
@@ -122,47 +100,58 @@
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<form:label path="membership">
+							<spring:message text="Membership Status"/>
+						</form:label>
+					</td>
+					<td>
+						<!-- This will need to be prepopulated -->
+						<form:input path="membership" />
+					</td> 
+				</tr>
+				<tr>
 					<td colspan="2">
-						<c:if test="${!empty manager.name}">
+						<c:if test="${!empty customer.name}">
 							<input type="submit"
-								value="<spring:message text="Edit Manager"/>" />
+								value="<spring:message text="Edit Customer"/>" />
 						</c:if>
-						<c:if test="${empty manager.name}">
+						<c:if test="${empty customer.name}">
 							<input type="submit"
-								value="<spring:message text="Add Manager"/>" />
+								value="<spring:message text="Add Customer"/>" />
 						</c:if>
 					</td>
 				</tr>
 			</table>	
 		</form:form>
 		<br>
-		<h3>Managers List</h3>
-		<c:if test="${!empty listManagers}">
+		<h3>Customers List</h3>
+		<c:if test="${!empty listCustomers}">
 			<table class="tg">
 				<tr>
-					<th width="80">Manager ID</th>
-					<th width="120">Username</th>
+					<th width="80">Customer ID</th>
 					<th width="120">First Name</th>
 					<th width="120">Last Name</th>
 					<th width="120">Mailing Address</th>
 					<th width="120">Phone Number</th>
 					<th width="120">Email Address</th>
 					<th width="120">Health Insurance Provider</th>
+					<th width="120">Membership Status</th>
 					<th width="60">Edit</th>
 					<th width="60">Delete</th>
 				</tr>
-				<c:forEach items="${listManagers}" var="manager">
+				<c:forEach items="${listCustomers}" var="customer">
 					<tr>
-						<td>${manager.id}</td>
-						<td>${manager.username}</td>
-						<td>${manager.name}</td>
-						<td>${manager.lastName}</td>
-						<td>${manager.address}</td>
-						<td>${manager.phoneNumber}</td>
-						<td>${manager.email}</td>
-						<td>${manager.insurance}</td>
-						<td><a href="<c:url value='/edit/${manager.managerId}' />" >Edit</a></td>
-						<td><a href="<c:url value='/remove/${manager.managerId}' />" >Delete</a></td>
+						<td>${customer.customerId}</td>
+						<td>${customer.name}</td>
+						<td>${customer.lastName}</td>
+						<td>${customer.address}</td>
+						<td>${customer.phoneNumber}</td>
+						<td>${customer.email}</td>
+						<td>${customer.insurance}</td>
+						<td>${customer.membership}</td>
+						<td><a href="<c:url value='/edit/${customer.customerId}' />" >Edit</a></td>
+						<td><a href="<c:url value='/remove/${customer.customerId}' />" >Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>

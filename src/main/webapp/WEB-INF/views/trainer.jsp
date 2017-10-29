@@ -4,7 +4,7 @@
 <%@page session="false"%>
 <html>
 	<head>
-		<title>Manager Page</title>
+		<title>Trainer Page</title>
 		<style type="text/css">
 			.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 			.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
@@ -14,22 +14,22 @@
 	</head>
 	
 	<body>
-		<h1>Add a Manager</h1>
+		<h1>Add a Trainer</h1>
 
-		<c:url var="addAction" value="/manager/add" ></c:url>
+		<c:url var="addAction" value="/trainer/add" ></c:url>
 
-		<form:form action="${addAction}" commandName="manager">
+		<form:form action="${addAction}" commandName="trainer">
 			<table>
-				<c:if test="${!empty manager.name}">
+				<c:if test="${!empty trainer.name}">
 					<tr>
 						<td>
-							<form:label path="managerId">
-								<spring:message text="Manager ID (Must begin with '0')"/>
+							<form:label path="trainerId">
+								<spring:message text="Trainer ID (Must begin with '0')"/>
 							</form:label>
 						</td>
 						<td>
-							<form:input path="managerId" readonly="true" size="8"  disabled="true" />
-							<form:hidden path="managerId" />
+							<form:input path="trainerId" readonly="true" size="8"  disabled="true" />
+							<form:hidden path="trainerId" />
 						</td> 
 					</tr>
 				</c:if>
@@ -123,24 +123,24 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<c:if test="${!empty manager.name}">
+						<c:if test="${!empty trainer.name}">
 							<input type="submit"
-								value="<spring:message text="Edit Manager"/>" />
+								value="<spring:message text="Edit Trainer"/>" />
 						</c:if>
-						<c:if test="${empty manager.name}">
+						<c:if test="${empty trainer.name}">
 							<input type="submit"
-								value="<spring:message text="Add Manager"/>" />
+								value="<spring:message text="Add Trainer"/>" />
 						</c:if>
 					</td>
 				</tr>
 			</table>	
 		</form:form>
 		<br>
-		<h3>Managers List</h3>
-		<c:if test="${!empty listManagers}">
+		<h3>Trainers List</h3>
+		<c:if test="${!empty listTrainers}">
 			<table class="tg">
 				<tr>
-					<th width="80">Manager ID</th>
+					<th width="80">Trainer ID</th>
 					<th width="120">Username</th>
 					<th width="120">First Name</th>
 					<th width="120">Last Name</th>
@@ -151,18 +151,18 @@
 					<th width="60">Edit</th>
 					<th width="60">Delete</th>
 				</tr>
-				<c:forEach items="${listManagers}" var="manager">
+				<c:forEach items="${listTrainers}" var="trainer">
 					<tr>
-						<td>${manager.id}</td>
-						<td>${manager.username}</td>
-						<td>${manager.name}</td>
-						<td>${manager.lastName}</td>
-						<td>${manager.address}</td>
-						<td>${manager.phoneNumber}</td>
-						<td>${manager.email}</td>
-						<td>${manager.insurance}</td>
-						<td><a href="<c:url value='/edit/${manager.managerId}' />" >Edit</a></td>
-						<td><a href="<c:url value='/remove/${manager.managerId}' />" >Delete</a></td>
+						<td>${trainer.trainerId}</td>
+						<td>${trainer.username}</td>
+						<td>${trainer.name}</td>
+						<td>${trainer.lastName}</td>
+						<td>${trainer.address}</td>
+						<td>${trainer.phoneNumber}</td>
+						<td>${trainer.email}</td>
+						<td>${trainer.insurance}</td>
+						<td><a href="<c:url value='/edit/${trainer.trainerId}' />" >Edit</a></td>
+						<td><a href="<c:url value='/remove/${trainer.trainerId}' />" >Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
