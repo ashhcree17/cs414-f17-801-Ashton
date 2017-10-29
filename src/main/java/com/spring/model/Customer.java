@@ -2,10 +2,12 @@ package com.spring.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Entity;
@@ -40,8 +42,10 @@ public class Customer {
 	@Column(name="membership")
 	private MembershipStatus membership;
 
-	@ManyToMany
-    @JoinTable(name="Customer_Routine")
+	@ManyToMany(cascade = CascadeType.ALL)
+	   @JoinTable(name = "Customer_Routine", 
+	         joinColumns = { @JoinColumn(name = "customerID") }, 
+	         inverseJoinColumns = { @JoinColumn(name = "routineId") })
 	private Set<Routine> assignedRoutines;
 	
 	/* Start of getters & setters */

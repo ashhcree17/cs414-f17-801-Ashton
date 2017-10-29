@@ -19,7 +19,7 @@ public class Qualification {
 	@Column(name="name")
 	private String name;
 	
-	@ManyToMany(mappedBy="qualification")
+	@ManyToMany(mappedBy="qualifications")
 	private Set<Trainer> trainers;
 
 	/* Start of getters & setters */

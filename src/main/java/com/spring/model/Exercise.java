@@ -2,10 +2,13 @@ package com.spring.model;
 
 import java.time.Duration;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -30,11 +33,13 @@ public class Exercise {
 	@Column(name="repsPerSet")
 	private Integer repsPerSet;
 	
-	@ManyToMany(mappedBy="exercise")
+	@ManyToMany(mappedBy="exercises")
 	private Set<Routine> routines;
 	
-	@ManyToMany
-    @JoinTable(name="Exercise_Equipment")
+	@ManyToMany(cascade = CascadeType.ALL)
+	   @JoinTable(name = "Exercise_Equipment", 
+	         joinColumns = { @JoinColumn(name = "exerciseID") }, 
+	         inverseJoinColumns = { @JoinColumn(name = "equipmentId") })
 	private Set<Equipment> equipment;
 
 	/* Start of getters & setters */

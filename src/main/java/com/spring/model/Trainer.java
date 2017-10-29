@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -50,8 +51,10 @@ public class Trainer extends User {
 	@ElementCollection(targetClass=WorkSchedule.class)
 	private Set<WorkSchedule> workSchedule;
 	
-	@ManyToMany
-    @JoinTable(name="Trainer_Qualification")
+	@ManyToMany(cascade = CascadeType.ALL)
+	   @JoinTable(name = "Trainer_Qualification", 
+	         joinColumns = { @JoinColumn(name = "trainerID") }, 
+	         inverseJoinColumns = { @JoinColumn(name = "qualId") })
 	private Set<Qualification> qualifications;
 	
 	/* Start of getters & setters */

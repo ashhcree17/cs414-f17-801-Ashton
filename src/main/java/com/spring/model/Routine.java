@@ -1,11 +1,14 @@
 package com.spring.model;
 
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -20,11 +23,13 @@ public class Routine {
 	@Column(name="name")
 	private String name;
 	
-	@ManyToMany
-    @JoinTable(name="Routine_Exercise")
+	@ManyToMany(cascade = CascadeType.ALL)
+	   @JoinTable(name = "Routine_Exercise", 
+	         joinColumns = { @JoinColumn(name = "routineID") }, 
+	         inverseJoinColumns = { @JoinColumn(name = "exerciseId") })
 	private Set<Exercise> exercises;
 	
-	@ManyToMany(mappedBy="routine")
+	@ManyToMany(mappedBy="assignedRoutines")
 	private Set<Customer> customers;
 	
 	/* Start of getters & setters */
