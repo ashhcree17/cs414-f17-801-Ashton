@@ -29,7 +29,7 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
 		return workScheduleDao.getWorkSchedule(workScheduleId);
 	}
 	
-	public void deleteWorkSchedule(WorkSchedule workSchedule) {
-		workScheduleDao.deleteWorkSchedule(workSchedule);
+	public void deleteWorkSchedule(int workScheduleId) {
+		workScheduleDao.deleteWorkSchedule(workScheduleId);
 	}
 }

@@ -35,8 +35,8 @@ public class RoutineDaoImpl implements RoutineDao {
 	}
 	
 	@Override
-	public void deleteRoutine(Routine routine) {
-		Routine eq = (Routine) sessionFactory.getCurrentSession().load(Routine.class, new Integer(routine.getRoutineId()));
+	public void deleteRoutine(int routineId) {
+		Routine eq = (Routine) sessionFactory.getCurrentSession().load(Routine.class, new Integer(routineId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}

@@ -30,13 +30,13 @@ public class TrainerDaoImpl implements TrainerDao {
 	}
 	
 	@Override
-	public Trainer getTrainer(int id) {
-		return (Trainer) sessionFactory.getCurrentSession().get(Trainer.class, id);
+	public Trainer getTrainer(int trainerId) {
+		return (Trainer) sessionFactory.getCurrentSession().get(Trainer.class, trainerId);
 	}
 	
 	@Override
-	public void deleteTrainer(Trainer trainer) {
-		Trainer eq = (Trainer) sessionFactory.getCurrentSession().load(Trainer.class, new Integer(trainer.getTrainerId()));
+	public void deleteTrainer(int trainerId) {
+		Trainer eq = (Trainer) sessionFactory.getCurrentSession().load(Trainer.class, new Integer(trainerId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}

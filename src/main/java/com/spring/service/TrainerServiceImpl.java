@@ -25,11 +25,11 @@ public class TrainerServiceImpl implements TrainerService {
 		return trainerDao.listTrainers();
 	}
 	
-	public Trainer getTrainer(int id) {
-		return trainerDao.getTrainer(id);
+	public Trainer getTrainer(int trainerId) {
+		return trainerDao.getTrainer(trainerId);
 	}
 	
-	public void deleteTrainer(Trainer trainer) {
-		trainerDao.deleteTrainer(trainer);
+	public void deleteTrainer(int trainerId) {
+		trainerDao.deleteTrainer(trainerId);
 	}
 }

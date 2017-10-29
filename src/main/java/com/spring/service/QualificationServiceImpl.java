@@ -40,7 +40,7 @@ public class QualificationServiceImpl implements QualificationService {
 	
 	@Override
 	@Transactional
-	public void deleteQualification(Qualification qualification) {
-		qualificationDao.deleteQualification(qualification);
+	public void deleteQualification(int qualId) {
+		qualificationDao.deleteQualification(qualId);
 	}
 }

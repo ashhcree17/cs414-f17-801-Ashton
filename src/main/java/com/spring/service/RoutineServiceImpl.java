@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.spring.dao.RoutineDao;
 import com.spring.model.Routine;
@@ -43,7 +44,7 @@ public class RoutineServiceImpl implements RoutineService {
 	
 	@Override
 	@Transactional
-	public void deleteRoutine(Routine routine) {
-		routineDao.deleteRoutine(routine);
+	public void deleteRoutine(int routineId) {
+		routineDao.deleteRoutine(routineId);
 	}
 }

@@ -8,6 +8,6 @@ public interface TrainerDao {
 	public void addTrainer(Trainer trainer);
 	public void updateTrainer(Trainer trainer);
 	public List<Trainer> listTrainers();
-	public Trainer getTrainer(int id);
-	public void deleteTrainer(Trainer trainer);
+	public Trainer getTrainer(int trainerId);
+	public void deleteTrainer(int trainerId);
 }

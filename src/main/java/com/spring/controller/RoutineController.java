@@ -44,8 +44,8 @@ public class RoutineController {
 	}
 	
 	@RequestMapping("/delete/{routineId}")
-    public String deleteRoutine(@ModelAttribute("routine") Routine routine){
-        this.routineService.deleteRoutine(routine);
+    public String deleteRoutine(@PathVariable("routineId") int routineId){
+        this.routineService.deleteRoutine(routineId);
         return "redirect:/routines";
     }
  

@@ -44,8 +44,8 @@ public class TrainerController {
 	}
 	
 	@RequestMapping("/delete/{trainerId}")
-    public String deleteTrainer(@ModelAttribute("trainer") Trainer trainer){
-        this.trainerService.deleteTrainer(trainer);
+    public String deleteTrainer(@PathVariable("trainerId") int trainerId){
+        this.trainerService.deleteTrainer(trainerId);
         return "redirect:/trainers";
     }
  

@@ -9,5 +9,5 @@ public interface RoutineDao {
 	public void updateRoutine(Routine routine);
 	public List<Routine> listRoutines();
 	public Routine getRoutine(int routineId);
-	public void deleteRoutine(Routine routine);
+	public void deleteRoutine(int routineId);
 }

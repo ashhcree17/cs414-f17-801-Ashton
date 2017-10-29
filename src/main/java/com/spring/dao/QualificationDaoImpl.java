@@ -35,8 +35,8 @@ public class QualificationDaoImpl implements QualificationDao {
 	}
 	
 	@Override
-	public void deleteQualification(Qualification qualification) {
-		Qualification eq = (Qualification) sessionFactory.getCurrentSession().load(Qualification.class, new Integer(qualification.getQualId()));
+	public void deleteQualification(int qualId) {
+		Qualification eq = (Qualification) sessionFactory.getCurrentSession().load(Qualification.class, new Integer(qualId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}

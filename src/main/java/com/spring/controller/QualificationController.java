@@ -44,8 +44,8 @@ public class QualificationController {
 	}
 	
 	@RequestMapping("/delete/{qualId}")
-    public String deleteQualification(@ModelAttribute("qualification") Qualification qualification){
-        this.qualificationService.deleteQualification(qualification);
+    public String deleteQualification(@PathVariable("qualId") int qualId){
+        this.qualificationService.deleteQualification(qualId);
         return "redirect:/qualifications";
     }
  

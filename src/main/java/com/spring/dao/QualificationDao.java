@@ -8,6 +8,6 @@ public interface QualificationDao {
 	public void addQualification(Qualification qualification);
 	public void updateQualification(Qualification qualification);	
 	public List<Qualification> listQualifications();
-	public Qualification getQualification(int qualificationId);
-	public void deleteQualification(Qualification qualification);
+	public Qualification getQualification(int qualId);
+	public void deleteQualification(int qualId);
 }

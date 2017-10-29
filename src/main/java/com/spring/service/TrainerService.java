@@ -9,5 +9,5 @@ public interface TrainerService {
 	public void updateTrainer(Trainer trainer);
 	public List<Trainer> listTrainers();
 	public Trainer getTrainer(int id);
-	public void deleteTrainer(Trainer trainer);
+	public void deleteTrainer(int trainerId);
 }

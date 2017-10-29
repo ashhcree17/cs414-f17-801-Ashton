@@ -44,8 +44,8 @@ public class WorkScheduleController {
 	}
 	
 	@RequestMapping("/delete/{workScheduleId}")
-    public String deleteWorkSchedule(@ModelAttribute("workSchedule") WorkSchedule workSchedule){
-        this.workScheduleService.deleteWorkSchedule(workSchedule);
+    public String deleteWorkSchedule(@PathVariable("qualId") int qualId){
+        this.workScheduleService.deleteWorkSchedule(qualId);
         return "redirect:/workSchedules";
     }
  

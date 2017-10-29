@@ -30,13 +30,13 @@ public class WorkScheduleDaoImpl implements WorkScheduleDao {
 	}
 	
 	@Override
-	public WorkSchedule getWorkSchedule(int id) {
-		return (WorkSchedule) sessionFactory.getCurrentSession().get(WorkSchedule.class, id);
+	public WorkSchedule getWorkSchedule(int workScheduleId) {
+		return (WorkSchedule) sessionFactory.getCurrentSession().get(WorkSchedule.class, workScheduleId);
 	}
 	
 	@Override
-	public void deleteWorkSchedule(WorkSchedule workSchedule) {
-		WorkSchedule eq = (WorkSchedule) sessionFactory.getCurrentSession().load(WorkSchedule.class, new Integer(workSchedule.getWorkScheduleId()));
+	public void deleteWorkSchedule(int workScheduleId) {
+		WorkSchedule eq = (WorkSchedule) sessionFactory.getCurrentSession().load(WorkSchedule.class, new Integer(workScheduleId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}	
