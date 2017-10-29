@@ -18,7 +18,7 @@ public class EquipmentController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="equipmentService")
-	public void setPersonService(EquipmentService equipmentService){
+	public void setEquipmentService(EquipmentService equipmentService){
 		this.equipmentService = equipmentService;
 	}
 	

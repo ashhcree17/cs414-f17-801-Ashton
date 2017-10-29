@@ -18,7 +18,7 @@ public class ExerciseController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="exerciseService")
-	public void setPersonService(ExerciseService exerciseService){
+	public void setExerciseService(ExerciseService exerciseService){
 		this.exerciseService = exerciseService;
 	}
 	

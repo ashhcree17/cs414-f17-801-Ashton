@@ -18,7 +18,7 @@ public class CustomerController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="customerService")
-	public void setPersonService(CustomerService customerService){
+	public void setCustomerService(CustomerService customerService){
 		this.customerService = customerService;
 	}
 	

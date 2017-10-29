@@ -18,7 +18,7 @@ public class AddressController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="addressService")
-	public void setPersonService(AddressService addressService){
+	public void setAddressService(AddressService addressService){
 		this.addressService = addressService;
 	}
 	

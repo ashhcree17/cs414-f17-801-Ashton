@@ -18,7 +18,7 @@ public class ManagerController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="managerService")
-	public void setPersonService(ManagerService managerService){
+	public void setManagerService(ManagerService managerService){
 		this.managerService = managerService;
 	}
 	

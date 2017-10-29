@@ -18,7 +18,7 @@ public class QualificationController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="qualificationService")
-	public void setPersonService(QualificationService qualificationService){
+	public void setQualificationService(QualificationService qualificationService){
 		this.qualificationService = qualificationService;
 	}
 	

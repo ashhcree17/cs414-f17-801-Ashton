@@ -18,7 +18,7 @@ public class WorkScheduleController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="workScheduleService")
-	public void setPersonService(WorkScheduleService workScheduleService){
+	public void setWorkScheduleService(WorkScheduleService workScheduleService){
 		this.workScheduleService = workScheduleService;
 	}
 	

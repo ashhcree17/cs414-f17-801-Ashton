@@ -18,7 +18,7 @@ public class RoutineController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="routineService")
-	public void setPersonService(RoutineService routineService){
+	public void setRoutineService(RoutineService routineService){
 		this.routineService = routineService;
 	}
 	

@@ -18,7 +18,7 @@ public class TrainerController {
 	
 	@Autowired(required=true)
 	@Qualifier(value="trainerService")
-	public void setPersonService(TrainerService trainerService){
+	public void setTrainerService(TrainerService trainerService){
 		this.trainerService = trainerService;
 	}
 	
