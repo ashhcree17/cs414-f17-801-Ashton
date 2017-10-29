@@ -35,8 +35,8 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	}
 	
 	@Override
-	public void deleteEquipment(Equipment equipment) {
-		Equipment eq = (Equipment) sessionFactory.getCurrentSession().load(Equipment.class, new Integer(equipment.getEquipmentId()));
+	public void deleteEquipment(int equipmentId) {
+		Equipment eq = (Equipment) sessionFactory.getCurrentSession().load(Equipment.class, new Integer(equipmentId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}

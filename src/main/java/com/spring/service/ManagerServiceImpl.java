@@ -35,13 +35,13 @@ public class ManagerServiceImpl implements ManagerService {
 	
 	@Override
 	@Transactional
-	public Manager getManager(int id) {
-		return managerDao.getManager(id);
+	public Manager getManager(int managerId) {
+		return managerDao.getManager(managerId);
 	}
 	
 	@Override
 	@Transactional
-	public void deleteManager(Manager manager) {
-		managerDao.deleteManager(manager);
+	public void deleteManager(int managerId) {
+		managerDao.deleteManager(managerId);
 	}
 }

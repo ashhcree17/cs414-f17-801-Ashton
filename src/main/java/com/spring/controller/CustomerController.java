@@ -44,8 +44,8 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/delete/{customerId}")
-    public String deleteCustomer(@ModelAttribute("customer") Customer customer){
-        this.customerService.deleteCustomer(customer);
+    public String deleteCustomer(@PathVariable("customerId") int customerId){
+        this.customerService.deleteCustomer(customerId);
         return "redirect:/customers";
     }
  

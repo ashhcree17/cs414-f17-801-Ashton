@@ -44,8 +44,8 @@ public class AddressController {
 	}
 	
 	@RequestMapping("/delete/{addressId}")
-    public String deleteAddress(@ModelAttribute("address") Address address){
-        this.addressService.deleteAddress(address);
+    public String deleteAddress(@PathVariable("addressId") int addressId){
+        this.addressService.deleteAddress(addressId);
         return "redirect:/addresses";
     }
  

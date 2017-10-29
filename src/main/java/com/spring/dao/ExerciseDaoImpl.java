@@ -35,8 +35,8 @@ public class ExerciseDaoImpl implements ExerciseDao {
 	}
 	
 	@Override
-	public void deleteExercise(Exercise exercise) {
-		Exercise eq = (Exercise) sessionFactory.getCurrentSession().load(Exercise.class, new Integer(exercise.getExerciseId()));
+	public void deleteExercise(int exerciseId) {
+		Exercise eq = (Exercise) sessionFactory.getCurrentSession().load(Exercise.class, new Integer(exerciseId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}

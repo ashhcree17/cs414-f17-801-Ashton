@@ -30,13 +30,13 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 	
 	@Override
-	public Customer getCustomer(int id) {
-		return (Customer) sessionFactory.getCurrentSession().get(Customer.class, id);
+	public Customer getCustomer(int customerId) {
+		return (Customer) sessionFactory.getCurrentSession().get(Customer.class, customerId);
 	}
 	
 	@Override
-	public void deleteCustomer(Customer customer) {
-		Customer eq = (Customer) sessionFactory.getCurrentSession().load(Customer.class, new Integer(customer.getCustomerId()));
+	public void deleteCustomer(int customerId) {
+		Customer eq = (Customer) sessionFactory.getCurrentSession().load(Customer.class, new Integer(customerId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}

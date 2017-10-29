@@ -36,9 +36,9 @@ public class AddressDaoImpl implements AddressDao {
 	}
 	
 	@Override
-	public void deleteAddress(Address address) {
+	public void deleteAddress(int addressId) {
 //		sessionFactory.getCurrentSession().createQuery("DELETE FROM Address WHERE addressId = "+address.getAddressId());
-		Address eq = (Address) sessionFactory.getCurrentSession().load(Address.class, new Integer(address.getAddressId()));
+		Address eq = (Address) sessionFactory.getCurrentSession().load(Address.class, new Integer(addressId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}

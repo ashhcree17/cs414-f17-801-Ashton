@@ -40,7 +40,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 	
 	@Override
 	@Transactional
-	public void deleteEquipment(Equipment equipment) {
-		equipmentDao.deleteEquipment(equipment);
+	public void deleteEquipment(int equipmentId) {
+		equipmentDao.deleteEquipment(equipmentId);
 	}
 }

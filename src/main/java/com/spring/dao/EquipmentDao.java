@@ -9,5 +9,5 @@ public interface EquipmentDao {
 	public void updateEquipment(Equipment equipment);	
 	public List<Equipment> listInventory();
 	public Equipment getEquipment(int equipmentId);
-	public void deleteEquipment(Equipment equipment);
+	public void deleteEquipment(int equipmentId);
 }

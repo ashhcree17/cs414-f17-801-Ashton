@@ -40,7 +40,7 @@ public class AddressServiceImpl implements AddressService {
 	
 	@Override
 	@Transactional
-	public void deleteAddress(Address address) {
-		addressDao.deleteAddress(address);
+	public void deleteAddress(int addressId) {
+		addressDao.deleteAddress(addressId);
 	}
 }

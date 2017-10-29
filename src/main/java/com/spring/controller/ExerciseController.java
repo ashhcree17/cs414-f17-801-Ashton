@@ -44,8 +44,8 @@ public class ExerciseController {
 	}
 	
 	@RequestMapping("/delete/{exerciseId}")
-    public String deleteExercise(@ModelAttribute("exercise") Exercise exercise){
-        this.exerciseService.deleteExercise(exercise);
+    public String deleteExercise(@PathVariable("exerciseId") int exerciseId){
+        this.exerciseService.deleteExercise(exerciseId);
         return "redirect:/exercises";
     }
  

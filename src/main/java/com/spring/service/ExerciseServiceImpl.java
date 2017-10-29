@@ -39,7 +39,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 	
 	@Override
 	@Transactional
-	public void deleteExercise(Exercise exercise) {
-		exerciseDao.deleteExercise(exercise);
+	public void deleteExercise(int exerciseId) {
+		exerciseDao.deleteExercise(exerciseId);
 	}
 }

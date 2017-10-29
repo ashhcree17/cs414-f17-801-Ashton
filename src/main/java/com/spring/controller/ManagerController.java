@@ -44,8 +44,8 @@ public class ManagerController {
 	}
 	
 	@RequestMapping("/delete/{managerId}")
-    public String deleteManager(@ModelAttribute("manager") Manager manager){
-        this.managerService.deleteManager(manager);
+    public String deleteManager(@PathVariable("managerId") int managerId){
+        this.managerService.deleteManager(managerId);
         return "redirect:/managers";
     }
  

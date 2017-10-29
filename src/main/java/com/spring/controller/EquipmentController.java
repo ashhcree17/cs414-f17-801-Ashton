@@ -44,8 +44,8 @@ public class EquipmentController {
 	}
 	
 	@RequestMapping("/delete/{equipmentId}")
-    public String deleteEquipment(@ModelAttribute("equipment") Equipment equipment){
-        this.equipmentService.deleteEquipment(equipment);
+    public String deleteEquipment(@PathVariable("equipmentId") int equipmentId){
+        this.equipmentService.deleteEquipment(equipmentId);
         return "redirect:/inventory";
     }
  

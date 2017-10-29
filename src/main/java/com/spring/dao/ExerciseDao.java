@@ -9,5 +9,5 @@ public interface ExerciseDao {
 	public void updateExercise(Exercise exercise);
 	public List<Exercise> listExercises();
 	public Exercise getExercise(int exerciseId);
-	public void deleteExercise(Exercise exercise);
+	public void deleteExercise(int exerciseId);
 }

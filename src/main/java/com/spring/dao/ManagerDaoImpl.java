@@ -46,16 +46,16 @@ public class ManagerDaoImpl implements ManagerDao {
 	}
 	
 	@Override
-	public Manager getManager(int id) {
-		return (Manager) sessionFactory.getCurrentSession().get(Manager.class, id);
+	public Manager getManager(int managerId) {
+		return (Manager) sessionFactory.getCurrentSession().get(Manager.class, managerId);
 	}
 	
 	@Override
-	public void deleteManager(Manager manager) {
-		Manager eq = (Manager) sessionFactory.getCurrentSession().load(Manager.class, new Integer(manager.getManagerId()));
+	public void deleteManager(int managerId) {
+		Manager eq = (Manager) sessionFactory.getCurrentSession().load(Manager.class, new Integer(managerId));
 		if (eq != null) {
 			sessionFactory.getCurrentSession().delete(eq);
 		}
-		logger.info("Manager deleted successfully, Manager Details=" + manager);
+		logger.info("Manager deleted successfully, Manager Id=" + managerId);
 	}
 }
