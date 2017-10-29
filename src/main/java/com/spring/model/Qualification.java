@@ -1,9 +1,11 @@
 package com.spring.model;
 
+import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,9 @@ public class Qualification {
 
 	@Column(name="name")
 	private String name;
+	
+	@ManyToMany(mappedBy="qualification")
+	private ArrayList<Trainer> trainers;
 
 	/* Start of getters & setters */
 	public Integer getQualId() {

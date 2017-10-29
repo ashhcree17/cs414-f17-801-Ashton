@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -49,8 +51,9 @@ public class Trainer extends User {
 	@ElementCollection(targetClass=WorkSchedule.class)
 	private ArrayList<WorkSchedule> workSchedule;
 	
-//	@Column(name="qualifications")
-//	private ArrayList<Qualification> qualifications;
+	@ManyToMany
+    @JoinTable(name="Trainer_Qualification")
+	private ArrayList<Qualification> qualifications;
 	
 //	/* Start of getters & setters */
 	public Integer getTrainerId() {
@@ -108,18 +111,18 @@ public class Trainer extends User {
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
 	}
-//	public ArrayList<WorkSchedule> getWorkSchedule() {
-//		return workSchedule;
-//	}
-//	public void setWorkSchedule(ArrayList<WorkSchedule> workSchedule) {
-//		this.workSchedule = workSchedule;
-//	}
-//	public ArrayList<Qualification> getQualifications() {
-//		return qualifications;
-//	}
-//	public void setQualifications(ArrayList<Qualification> qualifications) {
-//		this.qualifications = qualifications;
-//	}
+	public ArrayList<WorkSchedule> getWorkSchedule() {
+		return workSchedule;
+	}
+	public void setWorkSchedule(ArrayList<WorkSchedule> workSchedule) {
+		this.workSchedule = workSchedule;
+	}
+	public ArrayList<Qualification> getQualifications() {
+		return qualifications;
+	}
+	public void setQualifications(ArrayList<Qualification> qualifications) {
+		this.qualifications = qualifications;
+	}
 //	/* End of getters & setters */
 
 	@Override
