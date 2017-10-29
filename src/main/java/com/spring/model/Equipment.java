@@ -1,9 +1,11 @@
 package com.spring.model;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 
@@ -23,6 +25,9 @@ public class Equipment {
 	
 	@Column(name="quantity")
 	private Integer quantity;
+	
+	@ManyToMany(mappedBy="equipment")
+	private ArrayList<Exercise> exercises;
 	
 	/* Start of getters & setters */
 	public Integer getEquipmentId() {
