@@ -44,7 +44,7 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>model.Manager</beans:value>
+				<beans:value>com.spring.model.Manager</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -56,11 +56,11 @@
 		</beans:property>
 	</beans:bean>
 	
-	<beans:bean id="managerDao" class="dao.ManagerDaoImpl">
+	<beans:bean id="managerDao" class="com.spring.dao.ManagerDaoImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
-	<beans:bean id="managerService" class="service.ManagerServiceImpl">
+	<beans:bean id="managerService" class="com.spring.service.ManagerServiceImpl">
 		<beans:property name="managerDao" ref="managerDao"></beans:property>
 	</beans:bean>
 	
