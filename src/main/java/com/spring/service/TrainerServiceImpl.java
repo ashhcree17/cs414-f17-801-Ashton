@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.dao.TrainerDao;
@@ -9,8 +8,11 @@ import com.spring.model.Trainer;
 
 @Service
 public class TrainerServiceImpl implements TrainerService {
-	@Autowired
 	private TrainerDao trainerDao;
+
+	public void setTrainerDao(TrainerDao trainerDao) {
+		this.trainerDao = trainerDao;
+	}
 	
 	public void addTrainer(Trainer trainer) {
 		trainerDao.addTrainer(trainer);

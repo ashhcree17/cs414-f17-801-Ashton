@@ -11,8 +11,8 @@ import com.spring.model.Manager;
 public class ManagerServiceImpl implements ManagerService {
 	private ManagerDao managerDao;
 	
-	public void setManagerDao(ManagerDao md) {
-		this.managerDao = md;
+	public void setManagerDao(ManagerDao managerDao) {
+		this.managerDao = managerDao;
 	}
 	
 	@Override

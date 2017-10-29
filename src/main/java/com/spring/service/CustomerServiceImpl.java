@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +9,11 @@ import com.spring.model.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-	@Autowired
 	private CustomerDao customerDao;
+
+	public void setCustomerDao(CustomerDao customerDao) {
+		this.customerDao = customerDao;
+	}
 	
 	@Override
 	@Transactional

@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +9,11 @@ import com.spring.model.Exercise;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
-	@Autowired
 	private ExerciseDao exerciseDao;
+
+	public void setExerciseDao(ExerciseDao exerciseDao) {
+		this.exerciseDao = exerciseDao;
+	}
 	
 	@Override
 	@Transactional

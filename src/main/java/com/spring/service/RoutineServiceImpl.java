@@ -1,22 +1,20 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.spring.dao.RoutineDao;
 import com.spring.model.Routine;
 
 import org.springframework.stereotype.Service;
 
-@Service("routineService")
-@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-
+@Service
 public class RoutineServiceImpl implements RoutineService {
-	@Autowired
 	private RoutineDao routineDao;
+
+	public void setRoutineDao(RoutineDao routineDao) {
+		this.routineDao = routineDao;
+	}
 	
 	@Override
 	@Transactional

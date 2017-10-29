@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.EquipmentDao;
@@ -11,8 +10,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EquipmentServiceImpl implements EquipmentService {
-	@Autowired
 	private EquipmentDao equipmentDao;
+
+	public void setEquipmentDao(EquipmentDao equipmentDao) {
+		this.equipmentDao = equipmentDao;
+	}
 	
 	@Override
 	@Transactional

@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.AddressDao;
@@ -11,8 +10,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AddressServiceImpl implements AddressService {
-	@Autowired
 	private AddressDao addressDao;
+
+	public void setAddressDao(AddressDao addressDao) {
+		this.addressDao = addressDao;
+	}
 	
 	@Override
 	@Transactional

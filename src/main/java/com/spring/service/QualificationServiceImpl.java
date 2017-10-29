@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.QualificationDao;
@@ -11,8 +10,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class QualificationServiceImpl implements QualificationService {
-	@Autowired
 	private QualificationDao qualificationDao;
+
+	public void setQualificationDao(QualificationDao qualificationDao) {
+		this.qualificationDao = qualificationDao;
+	}
 	
 	@Override
 	@Transactional

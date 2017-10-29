@@ -1,7 +1,6 @@
 package com.spring.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.dao.WorkScheduleDao;
@@ -9,8 +8,11 @@ import com.spring.model.WorkSchedule;
 
 @Service
 public class WorkScheduleServiceImpl implements WorkScheduleService {
-	@Autowired
 	private WorkScheduleDao workScheduleDao;
+
+	public void setWorkScheduleDao(WorkScheduleDao workScheduleDao) {
+		this.workScheduleDao = workScheduleDao;
+	}
 	
 	public void addWorkSchedule(WorkSchedule workSchedule) {
 		workScheduleDao.addWorkSchedule(workSchedule);
