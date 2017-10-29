@@ -43,15 +43,15 @@ public class QualificationController {
 		return "redirect:/qualifications";
 	}
 	
-	@RequestMapping("/delete/{qualificationId}")
+	@RequestMapping("/delete/{qualId}")
     public String deleteQualification(@ModelAttribute("qualification") Qualification qualification){
         this.qualificationService.deleteQualification(qualification);
         return "redirect:/qualifications";
     }
  
-    @RequestMapping("/edit/{qualificationId}")
-    public String editQualification(@PathVariable("qualificationId") int qualificationId, Model model){
-        model.addAttribute("qualification", this.qualificationService.getQualification(qualificationId));
+    @RequestMapping("/edit/{qualId}")
+    public String editQualification(@PathVariable("qualId") int qualId, Model model){
+        model.addAttribute("qualification", this.qualificationService.getQualification(qualId));
         model.addAttribute("listQualifications", this.qualificationService.listQualifications());
         return "qualification";
     }

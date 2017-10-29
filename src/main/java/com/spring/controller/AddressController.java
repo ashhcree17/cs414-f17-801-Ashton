@@ -49,7 +49,7 @@ public class AddressController {
         return "redirect:/addresses";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{addressId}")
     public String editAddress(@PathVariable("addressId") int addressId, Model model){
         model.addAttribute("person", this.addressService.getAddress(addressId));
         model.addAttribute("listAddresses", this.addressService.listAddresses());

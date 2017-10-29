@@ -49,7 +49,7 @@ public class RoutineController {
         return "redirect:/routines";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{routineId}")
     public String editRoutine(@PathVariable("routineId") int routineId, Model model){
         model.addAttribute("person", this.routineService.getRoutine(routineId));
         model.addAttribute("listRoutines", this.routineService.listRoutines());

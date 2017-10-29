@@ -49,7 +49,7 @@ public class TrainerController {
         return "redirect:/trainers";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{trainerId}")
     public String editTrainer(@PathVariable("trainerId") int trainerId, Model model){
         model.addAttribute("person", this.trainerService.getTrainer(trainerId));
         model.addAttribute("listTrainers", this.trainerService.listTrainers());

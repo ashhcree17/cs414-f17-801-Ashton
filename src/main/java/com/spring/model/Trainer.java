@@ -29,8 +29,8 @@ public class Trainer extends User {
 	@Column(name="lastName")
 	private String lastName;		// REQUIRED
 	
-	@Column(name="address")
-	private Address address;
+	@Column(name="trainerAddressId")
+	private Integer trainerAddressId;
 	
 	@Column(name="phoneNumber")
 	private Integer phoneNumber;	// Primary phone number
@@ -80,11 +80,11 @@ public class Trainer extends User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Address getAddress() {
-		return address;
+	public Integer getTrainerAddressId() {
+		return trainerAddressId;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setTrainerAddressId(Integer trainerAddressId) {
+		this.trainerAddressId = trainerAddressId;
 	}
 	public Integer getPhoneNumber() {
 		return phoneNumber;

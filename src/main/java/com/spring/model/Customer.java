@@ -21,8 +21,8 @@ public class Customer {
 	@Column(name="lastName")
 	private String lastName;		// REQUIRED
 	
-	@Column(name="address")
-	private Address address;
+	@Column(name="customerAddressId")
+	private Integer customerAddressId;
 	
 	@Column(name="phoneNumber")
 	private Integer phoneNumber;	// Primary phone number
@@ -58,11 +58,11 @@ public class Customer {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Address getAddress() {
-		return address;
+	public Integer getCustomerAddressId() {
+		return customerAddressId;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setCustomerAddressId(Integer customerAddressId) {
+		this.customerAddressId = customerAddressId;
 	}
 	public Integer getPhoneNumber() {
 		return phoneNumber;

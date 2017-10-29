@@ -49,9 +49,9 @@ public class WorkScheduleController {
         return "redirect:/workSchedules";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{workScheduleId}")
     public String editWorkSchedule(@PathVariable("workScheduleId") int workScheduleId, Model model){
-        model.addAttribute("person", this.workScheduleService.getWorkSchedule(workScheduleId));
+        model.addAttribute("workSchedule", this.workScheduleService.getWorkSchedule(workScheduleId));
         model.addAttribute("listWorkSchedules", this.workScheduleService.listWorkSchedules());
         return "workSchedule";
     }

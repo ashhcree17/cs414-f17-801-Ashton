@@ -49,7 +49,7 @@ public class EquipmentController {
         return "redirect:/inventory";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{equipmentId}")
     public String editEquipment(@PathVariable("equipmentId") int equipmentId, Model model){
         model.addAttribute("person", this.equipmentService.getEquipment(equipmentId));
         model.addAttribute("listInventory", this.equipmentService.listInventory());
