@@ -24,7 +24,7 @@
 					<tr>
 						<td>
 							<form:label path="addressId">
-								<spring:message text="Address ID (Must begin with '0')"/>
+								<spring:message text="Address ID"/>
 							</form:label>
 						</td>
 						<td>
@@ -50,7 +50,6 @@
 						</form:label>
 					</td>
 					<td>
-						<!-- This will need to be prepopulated -->
 						<form:input path="street2" />
 					</td>
 				</tr>
@@ -61,7 +60,6 @@
 						</form:label>
 					</td>
 					<td>
-						<!-- This will need to be prepopulated -->
 						<form:input path="city" />
 					</td>
 				</tr>
@@ -72,7 +70,6 @@
 						</form:label>
 					</td>
 					<td>
-						<!-- This will need to be prepopulated -->
 						<form:input path="state" />
 					</td>
 				</tr>
@@ -83,7 +80,6 @@
 						</form:label>
 					</td>
 					<td>
-						<!-- This will need to be prepopulated -->
 						<form:input path="zipCode" />
 					</td>
 				</tr>

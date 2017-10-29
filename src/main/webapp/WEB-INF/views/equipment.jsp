@@ -24,7 +24,7 @@
 					<tr>
 						<td>
 							<form:label path="equipmentId">
-								<spring:message text="Equipment ID (Must begin with '0')"/>
+								<spring:message text="Equipment ID"/>
 							</form:label>
 						</td>
 						<td>
@@ -40,7 +40,6 @@
 						</form:label>
 					</td>
 					<td>
-						<!-- This will need to be prepopulated -->
 						<form:input path="name" />
 					</td> 
 				</tr>
@@ -51,8 +50,7 @@
 						</form:label>
 					</td>
 					<td>
-						<!-- This will need to be prepopulated -->
-						<form:input path="picture" />
+						<form:input path="picture" type="file" value="Upload"/>
 					</td>
 				</tr>
 				<tr>
@@ -62,7 +60,6 @@
 						</form:label>
 					</td>
 					<td>
-						<!-- This will need to be prepopulated -->
 						<form:input path="quantity" />
 					</td>
 				</tr>

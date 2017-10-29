@@ -24,7 +24,7 @@
 					<tr>
 						<td>
 							<form:label path="routineId">
-								<spring:message text="Routine ID (Must begin with '0')"/>
+								<spring:message text="Routine ID"/>
 							</form:label>
 						</td>
 						<td>

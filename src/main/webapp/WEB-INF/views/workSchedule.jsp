@@ -24,7 +24,7 @@
 					<tr>
 						<td>
 							<form:label path="workScheduleId">
-								<spring:message text="Work Schedule ID (Must begin with '0')"/>
+								<spring:message text="Work Schedule ID"/>
 							</form:label>
 						</td>
 						<td>

@@ -24,7 +24,7 @@
 					<tr>
 						<td>
 							<form:label path="trainerId">
-								<spring:message text="Trainer ID (Must begin with '0')"/>
+								<spring:message text="Trainer ID (Must begin with '1')"/>
 							</form:label>
 						</td>
 						<td>

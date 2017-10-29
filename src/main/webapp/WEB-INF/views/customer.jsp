@@ -24,7 +24,7 @@
 					<tr>
 						<td>
 							<form:label path="customerId">
-								<spring:message text="Customer ID (Must begin with '0')"/>
+								<spring:message text="Customer ID (Must begin with '2')"/>
 							</form:label>
 						</td>
 						<td>
