@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,9 @@ public class Routine {
 
 	@Column(name="exercises")
 	private ArrayList<Exercise> exercises;
+	
+	@ManyToMany(mappedBy="routine")
+	private ArrayList<Customer> customers;
 	
 	/* Start of getters & setters */
 	public Integer getRoutineId() {
@@ -40,6 +44,12 @@ public class Routine {
 	}
 	public void setExercises(ArrayList<Exercise> exercises) {
 		this.exercises = exercises;
+	}
+	public ArrayList<Customer> getCustomers() {
+		return customers;
+	}
+	public void setCustomers(ArrayList<Customer> customers) {
+		this.customers = customers;
 	}
 	/* End of getters & setters */
 }
