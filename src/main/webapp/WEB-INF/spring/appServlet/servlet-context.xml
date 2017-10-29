@@ -44,7 +44,15 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
+				<beans:value>com.spring.model.Address</beans:value>
+				<beans:value>com.spring.model.Customer</beans:value>
+				<beans:value>com.spring.model.Equipment</beans:value>
+				<beans:value>com.spring.model.Exercise</beans:value>
 				<beans:value>com.spring.model.Manager</beans:value>
+				<beans:value>com.spring.model.Qualification</beans:value>
+				<beans:value>com.spring.model.Routine</beans:value>
+				<beans:value>com.spring.model.Trainer</beans:value>
+				<beans:value>com.spring.model.WorkSchedule</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -56,12 +64,60 @@
 		</beans:property>
 	</beans:bean>
 	
+	<beans:bean id="addressDao" class="com.spring.dao.AddressDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="customerDao" class="com.spring.dao.CustomerDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="equipmentDao" class="com.spring.dao.EquipmentDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="exerciseDao" class="com.spring.dao.ExerciseDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 	<beans:bean id="managerDao" class="com.spring.dao.ManagerDaoImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	<beans:bean id="qualificationDao" class="com.spring.dao.QualificationDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="routineDao" class="com.spring.dao.RoutineDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="trainerDao" class="com.spring.dao.TrainerDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="workScheduleDao" class="com.spring.dao.WorkScheduleDaoImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 	
+	<beans:bean id="addressService" class="com.spring.service.AddressServiceImpl">
+		<beans:property name="addressDao" ref="addressDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="customerService" class="com.spring.service.CustomerServiceImpl">
+		<beans:property name="customerDao" ref="customerDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="equipmentService" class="com.spring.service.EquipmentServiceImpl">
+		<beans:property name="equipmentDao" ref="equipmentDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="exerciseService" class="com.spring.service.ExerciseServiceImpl">
+		<beans:property name="exerciseDao" ref="exerciseDao"></beans:property>
+	</beans:bean>
 	<beans:bean id="managerService" class="com.spring.service.ManagerServiceImpl">
 		<beans:property name="managerDao" ref="managerDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="qualificationService" class="com.spring.service.QualificationServiceImpl">
+		<beans:property name="qualificationDao" ref="qualificationDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="routineService" class="com.spring.service.RoutineServiceImpl">
+		<beans:property name="routineDao" ref="routineDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="trainerService" class="com.spring.service.TrainerServiceImpl">
+		<beans:property name="trainerDao" ref="trainerDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="workScheduleService" class="com.spring.service.WorkScheduleServiceImpl">
+		<beans:property name="workScheduleDao" ref="workScheduleDao"></beans:property>
 	</beans:bean>
 	
 	<context:annotation-config />
