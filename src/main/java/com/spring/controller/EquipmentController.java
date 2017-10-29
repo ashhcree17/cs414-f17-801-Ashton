@@ -14,7 +14,6 @@ import com.spring.service.EquipmentService;
 
 @Controller
 public class EquipmentController {
-	@Autowired
 	private EquipmentService equipmentService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class EquipmentController {
 	@RequestMapping(value= "/equipment/add", method = RequestMethod.POST)
 	public String addEquipment(@ModelAttribute("equipment") Equipment equipment){
 		if (equipment.getEquipmentId() == 0) {
-			//new person, add it
+			// Denotes new Equipment - to be added
 			this.equipmentService.addEquipment(equipment);
 		} else {
-			//existing person, call update
+			// Denotes existing Equipment - to be updated
 			this.equipmentService.updateEquipment(equipment);
 		}
 		

@@ -14,7 +14,6 @@ import com.spring.service.CustomerService;
 
 @Controller
 public class CustomerController {
-	@Autowired
 	private CustomerService customerService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class CustomerController {
 	@RequestMapping(value= "/customer/add", method = RequestMethod.POST)
 	public String addCustomer(@ModelAttribute("customer") Customer customer){
 		if (customer.getCustomerId() == 0) {
-			//new person, add it
+			// Denotes a new Customer - to be added
 			this.customerService.addCustomer(customer);
 		} else {
-			//existing person, call update
+			// Denotes an existing Customer - to be updated
 			this.customerService.updateCustomer(customer);
 		}
 		
@@ -50,7 +49,7 @@ public class CustomerController {
         return "redirect:/customers";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{customerId}")
     public String editCustomer(@PathVariable("customerId") int customerId, Model model){
         model.addAttribute("person", this.customerService.getCustomer(customerId));
         model.addAttribute("listCustomers", this.customerService.listCustomers());

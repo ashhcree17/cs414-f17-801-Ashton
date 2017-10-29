@@ -14,7 +14,6 @@ import com.spring.service.WorkScheduleService;
 
 @Controller
 public class WorkScheduleController {
-	@Autowired
 	private WorkScheduleService workScheduleService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class WorkScheduleController {
 	@RequestMapping(value= "/workSchedule/add", method = RequestMethod.POST)
 	public String addWorkSchedule(@ModelAttribute("workSchedule") WorkSchedule workSchedule){
 		if (workSchedule.getWorkScheduleId() == 0) {
-			//new person, add it
+			// Denotes a new WorkSchedule - to be added
 			this.workScheduleService.addWorkSchedule(workSchedule);
 		} else {
-			//existing person, call update
+			// Denotes an existing Work Schedule - to be updated
 			this.workScheduleService.updateWorkSchedule(workSchedule);
 		}
 		

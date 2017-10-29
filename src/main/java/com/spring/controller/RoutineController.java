@@ -14,7 +14,6 @@ import com.spring.service.RoutineService;
 
 @Controller
 public class RoutineController {
-	@Autowired
 	private RoutineService routineService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class RoutineController {
 	@RequestMapping(value= "/routine/add", method = RequestMethod.POST)
 	public String addRoutine(@ModelAttribute("routine") Routine routine){
 		if (routine.getRoutineId() == 0) {
-			//new person, add it
+			// Denotes a new Routine - to be added
 			this.routineService.addRoutine(routine);
 		} else {
-			//existing person, call update
+			// Denotes an existing Routine - to be updated
 			this.routineService.updateRoutine(routine);
 		}
 		

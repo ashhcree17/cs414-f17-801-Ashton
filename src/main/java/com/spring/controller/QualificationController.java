@@ -14,7 +14,6 @@ import com.spring.service.QualificationService;
 
 @Controller
 public class QualificationController {
-	@Autowired
 	private QualificationService qualificationService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class QualificationController {
 	@RequestMapping(value= "/qualification/add", method = RequestMethod.POST)
 	public String addQualification(@ModelAttribute("qualification") Qualification qualification){
 		if (qualification.getQualId() == 0) {
-			//new person, add it
+			// Denotes a new Qualification - to be added
 			this.qualificationService.addQualification(qualification);
 		} else {
-			//existing person, call update
+			// Denotes an existing Qualification - to be updated
 			this.qualificationService.updateQualification(qualification);
 		}
 		
@@ -50,9 +49,9 @@ public class QualificationController {
         return "redirect:/qualifications";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{qualificationId}")
     public String editQualification(@PathVariable("qualificationId") int qualificationId, Model model){
-        model.addAttribute("person", this.qualificationService.getQualification(qualificationId));
+        model.addAttribute("qualification", this.qualificationService.getQualification(qualificationId));
         model.addAttribute("listQualifications", this.qualificationService.listQualifications());
         return "qualification";
     }

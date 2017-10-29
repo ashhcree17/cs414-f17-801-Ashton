@@ -14,7 +14,6 @@ import com.spring.service.AddressService;
 
 @Controller
 public class AddressController {
-	@Autowired
 	private AddressService addressService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class AddressController {
 	@RequestMapping(value= "/address/add", method = RequestMethod.POST)
 	public String addAddress(@ModelAttribute("address") Address address){
 		if (address.getAddressId() == 0) {
-			//new person, add it
+			// Denotes a new Address - to be added
 			this.addressService.addAddress(address);
 		} else {
-			//existing person, call update
+			// Denotes an existing Address - to be updated
 			this.addressService.updateAddress(address);
 		}
 		

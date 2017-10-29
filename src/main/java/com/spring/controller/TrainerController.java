@@ -14,7 +14,6 @@ import com.spring.service.TrainerService;
 
 @Controller
 public class TrainerController {
-	@Autowired
 	private TrainerService trainerService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class TrainerController {
 	@RequestMapping(value= "/trainer/add", method = RequestMethod.POST)
 	public String addTrainer(@ModelAttribute("trainer") Trainer trainer){
 		if (trainer.getTrainerId() == 0) {
-			//new person, add it
+			// Denotes a new Trainer - to be added
 			this.trainerService.addTrainer(trainer);
 		} else {
-			//existing person, call update
+			// Denotes an existing Trainer - to be updated
 			this.trainerService.updateTrainer(trainer);
 		}
 		

@@ -14,7 +14,6 @@ import com.spring.service.ExerciseService;
 
 @Controller
 public class ExerciseController {
-	@Autowired
 	private ExerciseService exerciseService;
 	
 	@Autowired(required=true)
@@ -34,10 +33,10 @@ public class ExerciseController {
 	@RequestMapping(value= "/exercise/add", method = RequestMethod.POST)
 	public String addExercise(@ModelAttribute("exercise") Exercise exercise){
 		if (exercise.getExerciseId() == 0) {
-			//new person, add it
+			// Denotes a new Exercise - to be added
 			this.exerciseService.addExercise(exercise);
 		} else {
-			//existing person, call update
+			// Denotes an existing Exercise - to be updated
 			this.exerciseService.updateExercise(exercise);
 		}
 		
@@ -50,9 +49,9 @@ public class ExerciseController {
         return "redirect:/exercises";
     }
  
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{exerciseId}")
     public String editExercise(@PathVariable("exerciseId") int exerciseId, Model model){
-        model.addAttribute("person", this.exerciseService.getExercise(exerciseId));
+        model.addAttribute("exercise", this.exerciseService.getExercise(exerciseId));
         model.addAttribute("listExercises", this.exerciseService.listExercises());
         return "exercise";
     }

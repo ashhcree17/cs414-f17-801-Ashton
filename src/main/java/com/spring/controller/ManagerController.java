@@ -22,7 +22,7 @@ public class ManagerController {
 		this.managerService = managerService;
 	}
 	
-	@RequestMapping(value = "/manager", method = RequestMethod.GET)
+	@RequestMapping(value = "/managers", method = RequestMethod.GET)
 	public String listManagers(Model model) {
 		model.addAttribute("manager", new Manager());
 		model.addAttribute("listManagers", this.managerService.listManagers());
@@ -33,20 +33,20 @@ public class ManagerController {
 	@RequestMapping(value= "/manager/add", method = RequestMethod.POST)
 	public String addManager(@ModelAttribute("manager") Manager manager){
 		if (manager.getManagerId() == 0) {
-			// Denotes a new manager - to be added
+			// Denotes a new Manager - to be added
 			this.managerService.addManager(manager);
 		} else {
-			// Denotes an existing manager - to be updated
+			// Denotes an existing Manager - to be updated
 			this.managerService.updateManager(manager);
 		}
 		
-		return "redirect:/manager";
+		return "redirect:/managers";
 	}
 	
 	@RequestMapping("/delete/{managerId}")
     public String deleteManager(@ModelAttribute("manager") Manager manager){
         this.managerService.deleteManager(manager);
-        return "redirect:/manager";
+        return "redirect:/managers";
     }
  
     @RequestMapping("/edit/{managerId}")
