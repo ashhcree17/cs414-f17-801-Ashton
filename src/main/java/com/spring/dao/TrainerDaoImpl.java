@@ -2,15 +2,17 @@ package com.spring.dao;
 
 import java.util.List;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.model.Trainer;
 
-@Repository("trainerDao")
+@Repository
 public class TrainerDaoImpl implements TrainerDao {
-	@Autowired
 	private SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 	
 	@Override
 	public void addTrainer(Trainer trainer) {
