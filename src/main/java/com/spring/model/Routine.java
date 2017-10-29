@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -19,8 +20,9 @@ public class Routine {
 	
 	@Column(name="name")
 	private String name;
-
-	@Column(name="exercises")
+	
+	@ManyToMany
+    @JoinTable(name="Routine_Exercise")
 	private ArrayList<Exercise> exercises;
 	
 	@ManyToMany(mappedBy="routine")

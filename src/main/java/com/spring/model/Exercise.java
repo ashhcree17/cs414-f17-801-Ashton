@@ -30,6 +30,9 @@ public class Exercise {
 	@Column(name="repsPerSet")
 	private Integer repsPerSet;
 	
+	@ManyToMany(mappedBy="exercise")
+	private ArrayList<Routine> routines;
+	
 	@ManyToMany
     @JoinTable(name="Exercise_Equipment")
 	private ArrayList<Equipment> equipment;
