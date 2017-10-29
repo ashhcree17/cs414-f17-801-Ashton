@@ -1,7 +1,6 @@
 package com.spring.model;
 
 import java.awt.Image;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,7 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.Entity;
 
 @Entity 
-@Table(name="Inventory")
+@Table(name="Equipment")
 public class Equipment {
 	@Id
 	@GeneratedValue

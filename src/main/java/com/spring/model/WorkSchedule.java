@@ -2,11 +2,12 @@ package com.spring.model;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +26,10 @@ public class WorkSchedule {
 	
 	@Column(name="endTime")
 	private LocalTime endTime;
+	
+	@ManyToOne
+    @JoinColumn(name="customerId", nullable=false)
+	private Trainer trainer;
 	
 	/* Start of getters & setters */
 	public Integer getWorkScheduleId() {
@@ -50,6 +55,12 @@ public class WorkSchedule {
 	}
 	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
+	}
+	public Trainer getTrainer() {
+		return trainer;
+	}
+	public void setTrainer(Trainer trainer) {
+		this.trainer = trainer;
 	}
 	/* End of getters & setters */
 }

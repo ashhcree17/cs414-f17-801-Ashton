@@ -1,12 +1,16 @@
 package com.spring.model;
 
+import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -40,11 +44,11 @@ public class Trainer extends User {
 	
 	@Column(name="insurance")
 	private String insurance;
-//	
-//	@Column(name="workSchedule")
-////	@ElementCollection(targetClass=WorkSchedule.class)
-//	private ArrayList<WorkSchedule> workSchedule;
-//	
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="trainer")
+	@ElementCollection(targetClass=WorkSchedule.class)
+	private ArrayList<WorkSchedule> workSchedule;
+	
 //	@Column(name="qualifications")
 //	private ArrayList<Qualification> qualifications;
 	
