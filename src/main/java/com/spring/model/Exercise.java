@@ -1,7 +1,7 @@
 package com.spring.model;
 
 import java.time.Duration;
-import java.util.ArrayList;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,11 +31,11 @@ public class Exercise {
 	private Integer repsPerSet;
 	
 	@ManyToMany(mappedBy="exercise")
-	private ArrayList<Routine> routines;
+	private Set<Routine> routines;
 	
 	@ManyToMany
     @JoinTable(name="Exercise_Equipment")
-	private ArrayList<Equipment> equipment;
+	private Set<Equipment> equipment;
 
 	/* Start of getters & setters */
 	public Integer getExerciseId() {
@@ -68,11 +68,17 @@ public class Exercise {
 	public void setRepsPerSet(Integer repsPerSet) {
 		this.repsPerSet = repsPerSet;
 	}
-	public ArrayList<Equipment> getEquipment() {
+	public Set<Equipment> getEquipment() {
 		return equipment;
 	}
-	public void setEquipment(ArrayList<Equipment> equipment) {
+	public void setEquipment(Set<Equipment> equipment) {
 		this.equipment = equipment;
+	}
+	public Set<Routine> getRoutines() {
+		return routines;
+	}
+	public void setRoutines(Set<Routine> routines) {
+		this.routines = routines;
 	}
 	/* End of getters & setters */
 }

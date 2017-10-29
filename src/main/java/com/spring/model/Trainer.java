@@ -1,6 +1,6 @@
 package com.spring.model;
 
-import java.util.ArrayList;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -48,13 +48,13 @@ public class Trainer extends User {
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="trainer")
 	@ElementCollection(targetClass=WorkSchedule.class)
-	private ArrayList<WorkSchedule> workSchedule;
+	private Set<WorkSchedule> workSchedule;
 	
 	@ManyToMany
     @JoinTable(name="Trainer_Qualification")
-	private ArrayList<Qualification> qualifications;
+	private Set<Qualification> qualifications;
 	
-//	/* Start of getters & setters */
+	/* Start of getters & setters */
 	public Integer getTrainerId() {
 		return trainerId;
 	}
@@ -110,19 +110,19 @@ public class Trainer extends User {
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
 	}
-	public ArrayList<WorkSchedule> getWorkSchedule() {
+	public Set<WorkSchedule> getWorkSchedule() {
 		return workSchedule;
 	}
-	public void setWorkSchedule(ArrayList<WorkSchedule> workSchedule) {
+	public void setWorkSchedule(Set<WorkSchedule> workSchedule) {
 		this.workSchedule = workSchedule;
 	}
-	public ArrayList<Qualification> getQualifications() {
+	public Set<Qualification> getQualifications() {
 		return qualifications;
 	}
-	public void setQualifications(ArrayList<Qualification> qualifications) {
+	public void setQualifications(Set<Qualification> qualifications) {
 		this.qualifications = qualifications;
 	}
-//	/* End of getters & setters */
+	/* End of getters & setters */
 
 	@Override
 	public <T> void create(T type) {

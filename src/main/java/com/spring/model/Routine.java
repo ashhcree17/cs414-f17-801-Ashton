@@ -1,7 +1,6 @@
 package com.spring.model;
 
-import java.util.ArrayList;
-
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,10 +22,10 @@ public class Routine {
 	
 	@ManyToMany
     @JoinTable(name="Routine_Exercise")
-	private ArrayList<Exercise> exercises;
+	private Set<Exercise> exercises;
 	
 	@ManyToMany(mappedBy="routine")
-	private ArrayList<Customer> customers;
+	private Set<Customer> customers;
 	
 	/* Start of getters & setters */
 	public Integer getRoutineId() {
@@ -41,16 +40,16 @@ public class Routine {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Exercise> getExercises() {
+	public Set<Exercise> getExercises() {
 		return exercises;
 	}
-	public void setExercises(ArrayList<Exercise> exercises) {
+	public void setExercises(Set<Exercise> exercises) {
 		this.exercises = exercises;
 	}
-	public ArrayList<Customer> getCustomers() {
+	public Set<Customer> getCustomers() {
 		return customers;
 	}
-	public void setCustomers(ArrayList<Customer> customers) {
+	public void setCustomers(Set<Customer> customers) {
 		this.customers = customers;
 	}
 	/* End of getters & setters */

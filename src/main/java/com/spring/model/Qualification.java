@@ -1,6 +1,6 @@
 package com.spring.model;
 
-import java.util.ArrayList;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ public class Qualification {
 	private String name;
 	
 	@ManyToMany(mappedBy="qualification")
-	private ArrayList<Trainer> trainers;
+	private Set<Trainer> trainers;
 
 	/* Start of getters & setters */
 	public Integer getQualId() {
@@ -34,6 +34,12 @@ public class Qualification {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Set<Trainer> getTrainers() {
+		return trainers;
+	}
+	public void setTrainers(Set<Trainer> trainers) {
+		this.trainers = trainers;
 	}
 	/* End of getters & setters */
 }

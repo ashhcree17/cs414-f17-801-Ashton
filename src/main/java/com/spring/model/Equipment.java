@@ -1,7 +1,7 @@
 package com.spring.model;
 
 import java.awt.Image;
-import java.util.ArrayList;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,7 +27,7 @@ public class Equipment {
 	private Integer quantity;
 	
 	@ManyToMany(mappedBy="equipment")
-	private ArrayList<Exercise> exercises;
+	private Set<Exercise> exercises;
 	
 	/* Start of getters & setters */
 	public Integer getEquipmentId() {
@@ -53,6 +53,12 @@ public class Equipment {
 	}
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+	public Set<Exercise> getExercises() {
+		return exercises;
+	}
+	public void setExercises(Set<Exercise> exercises) {
+		this.exercises = exercises;
 	}
 	/* End of getters & setters */
 }

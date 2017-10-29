@@ -1,6 +1,7 @@
 package com.spring.model;
 
-import java.util.ArrayList;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,7 +42,7 @@ public class Customer {
 
 	@ManyToMany
     @JoinTable(name="Customer_Routine")
-	private ArrayList<Routine> assignedRoutines;
+	private Set<Routine> assignedRoutines;
 	
 	/* Start of getters & setters */
 	public Integer getCustomerId() {
@@ -92,10 +93,10 @@ public class Customer {
 	public void setMembership(MembershipStatus membership) {
 		this.membership = membership;
 	}
-	public ArrayList<Routine> getAssignedRoutines() {
+	public Set<Routine> getAssignedRoutines() {
 		return assignedRoutines;
 	}
-	public void setAssignedRoutines(ArrayList<Routine> assignedRoutines) {
+	public void setAssignedRoutines(Set<Routine> assignedRoutines) {
 		this.assignedRoutines = assignedRoutines;
 	}	
 	/* End of getters & setters */
