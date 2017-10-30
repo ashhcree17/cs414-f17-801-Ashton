@@ -1,28 +1,42 @@
 package com.spring.controllerTest;
-//package globoGymMS;
-//
-//import org.junit.Assert;
-//import org.junit.Test;
-//
-//import java.time.Duration;
-//import java.util.ArrayList;
-//
-//public class CustomerTest {
-//	@Test
-//	public final void getStreet1() {
-//		Address a = new Address(200, "123 Main St", "Apt 123", 
-//				"Town", "CO", 12345);
-//		ArrayList<Routine> rs = new ArrayList<Routine>();
-//		ArrayList<Exercise> es = new ArrayList<Exercise>();
-//
-//		Exercise e = new Exercise(001, "E1", Duration.ofSeconds(120));
-//		es.add(e);
-//		
-//		Routine r = new Routine(00, "R1", es);
-//		rs.add(r);
-//		
-//		Customer c = new Customer(200, "Joe", "Blow", a, 1234567890, 
-//				"joe@email.com", "Aetna", MembershipStatus.ACTIVE, rs);
-//		Assert.assertEquals(MembershipStatus.ACTIVE, c.getMembership());
-//	}
-//}
+
+import static org.mockito.Mockito.when;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.ui.Model;
+
+import com.spring.controller.CustomerController;
+import com.spring.model.Customer;
+import com.spring.service.CustomerService;
+
+public class CustomerControllerTest {
+	@InjectMocks
+	CustomerController controller;
+	
+	@Mock
+	CustomerService mockCustomerService;
+	
+	@Before
+	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
+	}
+	
+	@Test
+	public void testListCustomerInGroup() {
+		List<Customer> expectedCustomers = Arrays.asList(new Customer());
+        when(mockCustomerService.listCustomers()).thenReturn(expectedCustomers);
+
+        Model model = (Model) new Customer();
+        model.addAttribute("listCustomers", mockCustomerService.listCustomers());
+        String viewName = controller.listCustomers(model);
+
+        Assert.assertEquals("customers", viewName);
+        Assert.assertTrue(model.containsAttribute("listCustomers"));
+    }
+}
