@@ -1,3 +1,4 @@
+package com.spring.controllerTest;
 //package globoGymMS;
 //
 //import org.junit.Assert;
