@@ -29,6 +29,19 @@ public class AddressController {
 		return "address";
 	}
 	
+	@RequestMapping(value = "/address/{addressId}", method = RequestMethod.GET)
+	public String getAddress(@PathVariable("addressId") int addressId, Model model) {
+		Address address = new Address();
+		if (this.addressService.getAddress(addressId) == null) {
+			address.setAddressId(addressId);
+			model.addAttribute("address", address);
+			this.addressService.getAddress(addressId);
+			return "address";			
+		} else {
+			return null;
+		}
+	}
+	
 	//For add and update person both
 	@RequestMapping(value= "/address/add", method = RequestMethod.POST)
 	public String addAddress(@ModelAttribute("address") Address address){
@@ -51,7 +64,7 @@ public class AddressController {
  
     @RequestMapping("/edit/{addressId}")
     public String editAddress(@PathVariable("addressId") int addressId, Model model){
-        model.addAttribute("person", this.addressService.getAddress(addressId));
+        model.addAttribute("address", this.addressService.getAddress(addressId));
         model.addAttribute("listAddresses", this.addressService.listAddresses());
         return "address";
     }

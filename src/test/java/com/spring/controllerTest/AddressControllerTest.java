@@ -9,10 +9,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.View;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.spring.controller.AddressController;
 import com.spring.service.AddressService;
@@ -39,7 +42,7 @@ public class AddressControllerTest {
 	}
 	
 	@Test
-	public void testListAddressInGroup() {
+	public void testListAddress() {
 		List<Address> expectedAddresses = Arrays.asList(new Address());
         when(mockAddressService.listAddresses()).thenReturn(expectedAddresses);
 
@@ -49,5 +52,30 @@ public class AddressControllerTest {
 
         Assert.assertEquals("addresses", viewName);
         Assert.assertTrue(model.containsAttribute("listAddresses"));
+    }
+	
+	@Test
+	public void testGetAddress() throws Exception {
+		this.mockMvc.perform(get("/address/1")
+				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(jsonPath("$.addressId").value(1));
+    }
+	
+	@Test
+	public void testAddAddress() throws Exception {
+		Address address = new Address();
+		address.setAddressId(1);
+		mockAddressService.addAddress(address);
+
+        Model model = (Model) new Address();
+        model.addAttribute("listAddresses", mockAddressService.listAddresses());
+		
+		this.mockMvc.perform(get("/address/1")
+				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(jsonPath("$.addressId").value(1));
     }
 }
