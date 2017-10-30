@@ -46,13 +46,15 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-entitymanager', version:'4.3.5.Final'
     compile group: 'org.aspectj', name: 'aspectjrt', version:'1.7.4'
     compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.5'
-	compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '4.2.3.RELEASE'	
 	compile(group: 'org.springframework', name: 'spring-context', version:'4.0.3.RELEASE') {
 		exclude(module: 'commons-logging')
     }
+    compile group: 'org.springframework', name: 'spring-web', version:'4.0.3.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version:'4.0.3.RELEASE'
+    compile group: 'org.springframework', name: 'spring-test-mvc', version: '1.0.0.M2'
     compile group: 'org.springframework', name: 'spring-tx', version:'4.0.3.RELEASE'
     compile group: 'org.springframework', name: 'spring-orm', version:'4.0.3.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '4.2.3.RELEASE'	
     runtime group: 'org.slf4j', name: 'jcl-over-slf4j', version:'1.7.5'
     runtime group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.5'
     runtime(group: 'log4j', name: 'log4j', version:'1.2.15') {

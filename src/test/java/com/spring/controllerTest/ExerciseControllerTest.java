@@ -1,6 +1,7 @@
 package com.spring.controllerTest;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
@@ -9,7 +10,9 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.View;
 
 import com.spring.controller.ExerciseController;
 import com.spring.model.Exercise;
@@ -22,9 +25,17 @@ public class ExerciseControllerTest {
 	@Mock
 	ExerciseService mockExerciseService;
 	
+	@Mock
+	View mockView;
+	
+	MockMvc mockMvc;
+	
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
+		mockMvc = standaloneSetup(controller)
+                .setSingleView(mockView)
+                .build();
 	}
 	
 	@Test
