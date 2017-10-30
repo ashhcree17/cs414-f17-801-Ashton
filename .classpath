@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry excluding="com/spring/daoTest/|com/spring/daoTest/|com/spring/daoTest/" kind="src" path="src/test/java"/>
 	<classpathentry excluding="static/|static/" kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/main/webapp"/>
