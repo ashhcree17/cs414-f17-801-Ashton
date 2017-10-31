@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+
 
 import java.util.List;
 import org.junit.Test;
@@ -19,11 +19,34 @@ public class AddressDaoTest {
      
     @Autowired
     private AddressDao addressDao;
+    
+    @Before
+    public void setup() {
+        Address address1 = new Address();
+        address.setAddressId(1);
+        address.setUsername("username");
+        address.setPassword("password");
+        address.setName("name");
+        address.setLastName("lastName");
+        address.setAddressAddressId(123);
+        address.setPhoneNumber(1234567890);
+        addressDao.addAddress(address);
+    }
      
     @Test
     @Transactional
     @Rollback(true)
     public void testAddAddress() {
+        List<Address> addresss = addressDao.listAddresses();
+         
+        Assert.assertEquals(1, addresss.size());         
+        Assert.assertEquals(address.getName(), addresss.get(0).getName());
+    }
+    
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void testListAddresses() {
         Address address = new Address();
         address.setAddressId(1);
         address.setUsername("username");
