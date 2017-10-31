@@ -1,7 +1,7 @@
 package com.spring.modelTest;
 
-//import java.util.List;
 import org.junit.Test;
+import org.junit.Assert;
 import org.junit.runner.RunWith;
 //import junit.framework.Assert;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 //import com.spring.model.MembershipStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class AddressModelTest {
-     
-//    @Autowired
-//    private AddressDao addressDao;
+public class AddressTest {
+	@Test
+	public void typeAnnotations() {
+    // assert
+		AssertAnnotations.assertType(
+				Address.class, Entity.class, Table.class);
+  }
      
     @Test
     @Transactional

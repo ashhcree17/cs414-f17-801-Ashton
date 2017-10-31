@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 //import com.spring.model.MembershipStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class QualificationModelTest {
+public class QualificationTest {
      
 //    @Autowired
 //    private QualificationDao qualificationDao;

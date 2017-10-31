@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 //import com.spring.model.MembershipStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ExerciseModelTest {
+public class ExerciseTest {
      
 //    @Autowired
 //    private ExerciseDao exerciseDao;
