@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+package com.spring.daoImplTest;
 
 import java.util.List;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import com.spring.model.MembershipStatus;
 
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class CustomerDaoTest {
+public class CustomerDaoImplTest {
      
     @Autowired
     private CustomerDao customerDao;
@@ -33,7 +33,7 @@ public class CustomerDaoTest {
         customer.setPhoneNumber(1234567890);
         customer.setEmail("email@email.com");
         customer.setInsurance("Aetna");
-        customer.setMembershipStatus(MembershipStatus.ACTIVE);
+        customer.setMembership(MembershipStatus.ACTIVE);
         customerDao.addCustomer(customer);
          
         List<Customer> customers = customerDao.listCustomers();

@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+package com.spring.daoImplTest;
 
 import java.util.List;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import com.spring.model.Manager;
 
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ManagerDaoTest {
+public class ManagerDaoImplTest {
      
     @Autowired
     private ManagerDao managerDao;
@@ -34,7 +34,7 @@ public class ManagerDaoTest {
         manager.setPhoneNumber(1234567890);
         managerDao.addManager(manager);
          
-        List<Manager> managers = managerDao.listManageres();
+        List<Manager> managers = managerDao.listManagers();
          
         Assert.assertEquals(1, managers.size());         
         Assert.assertEquals(manager.getName(), managers.get(0).getName());

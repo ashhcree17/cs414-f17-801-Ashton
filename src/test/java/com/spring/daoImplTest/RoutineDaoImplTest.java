@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+package com.spring.daoImplTest;
 
 import java.util.List;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import com.spring.model.Routine;
 
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class RoutineDaoTest {
+public class RoutineDaoImplTest {
      
     @Autowired
     private RoutineDao routineDao;

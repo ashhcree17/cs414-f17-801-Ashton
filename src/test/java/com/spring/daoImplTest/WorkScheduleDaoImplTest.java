@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+package com.spring.daoImplTest;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -17,7 +17,7 @@ import com.spring.model.WorkSchedule;
 
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class WorkScheduleDaoTest {
+public class WorkScheduleDaoImplTest {
      
     @Autowired
     private WorkScheduleDao workScheduleDao;
@@ -36,6 +36,6 @@ public class WorkScheduleDaoTest {
         List<WorkSchedule> workSchedules = workScheduleDao.listWorkSchedules();
          
         Assert.assertEquals(1, workSchedules.size());         
-        Assert.assertEquals(workSchedule.getName(), workSchedules.get(0).getName());
+        Assert.assertEquals(workSchedule.getDay(), workSchedules.get(0).getDay());
     }
 }

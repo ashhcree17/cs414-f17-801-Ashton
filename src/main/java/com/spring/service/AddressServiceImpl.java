@@ -2,11 +2,10 @@ package com.spring.service;
 
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import com.spring.dao.AddressDao;
 import com.spring.model.Address;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class AddressServiceImpl implements AddressService {

@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+package com.spring.daoImplTest;
 
 import java.util.List;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import com.spring.model.Equipment;
 
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class EquipmentDaoTest {
+public class EquipmentDaoImplTest {
      
     @Autowired
     private EquipmentDao equipmentDao;
@@ -30,7 +30,7 @@ public class EquipmentDaoTest {
         equipment.setQuantity(5);
         equipmentDao.addEquipment(equipment);
          
-        List<Equipment> equipments = equipmentDao.listEquipments();
+        List<Equipment> equipments = equipmentDao.listInventory();
          
         Assert.assertEquals(1, equipments.size());         
         Assert.assertEquals(equipment.getName(), equipments.get(0).getName());

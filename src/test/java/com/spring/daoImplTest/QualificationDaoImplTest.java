@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+package com.spring.daoImplTest;
 
 import java.util.List;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import com.spring.model.Qualification;
 
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class QualificationDaoTest {
+public class QualificationDaoImplTest {
      
     @Autowired
     private QualificationDao qualificationDao;
@@ -25,7 +25,7 @@ public class QualificationDaoTest {
     @Rollback(true)
     public void testAddQualification() {
         Qualification qualification = new Qualification();
-        qualification.setQualificationId(1);
+        qualification.setQualId(1);
         qualification.setName("username");
         qualificationDao.addQualification(qualification);
          

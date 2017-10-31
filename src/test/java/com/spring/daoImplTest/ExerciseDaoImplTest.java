@@ -1,4 +1,4 @@
-package com.spring.controllerTest;
+package com.spring.daoImplTest;
 
 import java.time.Duration;
 import java.util.List;
@@ -16,7 +16,7 @@ import com.spring.model.Exercise;
 
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ExerciseDaoTest {
+public class ExerciseDaoImplTest {
      
     @Autowired
     private ExerciseDao exerciseDao;
