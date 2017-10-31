@@ -73,3 +73,76 @@ public class AddressDaoImplTest {
 //        Assert.assertTrue(model.containsAttribute("listAddresses"));
     }
 }
+package com.spring.daoImplTest;
+
+//import static org.mockito.Mockito.when;
+//import java.util.Arrays;
+import java.util.List;
+//import org.hibernate.SessionFactory;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import junit.framework.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.ui.Model;
+
+import com.spring.dao.AddressDao;
+import com.spring.model.Address;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+public class AddressDaoImplTest {
+    @Autowired
+    private AddressDao addressDao;
+
+//	private SessionFactory sessionFactory;
+    Address address1 = new Address();
+    Address address2 = new Address();
+    
+    @Before
+    public void setup() {
+        address1.setAddressId(1);
+        address1.setStreet1("11 Main St");
+        address1.setStreet2("Apt 1");
+        address1.setCity("Niceville");
+        address1.setState("FL");
+        address1.setZipCode(12345);
+
+        address2.setAddressId(2);
+        address2.setStreet1("12 Main St");
+        address2.setStreet2("Apt 2");
+        address2.setCity("Meanville");
+        address2.setState("FL");
+        address2.setZipCode(54321);
+        
+        addressDao.addAddress(address1);
+        addressDao.addAddress(address2);
+    }
+     
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void testAddAddress() {
+        List<Address> addresses = addressDao.listAddresses();
+         
+        Assert.assertEquals(1, addresses.size());         
+        Assert.assertEquals(address1.getStreet1(), addresses.get(0).getStreet1());
+    }
+    
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void testListAddresses() {
+//    		List<Address> expectedAddresses = Arrays.asList(new Address());
+//        when(mockAddressService.listAddresses()).thenReturn(expectedAddresses);
+//
+//        Model model = (Model) new Address();
+//        model.addAttribute("listAddresses", mockAddressService.listAddresses());
+//        String viewName = controller.listAddresses(model);
+//
+//        Assert.assertEquals("addresses", viewName);
+//        Assert.assertTrue(model.containsAttribute("listAddresses"));
+    }
+}
