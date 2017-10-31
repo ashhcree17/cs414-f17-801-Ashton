@@ -63,15 +63,11 @@ public class AddressDaoImplTest {
     @Test
     @Transactional
     @Rollback(true)
-    public void testListAddresses() {
-//    		List<Address> expectedAddresses = Arrays.asList(new Address());
-//        when(mockAddressService.listAddresses()).thenReturn(expectedAddresses);
-//
-//        Model model = (Model) new Address();
-//        model.addAttribute("listAddresses", mockAddressService.listAddresses());
-//        String viewName = controller.listAddresses(model);
-//
-//        Assert.assertEquals("addresses", viewName);
-//        Assert.assertTrue(model.containsAttribute("listAddresses"));
+    public void testDeleteAddress() {
+		addressDao.addAddress(address1);
+        addressDao.addAddress(address2);
+
+		addressDao.deleteAddress(address1.getAddressId());
+        Assert.assertEquals(1, addressDao.listAddresses().size());
     }
 }
