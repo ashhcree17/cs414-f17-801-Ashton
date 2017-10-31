@@ -51,7 +51,7 @@ public static void assertField(
       throw new AssertionError(nsfe);
     }
   }
-  @SuppressWarnings("rawtypes")
+  @SuppressWarnings({ "rawtypes", "unchecked" })
 public static void assertMethod(
       Class c, String getterName, Class...annotationClasses) {
     try {
