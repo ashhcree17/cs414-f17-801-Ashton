@@ -1,42 +1,76 @@
 package com.spring.modelTest;
 
-//import java.util.List;
 import org.junit.Test;
+import org.junit.Assert;
 import org.junit.runner.RunWith;
-//import junit.framework.Assert;
-//import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
-//import com.spring.dao.RoutineDao;
-//import com.spring.model.Routine;
-//import com.spring.model.MembershipStatus;
+import com.spring.model.Routine;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class RoutineTest {
-     
-//    @Autowired
-//    private RoutineDao routineDao;
-     
-    @Test
-    @Transactional
-    @Rollback(true)
-    public void testAddRoutine() {
-//        Routine routine = new Routine();
-//        routine.setRoutineId(1);
-//        routine.setName("name");
-//        routine.setLastName("lastName");
-//        routine.setRoutineRoutineId(12);
-//        routine.setPhoneNumber(1234567890);
-//        routine.setEmail("email@email.com");
-//        routine.setInsurance("Aetna");
-//        routine.setMembership(MembershipStatus.ACTIVE);
-//        routineDao.addRoutine(routine);
-//         
-//        List<Routine> routines = routineDao.listRoutines();
-//         
-//        Assert.assertEquals(1, routines.size());         
-//        Assert.assertEquals(routine.getName(), routines.get(0).getName());
-    }
+	@Test
+	public void typeAnnotations() {
+		AssertAnnotations.assertType(Routine.class, Entity.class, Table.class);
+	}
+	
+	@Test
+	public void fieldAnnotations() {
+		AssertAnnotations.assertField(Routine.class, "routineId", Id.class, 
+				GeneratedValue.class);
+		AssertAnnotations.assertField(Routine.class, "name", Column.class);
+		AssertAnnotations.assertField(Routine.class, "exercises", Column.class,
+				ManyToMany.class, JoinTable.class);
+		AssertAnnotations.assertField(Routine.class, "customers", Column.class,
+				ManyToMany.class);
+	}
+	
+	@Test
+	public void methodAnnotations() {
+		AssertAnnotations.assertMethod(Routine.class, "getRoutineId");
+		AssertAnnotations.assertMethod(Routine.class, "getName");
+		AssertAnnotations.assertMethod(Routine.class, "getExercises");
+		AssertAnnotations.assertMethod(Routine.class, "getRoutines");
+	}
+	
+	@Test
+	public void entity() {
+		Entity entity = ReflectTool.getClassAnnotation(Routine.class, Entity.class);
+		Assert.assertEquals("", entity.name());
+	}
+	
+	@Test
+	public void table() {
+		Table table = ReflectTool.getClassAnnotation(Routine.class, Table.class);
+		Assert.assertEquals("Routine", table.name());
+	}
+	
+	@Test
+	public void id() {
+		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Routine.class, 
+				"getRoutineId", GeneratedValue.class);
+		Assert.assertEquals("", genValue.generator());
+	}
+	
+	@Test
+	public void name() {
+		Column column = ReflectTool.getMethodAnnotation(Routine.class, 
+				"getName", Column.class);
+		Assert.assertEquals("name", column.name());
+	}
+	
+	@Test
+	public void exercises() {
+		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Routine.class, 
+				"getExercises", ManyToMany.class);
+		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
+	}
 }
