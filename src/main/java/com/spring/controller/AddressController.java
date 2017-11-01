@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 
 import com.spring.model.Address;
 import com.spring.service.AddressService;
@@ -23,18 +24,18 @@ public class AddressController {
 	}
 	
 	@RequestMapping(value = "/addresses", method = RequestMethod.GET)
-	public String listAddresses(Model model) {
-		model.addAttribute("address", new Address());
-		model.addAttribute("listAddresses", this.addressService.listAddresses());
+	public String listAddresses(ModelMap modelMap) {
+		modelMap.addAttribute("address", new Address());
+		modelMap.addAttribute("listAddresses", this.addressService.listAddresses());
 		return "address";
 	}
 	
 	@RequestMapping(value = "/address/{addressId}", method = RequestMethod.GET)
-	public String getAddress(@PathVariable("addressId") int addressId, Model model) {
+	public String getAddress(@PathVariable("addressId") int addressId, ModelMap modelMap) {
 		Address address = new Address();
 		if (this.addressService.getAddress(addressId) == null) {
 			address.setAddressId(addressId);
-			model.addAttribute("address", address);
+			modelMap.addAttribute("address", address);
 			this.addressService.getAddress(addressId);
 			return "address";			
 		} else {

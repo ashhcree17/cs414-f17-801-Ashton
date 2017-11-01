@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.View;
@@ -42,16 +43,20 @@ public class AddressControllerTest {
 	}
 	
 	@Test
-	public void testListAddress() {
+	public void testListAddress() throws Exception {
 		List<Address> expectedAddresses = Arrays.asList(new Address());
         when(mockAddressService.listAddresses()).thenReturn(expectedAddresses);
 
-        Model model = (Model) new Address();
-        model.addAttribute("listAddresses", mockAddressService.listAddresses());
-        String viewName = controller.listAddresses(model);
-
-        Assert.assertEquals("addresses", viewName);
-        Assert.assertTrue(model.containsAttribute("listAddresses"));
+        mockMvc.perform(get("/addresses"))
+        	.andExpect(status().isOk())
+        	.andExpect(model().attribute("listAddresses", expectedAddresses))
+        	.andExpect(view().name("address"));
+//        ModelMap modelMap = new ModelMap();
+//        String viewName = controller.listAddresses(modelMap);
+//
+//        Assert.assertEquals("addresses", viewName);
+//        Assert.assertThat(modelMap, hasEntry());
+//        Assert.assertTrue(modelMap.containsAttribute("listAddresses"));
     }
 	
 	@Test
