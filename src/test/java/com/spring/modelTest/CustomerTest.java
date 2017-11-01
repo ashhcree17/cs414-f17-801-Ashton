@@ -87,7 +87,7 @@ public class CustomerTest {
 	}
 	
 	@Test
-	public void phones() {
+	public void assignedRoutines() {
 		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Customer.class, 
 				"getAssignedRoutines", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
