@@ -51,7 +51,6 @@ dependencies {
     }
     compile group: 'org.springframework', name: 'spring-web', version:'4.0.3.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version:'4.0.3.RELEASE'
-    compile group: 'org.springframework', name: 'spring-test-mvc', version: '1.0.0.M2'
     compile group: 'org.springframework', name: 'spring-tx', version:'4.0.3.RELEASE'
     compile group: 'org.springframework', name: 'spring-orm', version:'4.0.3.RELEASE'
 	compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '4.2.3.RELEASE'	

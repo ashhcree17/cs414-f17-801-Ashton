@@ -25,5 +25,6 @@
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/jstl-1.2.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/mockito-core-2.10.0.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-test-4.0.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-test-mvc-1.0.0.M2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
