@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import com.spring.model.Customer;
 import com.spring.model.Qualification;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
 public class QualificationTest {
 	
 	@Autowired
