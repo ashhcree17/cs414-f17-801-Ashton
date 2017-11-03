@@ -1,24 +1,20 @@
 package com.spring.daoImplTest;
 
-//import static org.mockito.Mockito.when;
-//import java.util.Arrays;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import junit.framework.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
-//import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-//import org.springframework.ui.Model;
 
 import com.spring.dao.AddressDao;
 import com.spring.model.Address;
 
-//@ContextConfiguration(locations = "classpath:application-context-test.xml")
+@ContextConfiguration(locations = "classpath:servlet-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AddressDaoImplTest {
      

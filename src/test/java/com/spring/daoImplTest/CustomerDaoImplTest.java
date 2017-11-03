@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import junit.framework.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
-//import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +15,7 @@ import com.spring.dao.CustomerDao;
 import com.spring.model.Customer;
 import com.spring.model.MembershipStatus;
 
-//@ContextConfiguration(locations = "classpath:application-context-test.xml")
+@ContextConfiguration(locations = "classpath:servlet-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class CustomerDaoImplTest {
      
