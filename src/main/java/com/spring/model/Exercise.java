@@ -42,6 +42,20 @@ public class Exercise {
 	         inverseJoinColumns = { @JoinColumn(name = "equipmentId") })
 	private Set<Equipment> equipment;
 
+	public Exercise() {}
+
+	public Exercise(Integer exerciseId, String name, Duration duration, Integer numberOfSets, Integer repsPerSet,
+			Set<Routine> routines, Set<Equipment> equipment) {
+		super();
+		this.exerciseId = exerciseId;
+		this.name = name;
+		this.duration = duration;
+		this.numberOfSets = numberOfSets;
+		this.repsPerSet = repsPerSet;
+		this.routines = routines;
+		this.equipment = equipment;
+	}
+
 	/* Start of getters & setters */
 	public Integer getExerciseId() {
 		return exerciseId;

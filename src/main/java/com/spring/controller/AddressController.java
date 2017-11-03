@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 
 import com.spring.model.Address;
@@ -64,9 +63,9 @@ public class AddressController {
     }
  
     @RequestMapping("/edit/{addressId}")
-    public String editAddress(@PathVariable("addressId") int addressId, Model model){
-        model.addAttribute("address", this.addressService.getAddress(addressId));
-        model.addAttribute("listAddresses", this.addressService.listAddresses());
+    public String editAddress(@PathVariable("addressId") int addressId, ModelMap modelMap){
+    		modelMap.addAttribute("address", this.addressService.getAddress(addressId));
+    		modelMap.addAttribute("listAddresses", this.addressService.listAddresses());
         return "address";
     }
 }

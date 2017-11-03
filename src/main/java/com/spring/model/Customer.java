@@ -48,6 +48,21 @@ public class Customer {
 	         inverseJoinColumns = { @JoinColumn(name = "routineId") })
 	private Set<Routine> assignedRoutines;
 	
+	public Customer() {}
+
+	public Customer(Integer customerId, String name, String lastName, 
+			Integer customerAddressId, Integer phoneNumber, String email, 
+			String insurance, MembershipStatus membership) {
+		this.customerId = customerId;
+		this.name = name;
+		this.lastName = lastName;
+		this.customerAddressId = customerAddressId;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.insurance = insurance;
+		this.membership = membership;
+	}
+
 	/* Start of getters & setters */
 	public Integer getCustomerId() {
 		return customerId;

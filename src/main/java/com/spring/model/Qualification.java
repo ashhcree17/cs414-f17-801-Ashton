@@ -21,7 +21,16 @@ public class Qualification {
 	
 	@ManyToMany(mappedBy="qualifications")
 	private Set<Trainer> trainers;
+	
+	public Qualification() {}
 
+	public Qualification(Integer qualId, String name, Set<Trainer> trainers) {
+		super();
+		this.qualId = qualId;
+		this.name = name;
+		this.trainers = trainers;
+	}
+	
 	/* Start of getters & setters */
 	public Integer getQualId() {
 		return qualId;

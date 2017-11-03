@@ -1,14 +1,15 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -16,12 +17,12 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.View;
 
 import com.spring.controller.CustomerController;
 import com.spring.model.Customer;
 import com.spring.service.CustomerService;
+import com.spring.model.MembershipStatus;
 
 public class CustomerControllerTest {
 	@InjectMocks
@@ -38,46 +39,47 @@ public class CustomerControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		mockMvc = standaloneSetup(controller)
-                .setSingleView(mockView)
-                .build();
+		mockMvc = standaloneSetup(controller).setSingleView(mockView)
+                								.build();
 	}
 	
 	@Test
-	public void testListCustomerInGroup() {
+	public void testListCustomer() throws Exception {
 		List<Customer> expectedCustomers = Arrays.asList(new Customer());
         when(mockCustomerService.listCustomers()).thenReturn(expectedCustomers);
-
-        Model model = (Model) new Customer();
-        model.addAttribute("listCustomers", mockCustomerService.listCustomers());
-        String viewName = controller.listCustomers(model);
-
-        Assert.assertEquals("customers", viewName);
-        Assert.assertTrue(model.containsAttribute("listCustomers"));
+        
+        mockMvc.perform(get("/customers"))
+        		.andExpect(status().isOk())
+        		.andExpect(model().attribute("listCustomers", expectedCustomers))
+        		.andExpect(view().name("customer"));
     }
 	
 	@Test
 	public void testGetCustomer() throws Exception {
-		this.mockMvc.perform(get("/customer/1")
-				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType("application/json"))
-				.andExpect(jsonPath("$.customerId").value(1));
+		Customer expectedCustomer = new Customer();
+        when(mockCustomerService.getCustomer(expectedCustomer.getCustomerId()))
+        		.thenReturn(expectedCustomer);
+        
+        mockMvc.perform(get("/customer" + expectedCustomer.getCustomerId()))
+        		.andExpect(status().isOk())
+        		.andExpect(model().attribute("customer", expectedCustomer))
+        		.andExpect(view().name("customer"));
     }
 	
 	@Test
 	public void testAddCustomer() throws Exception {
-		Customer customer = new Customer();
-		customer.setCustomerId(1);
-		mockCustomerService.addCustomer(customer);
-
-        Model model = (Model) new Customer();
-        model.addAttribute("listCustomers", mockCustomerService.listCustomers());
+		mockMvc.perform(post("/customer/add")
+				.contentType(MediaType.TEXT_PLAIN)
+				.content("customerId:123, name:\"Joe\","
+					+ " lastName:\"Smith\", customerAddressId:123,"
+					+ " phoneNumber:1234567890, email:\"joe@email.com\","
+					+ " insurance:\"Aetna\", membership:MembershipStatus.ACTIVE"
+					.getBytes())
+			)
+			.andExpect(status().isCreated())
+			.andExpect(view().name("redirect:/customers"));
 		
-		this.mockMvc.perform(get("/customer/1")
-				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType("application/json"))
-				.andExpect(jsonPath("$.customerId").value(1));
+		verify(mockCustomerService).addCustomer(new Customer(123, "Joe", 
+				"Smith", 123, 1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));
     }
 }

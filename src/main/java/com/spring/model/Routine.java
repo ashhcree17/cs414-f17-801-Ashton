@@ -32,6 +32,16 @@ public class Routine {
 	@ManyToMany(mappedBy="assignedRoutines")
 	private Set<Customer> customers;
 	
+	public Routine() {}
+			
+	public Routine(Integer routineId, String name, Set<Exercise> exercises, Set<Customer> customers) {
+		super();
+		this.routineId = routineId;
+		this.name = name;
+		this.exercises = exercises;
+		this.customers = customers;
+	}
+	
 	/* Start of getters & setters */
 	public Integer getRoutineId() {
 		return routineId;

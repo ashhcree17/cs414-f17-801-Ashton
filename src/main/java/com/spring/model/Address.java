@@ -29,6 +29,18 @@ public class Address {
 	@Column(name="zipCode")
 	private Integer zipCode;
 	
+	public Address() {}
+	
+	public Address(Integer addressId, String street1, String street2, 
+			String city, String state, Integer zipCode) {
+		this.addressId = addressId;
+		this.street1 = street1;
+		this.street2 = street2;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
+	}
+	
 	/* Start of getters & setters */	
 	public Integer getAddressId() {
 		return addressId;

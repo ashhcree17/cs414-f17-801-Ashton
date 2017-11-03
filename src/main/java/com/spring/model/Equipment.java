@@ -29,6 +29,17 @@ public class Equipment {
 	@ManyToMany(mappedBy="equipment")
 	private Set<Exercise> exercises;
 	
+	public Equipment() {}
+
+	public Equipment(Integer equipmentId, String name, 
+			Integer quantity, Set<Exercise> exercises) {
+		this.equipmentId = equipmentId;
+		this.name = name;
+		this.quantity = quantity;
+		this.exercises = exercises;
+	}
+	
+
 	/* Start of getters & setters */
 	public Integer getEquipmentId() {
 		return equipmentId;

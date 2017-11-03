@@ -31,6 +31,18 @@ public class WorkSchedule {
     @JoinColumn(name="customerId", nullable=false)
 	private Trainer trainer;
 	
+	public WorkSchedule() {}
+	
+	public WorkSchedule(Integer workScheduleId, DayOfWeek day, LocalTime startTime,
+			LocalTime endTime, Trainer trainer) {
+		super();
+		this.workScheduleId = workScheduleId;
+		this.day = day;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.trainer = trainer;
+	}
+	
 	/* Start of getters & setters */
 	public Integer getWorkScheduleId() {
 		return workScheduleId;

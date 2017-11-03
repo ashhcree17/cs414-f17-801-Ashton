@@ -1,14 +1,18 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -16,7 +20,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.View;
 
 import com.spring.controller.WorkScheduleController;
@@ -44,40 +47,41 @@ public class WorkScheduleControllerTest {
 	}
 	
 	@Test
-	public void testListWorkScheduleInGroup() {
+	public void testListWorkSchedule() throws Exception {
 		List<WorkSchedule> expectedWorkSchedules = Arrays.asList(new WorkSchedule());
         when(mockWorkScheduleService.listWorkSchedules()).thenReturn(expectedWorkSchedules);
-
-        Model model = (Model) new WorkSchedule();
-        model.addAttribute("listWorkSchedules", mockWorkScheduleService.listWorkSchedules());
-        String viewName = controller.listWorkSchedules(model);
-
-        Assert.assertEquals("workSchedules", viewName);
-        Assert.assertTrue(model.containsAttribute("listWorkSchedules"));
+        
+        mockMvc.perform(get("/workSchedules"))
+        		.andExpect(status().isOk())
+        		.andExpect(model().attribute("listWorkSchedules", expectedWorkSchedules))
+        		.andExpect(view().name("workSchedule"));
     }
 	
 	@Test
 	public void testGetWorkSchedule() throws Exception {
-		this.mockMvc.perform(get("/workSchedule/1")
-				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType("application/json"))
-				.andExpect(jsonPath("$.workScheduleId").value(1));
+		WorkSchedule expectedWorkSchedule = new WorkSchedule();
+        when(mockWorkScheduleService.getWorkSchedule(expectedWorkSchedule.getWorkScheduleId()))
+        		.thenReturn(expectedWorkSchedule);
+        
+        mockMvc.perform(get("/workSchedule" + expectedWorkSchedule.getWorkScheduleId()))
+        		.andExpect(status().isOk())
+        		.andExpect(model().attribute("workSchedule", expectedWorkSchedule))
+        		.andExpect(view().name("workSchedule"));
     }
 	
 	@Test
 	public void testAddWorkSchedule() throws Exception {
-		WorkSchedule workSchedule = new WorkSchedule();
-		workSchedule.setWorkScheduleId(1);
-		mockWorkScheduleService.addWorkSchedule(workSchedule);
-
-        Model model = (Model) new WorkSchedule();
-        model.addAttribute("listWorkSchedules", mockWorkScheduleService.listWorkSchedules());
+		mockMvc.perform(post("/workSchedule/add")
+				.contentType(MediaType.TEXT_PLAIN)
+				.content("workScheduleId:123, day:DayOfWeek.MONDAY,"
+					+ " startTime:LocalTime.of(4, 30), endTime:LocalTime.of(10, 30),"
+					+ " trainer:null "
+					.getBytes())
+			)
+			.andExpect(status().isCreated())
+			.andExpect(view().name("redirect:/workSchedules"));
 		
-		this.mockMvc.perform(get("/workSchedule/1")
-				.accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType("application/json"))
-				.andExpect(jsonPath("$.workScheduleId").value(1));
+		verify(mockWorkScheduleService).addWorkSchedule(new WorkSchedule(123, DayOfWeek.MONDAY, 
+				LocalTime.of(4, 30), LocalTime.of(10, 30), null));
     }
 }

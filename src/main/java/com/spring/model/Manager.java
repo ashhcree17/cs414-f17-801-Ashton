@@ -40,6 +40,23 @@ public class Manager extends User {
 	@Column(name="insurance")
 	private String insurance;
 
+	public Manager() {}
+
+	public Manager(Integer managerId, String username, String password, String name, String lastName,
+			Integer managerAddressId, Integer phoneNumber, String email, String insurance) {
+		super();
+		this.managerId = managerId;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.lastName = lastName;
+		this.managerAddressId = managerAddressId;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.insurance = insurance;
+	}
+	
+	/* Start of getters & setters */
 	public Integer getManagerId() {
 		return managerId;
 	}
@@ -95,6 +112,8 @@ public class Manager extends User {
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
 	}
+	/* End of getters & setters */
+
 	@Override
 	public <T> void create(T type) {
 		// TODO Auto-generated method stub

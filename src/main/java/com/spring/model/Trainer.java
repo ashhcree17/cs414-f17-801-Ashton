@@ -57,6 +57,25 @@ public class Trainer extends User {
 	         inverseJoinColumns = { @JoinColumn(name = "qualId") })
 	private Set<Qualification> qualifications;
 	
+	public Trainer() {}
+	
+	public Trainer(Integer trainerId, String username, String password, String name, String lastName,
+			Integer trainerAddressId, Integer phoneNumber, String email, String insurance,
+			Set<WorkSchedule> workSchedule, Set<Qualification> qualifications) {
+		super();
+		this.trainerId = trainerId;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.lastName = lastName;
+		this.trainerAddressId = trainerAddressId;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.insurance = insurance;
+		this.workSchedule = workSchedule;
+		this.qualifications = qualifications;
+	}
+	
 	/* Start of getters & setters */
 	public Integer getTrainerId() {
 		return trainerId;
