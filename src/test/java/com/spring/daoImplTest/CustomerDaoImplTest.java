@@ -15,7 +15,7 @@ import com.spring.dao.CustomerDao;
 import com.spring.model.Customer;
 import com.spring.model.MembershipStatus;
 
-@ContextConfiguration(locations = "classpath:servlet-context-test.xml")
+@ContextConfiguration(locations = "classpath:com/spring/servlet-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class CustomerDaoImplTest {
      

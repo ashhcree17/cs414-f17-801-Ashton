@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry excluding="static/|static/" kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/resources"/>
-	<classpathentry kind="src" path="src/main/webapp"/>
+	<classpathentry excluding="WEB-INF/spring/appServlet/|WEB-INF/spring/appServlet/" kind="src" path="src/main/webapp"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-boot-starter-security-1.5.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/spring-boot-starter-thymeleaf-1.5.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Users/ashtoncreel/Downloads/persistence-api-1.0.2.jar"/>

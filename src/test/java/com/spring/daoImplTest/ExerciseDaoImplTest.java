@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.dao.ExerciseDao;
 import com.spring.model.Exercise;
 
-@ContextConfiguration(locations = "classpath:servlet-context-test.xml")
+@ContextConfiguration(locations = "classpath:com/spring/servlet-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ExerciseDaoImplTest {
      

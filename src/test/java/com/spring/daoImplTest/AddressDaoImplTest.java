@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.dao.AddressDao;
 import com.spring.model.Address;
 
-@ContextConfiguration(locations = "classpath:servlet-context-test.xml")
+@ContextConfiguration(locations = "classpath:com/spring/servlet-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AddressDaoImplTest {
      
