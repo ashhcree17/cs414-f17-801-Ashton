@@ -5,8 +5,8 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -18,6 +18,15 @@ import com.spring.model.Equipment;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class EquipmentTest {
+	
+	@Autowired
+    private Equipment equipment;
+    
+    @Test
+    public void verifyBeansConfigured() {
+    		Assert.assertNotNull(equipment); 
+    }
+    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Equipment.class, Entity.class, Table.class);

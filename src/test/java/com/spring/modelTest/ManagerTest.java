@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,14 @@ import com.spring.model.Manager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ManagerTest {
+	
+	@Autowired
+    private Manager manager;
+    
+    @Test
+    public void verifyBeansConfigured() {
+    		Assert.assertNotNull(manager); 
+    }
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Manager.class, Entity.class, Table.class);

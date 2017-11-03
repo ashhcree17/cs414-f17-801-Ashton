@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+    <bean id="address" class="com.spring.modelTest.Address"/>
+    <bean id="customer" class="com.spring.modelTest.Customer"/>
+    <bean id="equipment" class="com.spring.modelTest.Equipment"/>
+    <bean id="exercise" class="com.spring.modelTest.Exercise"/>
+    <bean id="manager" class="com.spring.modelTest.Manager"/>
+    <bean id="qualification" class="com.spring.modelTest.Qualification"/>
+    <bean id="routine" class="com.spring.modelTest.Routine"/>
+    <bean id="trainer" class="com.spring.modelTest.Trainer"/>
+    <bean id="workSchedule" class="com.spring.modelTest.WorkSchedule"/>
+
+</beans>

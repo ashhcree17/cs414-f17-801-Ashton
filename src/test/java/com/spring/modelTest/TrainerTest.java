@@ -5,8 +5,8 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -21,6 +21,15 @@ import com.spring.model.Trainer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TrainerTest {
+	
+	@Autowired
+    private Trainer trainer;
+    
+    @Test
+    public void verifyBeansConfigured() {
+    		Assert.assertNotNull(trainer); 
+    }
+    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Trainer.class, Entity.class, Table.class);

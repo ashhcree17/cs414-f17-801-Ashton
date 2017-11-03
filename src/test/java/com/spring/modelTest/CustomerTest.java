@@ -5,20 +5,28 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
-//import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 
 import com.spring.model.Customer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class CustomerTest {
+	
+	@Autowired
+    private Customer customer;
+    
+    @Test
+    public void verifyBeansConfigured() {
+    		Assert.assertNotNull(customer); 
+    }
+    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Customer.class, Entity.class, Table.class);

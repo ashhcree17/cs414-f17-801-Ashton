@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,15 @@ import com.spring.model.WorkSchedule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class WorkScheduleTest {
+	
+	@Autowired
+    private WorkSchedule workSchedule;
+    
+    @Test
+    public void verifyBeansConfigured() {
+    		Assert.assertNotNull(workSchedule); 
+    }
+    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(WorkSchedule.class, Entity.class, Table.class);

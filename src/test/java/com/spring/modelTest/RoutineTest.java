@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +18,17 @@ import javax.persistence.ManyToMany;
 import com.spring.model.Routine;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
 public class RoutineTest {
+	
+	@Autowired
+    private Routine routine;
+    
+    @Test
+    public void verifyBeansConfigured() {
+    		Assert.assertNotNull(routine); 
+    }
+	
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Routine.class, Entity.class, Table.class);

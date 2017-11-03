@@ -5,8 +5,9 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,15 @@ import com.spring.model.Exercise;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ExerciseTest {
+	
+	@Autowired
+    private Exercise exercise;
+    
+    @Test
+    public void verifyBeansConfigured() {
+    		Assert.assertNotNull(exercise); 
+    }
+    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Exercise.class, Entity.class, Table.class);
