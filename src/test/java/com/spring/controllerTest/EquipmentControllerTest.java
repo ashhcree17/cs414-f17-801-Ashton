@@ -38,14 +38,14 @@ public class EquipmentControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		mockMvc = standaloneSetup(controller)
-                .setSingleView(mockView)
-                .build();
+		mockMvc = standaloneSetup(controller).setSingleView(mockView)
+                								.build();
 	}
 	
 	@Test
 	public void testListEquipment() throws Exception {
-		List<Equipment> expectedInventory = Arrays.asList(new Equipment());
+		List<Equipment> expectedInventory = Arrays.asList(new Equipment(001, "Equip1", 
+				3, null));
         when(mockEquipmentService.listInventory()).thenReturn(expectedInventory);
         
         mockMvc.perform(get("/inventory"))
@@ -56,7 +56,8 @@ public class EquipmentControllerTest {
 	
 	@Test
 	public void testGetEquipment() throws Exception {
-		Equipment expectedEquipment = new Equipment();
+		Equipment expectedEquipment = new Equipment(002, "Equip2", 
+				3, null);
         when(mockEquipmentService.getEquipment(expectedEquipment.getEquipmentId()))
         		.thenReturn(expectedEquipment);
         
@@ -70,14 +71,14 @@ public class EquipmentControllerTest {
 	public void testAddEquipment() throws Exception {
 		mockMvc.perform(post("/equipment/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("equipmentId:123, name:\"Equip1\","
+				.content("equipmentId:003, name:\"Equip3\","
 					+ " quantity:3, exercises:null"
 					.getBytes())
 			)
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/inventory"));
 		
-		verify(mockEquipmentService).addEquipment(new Equipment(123, "Equip1", 
+		verify(mockEquipmentService).addEquipment(new Equipment(003, "Equip3", 
 				3, null));
     }
 }

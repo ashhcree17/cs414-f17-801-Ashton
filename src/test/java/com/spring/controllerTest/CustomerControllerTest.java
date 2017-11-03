@@ -45,7 +45,8 @@ public class CustomerControllerTest {
 	
 	@Test
 	public void testListCustomer() throws Exception {
-		List<Customer> expectedCustomers = Arrays.asList(new Customer());
+		List<Customer> expectedCustomers = Arrays.asList(new Customer(001, "Joe", "Smith", 001, 
+				1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));
         when(mockCustomerService.listCustomers()).thenReturn(expectedCustomers);
         
         mockMvc.perform(get("/customers"))
@@ -56,7 +57,8 @@ public class CustomerControllerTest {
 	
 	@Test
 	public void testGetCustomer() throws Exception {
-		Customer expectedCustomer = new Customer();
+		Customer expectedCustomer = new Customer(002, "Joe", "Smith", 002, 
+				1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE);
         when(mockCustomerService.getCustomer(expectedCustomer.getCustomerId()))
         		.thenReturn(expectedCustomer);
         
@@ -70,8 +72,8 @@ public class CustomerControllerTest {
 	public void testAddCustomer() throws Exception {
 		mockMvc.perform(post("/customer/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("customerId:123, name:\"Joe\","
-					+ " lastName:\"Smith\", customerAddressId:123,"
+				.content("customerId:003, name:\"Joe\","
+					+ " lastName:\"Smith\", customerAddressId:003,"
 					+ " phoneNumber:1234567890, email:\"joe@email.com\","
 					+ " insurance:\"Aetna\", membership:MembershipStatus.ACTIVE"
 					.getBytes())
@@ -79,7 +81,7 @@ public class CustomerControllerTest {
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/customers"));
 		
-		verify(mockCustomerService).addCustomer(new Customer(123, "Joe", 
-				"Smith", 123, 1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));
+		verify(mockCustomerService).addCustomer(new Customer(003, "Joe", 
+				"Smith", 003, 1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));
     }
 }

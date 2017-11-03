@@ -45,7 +45,8 @@ public class RoutineControllerTest {
 	
 	@Test
 	public void testListRoutine() throws Exception {
-		List<Routine> expectedRoutines = Arrays.asList(new Routine());
+		List<Routine> expectedRoutines = Arrays.asList(new Routine(001, "Routine1", 
+				null, null));
         when(mockRoutineService.listRoutines()).thenReturn(expectedRoutines);
         
         mockMvc.perform(get("/routines"))
@@ -56,7 +57,8 @@ public class RoutineControllerTest {
 	
 	@Test
 	public void testGetRoutine() throws Exception {
-		Routine expectedRoutine = new Routine();
+		Routine expectedRoutine = new Routine(002, "Routine2", 
+				null, null);
         when(mockRoutineService.getRoutine(expectedRoutine.getRoutineId()))
         		.thenReturn(expectedRoutine);
         
@@ -70,14 +72,14 @@ public class RoutineControllerTest {
 	public void testAddRoutine() throws Exception {
 		mockMvc.perform(post("/routine/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("routineId:123, name:\"Routine1\","
+				.content("routineId:003, name:\"Routine3\","
 					+ " exercises:null, customers:null "
 					.getBytes())
 			)
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/routines"));
 		
-		verify(mockRoutineService).addRoutine(new Routine(123, "Routine1", 
+		verify(mockRoutineService).addRoutine(new Routine(003, "Routine3", 
 				null, null));
     }
 }

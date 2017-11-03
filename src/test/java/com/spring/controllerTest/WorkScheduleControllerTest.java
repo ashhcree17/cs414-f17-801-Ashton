@@ -48,7 +48,8 @@ public class WorkScheduleControllerTest {
 	
 	@Test
 	public void testListWorkSchedule() throws Exception {
-		List<WorkSchedule> expectedWorkSchedules = Arrays.asList(new WorkSchedule());
+		List<WorkSchedule> expectedWorkSchedules = Arrays.asList(new WorkSchedule(001, DayOfWeek.MONDAY, 
+				LocalTime.of(4, 30), LocalTime.of(10, 30), null));
         when(mockWorkScheduleService.listWorkSchedules()).thenReturn(expectedWorkSchedules);
         
         mockMvc.perform(get("/workSchedules"))
@@ -59,7 +60,8 @@ public class WorkScheduleControllerTest {
 	
 	@Test
 	public void testGetWorkSchedule() throws Exception {
-		WorkSchedule expectedWorkSchedule = new WorkSchedule();
+		WorkSchedule expectedWorkSchedule = new WorkSchedule(002, DayOfWeek.MONDAY, 
+				LocalTime.of(4, 30), LocalTime.of(10, 30), null);
         when(mockWorkScheduleService.getWorkSchedule(expectedWorkSchedule.getWorkScheduleId()))
         		.thenReturn(expectedWorkSchedule);
         
@@ -73,7 +75,7 @@ public class WorkScheduleControllerTest {
 	public void testAddWorkSchedule() throws Exception {
 		mockMvc.perform(post("/workSchedule/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("workScheduleId:123, day:DayOfWeek.MONDAY,"
+				.content("workScheduleId:003, day:DayOfWeek.MONDAY,"
 					+ " startTime:LocalTime.of(4, 30), endTime:LocalTime.of(10, 30),"
 					+ " trainer:null "
 					.getBytes())
@@ -81,7 +83,7 @@ public class WorkScheduleControllerTest {
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/workSchedules"));
 		
-		verify(mockWorkScheduleService).addWorkSchedule(new WorkSchedule(123, DayOfWeek.MONDAY, 
+		verify(mockWorkScheduleService).addWorkSchedule(new WorkSchedule(003, DayOfWeek.MONDAY, 
 				LocalTime.of(4, 30), LocalTime.of(10, 30), null));
     }
 }

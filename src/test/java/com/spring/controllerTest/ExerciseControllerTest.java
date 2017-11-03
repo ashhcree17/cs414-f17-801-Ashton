@@ -46,7 +46,8 @@ public class ExerciseControllerTest {
 	
 	@Test
 	public void testListExercise() throws Exception {
-		List<Exercise> expectedExercises = Arrays.asList(new Exercise());
+		List<Exercise> expectedExercises = Arrays.asList(new Exercise(001, "Exercise1", 
+				Duration.ofSeconds(120), 3, 12, null, null));
         when(mockExerciseService.listExercises()).thenReturn(expectedExercises);
         
         mockMvc.perform(get("/exercises"))
@@ -57,7 +58,8 @@ public class ExerciseControllerTest {
 	
 	@Test
 	public void testGetExercise() throws Exception {
-		Exercise expectedExercise = new Exercise();
+		Exercise expectedExercise = new Exercise(002, "Exercise2", 
+				Duration.ofSeconds(120), 3, 12, null, null);
         when(mockExerciseService.getExercise(expectedExercise.getExerciseId()))
         		.thenReturn(expectedExercise);
         
@@ -71,7 +73,7 @@ public class ExerciseControllerTest {
 	public void testAddExercise() throws Exception {
 		mockMvc.perform(post("/exercise/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("exerciseId:123, name:\"Exercise1\","
+				.content("exerciseId:003, name:\"Exercise3\","
 					+ " duration:Duration.ofSeconds(120), numberOfSets:3,"
 					+ " repsPerSet:12, routines:null,"
 					+ " equipment:null "
@@ -80,7 +82,7 @@ public class ExerciseControllerTest {
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/exercises"));
 		
-		verify(mockExerciseService).addExercise(new Exercise(123, "Exercise1", 
+		verify(mockExerciseService).addExercise(new Exercise(003, "Exercise3", 
 				Duration.ofSeconds(120), 3, 12, null, null));
     }
 }

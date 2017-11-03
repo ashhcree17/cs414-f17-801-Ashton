@@ -45,7 +45,8 @@ public class QualificationControllerTest {
 	
 	@Test
 	public void testListQualification() throws Exception {
-		List<Qualification> expectedQualifications = Arrays.asList(new Qualification());
+		List<Qualification> expectedQualifications = Arrays.asList(new 
+				Qualification(001, "Qual1", null));
         when(mockQualificationService.listQualifications()).thenReturn(expectedQualifications);
         
         mockMvc.perform(get("/qualifications"))
@@ -56,9 +57,10 @@ public class QualificationControllerTest {
 	
 	@Test
 	public void testGetQualification() throws Exception {
-		Qualification expectedQualification = new Qualification();
-        when(mockQualificationService.getQualification(expectedQualification.getQualId()))
-        		.thenReturn(expectedQualification);
+		Qualification expectedQualification = new Qualification(002, "Qual2", null);
+        when(mockQualificationService.getQualification(
+    				expectedQualification.getQualId()))
+        .thenReturn(expectedQualification);
         
         mockMvc.perform(get("/qualification" + expectedQualification.getQualId()))
         		.andExpect(status().isOk())
@@ -70,13 +72,13 @@ public class QualificationControllerTest {
 	public void testAddQualification() throws Exception {
 		mockMvc.perform(post("/qualification/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("qualId:123, name:\"Qual1\", trainers:null "
+				.content("qualId:003, name:\"Qual3\", trainers:null "
 					.getBytes())
 			)
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/qualifications"));
 		
 		verify(mockQualificationService).addQualification(new 
-				Qualification(123, "Qual1", null));
+				Qualification(003, "Qual1", null));
     }
 }

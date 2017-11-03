@@ -38,14 +38,15 @@ public class ManagerControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		mockMvc = standaloneSetup(controller)
-                .setSingleView(mockView)
-                .build();
+		mockMvc = standaloneSetup(controller).setSingleView(mockView)
+                								.build();
 	}
 	
 	@Test
 	public void testListManagers() throws Exception {
-		List<Manager> expectedManagers = Arrays.asList(new Manager());
+		List<Manager> expectedManagers = Arrays.asList(new Manager(001, "joe.smith", 
+				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
+				"Aetna"));
         when(mockManagerService.listManagers()).thenReturn(expectedManagers);
         
         mockMvc.perform(get("/managers"))
@@ -56,7 +57,9 @@ public class ManagerControllerTest {
 	
 	@Test
 	public void testGetManager() throws Exception {
-		Manager expectedManager = new Manager();
+		Manager expectedManager = new Manager(002, "joe.smith", 
+				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
+				"Aetna");
         when(mockManagerService.getManager(expectedManager.getManagerId()))
         		.thenReturn(expectedManager);
         
@@ -70,7 +73,7 @@ public class ManagerControllerTest {
 	public void testAddManager() throws Exception {
 		mockMvc.perform(post("/manager/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("managerId:123, username:\"joe.smith\", password:\"cats12yoyo\","
+				.content("managerId:003, username:\"joe.smith\", password:\"cats12yoyo\","
 					+ " name:\"Joe\", lastName:\"Smith\", managerAddressId:123,"
 					+ " phoneNumber:1234567890, email:\"joe@email.com\","
 					+ " insurance:\"Aetna\" "
@@ -79,7 +82,7 @@ public class ManagerControllerTest {
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/managers"));
 		
-		verify(mockManagerService).addManager(new Manager(123, "joe.smith", 
+		verify(mockManagerService).addManager(new Manager(003, "joe.smith", 
 				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
 				"Aetna"));
     }

@@ -34,14 +34,14 @@ public class AddressControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		mockMvc = standaloneSetup(controller)
-                .setSingleView(mockView)
-                .build();
+		mockMvc = standaloneSetup(controller).setSingleView(mockView)
+                								.build();
 	}
 	
 	@Test
 	public void testListAddress() throws Exception {
-		List<Address> expectedAddresses = Arrays.asList(new Address());
+		List<Address> expectedAddresses = Arrays.asList(new Address(001, "246 Main St", 
+				"Apt 1", "Denver", "CO", 54321));
         when(mockAddressService.listAddresses()).thenReturn(expectedAddresses);
 
         mockMvc.perform(get("/addresses"))
@@ -52,7 +52,8 @@ public class AddressControllerTest {
 	
 	@Test
 	public void testGetAddress() throws Exception {
-		Address expectedAddress = new Address();
+		Address expectedAddress = new Address(002, "357 Main St", 
+				"Apt 1", "Denver", "CO", 24680);
         when(mockAddressService.getAddress(expectedAddress.getAddressId()))
         		.thenReturn(expectedAddress);
         
@@ -66,14 +67,14 @@ public class AddressControllerTest {
 	public void testAddAddress() throws Exception {
 		mockMvc.perform(post("/address/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("addressId:123, street1:\"123 Main St\","
+				.content("addressId:003, street1:\"123 Main St\","
 						+ " street2:\"Apt 1\", city:\"Denver\","
 						+ " state:\"CO\", zipCode:12345".getBytes())
 			)
 			.andExpect(status().isCreated())
 			.andExpect(view().name("redirect:/addresses"));
 		
-		verify(mockAddressService).addAddress(new Address(123, "123 Main St", 
+		verify(mockAddressService).addAddress(new Address(003, "123 Main St", 
 				"Apt 1", "Denver", "CO", 12345));	
 	}
 }

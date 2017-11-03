@@ -45,7 +45,9 @@ public class TrainerControllerTest {
 	
 	@Test
 	public void testListTrainer() throws Exception {
-		List<Trainer> expectedTrainers = Arrays.asList(new Trainer());
+		List<Trainer> expectedTrainers = Arrays.asList(new Trainer(001, "joe.smith1", 
+				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
+				"Aetna", null, null));
         when(mockTrainerService.listTrainers()).thenReturn(expectedTrainers);
         
         mockMvc.perform(get("/customers"))
@@ -56,7 +58,9 @@ public class TrainerControllerTest {
 	
 	@Test
 	public void testGetTrainer() throws Exception {
-		Trainer expectedTrainer = new Trainer();
+		Trainer expectedTrainer = new Trainer(002, "joe.smith2", 
+				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
+				"Aetna", null, null);
         when(mockTrainerService.getTrainer(expectedTrainer.getTrainerId()))
         		.thenReturn(expectedTrainer);
         
@@ -70,7 +74,7 @@ public class TrainerControllerTest {
 	public void testAddTrainer() throws Exception {
 		mockMvc.perform(post("/customer/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("trainerId:123, username:\"joe.smith\", password:\"cats12yoyo\"," 
+				.content("trainerId:003, username:\"joe.smith3\", password:\"cats12yoyo\"," 
 						+ " name:\"Joe\", lastName:\"Smith\", trainerAddressId:123,"
 						+ " phoneNumber:1234567890, email:\"joe@email.com\","
 						+ " insurance:\"Aetna\", workSchedule:null, qualifications:null "
@@ -82,7 +86,7 @@ public class TrainerControllerTest {
 //		verify(mockTrainerService).addTrainer(new Trainer(123, "Joe", 
 //				"Smith", 123, 1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));
 		
-		verify(mockTrainerService).addTrainer(new Trainer(123, "joe.smith", 
+		verify(mockTrainerService).addTrainer(new Trainer(003, "joe.smith3", 
 				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
 				"Aetna", null, null));
     }
