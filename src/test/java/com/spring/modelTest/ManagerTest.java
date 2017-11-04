@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,13 +12,6 @@ import com.spring.model.Manager;
 
 public class ManagerTest {
 	
-	@Autowired
-    private Manager manager;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(manager); 
-    }
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Manager.class, Entity.class, Table.class);
@@ -27,8 +19,8 @@ public class ManagerTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(Manager.class, "managerId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(Manager.class, "managerId", Column.class,
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(Manager.class, "username", Column.class);
 		AssertAnnotations.assertField(Manager.class, "password", Column.class);
 		AssertAnnotations.assertField(Manager.class, "name", Column.class);

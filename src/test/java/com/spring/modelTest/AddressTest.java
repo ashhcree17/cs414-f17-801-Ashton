@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,14 +12,6 @@ import com.spring.model.Address;
 
 public class AddressTest {
 	
-	@Autowired
-    private Address address;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(address); 
-    }
-    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Address.class, Entity.class, Table.class);
@@ -28,8 +19,8 @@ public class AddressTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(Address.class, "addressId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(Address.class, "addressId", Column.class,
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(Address.class, "street1", Column.class);
 		AssertAnnotations.assertField(Address.class, "street2", Column.class);
 		AssertAnnotations.assertField(Address.class, "city", Column.class);
@@ -62,7 +53,7 @@ public class AddressTest {
 	@Test
 	public void id() {
 		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Address.class, 
-				"getId", GeneratedValue.class);
+				"getAddressId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	

@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,14 +14,6 @@ import com.spring.model.WorkSchedule;
 
 public class WorkScheduleTest {
 	
-	@Autowired
-    private WorkSchedule workSchedule;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(workSchedule); 
-    }
-    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(WorkSchedule.class, Entity.class, Table.class);
@@ -30,13 +21,13 @@ public class WorkScheduleTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(WorkSchedule.class, "workScheduleId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(WorkSchedule.class, "workScheduleId", Column.class, 
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(WorkSchedule.class, "day", Column.class);
 		AssertAnnotations.assertField(WorkSchedule.class, "startTime", Column.class);
 		AssertAnnotations.assertField(WorkSchedule.class, "endTime", Column.class);
-		AssertAnnotations.assertField(WorkSchedule.class, "trainer", Column.class,
-				ManyToOne.class, JoinColumn.class);
+		AssertAnnotations.assertField(WorkSchedule.class, "trainer", ManyToOne.class,
+				JoinColumn.class);
 	}
 	
 	@Test

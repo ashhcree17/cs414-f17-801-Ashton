@@ -4,25 +4,15 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.spring.model.Customer;
 import com.spring.model.Qualification;
 
 public class QualificationTest {
-	
-	@Autowired
-    private Qualification qualification;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(qualification); 
-    }
     
 	@Test
 	public void typeAnnotations() {
@@ -31,11 +21,10 @@ public class QualificationTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(Qualification.class, "qualId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(Qualification.class, "qualId", Column.class,
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(Qualification.class, "name", Column.class);
-		AssertAnnotations.assertField(Qualification.class, "trainers", Column.class,
-				ManyToMany.class);
+		AssertAnnotations.assertField(Qualification.class, "trainers", ManyToMany.class);
 	}
 	
 	@Test
@@ -73,7 +62,7 @@ public class QualificationTest {
 	
 	@Test
 	public void trainers() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Customer.class, 
+		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Qualification.class, 
 				"getTrainers", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}

@@ -38,7 +38,6 @@ public class Equipment {
 		this.quantity = quantity;
 		this.exercises = exercises;
 	}
-	
 
 	/* Start of getters & setters */
 	public Integer getEquipmentId() {

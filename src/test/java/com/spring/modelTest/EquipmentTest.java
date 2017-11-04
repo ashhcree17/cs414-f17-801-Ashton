@@ -4,25 +4,15 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.spring.model.Customer;
 import com.spring.model.Equipment;
 
 public class EquipmentTest {
-	
-	@Autowired
-    private Equipment equipment;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(equipment); 
-    }
     
 	@Test
 	public void typeAnnotations() {
@@ -31,13 +21,12 @@ public class EquipmentTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(Equipment.class, "equipmentId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(Equipment.class, "equipmentId", Column.class,
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(Equipment.class, "name", Column.class);
 //		AssertAnnotations.assertField(Equipment.class, "picture", Column.class);
 		AssertAnnotations.assertField(Equipment.class, "quantity", Column.class);
-		AssertAnnotations.assertField(Equipment.class, "exercises", Column.class,
-				ManyToMany.class);
+		AssertAnnotations.assertField(Equipment.class, "exercises", ManyToMany.class);
 	}
 	
 	@Test
@@ -76,15 +65,8 @@ public class EquipmentTest {
 	}
 	
 	@Test
-	public void duration() {
-		Column column = ReflectTool.getMethodAnnotation(Equipment.class, 
-				"getDuration", Column.class);
-		Assert.assertEquals("duration", column.name());
-	}
-	
-	@Test
 	public void exercises() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Customer.class, 
+		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Equipment.class, 
 				"getExercises", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}

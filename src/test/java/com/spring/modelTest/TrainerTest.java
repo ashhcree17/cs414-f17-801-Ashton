@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -14,18 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.spring.model.Routine;
 import com.spring.model.Trainer;
 
 public class TrainerTest {
-	
-	@Autowired
-    private Trainer trainer;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(trainer); 
-    }
     
 	@Test
 	public void typeAnnotations() {
@@ -44,9 +34,9 @@ public class TrainerTest {
 		AssertAnnotations.assertField(Trainer.class, "phoneNumber", Column.class);
 		AssertAnnotations.assertField(Trainer.class, "email", Column.class);
 		AssertAnnotations.assertField(Trainer.class, "insurance", Column.class);
-		AssertAnnotations.assertField(Trainer.class, "workSchedule", Column.class,
-				OneToMany.class, ElementCollection.class);
-		AssertAnnotations.assertField(Trainer.class, "qualifications", Column.class,
+		AssertAnnotations.assertField(Trainer.class, "workSchedule", OneToMany.class, 
+				ElementCollection.class);
+		AssertAnnotations.assertField(Trainer.class, "qualifications", 
 				ManyToMany.class, JoinTable.class);
 	}
 	
@@ -92,15 +82,8 @@ public class TrainerTest {
 	}
 	
 	@Test
-	public void workSchedule() {
-		OneToMany oneToMany = ReflectTool.getMethodAnnotation(Routine.class, 
-				"getQualifications", OneToMany.class);
-		Assert.assertEquals(CascadeType.ALL, oneToMany.cascade());
-	}
-	
-	@Test
-	public void exercises() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Routine.class, 
+	public void qualifications() {
+		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Trainer.class, 
 				"getQualifications", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}

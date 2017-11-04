@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -12,18 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.spring.model.Customer;
 import com.spring.model.Exercise;
 
 public class ExerciseTest {
-	
-	@Autowired
-    private Exercise exercise;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(exercise); 
-    }
     
 	@Test
 	public void typeAnnotations() {
@@ -32,16 +22,15 @@ public class ExerciseTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(Exercise.class, "exerciseId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(Exercise.class, "exerciseId", Column.class,
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(Exercise.class, "name", Column.class);
 		AssertAnnotations.assertField(Exercise.class, "duration", Column.class);
 		AssertAnnotations.assertField(Exercise.class, "numberOfSets", Column.class);
 		AssertAnnotations.assertField(Exercise.class, "repsPerSet", Column.class);
-		AssertAnnotations.assertField(Exercise.class, "routines", Column.class, 
-				ManyToMany.class);
-		AssertAnnotations.assertField(Exercise.class, "equipment", Column.class,
-				ManyToMany.class, JoinTable.class);
+		AssertAnnotations.assertField(Exercise.class, "routines", ManyToMany.class);
+		AssertAnnotations.assertField(Exercise.class, "equipment", ManyToMany.class, 
+				JoinTable.class);
 	}
 	
 	@Test
@@ -90,7 +79,7 @@ public class ExerciseTest {
 	
 	@Test
 	public void equipment() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Customer.class, 
+		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Exercise.class, 
 				"getEquipment", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}

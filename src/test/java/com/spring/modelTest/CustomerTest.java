@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -16,14 +15,6 @@ import com.spring.model.Customer;
 
 public class CustomerTest {
 	
-	@Autowired
-    private Customer customer;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(customer); 
-    }
-    
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Customer.class, Entity.class, Table.class);
@@ -31,8 +22,8 @@ public class CustomerTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(Customer.class, "customerId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(Customer.class, "customerId", Column.class,
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(Customer.class, "name", Column.class);
 		AssertAnnotations.assertField(Customer.class, "lastName", Column.class);
 		AssertAnnotations.assertField(Customer.class, "customerAddressId",
@@ -42,7 +33,7 @@ public class CustomerTest {
 		AssertAnnotations.assertField(Customer.class, "insurance", Column.class);
 		AssertAnnotations.assertField(Customer.class, "membership", Column.class);
 		AssertAnnotations.assertField(Customer.class, "assignedRoutines", 
-				Column.class, ManyToMany.class, JoinTable.class);
+				ManyToMany.class, JoinTable.class);
 	}
 	
 	@Test
@@ -82,13 +73,6 @@ public class CustomerTest {
 		Column column = ReflectTool.getMethodAnnotation(Customer.class, 
 				"getLastName", Column.class);
 		Assert.assertEquals("lastName", column.name());
-	}
-	
-	@Test
-	public void zipCode() {
-		Column column = ReflectTool.getMethodAnnotation(Customer.class, 
-				"getZipCode", Column.class);
-		Assert.assertEquals("zipCode", column.name());
 	}
 	
 	@Test

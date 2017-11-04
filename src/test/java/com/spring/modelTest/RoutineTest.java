@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -16,14 +15,6 @@ import com.spring.model.Routine;
 
 public class RoutineTest {
 	
-	@Autowired
-    private Routine routine;
-    
-    @Test
-    public void verifyBeansConfigured() {
-    		Assert.assertNotNull(routine); 
-    }
-	
 	@Test
 	public void typeAnnotations() {
 		AssertAnnotations.assertType(Routine.class, Entity.class, Table.class);
@@ -31,13 +22,12 @@ public class RoutineTest {
 	
 	@Test
 	public void fieldAnnotations() {
-		AssertAnnotations.assertField(Routine.class, "routineId", Id.class, 
-				GeneratedValue.class);
+		AssertAnnotations.assertField(Routine.class, "routineId", Column.class,
+				Id.class, GeneratedValue.class);
 		AssertAnnotations.assertField(Routine.class, "name", Column.class);
-		AssertAnnotations.assertField(Routine.class, "exercises", Column.class,
-				ManyToMany.class, JoinTable.class);
-		AssertAnnotations.assertField(Routine.class, "customers", Column.class,
-				ManyToMany.class);
+		AssertAnnotations.assertField(Routine.class, "exercises", ManyToMany.class, 
+				JoinTable.class);
+		AssertAnnotations.assertField(Routine.class, "customers", ManyToMany.class);
 	}
 	
 	@Test
@@ -45,7 +35,7 @@ public class RoutineTest {
 		AssertAnnotations.assertMethod(Routine.class, "getRoutineId");
 		AssertAnnotations.assertMethod(Routine.class, "getName");
 		AssertAnnotations.assertMethod(Routine.class, "getExercises");
-		AssertAnnotations.assertMethod(Routine.class, "getRoutines");
+		AssertAnnotations.assertMethod(Routine.class, "getCustomers");
 	}
 	
 	@Test
