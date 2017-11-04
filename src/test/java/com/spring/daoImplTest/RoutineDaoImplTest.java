@@ -1,6 +1,5 @@
 package com.spring.daoImplTest;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,15 +40,8 @@ public class RoutineDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddRoutine() {
-		List<Routine> routines = routineDao.listRoutines();
-
 		routineDao.addRoutine(routine1);
-    Assert.assertEquals(1, routines.size());         
-		
-    routineDao.addRoutine(routine2);
-    Assert.assertEquals(2, routines.size());         
-	 
-    Assert.assertEquals(routine1.getName(), routines.get(0).getName());
+		Assert.assertNotNull(routineDao.getRoutine(routine1.getRoutineId()));
 }
     
     @Test

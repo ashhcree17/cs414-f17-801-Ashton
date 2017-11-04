@@ -33,15 +33,16 @@ public class AddressDaoImpl implements AddressDao {
 	
 	@Override
 	public Address getAddress(int addressId) {
-		return (Address) sessionFactory.getCurrentSession().get(Address.class, addressId);
+		return (Address) sessionFactory.getCurrentSession()
+				.get(Address.class, addressId);
 	}
 	
 	@Override
 	public void deleteAddress(int addressId) {
-//		sessionFactory.getCurrentSession().createQuery("DELETE FROM Address WHERE addressId = "+address.getAddressId());
-		Address eq = (Address) sessionFactory.getCurrentSession().load(Address.class, new Integer(addressId));
-		if (eq != null) {
-			sessionFactory.getCurrentSession().delete(eq);
+		Address address = (Address) sessionFactory
+				.getCurrentSession().load(Address.class, new Integer(addressId));
+		if (address != null) {
+			sessionFactory.getCurrentSession().delete(address);
 		}
 	}
 }

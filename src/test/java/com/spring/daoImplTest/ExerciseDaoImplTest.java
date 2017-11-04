@@ -1,7 +1,6 @@
 package com.spring.daoImplTest;
 
 import java.time.Duration;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,15 +43,8 @@ public class ExerciseDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddExercise() {
-		List<Exercise> exercises = exerciseDao.listExercises();
-
 		exerciseDao.addExercise(exercise1);
-    Assert.assertEquals(1, exercises.size());         
-		
-    exerciseDao.addExercise(exercise2);
-    Assert.assertEquals(2, exercises.size());         
-	 
-    Assert.assertEquals(exercise1.getName(), exercises.get(0).getName());
+		Assert.assertNotNull(exerciseDao.getExercise(exercise1.getExerciseId()));
 }
     
     @Test

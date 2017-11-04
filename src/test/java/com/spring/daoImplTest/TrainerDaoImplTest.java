@@ -1,6 +1,5 @@
 package com.spring.daoImplTest;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,15 +54,8 @@ public class TrainerDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddTrainer() {
-		List<Trainer> trainers = trainerDao.listTrainers();
-
 		trainerDao.addTrainer(trainer1);
-	    Assert.assertEquals(1, trainers.size());         
-			
-	    trainerDao.addTrainer(trainer2);
-	    Assert.assertEquals(2, trainers.size());         
-		 
-	    Assert.assertEquals(trainer1.getName(), trainers.get(0).getName());
+		Assert.assertNotNull(trainerDao.getTrainer(trainer1.getTrainerId()));
 	}
     
     @Test

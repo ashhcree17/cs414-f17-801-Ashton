@@ -2,7 +2,6 @@ package com.spring.daoImplTest;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,15 +42,9 @@ public class WorkScheduleDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddWorkSchedule() {
-		List<WorkSchedule> workSchedules = workScheduleDao.listWorkSchedules();
-
 		workScheduleDao.addWorkSchedule(workSchedule1);
-    Assert.assertEquals(1, workSchedules.size());         
-		
-    workScheduleDao.addWorkSchedule(workSchedule2);
-    Assert.assertEquals(2, workSchedules.size());         
-	 
-    Assert.assertEquals(workSchedule1.getDay(), workSchedules.get(0).getDay());
+		Assert.assertNotNull(workScheduleDao.getWorkSchedule(
+				workSchedule1.getWorkScheduleId()));
 }
     
     @Test

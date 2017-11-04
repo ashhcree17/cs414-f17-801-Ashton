@@ -1,6 +1,5 @@
 package com.spring.daoImplTest;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,15 +50,8 @@ public class ManagerDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddManager() {
-		List<Manager> managers = managerDao.listManagers();
-
 		managerDao.addManager(manager1);
-	    Assert.assertEquals(1, managers.size());         
-			
-	    managerDao.addManager(manager2);
-	    Assert.assertEquals(2, managers.size());         
-		 
-	    Assert.assertEquals(manager1.getName(), managers.get(0).getName());
+		Assert.assertNotNull(managerDao.getManager(manager1.getManagerId()));
 	}
     
     @Test

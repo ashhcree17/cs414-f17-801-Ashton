@@ -1,6 +1,5 @@
 package com.spring.daoImplTest;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,15 +44,8 @@ public class AddressDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddAddress() {
-    		List<Address> addresses = addressDao.listAddresses();
-
     		addressDao.addAddress(address1);
-        Assert.assertEquals(1, addresses.size());         
-    		
-        addressDao.addAddress(address2);
-        Assert.assertEquals(2, addresses.size());         
-		 
-        Assert.assertEquals(address1.getStreet1(), addresses.get(0).getStreet1());
+    		Assert.assertNotNull(addressDao.getAddress(address1.getAddressId()));
     }
     
     @Test

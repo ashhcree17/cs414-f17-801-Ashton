@@ -1,6 +1,5 @@
 package com.spring.daoImplTest;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,15 +38,8 @@ public class QualificationDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddQualification() {
-		List<Qualification> qualifications = qualificationDao.listQualifications();
-
 		qualificationDao.addQualification(qualification1);
-	    Assert.assertEquals(1, qualifications.size());         
-			
-	    qualificationDao.addQualification(qualification2);
-	    Assert.assertEquals(2, qualifications.size());         
-		 
-	    Assert.assertEquals(qualification1.getName(), qualifications.get(0).getName());
+		Assert.assertNotNull(qualificationDao.getQualification(qualification1.getQualId()));
 	}
     
     @Test

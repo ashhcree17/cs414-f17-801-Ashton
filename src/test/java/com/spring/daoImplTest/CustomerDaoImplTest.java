@@ -1,6 +1,5 @@
 package com.spring.daoImplTest;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,16 +49,9 @@ public class CustomerDaoImplTest {
     @Transactional
     @Rollback(true)
     public void testAddCustomer() {
-		List<Customer> customers = customerDao.listCustomers();
-
-		customerDao.addCustomer(customer1);
-    Assert.assertEquals(1, customers.size());         
-		
-    customerDao.addCustomer(customer2);
-    Assert.assertEquals(2, customers.size());         
-	 
-    Assert.assertEquals(customer1.getName(), customers.get(0).getName());
-}
+    		customerDao.addCustomer(customer1);
+    		Assert.assertNotNull(customerDao.getCustomer(customer1.getCustomerId()));
+    }
     
     @Test
     @Transactional
