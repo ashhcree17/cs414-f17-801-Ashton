@@ -52,22 +52,22 @@ public class AddressTest {
 	
 	@Test
 	public void id() {
-		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Address.class, 
-				"getAddressId", GeneratedValue.class);
-		Assert.assertEquals("", genValue.generator());
+		Id addressId = ReflectTool.getFieldAnnotation(Address.class, 
+				"addressId", Id.class);
+		Assert.assertEquals(Id.class, addressId.annotationType());
 	}
 	
 	@Test
 	public void city() {
-		Column column = ReflectTool.getMethodAnnotation(Address.class, 
-				"getCity", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Address.class, 
+				"city", Column.class);
 		Assert.assertEquals("city", column.name());
 	}
 	
 	@Test
 	public void zipCode() {
-		Column column = ReflectTool.getMethodAnnotation(Address.class, 
-				"getZipCode", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Address.class, 
+				"zipCode", Column.class);
 		Assert.assertEquals("zipCode", column.name());
 	}
 }

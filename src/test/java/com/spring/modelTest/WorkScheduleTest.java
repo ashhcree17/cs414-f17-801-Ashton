@@ -53,22 +53,22 @@ public class WorkScheduleTest {
 	
 	@Test
 	public void id() {
-		GeneratedValue genValue = ReflectTool.getMethodAnnotation(WorkSchedule.class, 
-				"getWorkScheduleId", GeneratedValue.class);
+		GeneratedValue genValue = ReflectTool.getFieldAnnotation(WorkSchedule.class, 
+				"workScheduleId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void day() {
-		Column column = ReflectTool.getMethodAnnotation(WorkSchedule.class, 
-				"getDay", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(WorkSchedule.class, 
+				"day", Column.class);
 		Assert.assertEquals("day", column.name());
 	}
 	
 	@Test
 	public void trainer() {
-		ManyToOne manyToOne = ReflectTool.getMethodAnnotation(WorkSchedule.class, 
-				"getTrainer", ManyToOne.class);
+		ManyToOne manyToOne = ReflectTool.getFieldAnnotation(WorkSchedule.class, 
+				"trainer", ManyToOne.class);
 		Assert.assertEquals("customerId", manyToOne.targetEntity());
 	}
 }

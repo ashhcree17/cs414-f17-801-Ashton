@@ -7,28 +7,28 @@ import java.lang.reflect.Method;
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
 public class ReflectTool {
-	public static <T extends Annotation> T getMethodAnnotation(Class<?> c, 
+	public static <T extends Annotation> T getMethodAnnotation(Class<?> cl, 
 		  String methodName, Class<T> annotation) {
 		try {
-			Method m = c.getDeclaredMethod(methodName);
-			return (T)m.getAnnotation(annotation);
+			Method method = cl.getDeclaredMethod(methodName);
+			return (T)method.getAnnotation(annotation);
 		} catch (NoSuchMethodException nsme) {
 			throw new RuntimeException(nsme);
 		}
 	}
 	
-	public static <T extends Annotation> T getFieldAnnotation(Class<?> c, 
+	public static <T extends Annotation> T getFieldAnnotation(Class<?> cl, 
 		String fieldName, Class<T> annotation) {
 		try {
-			Field f = c.getDeclaredField(fieldName);
-			return (T)f.getAnnotation(annotation);
+			Field field = cl.getDeclaredField(fieldName);
+			return (T)field.getAnnotation(annotation);
 		} catch (NoSuchFieldException nsfe) {
 			throw new RuntimeException(nsfe);
 		}
 	}
 	
-	public static <T extends Annotation> T getClassAnnotation(Class<?> c, 
+	public static <T extends Annotation> T getClassAnnotation(Class<?> cl, 
 		Class<T> annotation) {
-		return (T) c.getAnnotation(annotation);
+		return (T) cl.getAnnotation(annotation);
 	}
 }

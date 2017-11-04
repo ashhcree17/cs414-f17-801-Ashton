@@ -59,22 +59,22 @@ public class ManagerTest {
 	
 	@Test
 	public void id() {
-		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Manager.class, 
-				"getManagerId", GeneratedValue.class);
+		GeneratedValue genValue = ReflectTool.getFieldAnnotation(Manager.class, 
+				"managerId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void lastName() {
-		Column column = ReflectTool.getMethodAnnotation(Manager.class, 
-				"getLastName", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Manager.class, 
+				"lastName", Column.class);
 		Assert.assertEquals("lastName", column.name());
 	}
 	
 	@Test
 	public void phoneNumber() {
-		Column column = ReflectTool.getMethodAnnotation(Manager.class, 
-				"getPhoneNumber", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Manager.class, 
+				"phoneNumber", Column.class);
 		Assert.assertEquals("phoneNumber", column.name());
 	}
 }

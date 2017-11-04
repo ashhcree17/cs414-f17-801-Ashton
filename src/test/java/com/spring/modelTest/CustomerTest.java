@@ -64,21 +64,21 @@ public class CustomerTest {
 	@Test
 	public void id() {
 		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Customer.class, 
-				"getCustomerId", GeneratedValue.class);
+				"customerId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void lastName() {
 		Column column = ReflectTool.getMethodAnnotation(Customer.class, 
-				"getLastName", Column.class);
+				"lastName", Column.class);
 		Assert.assertEquals("lastName", column.name());
 	}
 	
 	@Test
 	public void assignedRoutines() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Customer.class, 
-				"getAssignedRoutines", ManyToMany.class);
+		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Customer.class, 
+				"assignedRoutines", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}
 }

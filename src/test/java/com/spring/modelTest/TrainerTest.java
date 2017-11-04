@@ -70,21 +70,21 @@ public class TrainerTest {
 	@Test
 	public void id() {
 		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Trainer.class, 
-				"getTrainerId", GeneratedValue.class);
+				"trainerId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void lastName() {
 		Column column = ReflectTool.getMethodAnnotation(Trainer.class, 
-				"getLastName", Column.class);
+				"lastName", Column.class);
 		Assert.assertEquals("lastName", column.name());
 	}
 	
 	@Test
 	public void qualifications() {
 		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Trainer.class, 
-				"getQualifications", ManyToMany.class);
+				"qualifications", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}
 }

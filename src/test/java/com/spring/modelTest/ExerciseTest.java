@@ -59,28 +59,28 @@ public class ExerciseTest {
 	@Test
 	public void id() {
 		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Exercise.class, 
-				"getExerciseId", GeneratedValue.class);
+				"exerciseId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void name() {
-		Column column = ReflectTool.getMethodAnnotation(Exercise.class, 
-				"getName", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Exercise.class, 
+				"name", Column.class);
 		Assert.assertEquals("name", column.name());
 	}
 	
 	@Test
 	public void duration() {
-		Column column = ReflectTool.getMethodAnnotation(Exercise.class, 
-				"getDuration", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Exercise.class, 
+				"duration", Column.class);
 		Assert.assertEquals("duration", column.name());
 	}
 	
 	@Test
 	public void equipment() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Exercise.class, 
-				"getEquipment", ManyToMany.class);
+		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Exercise.class, 
+				"equipment", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}
 }

@@ -48,22 +48,22 @@ public class QualificationTest {
 	
 	@Test
 	public void id() {
-		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Qualification.class, 
-				"getQualId", GeneratedValue.class);
+		GeneratedValue genValue = ReflectTool.getFieldAnnotation(Qualification.class, 
+				"qualId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void name() {
-		Column column = ReflectTool.getMethodAnnotation(Qualification.class, 
-				"getName", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Qualification.class, 
+				"name", Column.class);
 		Assert.assertEquals("name", column.name());
 	}
 	
 	@Test
 	public void trainers() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Qualification.class, 
-				"getTrainers", ManyToMany.class);
+		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Qualification.class, 
+				"trainers", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}
 }

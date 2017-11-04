@@ -52,22 +52,22 @@ public class RoutineTest {
 	
 	@Test
 	public void id() {
-		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Routine.class, 
-				"getRoutineId", GeneratedValue.class);
+		GeneratedValue genValue = ReflectTool.getFieldAnnotation(Routine.class, 
+				"routineId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void name() {
-		Column column = ReflectTool.getMethodAnnotation(Routine.class, 
-				"getName", Column.class);
+		Column column = ReflectTool.getFieldAnnotation(Routine.class, 
+				"name", Column.class);
 		Assert.assertEquals("name", column.name());
 	}
 	
 	@Test
 	public void exercises() {
-		ManyToMany manyToMany = ReflectTool.getMethodAnnotation(Routine.class, 
-				"getExercises", ManyToMany.class);
+		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Routine.class, 
+				"exercises", ManyToMany.class);
 		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
 	}
 }
