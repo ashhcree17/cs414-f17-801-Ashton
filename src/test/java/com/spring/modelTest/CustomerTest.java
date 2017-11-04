@@ -63,14 +63,14 @@ public class CustomerTest {
 	
 	@Test
 	public void id() {
-		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Customer.class, 
+		GeneratedValue genValue = ReflectTool.getFieldAnnotation(Customer.class, 
 				"customerId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
 	
 	@Test
 	public void lastName() {
-		Column column = ReflectTool.getMethodAnnotation(Customer.class, 
+		Column column = ReflectTool.getFieldAnnotation(Customer.class, 
 				"lastName", Column.class);
 		Assert.assertEquals("lastName", column.name());
 	}
