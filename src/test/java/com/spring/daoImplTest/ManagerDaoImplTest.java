@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.dao.ManagerDao;
 import com.spring.model.Manager;
 
-@ContextConfiguration(locations = "classpath:servlet-context-test.xml")
+@ContextConfiguration(locations = "classpath:servlet-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ManagerDaoImplTest {
      

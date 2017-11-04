@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.spring.model.Trainer;
 import com.spring.model.WorkSchedule;
 
 public class WorkScheduleTest {

@@ -16,7 +16,7 @@ public class QualificationDaoImpl implements QualificationDao {
 	
 	@Override
 	public void addQualification(Qualification qualification) {
-		sessionFactory.getCurrentSession().persist(qualification);
+		sessionFactory.getCurrentSession().saveOrUpdate(qualification);
 	}
 
 	@Override

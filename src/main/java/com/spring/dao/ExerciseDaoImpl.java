@@ -16,7 +16,7 @@ public class ExerciseDaoImpl implements ExerciseDao {
 	
 	@Override
 	public void addExercise(Exercise exercise) {
-		sessionFactory.getCurrentSession().persist(exercise);		
+		sessionFactory.getCurrentSession().saveOrUpdate(exercise);		
 	}
 	
 	@Override

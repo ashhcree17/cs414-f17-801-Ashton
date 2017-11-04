@@ -16,7 +16,7 @@ public class WorkScheduleDaoImpl implements WorkScheduleDao {
 	
 	@Override
 	public void addWorkSchedule(WorkSchedule workSchedule) {
-		sessionFactory.getCurrentSession().persist(workSchedule);
+		sessionFactory.getCurrentSession().saveOrUpdate(workSchedule);
 	}
 
 	@Override

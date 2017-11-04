@@ -16,7 +16,7 @@ public class RoutineDaoImpl implements RoutineDao {
 	
 	@Override
 	public void addRoutine(Routine routine) {
-		sessionFactory.getCurrentSession().persist(routine);
+		sessionFactory.getCurrentSession().saveOrUpdate(routine);
 	}
 
 	@Override

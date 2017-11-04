@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.dao.EquipmentDao;
 import com.spring.model.Equipment;
 
-@ContextConfiguration(locations = "classpath:servlet-context-test.xml")
+@ContextConfiguration(locations = "classpath:servlet-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class EquipmentDaoImplTest {
      
@@ -44,13 +44,13 @@ public class EquipmentDaoImplTest {
 		List<Equipment> inventory = equipmentDao.listInventory();
 
 		equipmentDao.addEquipment(equipment1);
-    Assert.assertEquals(1, inventory.size());         
-		
-    equipmentDao.addEquipment(equipment2);
-    Assert.assertEquals(2, inventory.size());         
-	 
-    Assert.assertEquals(equipment1.getName(), inventory.get(0).getName());
-}
+	    Assert.assertEquals(1, inventory.size());         
+			
+	    equipmentDao.addEquipment(equipment2);
+	    Assert.assertEquals(2, inventory.size());         
+		 
+	    Assert.assertEquals(equipment1.getName(), inventory.get(0).getName());
+	}
     
     @Test
     @Transactional

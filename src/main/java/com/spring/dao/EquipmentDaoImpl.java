@@ -16,7 +16,7 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	
 	@Override
 	public void addEquipment(Equipment equipment) {
-		sessionFactory.getCurrentSession().persist(equipment);
+		sessionFactory.getCurrentSession().saveOrUpdate(equipment);
 	}
 
 	@Override

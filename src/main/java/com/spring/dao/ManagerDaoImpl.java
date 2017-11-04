@@ -28,7 +28,7 @@ public class ManagerDaoImpl implements ManagerDao {
 	 * */
 	@Override
 	public void addManager(Manager manager) {
-		sessionFactory.getCurrentSession().persist(manager);
+		sessionFactory.getCurrentSession().saveOrUpdate(manager);
 		logger.info("Manager saved successfully, Manager Details=" + manager);
 	}
 	

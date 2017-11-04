@@ -16,7 +16,7 @@ public class TrainerDaoImpl implements TrainerDao {
 	
 	@Override
 	public void addTrainer(Trainer trainer) {
-		sessionFactory.getCurrentSession().persist(trainer);
+		sessionFactory.getCurrentSession().saveOrUpdate(trainer);
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class AddressDaoImpl implements AddressDao {
 	
 	@Override
 	public void addAddress(Address address) {
-		sessionFactory.getCurrentSession().persist(address);
+		sessionFactory.getCurrentSession().saveOrUpdate(address);;
 	}
 
 	@Override
