@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.GeneratedValue;
@@ -83,8 +82,8 @@ public class TrainerTest {
 	
 	@Test
 	public void qualifications() {
-		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Trainer.class, 
-				"qualifications", ManyToMany.class);
-		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
+		JoinTable joinTable = ReflectTool.getFieldAnnotation(Trainer.class, 
+				"qualifications", JoinTable.class);
+		Assert.assertEquals("Trainer_Qualification", joinTable.name());
 	}
 }

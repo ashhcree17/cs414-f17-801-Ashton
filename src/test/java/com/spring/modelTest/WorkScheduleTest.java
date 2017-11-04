@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.spring.model.Trainer;
 import com.spring.model.WorkSchedule;
 
 public class WorkScheduleTest {
@@ -67,8 +68,8 @@ public class WorkScheduleTest {
 	
 	@Test
 	public void trainer() {
-		ManyToOne manyToOne = ReflectTool.getFieldAnnotation(WorkSchedule.class, 
-				"trainer", ManyToOne.class);
-		Assert.assertEquals("customerId", manyToOne.targetEntity());
+		JoinColumn joinColumn = ReflectTool.getFieldAnnotation(Trainer.class, 
+				"qualifications", JoinColumn.class);
+		Assert.assertEquals("customerId", joinColumn.name());
 	}
 }

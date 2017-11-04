@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.spring.model.Routine;
+import com.spring.model.Trainer;
 
 public class RoutineTest {
 	
@@ -66,8 +66,8 @@ public class RoutineTest {
 	
 	@Test
 	public void exercises() {
-		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Routine.class, 
-				"exercises", ManyToMany.class);
-		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
+		JoinTable joinTable = ReflectTool.getFieldAnnotation(Trainer.class, 
+				"exercises", JoinTable.class);
+		Assert.assertEquals("Routine_Exercise", joinTable.name());
 	}
 }

@@ -51,10 +51,10 @@ public class Trainer extends User {
 	@ElementCollection(targetClass=WorkSchedule.class)
 	private Set<WorkSchedule> workSchedule;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	   @JoinTable(name = "Trainer_Qualification", 
-	         joinColumns = { @JoinColumn(name = "trainerID") }, 
-	         inverseJoinColumns = { @JoinColumn(name = "qualId") })
+	@ManyToMany(cascade=CascadeType.ALL)
+	   @JoinTable(name="Trainer_Qualification", 
+	         joinColumns={ @JoinColumn(name="trainerID") }, 
+	         inverseJoinColumns={ @JoinColumn(name="qualId") })
 	private Set<Qualification> qualifications;
 	
 	public Trainer() {}

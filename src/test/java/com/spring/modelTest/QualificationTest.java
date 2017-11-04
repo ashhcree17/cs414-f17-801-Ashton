@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -64,6 +63,6 @@ public class QualificationTest {
 	public void trainers() {
 		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Qualification.class, 
 				"trainers", ManyToMany.class);
-		Assert.assertEquals(CascadeType.ALL, manyToMany.cascade());
+		Assert.assertEquals("qualifications", manyToMany.mappedBy());
 	}
 }
