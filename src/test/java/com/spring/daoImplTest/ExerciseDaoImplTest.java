@@ -55,6 +55,7 @@ public class ExerciseDaoImplTest {
         exerciseDao.addExercise(exercise2);
 
 		exerciseDao.deleteExercise(exercise1.getExerciseId());
-        Assert.assertEquals(1, exerciseDao.listExercises().size());
+		Assert.assertNull(exerciseDao.getExercise(exercise1.getExerciseId()));
+		Assert.assertNotNull(exerciseDao.getExercise(exercise2.getExerciseId()));
     }
 }

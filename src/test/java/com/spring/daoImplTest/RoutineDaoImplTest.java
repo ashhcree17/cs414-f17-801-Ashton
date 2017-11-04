@@ -52,6 +52,7 @@ public class RoutineDaoImplTest {
         routineDao.addRoutine(routine2);
 
 		routineDao.deleteRoutine(routine1.getRoutineId());
-        Assert.assertEquals(1, routineDao.listRoutines().size());
+		Assert.assertNull(routineDao.getRoutine(routine1.getRoutineId()));
+		Assert.assertNotNull(routineDao.getRoutine(routine2.getRoutineId()));
     }
 }

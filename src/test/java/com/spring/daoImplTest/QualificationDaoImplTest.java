@@ -50,6 +50,7 @@ public class QualificationDaoImplTest {
         qualificationDao.addQualification(qualification2);
 
 		qualificationDao.deleteQualification(qualification1.getQualId());
-        Assert.assertEquals(1, qualificationDao.listQualifications().size());
+		Assert.assertNull(qualificationDao.getQualification(qualification1.getQualId()));
+		Assert.assertNotNull(qualificationDao.getQualification(qualification2.getQualId()));
     }
 }

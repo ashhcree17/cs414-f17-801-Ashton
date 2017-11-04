@@ -62,6 +62,7 @@ public class ManagerDaoImplTest {
         managerDao.addManager(manager2);
 
 		managerDao.deleteManager(manager1.getManagerId());
-        Assert.assertEquals(1, managerDao.listManagers().size());
+		Assert.assertNull(managerDao.getManager(manager1.getManagerId()));
+		Assert.assertNotNull(managerDao.getManager(manager2.getManagerId()));
     }
 }

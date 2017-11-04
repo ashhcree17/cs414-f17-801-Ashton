@@ -56,6 +56,7 @@ public class AddressDaoImplTest {
         addressDao.addAddress(address2);
 
 		addressDao.deleteAddress(address1.getAddressId());
-        Assert.assertEquals(1, addressDao.listAddresses().size());
+		Assert.assertNull(addressDao.getAddress(address1.getAddressId()));
+		Assert.assertNotNull(addressDao.getAddress(address2.getAddressId()));
     }
 }

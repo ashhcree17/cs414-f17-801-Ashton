@@ -61,6 +61,7 @@ public class CustomerDaoImplTest {
         customerDao.addCustomer(customer2);
 
 		customerDao.deleteCustomer(customer1.getCustomerId());
-        Assert.assertEquals(1, customerDao.listCustomers().size());
+		Assert.assertNull(customerDao.getCustomer(customer1.getCustomerId()));
+		Assert.assertNotNull(customerDao.getCustomer(customer2.getCustomerId()));
     }
 }

@@ -55,6 +55,7 @@ public class WorkScheduleDaoImplTest {
         workScheduleDao.addWorkSchedule(workSchedule2);
 
 		workScheduleDao.deleteWorkSchedule(workSchedule1.getWorkScheduleId());
-        Assert.assertEquals(1, workScheduleDao.listWorkSchedules().size());
+		Assert.assertNull(workScheduleDao.getWorkSchedule(workSchedule1.getWorkScheduleId()));
+		Assert.assertNotNull(workScheduleDao.getWorkSchedule(workSchedule2.getWorkScheduleId()));
     }
 }

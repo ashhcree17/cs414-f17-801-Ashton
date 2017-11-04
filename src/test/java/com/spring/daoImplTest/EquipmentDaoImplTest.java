@@ -52,6 +52,7 @@ public class EquipmentDaoImplTest {
         equipmentDao.addEquipment(equipment2);
 
 		equipmentDao.deleteEquipment(equipment1.getEquipmentId());
-        Assert.assertEquals(1, equipmentDao.listInventory().size());
+		Assert.assertNull(equipmentDao.getEquipment(equipment1.getEquipmentId()));
+		Assert.assertNotNull(equipmentDao.getEquipment(equipment2.getEquipmentId()));
     }
 }

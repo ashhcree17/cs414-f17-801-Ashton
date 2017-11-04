@@ -66,6 +66,7 @@ public class TrainerDaoImplTest {
         trainerDao.addTrainer(trainer2);
 
 		trainerDao.deleteTrainer(trainer1.getTrainerId());
-        Assert.assertEquals(1, trainerDao.listTrainers().size());
+		Assert.assertNull(trainerDao.getTrainer(trainer1.getTrainerId()));
+		Assert.assertNotNull(trainerDao.getTrainer(trainer2.getTrainerId()));
     }
 }
