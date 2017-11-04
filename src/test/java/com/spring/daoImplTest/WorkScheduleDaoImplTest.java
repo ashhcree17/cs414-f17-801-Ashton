@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dao.WorkScheduleDao;
+import com.spring.model.Trainer;
 import com.spring.model.WorkSchedule;
 
 @ContextConfiguration(locations = "classpath:servlet-context.xml")
@@ -24,6 +25,10 @@ public class WorkScheduleDaoImplTest {
     
     WorkSchedule workSchedule1 = new WorkSchedule();
     WorkSchedule workSchedule2 = new WorkSchedule();
+    Trainer trainer1 = new Trainer(1, "trainer1", "cats12pizza", "Joe",
+    		"Smith", 1, 1234567890, "joe@email.com", "Aetna", null, null);
+    Trainer trainer2 = new Trainer(2, "trainer2", "dogs12cookie", "John",
+    		"Paul", 2, 1118675309, "john@email.com", "Aetna", null, null);
     
     @Before
     public void setup() {
@@ -31,11 +36,12 @@ public class WorkScheduleDaoImplTest {
         workSchedule1.setDay(DayOfWeek.MONDAY);
         workSchedule1.setStartTime(LocalTime.of(10, 30));
         workSchedule1.setEndTime(LocalTime.of(6, 45));
+        workSchedule1.setTrainer(trainer1);
 
         workSchedule2.setWorkScheduleId(2);
         workSchedule1.setDay(DayOfWeek.MONDAY);
         workSchedule1.setStartTime(LocalTime.of(10, 30));
-        workSchedule1.setEndTime(LocalTime.of(6, 45));
+        workSchedule1.setTrainer(trainer2);
     }
      
     @Test
