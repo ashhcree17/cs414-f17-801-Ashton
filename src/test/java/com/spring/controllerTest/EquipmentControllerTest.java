@@ -58,6 +58,7 @@ public class EquipmentControllerTest {
 	public void testGetEquipment() throws Exception {
 		Equipment expectedEquipment = new Equipment(002, "Equip2", 
 				3, null);
+		mockEquipmentService.addEquipment(expectedEquipment);
         when(mockEquipmentService.getEquipment(expectedEquipment.getEquipmentId()))
         		.thenReturn(expectedEquipment);
         

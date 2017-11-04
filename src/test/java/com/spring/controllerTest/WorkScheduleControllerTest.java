@@ -62,6 +62,7 @@ public class WorkScheduleControllerTest {
 	public void testGetWorkSchedule() throws Exception {
 		WorkSchedule expectedWorkSchedule = new WorkSchedule(002, DayOfWeek.MONDAY, 
 				LocalTime.of(4, 30), LocalTime.of(10, 30), null);
+		mockWorkScheduleService.addWorkSchedule(expectedWorkSchedule);
         when(mockWorkScheduleService.getWorkSchedule(expectedWorkSchedule.getWorkScheduleId()))
         		.thenReturn(expectedWorkSchedule);
         

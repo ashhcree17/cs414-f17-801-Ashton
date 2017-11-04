@@ -45,7 +45,7 @@ public class AddressController {
 	//For add and update person both
 	@RequestMapping(value= "/address/add", method = RequestMethod.POST)
 	public String addAddress(@ModelAttribute("address") Address address){
-		if (address.getAddressId() == 0) {
+		if (addressService.getAddress(address.getAddressId()) == null) {
 			// Denotes a new Address - to be added
 			this.addressService.addAddress(address);
 		} else {
@@ -62,7 +62,7 @@ public class AddressController {
         return "redirect:/addresses";
     }
  
-    @RequestMapping("/edit/{addressId}")
+    @RequestMapping(value = "/edit/{addressId}", method = RequestMethod.PUT)
     public String editAddress(@PathVariable("addressId") int addressId, ModelMap modelMap){
     		modelMap.addAttribute("address", this.addressService.getAddress(addressId));
     		modelMap.addAttribute("listAddresses", this.addressService.listAddresses());

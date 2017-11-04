@@ -54,6 +54,7 @@ public class AddressControllerTest {
 	public void testGetAddress() throws Exception {
 		Address expectedAddress = new Address(002, "357 Main St", 
 				"Apt 1", "Denver", "CO", 24680);
+		mockAddressService.addAddress(expectedAddress);
         when(mockAddressService.getAddress(expectedAddress.getAddressId()))
         		.thenReturn(expectedAddress);
         

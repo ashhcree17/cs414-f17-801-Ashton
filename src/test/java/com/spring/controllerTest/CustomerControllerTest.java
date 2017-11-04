@@ -59,6 +59,7 @@ public class CustomerControllerTest {
 	public void testGetCustomer() throws Exception {
 		Customer expectedCustomer = new Customer(002, "Joe", "Smith", 002, 
 				1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE);
+		mockCustomerService.addCustomer(expectedCustomer);
         when(mockCustomerService.getCustomer(expectedCustomer.getCustomerId()))
         		.thenReturn(expectedCustomer);
         
@@ -73,7 +74,7 @@ public class CustomerControllerTest {
 		mockMvc.perform(post("/customer/add")
 				.contentType(MediaType.TEXT_PLAIN)
 				.content("customerId:003, name:\"Joe\","
-					+ " lastName:\"Smith\", customerAddressId:003,"
+					+ " lastName:\"Smith\", customerCustomerId:003,"
 					+ " phoneNumber:1234567890, email:\"joe@email.com\","
 					+ " insurance:\"Aetna\", membership:MembershipStatus.ACTIVE"
 					.getBytes())

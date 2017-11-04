@@ -59,6 +59,7 @@ public class RoutineControllerTest {
 	public void testGetRoutine() throws Exception {
 		Routine expectedRoutine = new Routine(002, "Routine2", 
 				null, null);
+		mockRoutineService.addRoutine(expectedRoutine);
         when(mockRoutineService.getRoutine(expectedRoutine.getRoutineId()))
         		.thenReturn(expectedRoutine);
         

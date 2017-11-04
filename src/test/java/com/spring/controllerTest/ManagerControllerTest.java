@@ -60,6 +60,7 @@ public class ManagerControllerTest {
 		Manager expectedManager = new Manager(002, "joe.smith", 
 				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
 				"Aetna");
+		mockManagerService.addManager(expectedManager);
         when(mockManagerService.getManager(expectedManager.getManagerId()))
         		.thenReturn(expectedManager);
         

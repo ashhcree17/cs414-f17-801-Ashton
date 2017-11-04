@@ -61,6 +61,7 @@ public class TrainerControllerTest {
 		Trainer expectedTrainer = new Trainer(002, "joe.smith2", 
 				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
 				"Aetna", null, null);
+		mockTrainerService.addTrainer(expectedTrainer);
         when(mockTrainerService.getTrainer(expectedTrainer.getTrainerId()))
         		.thenReturn(expectedTrainer);
         

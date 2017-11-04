@@ -58,9 +58,9 @@ public class QualificationControllerTest {
 	@Test
 	public void testGetQualification() throws Exception {
 		Qualification expectedQualification = new Qualification(002, "Qual2", null);
-        when(mockQualificationService.getQualification(
-    				expectedQualification.getQualId()))
-        .thenReturn(expectedQualification);
+		mockQualificationService.addQualification(expectedQualification);
+        when(mockQualificationService.getQualification(expectedQualification.getQualId()))
+        			.thenReturn(expectedQualification);
         
         mockMvc.perform(get("/qualification/" + expectedQualification.getQualId()))
         		.andExpect(status().isOk())

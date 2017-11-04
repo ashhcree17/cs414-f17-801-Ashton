@@ -60,6 +60,7 @@ public class ExerciseControllerTest {
 	public void testGetExercise() throws Exception {
 		Exercise expectedExercise = new Exercise(002, "Exercise2", 
 				Duration.ofSeconds(120), 3, 12, null, null);
+		mockExerciseService.addExercise(expectedExercise);
         when(mockExerciseService.getExercise(expectedExercise.getExerciseId()))
         		.thenReturn(expectedExercise);
         
