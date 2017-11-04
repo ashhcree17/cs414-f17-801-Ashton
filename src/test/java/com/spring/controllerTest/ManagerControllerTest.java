@@ -63,7 +63,7 @@ public class ManagerControllerTest {
         when(mockManagerService.getManager(expectedManager.getManagerId()))
         		.thenReturn(expectedManager);
         
-        mockMvc.perform(get("/manager" + expectedManager.getManagerId()))
+        mockMvc.perform(get("/manager/" + expectedManager.getManagerId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("manager", expectedManager))
         		.andExpect(view().name("manager"));

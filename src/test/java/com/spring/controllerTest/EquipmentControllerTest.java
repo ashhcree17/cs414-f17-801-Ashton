@@ -61,7 +61,7 @@ public class EquipmentControllerTest {
         when(mockEquipmentService.getEquipment(expectedEquipment.getEquipmentId()))
         		.thenReturn(expectedEquipment);
         
-        mockMvc.perform(get("/equipment" + expectedEquipment.getEquipmentId()))
+        mockMvc.perform(get("/equipment/" + expectedEquipment.getEquipmentId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("equipment", expectedEquipment))
         		.andExpect(view().name("equipment"));

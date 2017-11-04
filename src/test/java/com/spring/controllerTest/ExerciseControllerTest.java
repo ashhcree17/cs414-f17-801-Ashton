@@ -63,7 +63,7 @@ public class ExerciseControllerTest {
         when(mockExerciseService.getExercise(expectedExercise.getExerciseId()))
         		.thenReturn(expectedExercise);
         
-        mockMvc.perform(get("/exercise" + expectedExercise.getExerciseId()))
+        mockMvc.perform(get("/exercise/" + expectedExercise.getExerciseId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("exercise", expectedExercise))
         		.andExpect(view().name("exercise"));

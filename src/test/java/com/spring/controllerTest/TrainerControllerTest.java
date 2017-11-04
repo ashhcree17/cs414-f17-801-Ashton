@@ -50,10 +50,10 @@ public class TrainerControllerTest {
 				"Aetna", null, null));
         when(mockTrainerService.listTrainers()).thenReturn(expectedTrainers);
         
-        mockMvc.perform(get("/customers"))
+        mockMvc.perform(get("/trainers"))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("listTrainers", expectedTrainers))
-        		.andExpect(view().name("customer"));
+        		.andExpect(view().name("trainer"));
     }
 	
 	@Test
@@ -64,15 +64,15 @@ public class TrainerControllerTest {
         when(mockTrainerService.getTrainer(expectedTrainer.getTrainerId()))
         		.thenReturn(expectedTrainer);
         
-        mockMvc.perform(get("/customer" + expectedTrainer.getTrainerId()))
+        mockMvc.perform(get("/trainer/" + expectedTrainer.getTrainerId()))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("customer", expectedTrainer))
-        		.andExpect(view().name("customer"));
+        		.andExpect(model().attribute("trainer", expectedTrainer))
+        		.andExpect(view().name("trainer"));
     }
 	
 	@Test
 	public void testAddTrainer() throws Exception {
-		mockMvc.perform(post("/customer/add")
+		mockMvc.perform(post("/trainer/add")
 				.contentType(MediaType.TEXT_PLAIN)
 				.content("trainerId:003, username:\"joe.smith3\", password:\"cats12yoyo\"," 
 						+ " name:\"Joe\", lastName:\"Smith\", trainerAddressId:123,"
@@ -81,7 +81,7 @@ public class TrainerControllerTest {
 					.getBytes())
 			)
 			.andExpect(status().isCreated())
-			.andExpect(view().name("redirect:/customers"));
+			.andExpect(view().name("redirect:/trainers"));
 		
 //		verify(mockTrainerService).addTrainer(new Trainer(123, "Joe", 
 //				"Smith", 123, 1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));

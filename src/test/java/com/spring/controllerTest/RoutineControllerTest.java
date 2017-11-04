@@ -62,7 +62,7 @@ public class RoutineControllerTest {
         when(mockRoutineService.getRoutine(expectedRoutine.getRoutineId()))
         		.thenReturn(expectedRoutine);
         
-        mockMvc.perform(get("/routine" + expectedRoutine.getRoutineId()))
+        mockMvc.perform(get("/routine/" + expectedRoutine.getRoutineId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("routine", expectedRoutine))
         		.andExpect(view().name("routine"));

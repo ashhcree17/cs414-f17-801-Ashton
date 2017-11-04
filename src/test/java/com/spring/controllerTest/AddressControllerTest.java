@@ -57,7 +57,7 @@ public class AddressControllerTest {
         when(mockAddressService.getAddress(expectedAddress.getAddressId()))
         		.thenReturn(expectedAddress);
         
-        mockMvc.perform(get("/address" + expectedAddress.getAddressId()))
+        mockMvc.perform(get("/address/" + expectedAddress.getAddressId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("address", expectedAddress))
         		.andExpect(view().name("address"));

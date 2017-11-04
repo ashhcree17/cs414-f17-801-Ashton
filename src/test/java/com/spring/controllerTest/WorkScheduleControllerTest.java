@@ -65,7 +65,7 @@ public class WorkScheduleControllerTest {
         when(mockWorkScheduleService.getWorkSchedule(expectedWorkSchedule.getWorkScheduleId()))
         		.thenReturn(expectedWorkSchedule);
         
-        mockMvc.perform(get("/workSchedule" + expectedWorkSchedule.getWorkScheduleId()))
+        mockMvc.perform(get("/workSchedule/" + expectedWorkSchedule.getWorkScheduleId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("workSchedule", expectedWorkSchedule))
         		.andExpect(view().name("workSchedule"));

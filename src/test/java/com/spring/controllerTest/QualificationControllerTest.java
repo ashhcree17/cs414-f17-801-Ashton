@@ -62,7 +62,7 @@ public class QualificationControllerTest {
     				expectedQualification.getQualId()))
         .thenReturn(expectedQualification);
         
-        mockMvc.perform(get("/qualification" + expectedQualification.getQualId()))
+        mockMvc.perform(get("/qualification/" + expectedQualification.getQualId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("qualification", expectedQualification))
         		.andExpect(view().name("qualification"));

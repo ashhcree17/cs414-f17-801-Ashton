@@ -62,7 +62,7 @@ public class CustomerControllerTest {
         when(mockCustomerService.getCustomer(expectedCustomer.getCustomerId()))
         		.thenReturn(expectedCustomer);
         
-        mockMvc.perform(get("/customer" + expectedCustomer.getCustomerId()))
+        mockMvc.perform(get("/customer/" + expectedCustomer.getCustomerId()))
         		.andExpect(status().isOk())
         		.andExpect(model().attribute("customer", expectedCustomer))
         		.andExpect(view().name("customer"));
