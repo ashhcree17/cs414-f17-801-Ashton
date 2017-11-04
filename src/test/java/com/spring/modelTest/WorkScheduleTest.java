@@ -68,8 +68,8 @@ public class WorkScheduleTest {
 	
 	@Test
 	public void trainer() {
-		JoinColumn joinColumn = ReflectTool.getFieldAnnotation(Trainer.class, 
-				"qualifications", JoinColumn.class);
+		JoinColumn joinColumn = ReflectTool.getFieldAnnotation(WorkSchedule.class, 
+				"trainer", JoinColumn.class);
 		Assert.assertEquals("customerId", joinColumn.name());
 	}
 }

@@ -11,7 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.spring.model.Customer;
-import com.spring.model.Trainer;
 
 public class CustomerTest {
 	
@@ -77,7 +76,7 @@ public class CustomerTest {
 	
 	@Test
 	public void assignedRoutines() {
-		JoinTable joinTable = ReflectTool.getFieldAnnotation(Trainer.class, 
+		JoinTable joinTable = ReflectTool.getFieldAnnotation(Customer.class, 
 				"assignedRoutines", JoinTable.class);
 		Assert.assertEquals("Customer_Routine", joinTable.name());
 	}

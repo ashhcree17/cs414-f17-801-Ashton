@@ -24,9 +24,9 @@ public class Routine {
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	   @JoinTable(name = "Routine_Exercise", 
-	         joinColumns = { @JoinColumn(name = "routineID") }, 
-	         inverseJoinColumns = { @JoinColumn(name = "exerciseId") })
+	@JoinTable(name = "Routine_Exercise", 
+		joinColumns = { @JoinColumn(name = "routineID") }, 
+	    inverseJoinColumns = { @JoinColumn(name = "exerciseId") })
 	private Set<Exercise> exercises;
 	
 	@ManyToMany(mappedBy="assignedRoutines")

@@ -11,7 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.spring.model.Exercise;
-import com.spring.model.Trainer;
 
 public class ExerciseTest {
     
@@ -58,7 +57,7 @@ public class ExerciseTest {
 	
 	@Test
 	public void id() {
-		GeneratedValue genValue = ReflectTool.getMethodAnnotation(Exercise.class, 
+		GeneratedValue genValue = ReflectTool.getFieldAnnotation(Exercise.class, 
 				"exerciseId", GeneratedValue.class);
 		Assert.assertEquals("", genValue.generator());
 	}
@@ -78,9 +77,9 @@ public class ExerciseTest {
 	}
 	
 	@Test
-	public void equipment() {
-		JoinTable joinTable = ReflectTool.getFieldAnnotation(Trainer.class, 
-				"equipment", JoinTable.class);
-		Assert.assertEquals("Exercise_Equipment", joinTable.name());
+	public void routines() {
+		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Exercise.class, 
+				"routines", ManyToMany.class);
+		Assert.assertEquals("exercises", manyToMany.mappedBy());
 	}
 }

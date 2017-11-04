@@ -11,7 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.spring.model.Routine;
-import com.spring.model.Trainer;
 
 public class RoutineTest {
 	
@@ -65,9 +64,9 @@ public class RoutineTest {
 	}
 	
 	@Test
-	public void exercises() {
-		JoinTable joinTable = ReflectTool.getFieldAnnotation(Trainer.class, 
-				"exercises", JoinTable.class);
-		Assert.assertEquals("Routine_Exercise", joinTable.name());
+	public void customers() {
+		ManyToMany manyToMany = ReflectTool.getFieldAnnotation(Routine.class, 
+				"customers", ManyToMany.class);
+		Assert.assertEquals("assignedRoutines",  manyToMany.mappedBy());
 	}
 }
