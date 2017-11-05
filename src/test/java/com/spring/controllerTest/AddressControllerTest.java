@@ -68,14 +68,14 @@ public class AddressControllerTest {
 	public void testAddAddress() throws Exception {
 		mockMvc.perform(post("/address/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("addressId:003, street1:\"123 Main St\","
+				.content("addressId:275, street1:\"123 Main St\","
 						+ " street2:\"Apt 1\", city:\"Denver\","
 						+ " state:\"CO\", zipCode:12345".getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/addresses"));
 		
-		verify(mockAddressService).addAddress(new Address(003, "123 Main St", 
+		verify(mockAddressService).addAddress(new Address(275, "123 Main St", 
 				"Apt 1", "Denver", "CO", 12345));	
 	}
 }

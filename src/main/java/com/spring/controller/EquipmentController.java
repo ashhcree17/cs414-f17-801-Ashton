@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,18 +30,36 @@ public class EquipmentController {
 		return "equipment";
 	}
 	
+	@RequestMapping(value = "/equipment/{equipmentId}", method = RequestMethod.GET)
+	public String getEquipment(@PathVariable("equipmentId") int equipmentId, ModelMap modelMap) {
+		Equipment equipment = new Equipment();
+		if (this.equipmentService.getEquipment(equipmentId) == null) {
+			equipment.setEquipmentId(equipmentId);
+			modelMap.addAttribute("equipment", equipment);
+			this.equipmentService.getEquipment(equipmentId);
+			return "equipment";			
+		} else {
+			return null;
+		}
+	}
+	
 	//For add and update person both
 	@RequestMapping(value= "/equipment/add", method = RequestMethod.POST)
-	public String addEquipment(@ModelAttribute("equipment") Equipment equipment){
-		if (equipment.getEquipmentId() == 0) {
-			// Denotes new Equipment - to be added
+	public String addEquipment(@ModelAttribute("equipment") Equipment equipment,
+			ModelMap modelMap){
+		try {
+			if (equipmentService.getEquipment(equipment.getEquipmentId()) != null) {
+				// Denotes an existing Equipment - to be updated
+				this.equipmentService.updateEquipment(equipment);
+			} 
+		}
+		catch (NullPointerException e) {			
+			// Denotes a new Equipment - to be added
 			this.equipmentService.addEquipment(equipment);
-		} else {
-			// Denotes existing Equipment - to be updated
-			this.equipmentService.updateEquipment(equipment);
 		}
 		
-		return "redirect:/inventory";
+		modelMap.addAttribute("equipment", equipment);
+		return "redirect:/equipments";
 	}
 	
 	@RequestMapping("/delete/{equipmentId}")

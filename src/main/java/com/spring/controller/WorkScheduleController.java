@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,17 +30,35 @@ public class WorkScheduleController {
 		return "workSchedule";
 	}
 	
+	@RequestMapping(value = "/workSchedule/{workScheduleId}", method = RequestMethod.GET)
+	public String getWorkSchedule(@PathVariable("workScheduleId") int workScheduleId, ModelMap modelMap) {
+		WorkSchedule workSchedule = new WorkSchedule();
+		if (this.workScheduleService.getWorkSchedule(workScheduleId) == null) {
+			workSchedule.setWorkScheduleId(workScheduleId);
+			modelMap.addAttribute("workSchedule", workSchedule);
+			this.workScheduleService.getWorkSchedule(workScheduleId);
+			return "workSchedule";			
+		} else {
+			return null;
+		}
+	}
+	
 	//For add and update person both
 	@RequestMapping(value= "/workSchedule/add", method = RequestMethod.POST)
-	public String addWorkSchedule(@ModelAttribute("workSchedule") WorkSchedule workSchedule){
-		if (workSchedule.getWorkScheduleId() == 0) {
+	public String addWorkSchedule(@ModelAttribute("workSchedule") WorkSchedule 
+			workSchedule, ModelMap modelMap){
+		try {
+			if (workScheduleService.getWorkSchedule(workSchedule.getWorkScheduleId()) != null) {
+				// Denotes an existing WorkSchedule - to be updated
+				this.workScheduleService.updateWorkSchedule(workSchedule);
+			} 
+		}
+		catch (NullPointerException e) {			
 			// Denotes a new WorkSchedule - to be added
 			this.workScheduleService.addWorkSchedule(workSchedule);
-		} else {
-			// Denotes an existing Work Schedule - to be updated
-			this.workScheduleService.updateWorkSchedule(workSchedule);
 		}
 		
+		modelMap.addAttribute("workSchedule", workSchedule);
 		return "redirect:/workSchedules";
 	}
 	

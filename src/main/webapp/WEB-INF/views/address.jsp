@@ -16,9 +16,9 @@
 	<body>
 		<h1>Add a Address</h1>
 
-		<c:url var="addAction" value="/address/add" ></c:url>
+		<c:url value="/address/add" ></c:url>
 
-		<form:form action="${addAction}" commandName="address">
+		<form:form method = "POST" commandName = "address">
 			<table>
 				<c:if test="${!empty address.addressId}">
 					<tr>
@@ -28,8 +28,7 @@
 							</form:label>
 						</td>
 						<td>
-							<form:input path="addressId" readonly="true" size="8"  disabled="true" />
-							<form:hidden path="addressId" />
+							<form:input path="addressId" />
 						</td> 
 					</tr>
 				</c:if>

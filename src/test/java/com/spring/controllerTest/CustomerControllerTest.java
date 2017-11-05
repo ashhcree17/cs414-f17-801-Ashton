@@ -79,7 +79,7 @@ public class CustomerControllerTest {
 					+ " insurance:\"Aetna\", membership:MembershipStatus.ACTIVE"
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/customers"));
 		
 		verify(mockCustomerService).addCustomer(new Customer(003, "Joe", 

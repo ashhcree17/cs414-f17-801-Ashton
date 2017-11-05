@@ -80,7 +80,7 @@ public class ManagerControllerTest {
 					+ " insurance:\"Aetna\" "
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/managers"));
 		
 		verify(mockManagerService).addManager(new Manager(003, "joe.smith", 

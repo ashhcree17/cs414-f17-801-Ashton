@@ -75,7 +75,7 @@ public class QualificationControllerTest {
 				.content("qualId:003, name:\"Qual3\", trainers:null "
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/qualifications"));
 		
 		verify(mockQualificationService).addQualification(new 

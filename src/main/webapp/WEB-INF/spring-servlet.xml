@@ -16,6 +16,12 @@
 	
 	<!-- Accepts index file by default -->
 	<mvc:default-servlet-handler/>
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.spring" />
+	
+	<beans:bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+    <beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
@@ -119,9 +125,6 @@
 	<beans:bean id="workScheduleService" class="com.spring.service.WorkScheduleServiceImpl">
 		<beans:property name="workScheduleDao" ref="workScheduleDao"></beans:property>
 	</beans:bean>
-	
-	<context:annotation-config />
-	<context:component-scan base-package="com.spring" />
 	
     <beans:bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <beans:property name="exceptionMappings">

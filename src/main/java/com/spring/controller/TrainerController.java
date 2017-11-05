@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,17 +30,35 @@ public class TrainerController {
 		return "trainer";
 	}
 	
+	@RequestMapping(value = "/trainer/{trainerId}", method = RequestMethod.GET)
+	public String getTrainer(@PathVariable("trainerId") int trainerId, ModelMap modelMap) {
+		Trainer trainer = new Trainer();
+		if (this.trainerService.getTrainer(trainerId) == null) {
+			trainer.setTrainerId(trainerId);
+			modelMap.addAttribute("trainer", trainer);
+			this.trainerService.getTrainer(trainerId);
+			return "trainer";			
+		} else {
+			return null;
+		}
+	}
+	
 	//For add and update person both
 	@RequestMapping(value= "/trainer/add", method = RequestMethod.POST)
-	public String addTrainer(@ModelAttribute("trainer") Trainer trainer){
-		if (trainer.getTrainerId() == 0) {
+	public String addTrainer(@ModelAttribute("trainer") Trainer trainer,
+			ModelMap modelMap){
+		try {
+			if (trainerService.getTrainer(trainer.getTrainerId()) != null) {
+				// Denotes an existing Trainer - to be updated
+				this.trainerService.updateTrainer(trainer);
+			} 
+		}
+		catch (NullPointerException e) {			
 			// Denotes a new Trainer - to be added
 			this.trainerService.addTrainer(trainer);
-		} else {
-			// Denotes an existing Trainer - to be updated
-			this.trainerService.updateTrainer(trainer);
 		}
 		
+		modelMap.addAttribute("trainer", trainer);
 		return "redirect:/trainers";
 	}
 	

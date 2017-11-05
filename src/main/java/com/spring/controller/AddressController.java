@@ -16,15 +16,15 @@ import com.spring.service.AddressService;
 public class AddressController {
 	private AddressService addressService;
 	
-	@Autowired(required=true)
-	@Qualifier(value="addressService")
+	@Autowired(required = true)
+	@Qualifier(value = "addressService")
 	public void setAddressService(AddressService addressService){
 		this.addressService = addressService;
 	}
 	
 	@RequestMapping(value = "/addresses", method = RequestMethod.GET)
 	public String listAddresses(ModelMap modelMap) {
-		modelMap.addAttribute("address", new Address());
+//		modelMap.addAttribute("address", new Address());
 		modelMap.addAttribute("listAddresses", this.addressService.listAddresses());
 		return "address";
 	}
@@ -43,16 +43,20 @@ public class AddressController {
 	}
 	
 	//For add and update person both
-	@RequestMapping(value= "/address/add", method = RequestMethod.POST)
-	public String addAddress(@ModelAttribute("address") Address address){
-		if (addressService.getAddress(address.getAddressId()) == null) {
+	@RequestMapping(value = "/address/add", method = RequestMethod.POST)
+	public String addAddress(@ModelAttribute("address") Address address, ModelMap modelMap){
+		try {
+			if (addressService.getAddress(address.getAddressId()) != null) {
+				// Denotes an existing Address - to be updated
+				this.addressService.updateAddress(address);
+			}
+		} 
+		catch (NullPointerException e) {
 			// Denotes a new Address - to be added
 			this.addressService.addAddress(address);
-		} else {
-			// Denotes an existing Address - to be updated
-			this.addressService.updateAddress(address);
 		}
 		
+		modelMap.addAttribute("address", address);
 		return "redirect:/addresses";
 	}
 	

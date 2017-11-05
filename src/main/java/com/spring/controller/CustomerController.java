@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 
 import com.spring.model.Customer;
 import com.spring.service.CustomerService;
@@ -16,8 +17,8 @@ import com.spring.service.CustomerService;
 public class CustomerController {
 	private CustomerService customerService;
 	
-	@Autowired(required=true)
-	@Qualifier(value="customerService")
+	@Autowired(required = true)
+	@Qualifier(value = "customerService")
 	public void setCustomerService(CustomerService customerService){
 		this.customerService = customerService;
 	}
@@ -29,17 +30,35 @@ public class CustomerController {
 		return "customer";
 	}
 	
+	@RequestMapping(value = "/customer/{customerId}", method = RequestMethod.GET)
+	public String getCustomer(@PathVariable("customerId") int customerId, ModelMap modelMap) {
+		Customer customer = new Customer();
+		if (this.customerService.getCustomer(customerId) == null) {
+			customer.setCustomerId(customerId);
+			modelMap.addAttribute("customer", customer);
+			this.customerService.getCustomer(customerId);
+			return "customer";			
+		} else {
+			return null;
+		}
+	}
+	
 	//For add and update person both
-	@RequestMapping(value= "/customer/add", method = RequestMethod.POST)
-	public String addCustomer(@ModelAttribute("customer") Customer customer){
-		if (customer.getCustomerId() == 0) {
+	@RequestMapping(value = "/customer/add", method = RequestMethod.POST)
+	public String addCustomer(@ModelAttribute("customer") Customer customer, 
+			ModelMap modelMap){
+		try {
+			if (customerService.getCustomer(customer.getCustomerId()) != null) {
+				// Denotes an existing Customer - to be updated
+				this.customerService.updateCustomer(customer);
+			} 
+		}
+		catch (NullPointerException e) {			
 			// Denotes a new Customer - to be added
 			this.customerService.addCustomer(customer);
-		} else {
-			// Denotes an existing Customer - to be updated
-			this.customerService.updateCustomer(customer);
 		}
 		
+		modelMap.addAttribute("customer", customer);
 		return "redirect:/customers";
 	}
 	
@@ -51,7 +70,7 @@ public class CustomerController {
  
     @RequestMapping("/edit/{customerId}")
     public String editCustomer(@PathVariable("customerId") int customerId, Model model){
-        model.addAttribute("person", this.customerService.getCustomer(customerId));
+        model.addAttribute("customer", this.customerService.getCustomer(customerId));
         model.addAttribute("listCustomers", this.customerService.listCustomers());
         return "customer";
     }

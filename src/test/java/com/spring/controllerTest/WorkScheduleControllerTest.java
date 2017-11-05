@@ -81,7 +81,7 @@ public class WorkScheduleControllerTest {
 					+ " trainer:null "
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/workSchedules"));
 		
 		verify(mockWorkScheduleService).addWorkSchedule(new WorkSchedule(003, DayOfWeek.MONDAY, 

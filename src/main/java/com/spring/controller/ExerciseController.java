@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,17 +30,35 @@ public class ExerciseController {
 		return "exercise";
 	}
 	
+	@RequestMapping(value = "/exercise/{exerciseId}", method = RequestMethod.GET)
+	public String getExercise(@PathVariable("exerciseId") int exerciseId, ModelMap modelMap) {
+		Exercise exercise = new Exercise();
+		if (this.exerciseService.getExercise(exerciseId) == null) {
+			exercise.setExerciseId(exerciseId);
+			modelMap.addAttribute("exercise", exercise);
+			this.exerciseService.getExercise(exerciseId);
+			return "exercise";			
+		} else {
+			return null;
+		}
+	}
+	
 	//For add and update person both
 	@RequestMapping(value= "/exercise/add", method = RequestMethod.POST)
-	public String addExercise(@ModelAttribute("exercise") Exercise exercise){
-		if (exercise.getExerciseId() == 0) {
+	public String addExercise(@ModelAttribute("exercise") Exercise exercise,
+			ModelMap modelMap){
+		try {
+			if (exerciseService.getExercise(exercise.getExerciseId()) != null) {
+				// Denotes an existing Exercise - to be updated
+				this.exerciseService.updateExercise(exercise);
+			} 
+		}
+		catch (NullPointerException e) {			
 			// Denotes a new Exercise - to be added
 			this.exerciseService.addExercise(exercise);
-		} else {
-			// Denotes an existing Exercise - to be updated
-			this.exerciseService.updateExercise(exercise);
 		}
 		
+		modelMap.addAttribute("exercise", exercise);
 		return "redirect:/exercises";
 	}
 	

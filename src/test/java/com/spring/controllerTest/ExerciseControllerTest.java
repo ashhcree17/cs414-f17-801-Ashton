@@ -80,7 +80,7 @@ public class ExerciseControllerTest {
 					+ " equipment:null "
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/exercises"));
 		
 		verify(mockExerciseService).addExercise(new Exercise(003, "Exercise3", 

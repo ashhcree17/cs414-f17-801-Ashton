@@ -77,7 +77,7 @@ public class RoutineControllerTest {
 					+ " exercises:null, customers:null "
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/routines"));
 		
 		verify(mockRoutineService).addRoutine(new Routine(003, "Routine3", 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 
 import com.spring.model.Manager;
 import com.spring.service.ManagerService;
@@ -29,17 +30,35 @@ public class ManagerController {
 		return "manager";
 	}
 	
+	@RequestMapping(value = "/manager/{managerId}", method = RequestMethod.GET)
+	public String getManager(@PathVariable("managerId") int managerId, ModelMap modelMap) {
+		Manager manager = new Manager();
+		if (this.managerService.getManager(managerId) == null) {
+			manager.setManagerId(managerId);
+			modelMap.addAttribute("manager", manager);
+			this.managerService.getManager(managerId);
+			return "manager";			
+		} else {
+			return null;
+		}
+	}
+	
 	// For add and update person both
 	@RequestMapping(value= "/manager/add", method = RequestMethod.POST)
-	public String addManager(@ModelAttribute("manager") Manager manager){
-		if (manager.getManagerId() == 0) {
+	public String addManager(@ModelAttribute("manager") Manager manager,
+			ModelMap modelMap){
+		try {
+			if (managerService.getManager(manager.getManagerId()) != null) {
+				// Denotes an existing Manager - to be updated
+				this.managerService.updateManager(manager);
+			} 
+		}
+		catch (NullPointerException e) {			
 			// Denotes a new Manager - to be added
 			this.managerService.addManager(manager);
-		} else {
-			// Denotes an existing Manager - to be updated
-			this.managerService.updateManager(manager);
 		}
 		
+		modelMap.addAttribute("manager", manager);
 		return "redirect:/managers";
 	}
 	

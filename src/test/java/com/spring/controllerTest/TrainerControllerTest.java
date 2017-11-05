@@ -81,7 +81,7 @@ public class TrainerControllerTest {
 						+ " insurance:\"Aetna\", workSchedule:null, qualifications:null "
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/trainers"));
 		
 //		verify(mockTrainerService).addTrainer(new Trainer(123, "Joe", 

@@ -76,7 +76,7 @@ public class EquipmentControllerTest {
 					+ " quantity:3, exercises:null"
 					.getBytes())
 			)
-			.andExpect(status().isCreated())
+			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/inventory"));
 		
 		verify(mockEquipmentService).addEquipment(new Equipment(003, "Equip3", 
