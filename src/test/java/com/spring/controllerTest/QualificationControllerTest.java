@@ -1,6 +1,8 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -57,28 +59,35 @@ public class QualificationControllerTest {
 	
 	@Test
 	public void testGetQualification() throws Exception {
-		Qualification expectedQualification = new Qualification(002, "Qual2", null);
-		mockQualificationService.addQualification(expectedQualification);
-        when(mockQualificationService.getQualification(expectedQualification.getQualId()))
-        			.thenReturn(expectedQualification);
+		Qualification qualification = new Qualification(444, 
+				"Qual2", null);
+		mockQualificationService.addQualification(qualification);
+		verify(mockQualificationService).addQualification(qualification);
+        when(mockQualificationService.getQualification(
+        		qualification.getQualId())).thenReturn(qualification);
         
-        mockMvc.perform(get("/qualification/" + expectedQualification.getQualId()))
+        mockMvc.perform(get("/qualification/{qualId}", 444))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("qualification", expectedQualification))
+        		.andExpect(model().attribute("qualification", qualification))
         		.andExpect(view().name("qualification"));
+        
+        verify(mockQualificationService, times(2)).getQualification(444);
+        verifyNoMoreInteractions(mockQualificationService);
     }
 	
 	@Test
 	public void testAddQualification() throws Exception {
 		mockMvc.perform(post("/qualification/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("qualId:003, name:\"Qual3\", trainers:null "
+				.content("qualId:555, name:\"Qual3\", trainers:null "
 					.getBytes())
 			)
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/qualifications"));
 		
-		verify(mockQualificationService).addQualification(new 
-				Qualification(003, "Qual1", null));
+		Qualification qualification = new Qualification(555, 
+				"Qual3", null);
+		when(mockQualificationService.getQualification(555))
+			.thenReturn(qualification);
     }
 }

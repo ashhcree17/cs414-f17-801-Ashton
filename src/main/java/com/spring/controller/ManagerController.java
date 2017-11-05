@@ -32,8 +32,8 @@ public class ManagerController {
 	
 	@RequestMapping(value = "/manager/{managerId}", method = RequestMethod.GET)
 	public String getManager(@PathVariable("managerId") int managerId, ModelMap modelMap) {
-		Manager manager = new Manager();
-		if (this.managerService.getManager(managerId) == null) {
+		Manager manager = this.managerService.getManager(managerId);
+		if (manager != null) {
 			manager.setManagerId(managerId);
 			modelMap.addAttribute("manager", manager);
 			this.managerService.getManager(managerId);

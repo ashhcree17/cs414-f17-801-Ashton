@@ -32,8 +32,8 @@ public class QualificationController {
 	
 	@RequestMapping(value = "/qualification/{qualificationId}", method = RequestMethod.GET)
 	public String getQualification(@PathVariable("qualificationId") int qualificationId, ModelMap modelMap) {
-		Qualification qualification = new Qualification();
-		if (this.qualificationService.getQualification(qualificationId) == null) {
+		Qualification qualification = this.qualificationService.getQualification(qualificationId);
+		if (qualification != null) {
 			qualification.setQualId(qualificationId);
 			modelMap.addAttribute("qualification", qualification);
 			this.qualificationService.getQualification(qualificationId);

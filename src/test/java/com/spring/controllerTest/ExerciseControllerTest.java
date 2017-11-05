@@ -1,6 +1,8 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -58,23 +60,27 @@ public class ExerciseControllerTest {
 	
 	@Test
 	public void testGetExercise() throws Exception {
-		Exercise expectedExercise = new Exercise(002, "Exercise2", 
+		Exercise exercise = new Exercise(670, "Exercise2", 
 				Duration.ofSeconds(120), 3, 12, null, null);
-		mockExerciseService.addExercise(expectedExercise);
-        when(mockExerciseService.getExercise(expectedExercise.getExerciseId()))
-        		.thenReturn(expectedExercise);
+		mockExerciseService.addExercise(exercise);
+		verify(mockExerciseService).addExercise(exercise);
+        when(mockExerciseService.getExercise(exercise.getExerciseId()))
+        		.thenReturn(exercise);
         
-        mockMvc.perform(get("/exercise/" + expectedExercise.getExerciseId()))
+        mockMvc.perform(get("/exercise/{exerciseId}", 670))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("exercise", expectedExercise))
+        		.andExpect(model().attribute("exercise", exercise))
         		.andExpect(view().name("exercise"));
+        
+        verify(mockExerciseService, times(2)).getExercise(670);
+        verifyNoMoreInteractions(mockExerciseService);
     }
 	
 	@Test
 	public void testAddExercise() throws Exception {
 		mockMvc.perform(post("/exercise/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("exerciseId:003, name:\"Exercise3\","
+				.content("exerciseId:890, name:\"Exercise3\","
 					+ " duration:Duration.ofSeconds(120), numberOfSets:3,"
 					+ " repsPerSet:12, routines:null,"
 					+ " equipment:null "
@@ -83,8 +89,9 @@ public class ExerciseControllerTest {
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/exercises"));
 		
-		verify(mockExerciseService).addExercise(new Exercise(003, "Exercise3", 
-				Duration.ofSeconds(120), 3, 12, null, null));
+		Exercise exercise = new Exercise(890, "Exercise3", 
+				Duration.ofSeconds(120), 3, 12, null, null);
+		when(mockExerciseService.getExercise(890)).thenReturn(exercise);
     }
 }
 

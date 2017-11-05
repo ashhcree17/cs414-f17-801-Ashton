@@ -1,6 +1,8 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -57,25 +59,30 @@ public class ManagerControllerTest {
 	
 	@Test
 	public void testGetManager() throws Exception {
-		Manager expectedManager = new Manager(002, "joe.smith", 
-				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
-				"Aetna");
-		mockManagerService.addManager(expectedManager);
-        when(mockManagerService.getManager(expectedManager.getManagerId()))
-        		.thenReturn(expectedManager);
+		Manager manager = new Manager(543, "joe.smith", 
+				"cats12yoyo", "Joe", "Smith", 123, 1234567890, 
+				"joe@email.com", "Aetna");
+		mockManagerService.addManager(manager);
+		verify(mockManagerService).addManager(manager);
+        when(mockManagerService.getManager(manager.getManagerId()))
+        		.thenReturn(manager);
         
-        mockMvc.perform(get("/manager/" + expectedManager.getManagerId()))
+        mockMvc.perform(get("/manager/{managerId}", 543))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("manager", expectedManager))
+        		.andExpect(model().attribute("manager", manager))
         		.andExpect(view().name("manager"));
+        
+        verify(mockManagerService, times(2)).getManager(543);
+        verifyNoMoreInteractions(mockManagerService);
     }
 	
 	@Test
 	public void testAddManager() throws Exception {
 		mockMvc.perform(post("/manager/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("managerId:003, username:\"joe.smith\", password:\"cats12yoyo\","
-					+ " name:\"Joe\", lastName:\"Smith\", managerAddressId:123,"
+				.content("managerId:432, username:\"joe.smith\","
+					+ " password:\"cats12yoyo\", name:\"Joe\","
+					+ " lastName:\"Smith\", managerAddressId:123,"
 					+ " phoneNumber:1234567890, email:\"joe@email.com\","
 					+ " insurance:\"Aetna\" "
 					.getBytes())
@@ -83,8 +90,9 @@ public class ManagerControllerTest {
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/managers"));
 		
-		verify(mockManagerService).addManager(new Manager(003, "joe.smith", 
-				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
-				"Aetna"));
+		Manager manager = new Manager(432, "joe.smith", 
+				"cats12yoyo", "Joe", "Smith", 123, 1234567890, 
+				"joe@email.com", "Aetna");
+		when(mockManagerService.getManager(432)).thenReturn(manager);
     }
 }

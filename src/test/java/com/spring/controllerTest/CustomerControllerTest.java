@@ -1,6 +1,8 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -57,23 +59,27 @@ public class CustomerControllerTest {
 	
 	@Test
 	public void testGetCustomer() throws Exception {
-		Customer expectedCustomer = new Customer(002, "Joe", "Smith", 002, 
+		Customer customer = new Customer(222, "Joe", "Smith", 002, 
 				1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE);
-		mockCustomerService.addCustomer(expectedCustomer);
-        when(mockCustomerService.getCustomer(expectedCustomer.getCustomerId()))
-        		.thenReturn(expectedCustomer);
+		mockCustomerService.addCustomer(customer);
+		verify(mockCustomerService).addCustomer(customer);
+        when(mockCustomerService.getCustomer(customer.getCustomerId()))
+        		.thenReturn(customer);
         
-        mockMvc.perform(get("/customer/" + expectedCustomer.getCustomerId()))
+        mockMvc.perform(get("/customer/{customerId}", 222))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("customer", expectedCustomer))
+        		.andExpect(model().attribute("customer", customer))
         		.andExpect(view().name("customer"));
+        
+        verify(mockCustomerService, times(2)).getCustomer(222);
+        verifyNoMoreInteractions(mockCustomerService);
     }
 	
 	@Test
 	public void testAddCustomer() throws Exception {
 		mockMvc.perform(post("/customer/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("customerId:003, name:\"Joe\","
+				.content("customerId:333, name:\"Joe\","
 					+ " lastName:\"Smith\", customerCustomerId:003,"
 					+ " phoneNumber:1234567890, email:\"joe@email.com\","
 					+ " insurance:\"Aetna\", membership:MembershipStatus.ACTIVE"
@@ -82,7 +88,8 @@ public class CustomerControllerTest {
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/customers"));
 		
-		verify(mockCustomerService).addCustomer(new Customer(003, "Joe", 
-				"Smith", 003, 1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));
+		Customer customer = new Customer(333, "Joe", "Smith", 003, 
+				1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE);
+		when(mockCustomerService.getCustomer(333)).thenReturn(customer);
     }
 }

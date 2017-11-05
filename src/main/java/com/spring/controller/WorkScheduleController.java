@@ -32,8 +32,8 @@ public class WorkScheduleController {
 	
 	@RequestMapping(value = "/workSchedule/{workScheduleId}", method = RequestMethod.GET)
 	public String getWorkSchedule(@PathVariable("workScheduleId") int workScheduleId, ModelMap modelMap) {
-		WorkSchedule workSchedule = new WorkSchedule();
-		if (this.workScheduleService.getWorkSchedule(workScheduleId) == null) {
+		WorkSchedule workSchedule = this.workScheduleService.getWorkSchedule(workScheduleId);
+		if (workSchedule != null) {
 			workSchedule.setWorkScheduleId(workScheduleId);
 			modelMap.addAttribute("workSchedule", workSchedule);
 			this.workScheduleService.getWorkSchedule(workScheduleId);

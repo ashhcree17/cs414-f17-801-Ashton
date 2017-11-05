@@ -1,6 +1,8 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -38,9 +40,8 @@ public class TrainerControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		mockMvc = standaloneSetup(controller)
-                .setSingleView(mockView)
-                .build();
+		mockMvc = standaloneSetup(controller).setSingleView(mockView)
+                								.build();
 	}
 	
 	@Test
@@ -58,37 +59,41 @@ public class TrainerControllerTest {
 	
 	@Test
 	public void testGetTrainer() throws Exception {
-		Trainer expectedTrainer = new Trainer(002, "joe.smith2", 
+		Trainer trainer = new Trainer(330, "joe.smith2", 
 				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
 				"Aetna", null, null);
-		mockTrainerService.addTrainer(expectedTrainer);
-        when(mockTrainerService.getTrainer(expectedTrainer.getTrainerId()))
-        		.thenReturn(expectedTrainer);
+		mockTrainerService.addTrainer(trainer);
+		verify(mockTrainerService).addTrainer(trainer);
+        when(mockTrainerService.getTrainer(trainer.getTrainerId()))
+        		.thenReturn(trainer);
         
-        mockMvc.perform(get("/trainer/" + expectedTrainer.getTrainerId()))
+        mockMvc.perform(get("/trainer/{trainerId}", 330))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("trainer", expectedTrainer))
+        		.andExpect(model().attribute("trainer", trainer))
         		.andExpect(view().name("trainer"));
+        
+        verify(mockTrainerService, times(2)).getTrainer(330);
+        verifyNoMoreInteractions(mockTrainerService);
     }
 	
 	@Test
 	public void testAddTrainer() throws Exception {
 		mockMvc.perform(post("/trainer/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("trainerId:003, username:\"joe.smith3\", password:\"cats12yoyo\"," 
-						+ " name:\"Joe\", lastName:\"Smith\", trainerAddressId:123,"
+				.content("trainerId:123, username:\"joe.smith3\","
+						+ " password:\"cats12yoyo\", name:\"Joe\","
+						+ " lastName:\"Smith\", trainerAddressId:123,"
 						+ " phoneNumber:1234567890, email:\"joe@email.com\","
-						+ " insurance:\"Aetna\", workSchedule:null, qualifications:null "
+						+ " insurance:\"Aetna\", workSchedule:null,"
+						+ " qualifications:null "
 					.getBytes())
 			)
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/trainers"));
 		
-//		verify(mockTrainerService).addTrainer(new Trainer(123, "Joe", 
-//				"Smith", 123, 1234567890, "joe@email.com", "Aetna", MembershipStatus.ACTIVE));
-		
-		verify(mockTrainerService).addTrainer(new Trainer(003, "joe.smith3", 
-				"cats12yoyo", "Joe", "Smith", 123, 1234567890, "joe@email.com", 
-				"Aetna", null, null));
+		Trainer trainer = new Trainer(123, "joe.smith", "dogs45spin",
+				"Joe", "Smith", 123, 1234567890, "joe@email.com", 
+				"Aetna", null, null);
+		when(mockTrainerService.getTrainer(123)).thenReturn(trainer);
     }
 }

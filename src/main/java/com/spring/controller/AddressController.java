@@ -24,15 +24,15 @@ public class AddressController {
 	
 	@RequestMapping(value = "/addresses", method = RequestMethod.GET)
 	public String listAddresses(ModelMap modelMap) {
-//		modelMap.addAttribute("address", new Address());
+		modelMap.addAttribute("address", new Address());
 		modelMap.addAttribute("listAddresses", this.addressService.listAddresses());
 		return "address";
 	}
 	
 	@RequestMapping(value = "/address/{addressId}", method = RequestMethod.GET)
 	public String getAddress(@PathVariable("addressId") int addressId, ModelMap modelMap) {
-		Address address = new Address();
-		if (this.addressService.getAddress(addressId) == null) {
+		Address address = this.addressService.getAddress(addressId);
+		if (address != null) {
 			address.setAddressId(addressId);
 			modelMap.addAttribute("address", address);
 			this.addressService.getAddress(addressId);

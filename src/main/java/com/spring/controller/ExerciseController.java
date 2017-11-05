@@ -32,8 +32,8 @@ public class ExerciseController {
 	
 	@RequestMapping(value = "/exercise/{exerciseId}", method = RequestMethod.GET)
 	public String getExercise(@PathVariable("exerciseId") int exerciseId, ModelMap modelMap) {
-		Exercise exercise = new Exercise();
-		if (this.exerciseService.getExercise(exerciseId) == null) {
+		Exercise exercise = this.exerciseService.getExercise(exerciseId);
+		if (exercise != null) {
 			exercise.setExerciseId(exerciseId);
 			modelMap.addAttribute("exercise", exercise);
 			this.exerciseService.getExercise(exerciseId);

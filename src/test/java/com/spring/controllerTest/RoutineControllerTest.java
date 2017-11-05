@@ -1,6 +1,8 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -57,30 +59,35 @@ public class RoutineControllerTest {
 	
 	@Test
 	public void testGetRoutine() throws Exception {
-		Routine expectedRoutine = new Routine(002, "Routine2", 
+		Routine routine = new Routine(888, "Routine1", 
 				null, null);
-		mockRoutineService.addRoutine(expectedRoutine);
-        when(mockRoutineService.getRoutine(expectedRoutine.getRoutineId()))
-        		.thenReturn(expectedRoutine);
+		mockRoutineService.addRoutine(routine);
+		verify(mockRoutineService).addRoutine(routine);
+        when(mockRoutineService.getRoutine(routine.getRoutineId()))
+        		.thenReturn(routine);
         
-        mockMvc.perform(get("/routine/" + expectedRoutine.getRoutineId()))
+        mockMvc.perform(get("/routine/{routineId}", 888))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("routine", expectedRoutine))
+        		.andExpect(model().attribute("routine", routine))
         		.andExpect(view().name("routine"));
+        
+        verify(mockRoutineService, times(2)).getRoutine(888);
+        verifyNoMoreInteractions(mockRoutineService);
     }
 	
 	@Test
 	public void testAddRoutine() throws Exception {
 		mockMvc.perform(post("/routine/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("routineId:003, name:\"Routine3\","
+				.content("routineId:999, name:\"Routine2\","
 					+ " exercises:null, customers:null "
 					.getBytes())
 			)
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/routines"));
-		
-		verify(mockRoutineService).addRoutine(new Routine(003, "Routine3", 
-				null, null));
+
+		Routine routine = new Routine(999, "Routine2", 
+				null, null);
+		when(mockRoutineService.getRoutine(999)).thenReturn(routine);
     }
 }

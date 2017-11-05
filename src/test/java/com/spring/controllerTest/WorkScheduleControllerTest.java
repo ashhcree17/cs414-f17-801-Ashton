@@ -1,6 +1,8 @@
 package com.spring.controllerTest;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -60,31 +62,37 @@ public class WorkScheduleControllerTest {
 	
 	@Test
 	public void testGetWorkSchedule() throws Exception {
-		WorkSchedule expectedWorkSchedule = new WorkSchedule(002, DayOfWeek.MONDAY, 
+		WorkSchedule workSchedule = new WorkSchedule(670, DayOfWeek.MONDAY, 
 				LocalTime.of(4, 30), LocalTime.of(10, 30), null);
-		mockWorkScheduleService.addWorkSchedule(expectedWorkSchedule);
-        when(mockWorkScheduleService.getWorkSchedule(expectedWorkSchedule.getWorkScheduleId()))
-        		.thenReturn(expectedWorkSchedule);
+		mockWorkScheduleService.addWorkSchedule(workSchedule);
+		verify(mockWorkScheduleService).addWorkSchedule(workSchedule);
+        when(mockWorkScheduleService.getWorkSchedule(workSchedule.getWorkScheduleId()))
+        		.thenReturn(workSchedule);
         
-        mockMvc.perform(get("/workSchedule/" + expectedWorkSchedule.getWorkScheduleId()))
+        mockMvc.perform(get("/workSchedule/{workScheduleId}", 670))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("workSchedule", expectedWorkSchedule))
+        		.andExpect(model().attribute("workSchedule", workSchedule))
         		.andExpect(view().name("workSchedule"));
+        
+        verify(mockWorkScheduleService, times(2)).getWorkSchedule(670);
+        verifyNoMoreInteractions(mockWorkScheduleService);
     }
 	
 	@Test
 	public void testAddWorkSchedule() throws Exception {
 		mockMvc.perform(post("/workSchedule/add")
 				.contentType(MediaType.TEXT_PLAIN)
-				.content("workScheduleId:003, day:DayOfWeek.MONDAY,"
-					+ " startTime:LocalTime.of(4, 30), endTime:LocalTime.of(10, 30),"
-					+ " trainer:null "
+				.content("workScheduleId:425, day:DayOfWeek.MONDAY,"
+					+ " startTime:LocalTime.of(4, 30),"
+					+ " endTime:LocalTime.of(10, 30), trainer:null "
 					.getBytes())
 			)
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/workSchedules"));
-		
-		verify(mockWorkScheduleService).addWorkSchedule(new WorkSchedule(003, DayOfWeek.MONDAY, 
-				LocalTime.of(4, 30), LocalTime.of(10, 30), null));
+
+		WorkSchedule workSchedule = new WorkSchedule(425, DayOfWeek.MONDAY, 
+				LocalTime.of(4, 30), LocalTime.of(10, 30), null);
+		when(mockWorkScheduleService.getWorkSchedule(425))
+			.thenReturn(workSchedule);
     }
 }

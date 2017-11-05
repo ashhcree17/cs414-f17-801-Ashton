@@ -32,8 +32,8 @@ public class RoutineController {
 	
 	@RequestMapping(value = "/routine/{routineId}", method = RequestMethod.GET)
 	public String getRoutine(@PathVariable("routineId") int routineId, ModelMap modelMap) {
-		Routine routine = new Routine();
-		if (this.routineService.getRoutine(routineId) == null) {
+		Routine routine = this.routineService.getRoutine(routineId);
+		if (routine != null) {
 			routine.setRoutineId(routineId);
 			modelMap.addAttribute("routine", routine);
 			this.routineService.getRoutine(routineId);

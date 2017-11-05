@@ -32,8 +32,8 @@ public class EquipmentController {
 	
 	@RequestMapping(value = "/equipment/{equipmentId}", method = RequestMethod.GET)
 	public String getEquipment(@PathVariable("equipmentId") int equipmentId, ModelMap modelMap) {
-		Equipment equipment = new Equipment();
-		if (this.equipmentService.getEquipment(equipmentId) == null) {
+		Equipment equipment = this.equipmentService.getEquipment(equipmentId);
+		if (equipment != null) {
 			equipment.setEquipmentId(equipmentId);
 			modelMap.addAttribute("equipment", equipment);
 			this.equipmentService.getEquipment(equipmentId);
@@ -59,7 +59,7 @@ public class EquipmentController {
 		}
 		
 		modelMap.addAttribute("equipment", equipment);
-		return "redirect:/equipments";
+		return "redirect:/inventory";
 	}
 	
 	@RequestMapping("/delete/{equipmentId}")

@@ -52,16 +52,19 @@ public class AddressControllerTest {
 	
 	@Test
 	public void testGetAddress() throws Exception {
-		Address expectedAddress = new Address(002, "357 Main St", 
-				"Apt 1", "Denver", "CO", 24680);
-		mockAddressService.addAddress(expectedAddress);
-        when(mockAddressService.getAddress(expectedAddress.getAddressId()))
-        		.thenReturn(expectedAddress);
+		Address address = new Address (550, "357 Main St", "Apt 1", 
+				"Denver", "CO", 24680);
+		mockAddressService.addAddress(address);
+		verify(mockAddressService).addAddress(address);
+		when(mockAddressService.getAddress(550)).thenReturn(address);
         
-        mockMvc.perform(get("/address/" + expectedAddress.getAddressId()))
+        mockMvc.perform(get("/address/{addressId}", 550))
         		.andExpect(status().isOk())
-        		.andExpect(model().attribute("address", expectedAddress))
+        		.andExpect(model().attribute("address", address))
         		.andExpect(view().name("address"));
+        
+        verify(mockAddressService, times(2)).getAddress(550);
+        verifyNoMoreInteractions(mockAddressService);
     }
 	
 	@Test
@@ -75,7 +78,8 @@ public class AddressControllerTest {
 			.andExpect(status().is2xxSuccessful())
 			.andExpect(view().name("redirect:/addresses"));
 		
-		verify(mockAddressService).addAddress(new Address(275, "123 Main St", 
-				"Apt 1", "Denver", "CO", 12345));	
+		Address address = new Address(275, "123 Main St", 
+				"Apt 1", "Denver", "CO", 12345);
+		when(mockAddressService.getAddress(275)).thenReturn(address);
 	}
 }

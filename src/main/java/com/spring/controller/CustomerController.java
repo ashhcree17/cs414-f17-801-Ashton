@@ -32,8 +32,8 @@ public class CustomerController {
 	
 	@RequestMapping(value = "/customer/{customerId}", method = RequestMethod.GET)
 	public String getCustomer(@PathVariable("customerId") int customerId, ModelMap modelMap) {
-		Customer customer = new Customer();
-		if (this.customerService.getCustomer(customerId) == null) {
+		Customer customer = this.customerService.getCustomer(customerId);
+		if (customer != null) {
 			customer.setCustomerId(customerId);
 			modelMap.addAttribute("customer", customer);
 			this.customerService.getCustomer(customerId);

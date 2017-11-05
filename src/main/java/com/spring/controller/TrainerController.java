@@ -32,8 +32,8 @@ public class TrainerController {
 	
 	@RequestMapping(value = "/trainer/{trainerId}", method = RequestMethod.GET)
 	public String getTrainer(@PathVariable("trainerId") int trainerId, ModelMap modelMap) {
-		Trainer trainer = new Trainer();
-		if (this.trainerService.getTrainer(trainerId) == null) {
+		Trainer trainer = this.trainerService.getTrainer(trainerId);
+		if (trainer != null) {
 			trainer.setTrainerId(trainerId);
 			modelMap.addAttribute("trainer", trainer);
 			this.trainerService.getTrainer(trainerId);
