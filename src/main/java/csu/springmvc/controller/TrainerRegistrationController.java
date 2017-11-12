@@ -25,7 +25,7 @@ public class TrainerRegistrationController {
     return mav;
   }
 
-  @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/registerTrainerProcess", method = RequestMethod.POST)
   public ModelAndView addTrainer(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("trainer") Trainer trainer) {
 

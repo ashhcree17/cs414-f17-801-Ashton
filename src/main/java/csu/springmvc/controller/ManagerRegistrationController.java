@@ -25,7 +25,7 @@ public class ManagerRegistrationController {
     return mav;
   }
 
-  @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/registerManagerProcess", method = RequestMethod.POST)
   public ModelAndView addManager(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("manager") Manager manager) {
 

@@ -13,6 +13,9 @@
 
 	<bean id="managerService" class="csu.springmvc.service.ManagerServiceImpl" />
 	<bean id="managerDao" class="csu.springmvc.dao.ManagerDaoImpl" />
+	
+	<bean id="trainerService" class="csu.springmvc.service.TrainerServiceImpl" />
+	<bean id="trainerDao" class="csu.springmvc.dao.TrainerDaoImpl" />
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="datasource" />

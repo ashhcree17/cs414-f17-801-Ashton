@@ -8,7 +8,7 @@
 <title>Manager Registration</title>
 </head>
 <body>
-	<form:form id="regForm" modelAttribute="manager" action="registerProcess"
+	<form:form id="regForm" modelAttribute="manager" action="registerManagerProcess"
 		method="post">
 
 		<table>

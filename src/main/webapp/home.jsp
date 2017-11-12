@@ -10,7 +10,10 @@
 	<table align="center">
 		<tr>
 			<td><a href="login">Login</a></td>
-			<td><a href="register">Register</a></td>
+		</tr>
+		<tr>
+			<td><a href="registerManager">Register (with Manager ID)</a></td>
+			<td><a href="registerTrainer">Register (with Trainer ID)</a></td>
 		</tr>
 	</table>
 </body>
