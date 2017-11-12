@@ -1,38 +1,21 @@
 package csu.springmvc.model;
 
-public class Trainer {
+public class Customer {
 
-  private int trainerid;
-  private String username;
-  private String password;
+  private int customerid;
   private String firstname;
   private String lastname;
   private String email;
   private String insurance;
   private int phonenumber;
+  private String membership;
   
-  public int getTrainerid() {
-    return trainerid;
+  public int getCustomerid() {
+    return customerid;
   }
 
-  public void setTrainerid(int trainerid) {
-    this.trainerid = trainerid;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-  
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
+  public void setCustomerid(int customerid) {
+    this.customerid = customerid;
   }
 
   public String getFirstname() {
@@ -73,5 +56,13 @@ public class Trainer {
 
   public void setPhonenumber(int phonenumber) {
     this.phonenumber = phonenumber;
+  }
+
+  public String getMembership() {
+    return membership;
+  }
+
+  public void setMembership(String membership) {
+    this.membership = membership;
   }
 }

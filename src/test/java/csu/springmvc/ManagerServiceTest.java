@@ -18,15 +18,11 @@ public class ManagerServiceTest {
   @Autowired
   ManagerService managerService;
 
+  Manager manager = new Manager();
+  
   @Before
   public void setUp() throws Exception {
-  }
-
-  @Test
-  public void testValidateUser() {
-
-    Manager manager = new Manager();
-    manager.setManagerid(1234);
+    manager.setManagerid(4607);
     manager.setUsername("joesmith");
     manager.setPassword("iLOVEtheGYM21");
     manager.setFirstname("Joe");
@@ -35,7 +31,10 @@ public class ManagerServiceTest {
     manager.setEmail("joesmith@email.com");
     manager.setInsurance("Aetna");
     managerService.register(manager);
-    
+  }
+
+  @Test
+  public void testValidateUser() {
     Login login = new Login();
     login.setUsername("joesmith");
     login.setPassword("iLOVEtheGYM21");

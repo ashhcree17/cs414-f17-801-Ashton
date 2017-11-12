@@ -19,7 +19,7 @@ public class TrainerRegistrationController {
 
   @RequestMapping(value = "/registerTrainer", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("register");
+    ModelAndView mav = new ModelAndView("registerTrainer");
     mav.addObject("trainer", new Trainer());
     
     return mav;

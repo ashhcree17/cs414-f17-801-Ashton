@@ -19,7 +19,7 @@ public class ManagerRegistrationController {
 
   @RequestMapping(value = "/registerManager", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("register");
+    ModelAndView mav = new ModelAndView("registerManager");
     mav.addObject("manager", new Manager());
     
     return mav;
