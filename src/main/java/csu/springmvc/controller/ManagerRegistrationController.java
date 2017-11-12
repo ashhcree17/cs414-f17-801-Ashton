@@ -13,15 +13,15 @@ import csu.springmvc.model.Manager;
 import csu.springmvc.service.ManagerService;
 
 @Controller
-public class RegistrationController {
+public class ManagerRegistrationController {
   @Autowired
   public ManagerService managerService;
 
-  @RequestMapping(value = "/register", method = RequestMethod.GET)
+  @RequestMapping(value = "/registerManager", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("register");
     mav.addObject("manager", new Manager());
-
+    
     return mav;
   }
 

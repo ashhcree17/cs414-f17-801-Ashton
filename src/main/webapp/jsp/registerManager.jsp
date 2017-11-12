@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registration</title>
+<title>Manager Registration</title>
 </head>
 <body>
 	<form:form id="regForm" modelAttribute="manager" action="registerProcess"

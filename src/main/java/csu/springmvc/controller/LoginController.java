@@ -12,12 +12,17 @@ import org.springframework.web.servlet.ModelAndView;
 import csu.springmvc.model.Login;
 import csu.springmvc.model.Manager;
 import csu.springmvc.service.ManagerService;
+import csu.springmvc.model.Trainer;
+import csu.springmvc.service.TrainerService;
 
 @Controller
 public class LoginController {
 
   @Autowired
   ManagerService managerService;
+  
+  @Autowired
+  TrainerService trainerService;
 
   @RequestMapping(value = "/login", method = RequestMethod.GET)
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
@@ -33,13 +38,17 @@ public class LoginController {
     ModelAndView mav = null;
 
     Manager manager = managerService.validateManager(login);
+    Trainer trainer = trainerService.validateTrainer(login);
 
     if (null != manager) {
-      mav = new ModelAndView("welcome");
+      mav = new ModelAndView("welcomeManager");
       mav.addObject("firstname", manager.getFirstname());
-    } else {
+    } else if (null != trainer) {
+      mav = new ModelAndView("welcomeTrainer");
+      mav.addObject("firstname", trainer.getFirstname());
+    } else {  
       mav = new ModelAndView("login");
-      mav.addObject("message", "Username or Password is wrong!!");
+      mav.addObject("message", "Username or Password is incorrect!");
     }
 
     return mav;
