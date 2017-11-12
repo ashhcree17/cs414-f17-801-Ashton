@@ -17,18 +17,8 @@
 				<td><form:input path="customerid" name="customerid" id="customerid" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="username">Username</form:label></td>
-				<td><form:input path="username" name="username" id="username" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="password">Password</form:label></td>
-				<td><form:password path="password" name="password"
-						id="password" /></td>
-			</tr>
-			<tr>
 				<td><form:label path="firstname">First Name</form:label></td>
-				<td><form:input path="firstname" name="firstname"
-						id="firstname" /></td>
+				<td><form:input path="firstname" name="firstname" id="firstname" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="lastname">Last Name</form:label></td>
@@ -46,6 +36,10 @@
 				<td><form:label path="phonenumber">Phone Number</form:label></td>
 				<td><form:input path="phonenumber" name="phonenumber" id="phonenumber" /></td>
 			</tr>
+			<tr>
+				<td><form:label path="membership">Membership Status</form:label></td>
+				<td><form:input path="membership" name="membership" id="membership" /></td>
+			</tr>
 
 			<tr>
 				<td></td>
@@ -54,7 +48,7 @@
 			<tr></tr>
 			<tr>
 				<td></td>
-				<td><a href="home.jsp">Home</a></td>
+				<td><a href="welcome">Manager Home</a></td>
 			</tr>
 		</table>
 	</form:form>

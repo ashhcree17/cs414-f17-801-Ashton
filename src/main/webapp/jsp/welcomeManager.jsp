@@ -14,7 +14,7 @@
 		<tr>
 		</tr>
 		<tr>
-			<td><a href="customer.jsp">Add Customer</a></td>
+			<td><a href="registerCustomer">Register Customer</a></td>
 		</tr>
 		<tr>
 			<td><a href="home.jsp">Home</a></td>
