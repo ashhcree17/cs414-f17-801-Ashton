@@ -13,7 +13,7 @@
 
 		<table>
 			<tr>
-				<td><form:label path="trainerid">TrainerId</form:label></td>
+				<td><form:label path="trainerid">Trainer Id (Must start with 1):</form:label></td>
 				<td><form:input path="trainerid" name="trainerid" id="trainerid" /></td>
 			</tr>
 			<tr>
@@ -39,8 +39,8 @@
 				<td><form:input path="email" name="email" id="email" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="address">Address</form:label></td>
-				<td><form:input path="address" name="address" id="address" /></td>
+				<td><form:label path="insurance">Health Insurance Provider</form:label></td>
+				<td><form:input path="insurance" name="insurance" id="insurance" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="phonenumber">PhoneNumber</form:label></td>

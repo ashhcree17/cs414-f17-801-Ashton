@@ -13,7 +13,7 @@
 
 		<table>
 			<tr>
-				<td><form:label path="managerid">ManagerId</form:label></td>
+				<td><form:label path="managerid">Manager Id (Must start with 0):</form:label></td>
 				<td><form:input path="managerid" name="managerid" id="managerid" /></td>
 			</tr>
 			<tr>
@@ -26,12 +26,12 @@
 						id="password" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="firstname">FirstName</form:label></td>
+				<td><form:label path="firstname">First Name</form:label></td>
 				<td><form:input path="firstname" name="firstname"
 						id="firstname" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="lastname">LastName</form:label></td>
+				<td><form:label path="lastname">Last Name</form:label></td>
 				<td><form:input path="lastname" name="lastname" id="lastname" /></td>
 			</tr>
 			<tr>
@@ -39,11 +39,11 @@
 				<td><form:input path="email" name="email" id="email" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="address">Address</form:label></td>
-				<td><form:input path="address" name="address" id="address" /></td>
+				<td><form:label path="insurance">Health Insurance Provider</form:label></td>
+				<td><form:input path="insurance" name="insurance" id="insurance" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="phonenumber">PhoneNumber</form:label></td>
+				<td><form:label path="phonenumber">Phone Number</form:label></td>
 				<td><form:input path="phonenumber" name="phonenumber" id="phonenumber" /></td>
 			</tr>
 

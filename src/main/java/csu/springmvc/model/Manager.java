@@ -8,7 +8,7 @@ public class Manager {
   private String firstname;
   private String lastname;
   private String email;
-  private String address;
+  private String insurance;
   private int phonenumber;
   
   public int getManagerid() {
@@ -59,12 +59,12 @@ public class Manager {
     this.email = email;
   }
 
-  public String getAddress() {
-    return address;
+  public String getInsurance() {
+    return insurance;
   }
 
-  public void setAddress(String address) {
-    this.address = address;
+  public void setInsurance(String insurance) {
+    this.insurance = insurance;
   }
 
   public int getPhonenumber() {

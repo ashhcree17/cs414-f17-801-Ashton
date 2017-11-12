@@ -1,6 +1,6 @@
 package csu.springmvc;
 
-//import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,13 +25,23 @@ public class ManagerServiceTest {
   @Test
   public void testValidateUser() {
 
+    Manager manager = new Manager();
+    manager.setManagerid(1234);
+    manager.setUsername("joesmith");
+    manager.setPassword("iLOVEtheGYM21");
+    manager.setFirstname("Joe");
+    manager.setLastname("Smith");
+    manager.setPhonenumber(1234567890);
+    manager.setEmail("joesmith@email.com");
+    manager.setInsurance("Aetna");
+    managerService.register(manager);
+    
     Login login = new Login();
-    login.setUsername("ranjith");
-    login.setPassword("sekar");
+    login.setUsername("joesmith");
+    login.setPassword("iLOVEtheGYM21");
 
-    Manager manager = managerService.validateManager(login);
+    Manager managerChk = managerService.validateManager(login);
 
-//    assertEquals("Ranjith", user.getFirstname());
+    assertEquals("Joe", managerChk.getFirstname());
   }
-
 }
