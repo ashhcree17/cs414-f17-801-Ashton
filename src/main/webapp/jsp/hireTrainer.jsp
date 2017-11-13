@@ -17,8 +17,8 @@
 				<td><form:input path="trainerid" name="trainerid" id="trainerid" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="firstname">First Name</form:label></td>
-				<td><form:input path="firstname" name="firstname" id="firstname" /></td>
+				<td><form:label path="name">First Name</form:label></td>
+				<td><form:input path="name" name="name" id="name" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="lastname">Last Name</form:label></td>

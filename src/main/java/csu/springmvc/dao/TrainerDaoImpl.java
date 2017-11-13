@@ -28,7 +28,7 @@ public class TrainerDaoImpl implements TrainerDao {
   
   public void hire(Trainer trainer) {
 
-    String sql = "insert into trainer (trainerid, firstname, lastname, phonenumber, "
+    String sql = "insert into trainer (trainerid, name, lastname, phonenumber, "
         + "email, insurance) values(?,?,?,?,?,?)";
 
     jdbcTemplate.update(sql, new Object[] { trainer.getTrainerid(), 

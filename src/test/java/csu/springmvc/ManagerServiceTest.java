@@ -23,7 +23,7 @@ public class ManagerServiceTest {
   
   @Before
   public void setUp() throws Exception {
-    manager.setManagerid(4987);
+    manager.setManagerid(5007);
     manager.setUsername("joesmith");
     manager.setPassword("iLOVEtheGYM21");
     manager.setName("Joe");
