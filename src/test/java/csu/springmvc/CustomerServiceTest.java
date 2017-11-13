@@ -7,8 +7,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import csu.springmvc.model.Login;
+
 import csu.springmvc.model.Customer;
+import csu.springmvc.model.Login;
 import csu.springmvc.service.CustomerService;
 
 @ContextConfiguration(locations = { "classpath:csu/config/beans.xml" })
@@ -22,7 +23,7 @@ public class CustomerServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    customer.setCustomerid(1464);
+    customer.setCustomerid(1544);
     customer.setFirstname("Joe");
     customer.setLastname("Smith");
     customer.setPhonenumber(1234567890);

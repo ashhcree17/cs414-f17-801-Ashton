@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import csu.springmvc.model.Login;
 import csu.springmvc.model.Manager;
 import csu.springmvc.service.ManagerService;
@@ -22,7 +23,7 @@ public class ManagerServiceTest {
   
   @Before
   public void setUp() throws Exception {
-    manager.setManagerid(4777);
+    manager.setManagerid(4857);
     manager.setUsername("joesmith");
     manager.setPassword("iLOVEtheGYM21");
     manager.setFirstname("Joe");
