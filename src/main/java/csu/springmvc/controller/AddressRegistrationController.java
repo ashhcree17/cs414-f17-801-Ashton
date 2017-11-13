@@ -31,6 +31,6 @@ public class AddressRegistrationController {
 
     addressService.register(address);
 
-    return new ModelAndView("successAddress", "name", address.getStreet1());
+    return new ModelAndView("successAddress", "street1", address.getStreet1());
   }
 }
