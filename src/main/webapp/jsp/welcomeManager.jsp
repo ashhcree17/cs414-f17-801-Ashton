@@ -23,6 +23,9 @@
 			<td><a href="registerEquipment">Register Equipment</a></td>
 		</tr>
 		<tr>
+			<td><a href="registerAddress">Register Address</a></td>
+		</tr>
+		<tr>
 			<td><a href="home.jsp">Home</a></td>
 		</tr>
 	</table>

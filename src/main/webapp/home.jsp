@@ -4,15 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome</title>
+<title>Globo Gym Management System</title>
 </head>
 <body>
+	<h2>Welcome to the Globo Gym Management System Home Page!</h2>
 	<table align="center">
 		<tr>
 			<td><a href="login">Login</a></td>
 		</tr>
 		<tr>
 			<td><a href="registerManager">Register (with Manager ID)</a></td>
+		</tr>
+		<tr>
 			<td><a href="registerTrainer">Register (with Trainer ID)</a></td>
 		</tr>
 	</table>
