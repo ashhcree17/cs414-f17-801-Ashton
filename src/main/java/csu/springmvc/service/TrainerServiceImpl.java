@@ -14,6 +14,10 @@ public class TrainerServiceImpl implements TrainerService {
   public void register(Trainer trainer) {
     trainerDao.register(trainer);
   }
+  
+  public void hire(Trainer trainer) {
+    trainerDao.hire(trainer);
+  }
 
   public Trainer validateTrainer(Login login) {
     return trainerDao.validateTrainer(login);

@@ -22,29 +22,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="password">Password</form:label></td>
-				<td><form:password path="password" name="password"
-						id="password" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="firstname">FirstName</form:label></td>
-				<td><form:input path="firstname" name="firstname"
-						id="firstname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="lastname">LastName</form:label></td>
-				<td><form:input path="lastname" name="lastname" id="lastname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="email">Email</form:label></td>
-				<td><form:input path="email" name="email" id="email" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="insurance">Health Insurance Provider</form:label></td>
-				<td><form:input path="insurance" name="insurance" id="insurance" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="phonenumber">PhoneNumber</form:label></td>
-				<td><form:input path="phonenumber" name="phonenumber" id="phonenumber" /></td>
+				<td><form:password path="password" name="password" id="password" /></td>
 			</tr>
 
 			<tr>

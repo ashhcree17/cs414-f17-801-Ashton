@@ -3,9 +3,7 @@ package csu.springmvc.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,13 +20,26 @@ public class TrainerDaoImpl implements TrainerDao {
   JdbcTemplate jdbcTemplate;
 
   public void register(Trainer trainer) {
+//    String sql = "update trainer set username = '" + trainer.getUsername() 
+//        + "', password = '" + trainer.getPassword() + "' where trainerid = " 
+//        + trainer.getTrainerid();
+//
+//    jdbcTemplate.update(sql, trainer);
+    
+    this.jdbcTemplate.update(
+        "update trainer set username = ?, password = ? where trainerid = ?", 
+        trainer.getUsername(), trainer.getPassword(), trainer.getTrainerid());
+    
+  }
+  
+  public void hire(Trainer trainer) {
 
-    String sql = "insert into trainer values(?,?,?,?,?,?,?,?)";
+    String sql = "insert into trainer (trainerid, firstname, lastname, phonenumber, "
+        + "email, insurance) values(?,?,?,?,?,?)";
 
     jdbcTemplate.update(sql, new Object[] { trainer.getTrainerid(), 
-        trainer.getUsername(), trainer.getPassword(), trainer.getFirstname(),
-        trainer.getLastname(), trainer.getPhonenumber(), trainer.getEmail(), 
-        trainer.getInsurance() });
+        trainer.getFirstname(), trainer.getLastname(), trainer.getPhonenumber(), 
+        trainer.getEmail(), trainer.getInsurance() });
   }
 
   public Trainer validateTrainer(Login login) {
