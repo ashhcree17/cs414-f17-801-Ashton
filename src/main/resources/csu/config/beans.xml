@@ -22,6 +22,9 @@
 	
 	<bean id="equipmentService" class="csu.springmvc.service.EquipmentServiceImpl" />
 	<bean id="equipmentDao" class="csu.springmvc.dao.EquipmentDaoImpl" />
+	
+	<bean id="exerciseService" class="csu.springmvc.service.ExerciseServiceImpl" />
+	<bean id="exerciseDao" class="csu.springmvc.dao.ExerciseDaoImpl" />
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="datasource" />

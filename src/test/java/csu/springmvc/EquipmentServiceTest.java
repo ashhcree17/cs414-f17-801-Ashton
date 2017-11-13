@@ -22,7 +22,7 @@ public class EquipmentServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    equipment.setEquipmentid(1764);
+    equipment.setEquipmentid(1974);
     equipment.setName("Barbell");
 //    equipment.setPicture(null);
     equipment.setQuantity(12);

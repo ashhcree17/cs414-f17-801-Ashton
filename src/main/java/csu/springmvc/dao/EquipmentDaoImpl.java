@@ -29,7 +29,7 @@ public class EquipmentDaoImpl implements EquipmentDao {
 
   public Equipment getEquipment(int equipmentid) {
 
-    String sql = "select * from equipment where equipmentid='" + equipmentid + "'";
+    String sql = "select * from equipment where equipmentid=" + equipmentid;
 
     List<Equipment> equipments = jdbcTemplate.query(sql, new EquipmentMapper());
 
