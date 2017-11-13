@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<td><form:label path="duration">Duration</form:label></td>
-				<td><form:input path="duration" name="duration" id="duration" /></td>
+				<td><form:input path="duration" name="duration" id="duration" readonly="true" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="numberOfSets">Number of Sets</form:label></td>

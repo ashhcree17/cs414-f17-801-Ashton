@@ -17,9 +17,17 @@ public class ExerciseRegistrationController {
   @Autowired
   public ExerciseService exerciseService;
 
-  @RequestMapping(value = "/registerExercise", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerExercise");
+  @RequestMapping(value = "/registerExerciseDuration", method = RequestMethod.GET)
+  public ModelAndView showRegisterDuration(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("registerExerciseDuration");
+    mav.addObject("exercise", new Exercise());
+    
+    return mav;
+  }
+  
+  @RequestMapping(value = "/registerExerciseSets", method = RequestMethod.GET)
+  public ModelAndView showRegisterSets(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("registerExerciseSets");
     mav.addObject("exercise", new Exercise());
     
     return mav;
