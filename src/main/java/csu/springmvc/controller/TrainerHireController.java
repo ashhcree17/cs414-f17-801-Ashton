@@ -31,6 +31,6 @@ public class TrainerHireController {
 
     trainerService.hire(trainer);
 
-    return new ModelAndView("success", "firstname", trainer.getFirstname());
+    return new ModelAndView("success", "name", trainer.getName());
   }
 }

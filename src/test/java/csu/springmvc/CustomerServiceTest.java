@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import csu.springmvc.model.Customer;
-import csu.springmvc.model.Login;
 import csu.springmvc.service.CustomerService;
 
 @ContextConfiguration(locations = { "classpath:csu/config/beans.xml" })
@@ -23,8 +22,8 @@ public class CustomerServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    customer.setCustomerid(1554);
-    customer.setFirstname("Joe");
+    customer.setCustomerid(1674);
+    customer.setName("Joe");
     customer.setLastname("Smith");
     customer.setPhonenumber(1234567890);
     customer.setEmail("joesmith@email.com");
@@ -34,13 +33,9 @@ public class CustomerServiceTest {
   }
 
   @Test
-  public void testValidateUser() {
-    Login login = new Login();
-    login.setUsername("joesmith");
-    login.setPassword("iLOVEtheGYM21");
-
+  public void testValidateCustomer() {
     Customer customerChk = customerService.getCustomer(customer.getCustomerid());
 
-    assertEquals("Joe", customerChk.getFirstname());
+    assertEquals("Joe", customerChk.getName());
   }
 }

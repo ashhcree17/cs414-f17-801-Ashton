@@ -5,7 +5,7 @@ public class Manager {
   private int managerid;
   private String username;
   private String password;
-  private String firstname;
+  private String name;
   private String lastname;
   private String email;
   private String insurance;
@@ -35,12 +35,12 @@ public class Manager {
     this.password = password;
   }
 
-  public String getFirstname() {
-    return firstname;
+  public String getName() {
+    return name;
   }
 
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getLastname() {

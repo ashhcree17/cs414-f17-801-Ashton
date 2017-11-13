@@ -17,5 +17,4 @@ public class CustomerServiceImpl implements CustomerService {
   public Customer getCustomer(int customerid) {
     return customerDao.getCustomer(customerid);
   }
-
 }

@@ -9,7 +9,7 @@
 <body>
 <table>
 		<tr>
-			<td>Success adding ${firstname}</td>
+			<td>Success adding ${name}</td>
 		</tr>
 		<tr>
 		</tr>

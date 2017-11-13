@@ -23,10 +23,10 @@ public class ManagerServiceTest {
   
   @Before
   public void setUp() throws Exception {
-    manager.setManagerid(4867);
+    manager.setManagerid(4987);
     manager.setUsername("joesmith");
     manager.setPassword("iLOVEtheGYM21");
-    manager.setFirstname("Joe");
+    manager.setName("Joe");
     manager.setLastname("Smith");
     manager.setPhonenumber(1234567890);
     manager.setEmail("joesmith@email.com");
@@ -42,6 +42,6 @@ public class ManagerServiceTest {
 
     Manager managerChk = managerService.validateManager(login);
 
-    assertEquals("Joe", managerChk.getFirstname());
+    assertEquals("Joe", managerChk.getName());
   }
 }

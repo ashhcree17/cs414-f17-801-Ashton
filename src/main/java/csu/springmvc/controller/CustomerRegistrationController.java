@@ -31,6 +31,6 @@ public class CustomerRegistrationController {
 
     customerService.register(customer);
 
-    return new ModelAndView("welcome", "firstname", customer.getFirstname());
+    return new ModelAndView("success", "name", customer.getName());
   }
 }

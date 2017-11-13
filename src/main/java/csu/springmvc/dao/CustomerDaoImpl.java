@@ -23,7 +23,7 @@ public class CustomerDaoImpl implements CustomerDao {
     String sql = "insert into customer values(?,?,?,?,?,?,?)";
 
     jdbcTemplate.update(sql, new Object[] { customer.getCustomerid(), 
-        customer.getFirstname(), customer.getLastname(), 
+        customer.getName(), customer.getLastname(), 
         customer.getPhonenumber(), customer.getEmail(), 
         customer.getInsurance(), customer.getMembership() });
   }
@@ -44,7 +44,7 @@ class CustomerMapper implements RowMapper<Customer> {
     Customer customer = new Customer();
 
     customer.setCustomerid(rs.getInt("customerid"));
-    customer.setFirstname(rs.getString("firstname"));
+    customer.setName(rs.getString("name"));
     customer.setLastname(rs.getString("lastname"));
     customer.setPhonenumber(rs.getInt("phonenumber"));
     customer.setEmail(rs.getString("email"));

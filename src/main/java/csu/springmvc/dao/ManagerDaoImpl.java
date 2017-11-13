@@ -26,7 +26,7 @@ public class ManagerDaoImpl implements ManagerDao {
     String sql = "insert into manager values(?,?,?,?,?,?,?,?)";
 
     jdbcTemplate.update(sql, new Object[] { manager.getManagerid(), 
-        manager.getUsername(), manager.getPassword(), manager.getFirstname(),
+        manager.getUsername(), manager.getPassword(), manager.getName(),
         manager.getLastname(), manager.getPhonenumber(), manager.getEmail(), 
         manager.getInsurance() });
   }
@@ -50,7 +50,7 @@ class ManagerMapper implements RowMapper<Manager> {
     manager.setManagerid(rs.getInt("managerid"));
     manager.setUsername(rs.getString("username"));
     manager.setPassword(rs.getString("password"));
-    manager.setFirstname(rs.getString("firstname"));
+    manager.setName(rs.getString("name"));
     manager.setLastname(rs.getString("lastname"));
     manager.setPhonenumber(rs.getInt("phonenumber"));
     manager.setEmail(rs.getString("email"));

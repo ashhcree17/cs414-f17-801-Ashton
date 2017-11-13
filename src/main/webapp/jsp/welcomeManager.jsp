@@ -20,9 +20,6 @@
 			<td><a href="hireTrainer">Hire Trainer</a></td>
 		</tr>
 		<tr>
-			<td><a href="inventoryEquipment">Inventory Equipment</a></td>
-		</tr>
-		<tr>
 			<td><a href="home.jsp">Home</a></td>
 		</tr>
 	</table>

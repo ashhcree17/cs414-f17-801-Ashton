@@ -3,7 +3,7 @@ package csu.springmvc.model;
 public class Customer {
 
   private int customerid;
-  private String firstname;
+  private String name;
   private String lastname;
   private String email;
   private String insurance;
@@ -18,12 +18,12 @@ public class Customer {
     this.customerid = customerid;
   }
 
-  public String getFirstname() {
-    return firstname;
+  public String getName() {
+    return name;
   }
 
-  public void setFirstname(String firstname) {
-    this.firstname = firstname;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getLastname() {

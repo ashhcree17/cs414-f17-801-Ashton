@@ -32,7 +32,7 @@ public class TrainerDaoImpl implements TrainerDao {
         + "email, insurance) values(?,?,?,?,?,?)";
 
     jdbcTemplate.update(sql, new Object[] { trainer.getTrainerid(), 
-        trainer.getFirstname(), trainer.getLastname(), trainer.getPhonenumber(), 
+        trainer.getName(), trainer.getLastname(), trainer.getPhonenumber(), 
         trainer.getEmail(), trainer.getInsurance() });
   }
 
@@ -55,7 +55,7 @@ class TrainerMapper implements RowMapper<Trainer> {
     trainer.setTrainerid(rs.getInt("trainerid"));
     trainer.setUsername(rs.getString("username"));
     trainer.setPassword(rs.getString("password"));
-    trainer.setFirstname(rs.getString("firstname"));
+    trainer.setName(rs.getString("name"));
     trainer.setLastname(rs.getString("lastname"));
     trainer.setEmail(rs.getString("email"));
     trainer.setPhonenumber(rs.getInt("phonenumber"));

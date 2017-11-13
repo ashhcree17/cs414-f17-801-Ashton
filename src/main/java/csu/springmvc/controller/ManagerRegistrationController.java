@@ -31,6 +31,6 @@ public class ManagerRegistrationController {
 
     managerService.register(manager);
 
-    return new ModelAndView("welcome", "firstname", manager.getFirstname());
+    return new ModelAndView("welcome", "name", manager.getName());
   }
 }
