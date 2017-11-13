@@ -21,10 +21,6 @@
 				<td><form:input path="name" name="name" id="name" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="picture">Picture</form:label></td>
-				<td><form:input path="picture" name="picture" id="picture" /></td>
-			</tr>
-			<tr>
 				<td><form:label path="quantity">Quantity</form:label></td>
 				<td><form:input path="quantity" name="quantity" id="quantity" /></td>
 			</tr>

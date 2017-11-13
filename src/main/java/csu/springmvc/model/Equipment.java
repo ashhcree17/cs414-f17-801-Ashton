@@ -1,12 +1,12 @@
 package csu.springmvc.model;
 
-import java.sql.Blob;
+//import java.sql.Blob;
 
 public class Equipment {
 
   private int equipmentid;
   private String name;
-  private Blob picture;
+//  private Blob picture;
   private int quantity;
   
   public int getEquipmentid() {
@@ -25,13 +25,13 @@ public class Equipment {
     this.name = name;
   }
 
-  public Blob getPicture() {
-    return picture;
-  }
-
-  public void setPicture(Blob picture) {
-    this.picture = picture;
-  }
+//  public Blob getPicture() {
+//    return picture;
+//  }
+//
+//  public void setPicture(Blob picture) {
+//    this.picture = picture;
+//  }
 
   public int getQuantity() {
     return quantity;

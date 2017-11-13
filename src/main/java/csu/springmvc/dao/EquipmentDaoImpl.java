@@ -21,10 +21,10 @@ public class EquipmentDaoImpl implements EquipmentDao {
 
   public void register(Equipment equipment) {
 
-    String sql = "insert into equipment values(?,?,?,?)";
+    String sql = "insert into equipment values(?,?,?)";
 
     jdbcTemplate.update(sql, new Object[] { equipment.getEquipmentid(), 
-        equipment.getName(), equipment.getPicture(), equipment.getQuantity() });
+        equipment.getName(), /*equipment.getPicture(),*/ equipment.getQuantity() });
   }
 
   public Equipment getEquipment(int equipmentid) {
@@ -44,7 +44,7 @@ class EquipmentMapper implements RowMapper<Equipment> {
 
     equipment.setEquipmentid(rs.getInt("equipmentid"));
     equipment.setName(rs.getString("name"));
-    equipment.setPicture(rs.getBlob("picture"));
+//    equipment.setPicture(rs.getBlob("picture"));
     equipment.setQuantity(rs.getInt("quantity"));
 
     return equipment;
