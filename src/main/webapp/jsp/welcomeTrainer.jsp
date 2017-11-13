@@ -20,6 +20,9 @@
 			<td><a href="registerExerciseSets">Register Exercise with Sets</a></td>
 		</tr>
 		<tr>
+			<td><a href="registerRoutine">Register Routine</a></td>
+		</tr>
+		<tr>
 		</tr>
 		<tr>
 			<td><a href="home.jsp">Home</a></td>

@@ -6,5 +6,4 @@ public interface EquipmentDao {
 
   void register(Equipment equipment);
   Equipment getEquipment(int equipmentid);
-
 }
