@@ -19,6 +19,9 @@
 	
 	<bean id="customerService" class="csu.springmvc.service.CustomerServiceImpl" />
 	<bean id="customerDao" class="csu.springmvc.dao.CustomerDaoImpl" />
+	
+	<bean id="equipmentService" class="csu.springmvc.service.EquipmentServiceImpl" />
+	<bean id="equipmentDao" class="csu.springmvc.dao.EquipmentDaoImpl" />
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="datasource" />
