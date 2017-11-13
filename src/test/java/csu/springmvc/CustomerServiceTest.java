@@ -23,7 +23,7 @@ public class CustomerServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    customer.setCustomerid(1544);
+    customer.setCustomerid(1554);
     customer.setFirstname("Joe");
     customer.setLastname("Smith");
     customer.setPhonenumber(1234567890);
