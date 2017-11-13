@@ -17,11 +17,11 @@
 				<td><form:input path="trainerid" name="trainerid" id="trainerid" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="firstname">FirstName</form:label></td>
+				<td><form:label path="firstname">First Name</form:label></td>
 				<td><form:input path="firstname" name="firstname" id="firstname" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="lastname">LastName</form:label></td>
+				<td><form:label path="lastname">Last Name</form:label></td>
 				<td><form:input path="lastname" name="lastname" id="lastname" /></td>
 			</tr>
 			<tr>
@@ -33,7 +33,7 @@
 				<td><form:input path="insurance" name="insurance" id="insurance" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="phonenumber">PhoneNumber</form:label></td>
+				<td><form:label path="phonenumber">Phone Number</form:label></td>
 				<td><form:input path="phonenumber" name="phonenumber" id="phonenumber" /></td>
 			</tr>
 

@@ -20,16 +20,10 @@ public class TrainerDaoImpl implements TrainerDao {
   JdbcTemplate jdbcTemplate;
 
   public void register(Trainer trainer) {
-//    String sql = "update trainer set username = '" + trainer.getUsername() 
-//        + "', password = '" + trainer.getPassword() + "' where trainerid = " 
-//        + trainer.getTrainerid();
-//
-//    jdbcTemplate.update(sql, trainer);
     
-    this.jdbcTemplate.update(
+    jdbcTemplate.update(
         "update trainer set username = ?, password = ? where trainerid = ?", 
         trainer.getUsername(), trainer.getPassword(), trainer.getTrainerid());
-    
   }
   
   public void hire(Trainer trainer) {
