@@ -29,6 +29,9 @@
 			<td><a href="registerQualification">Register Qualification</a></td>
 		</tr>
 		<tr>
+			<td><a href="registerWorkSchedule">Register Work Schedule</a></td>
+		</tr>
+		<tr>
 			<td><a href="home.jsp">Home</a></td>
 		</tr>
 	</table>
