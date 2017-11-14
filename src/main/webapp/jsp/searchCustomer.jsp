@@ -9,16 +9,12 @@
 </head>
 <body>
 	<form:form id="regForm" modelAttribute="customer" action="searchCustomer"
-		method="post">
+		method="get">
 
 		<table>
 			<tr>
 				<td><form:label path="customerid">Customer Id:</form:label></td>
 				<td><form:input path="customerid" name="customerid" id="qualificationid" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="name">Customer Name</form:label></td>
-				<td><form:input path="name" name="name" id="name" /></td>
 			</tr>
 
 			<tr>
