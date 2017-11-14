@@ -17,17 +17,15 @@
 				<td><form:input path="workScheduleid" name="workScheduleid" id="workScheduleid" /></td>
 			</tr>
 			<tr>
-				<td><fmt:formatDate value="${dateVar}" pattern="MM-dd-yyyy" /></td>
-				<td><form:input path="day" type="text" class="day" name="day" 
-					value="<fmt:formatDate value="${dateVar}" pattern="MM-dd-yyyy" />"/>
-				</td>
+				<td><form:label path="day">Day (Enter in Following Format: "yyyy-mm-dd")</form:label></td>
+				<td><form:input path="day" name="day" id="day" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="startTime">Start Time (Enter in Following Format - 00:00 AM/PM)</form:label></td>
+				<td><form:label path="startTime">Start Time (Enter in Following Format: "00:00 AM/PM")</form:label></td>
 				<td><form:input path="startTime" name="startTime" id="startTime" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="endTime">End Time (Enter in Following Format - 00:00 AM/PM)</form:label></td>
+				<td><form:label path="endTime">End Time (Enter in Following Format: "00:00 AM/PM")</form:label></td>
 				<td><form:input path="endTime" name="endTime" id="endTime" /></td>
 			</tr>
 

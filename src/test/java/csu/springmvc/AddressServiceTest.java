@@ -22,7 +22,7 @@ public class AddressServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    address.setAddressid(2094);
+    address.setAddressid(2104);
     address.setStreet1("123 Main St");
     address.setStreet2("Apt 123");
     address.setCity("Denver");

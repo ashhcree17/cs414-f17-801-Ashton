@@ -26,7 +26,7 @@ public class WorkScheduleServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    workSchedule.setWorkScheduleid(2104);
+    workSchedule.setWorkScheduleid(2194);
     workSchedule.setDay(Date.valueOf(LocalDate.of(2017, 11, 20)));
     workSchedule.setStartTime("10:30 AM");
     workSchedule.setEndTime("06:30 PM");
@@ -36,7 +36,6 @@ public class WorkScheduleServiceTest {
   @Test
   public void testValidateWorkSchedule() {
     WorkSchedule workScheduleChk = workScheduleService.getWorkSchedule(workSchedule.getWorkScheduleid());
-
     assertEquals("10:30 AM", workScheduleChk.getStartTime());
   }
 }

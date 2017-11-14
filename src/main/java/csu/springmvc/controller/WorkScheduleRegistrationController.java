@@ -28,7 +28,6 @@ public class WorkScheduleRegistrationController {
   @RequestMapping(value = "/registerWorkScheduleProcess", method = RequestMethod.POST)
   public ModelAndView addWorkSchedule(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("workSchedule") WorkSchedule workSchedule) {
-
     workScheduleService.register(workSchedule);
 
     return new ModelAndView("successWorkSchedule", "day", workSchedule.getDay());
