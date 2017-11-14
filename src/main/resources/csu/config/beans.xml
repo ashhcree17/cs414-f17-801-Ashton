@@ -34,6 +34,9 @@
 	
 	<bean id="qualificationService" class="csu.springmvc.service.QualificationServiceImpl" />
 	<bean id="qualificationDao" class="csu.springmvc.dao.QualificationDaoImpl" />
+	
+	<bean id="workScheduleService" class="csu.springmvc.service.WorkScheduleServiceImpl" />
+	<bean id="workScheduleDao" class="csu.springmvc.dao.WorkScheduleDaoImpl" />
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="datasource" />
