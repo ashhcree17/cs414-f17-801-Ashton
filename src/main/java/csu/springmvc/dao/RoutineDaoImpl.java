@@ -19,7 +19,7 @@ public class RoutineDaoImpl implements RoutineDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Routine routine) {
+  public void addRoutine(Routine routine) {
 
     String sql = "insert into routine values(?,?)";
 

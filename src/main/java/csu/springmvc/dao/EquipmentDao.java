@@ -4,6 +4,6 @@ import csu.springmvc.model.Equipment;
 
 public interface EquipmentDao {
 
-  void register(Equipment equipment);
+  void addEquipment(Equipment equipment);
   Equipment getEquipment(int equipmentid);
 }

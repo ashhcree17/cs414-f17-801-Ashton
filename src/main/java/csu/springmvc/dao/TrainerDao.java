@@ -8,5 +8,5 @@ public interface TrainerDao {
   void register(Trainer trainer);
   void hire(Trainer trainer);
   Trainer validateTrainer(Login login);
-
+  Trainer getTrainer(int trainerid);
 }

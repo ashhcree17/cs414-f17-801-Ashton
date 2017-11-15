@@ -19,7 +19,7 @@ public class QualificationDaoImpl implements QualificationDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Qualification qualification) {
+  public void addQualification(Qualification qualification) {
 
     String sql = "insert into qualification values(?,?)";
 

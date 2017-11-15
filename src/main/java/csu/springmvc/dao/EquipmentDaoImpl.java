@@ -19,7 +19,7 @@ public class EquipmentDaoImpl implements EquipmentDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Equipment equipment) {
+  public void addEquipment(Equipment equipment) {
 
     String sql = "insert into equipment values(?,?,?)";
 

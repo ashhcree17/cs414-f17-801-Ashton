@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import csu.springmvc.model.Login;
 import csu.springmvc.model.Trainer;
+import csu.springmvc.model.Login;
 
 public class TrainerDaoImpl implements TrainerDao {
 
@@ -43,6 +43,15 @@ public class TrainerDaoImpl implements TrainerDao {
 
     List<Trainer> trainers = jdbcTemplate.query(sql, new TrainerMapper());
 
+    return trainers.size() > 0 ? trainers.get(0) : null;
+  }
+
+  public Trainer getTrainer(int trainerid) {
+  
+    String sql = "select * from trainer where trainerid=" + trainerid;
+  
+    List<Trainer> trainers = jdbcTemplate.query(sql, new TrainerMapper());
+  
     return trainers.size() > 0 ? trainers.get(0) : null;
   }
 }

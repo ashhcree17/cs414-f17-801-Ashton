@@ -21,7 +21,7 @@ public class ManagerDaoImpl implements ManagerDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Manager manager) {
+  public void addManager(Manager manager) {
 
     String sql = "insert into manager values(?,?,?,?,?,?,?,?)";
 
@@ -38,6 +38,15 @@ public class ManagerDaoImpl implements ManagerDao {
 
     List<Manager> managers = jdbcTemplate.query(sql, new ManagerMapper());
 
+    return managers.size() > 0 ? managers.get(0) : null;
+  }
+
+  public Manager getManager(int managerid) {
+  
+    String sql = "select * from manager where managerid=" + managerid;
+  
+    List<Manager> managers = jdbcTemplate.query(sql, new ManagerMapper());
+  
     return managers.size() > 0 ? managers.get(0) : null;
   }
 }
