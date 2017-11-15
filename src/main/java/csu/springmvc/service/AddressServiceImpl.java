@@ -10,8 +10,8 @@ public class AddressServiceImpl implements AddressService {
   @Autowired
   public AddressDao addressDao;
 
-  public void register(Address address) {
-    addressDao.register(address);
+  public void addAddress(Address address) {
+    addressDao.addAddress(address);
   }
 
   public Address getAddress(int addressid) {

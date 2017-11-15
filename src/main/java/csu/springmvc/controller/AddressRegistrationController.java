@@ -29,7 +29,7 @@ public class AddressRegistrationController {
   public ModelAndView addAddress(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("address") Address address) {
 
-    addressService.register(address);
+    addressService.addAddress(address);
 
     return new ModelAndView("successAddress", "street1", address.getStreet1());
   }

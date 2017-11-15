@@ -19,7 +19,7 @@ public class AddressDaoImpl implements AddressDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Address address) {
+  public void addAddress(Address address) {
 
     String sql = "insert into address values(?,?,?,?,?,?)";
 
