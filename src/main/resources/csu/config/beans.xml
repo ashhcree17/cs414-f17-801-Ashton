@@ -11,11 +11,8 @@
 	<context:component-scan base-package="csu.springmvc" />
 	<context:annotation-config />
 
-	<bean id="managerService" class="csu.springmvc.service.ManagerServiceImpl" />
-	<bean id="managerDao" class="csu.springmvc.dao.ManagerDaoImpl" />
-	
-	<bean id="trainerService" class="csu.springmvc.service.TrainerServiceImpl" />
-	<bean id="trainerDao" class="csu.springmvc.dao.TrainerDaoImpl" />
+	<bean id="addressService" class="csu.springmvc.service.AddressServiceImpl" />
+	<bean id="addressDao" class="csu.springmvc.dao.AddressDaoImpl" />
 	
 	<bean id="customerService" class="csu.springmvc.service.CustomerServiceImpl" />
 	<bean id="customerDao" class="csu.springmvc.dao.CustomerDaoImpl" />
@@ -26,14 +23,17 @@
 	<bean id="exerciseService" class="csu.springmvc.service.ExerciseServiceImpl" />
 	<bean id="exerciseDao" class="csu.springmvc.dao.ExerciseDaoImpl" />
 	
-	<bean id="routineService" class="csu.springmvc.service.RoutineServiceImpl" />
-	<bean id="routineDao" class="csu.springmvc.dao.RoutineDaoImpl" />
-	
-	<bean id="addressService" class="csu.springmvc.service.AddressServiceImpl" />
-	<bean id="addressDao" class="csu.springmvc.dao.AddressDaoImpl" />
+	<bean id="managerService" class="csu.springmvc.service.ManagerServiceImpl" />
+	<bean id="managerDao" class="csu.springmvc.dao.ManagerDaoImpl" />
 	
 	<bean id="qualificationService" class="csu.springmvc.service.QualificationServiceImpl" />
 	<bean id="qualificationDao" class="csu.springmvc.dao.QualificationDaoImpl" />
+	
+	<bean id="routineService" class="csu.springmvc.service.RoutineServiceImpl" />
+	<bean id="routineDao" class="csu.springmvc.dao.RoutineDaoImpl" />
+	
+	<bean id="trainerService" class="csu.springmvc.service.TrainerServiceImpl" />
+	<bean id="trainerDao" class="csu.springmvc.dao.TrainerDaoImpl" />
 	
 	<bean id="workScheduleService" class="csu.springmvc.service.WorkScheduleServiceImpl" />
 	<bean id="workScheduleDao" class="csu.springmvc.dao.WorkScheduleDaoImpl" />
