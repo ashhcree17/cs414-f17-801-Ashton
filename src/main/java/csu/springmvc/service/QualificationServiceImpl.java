@@ -11,7 +11,7 @@ public class QualificationServiceImpl implements QualificationService {
   public QualificationDao qualificationDao;
 
   public void register(Qualification qualification) {
-    qualificationDao.register(qualification);
+    qualificationDao.addQualification(qualification);
   }
 
   public Qualification getQualification(int qualificationid) {

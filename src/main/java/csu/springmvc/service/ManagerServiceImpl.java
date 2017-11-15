@@ -12,7 +12,7 @@ public class ManagerServiceImpl implements ManagerService {
   public ManagerDao managerDao;
 
   public void register(Manager manager) {
-    managerDao.register(manager);
+    managerDao.addManager(manager);
   }
 
   public Manager validateManager(Login login) {

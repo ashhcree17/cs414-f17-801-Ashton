@@ -11,7 +11,7 @@ public class EquipmentServiceImpl implements EquipmentService {
   public EquipmentDao equipmentDao;
 
   public void register(Equipment equipment) {
-    equipmentDao.register(equipment);
+    equipmentDao.addEquipment(equipment);
   }
 
   public Equipment getEquipment(int equipmentid) {

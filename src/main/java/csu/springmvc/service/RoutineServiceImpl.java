@@ -11,7 +11,7 @@ public class RoutineServiceImpl implements RoutineService {
   public RoutineDao routineDao;
 
   public void register(Routine routine) {
-    routineDao.register(routine);
+    routineDao.addRoutine(routine);
   }
 
   public Routine getRoutine(int routineid) {

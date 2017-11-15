@@ -11,7 +11,7 @@ public class CustomerServiceImpl implements CustomerService {
   public CustomerDao customerDao;
 
   public void register(Customer customer) {
-    customerDao.register(customer);
+    customerDao.addCustomer(customer);
   }
 
   public Customer getCustomer(int customerid) {

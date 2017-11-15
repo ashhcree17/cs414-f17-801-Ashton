@@ -11,7 +11,7 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
   public WorkScheduleDao workScheduleDao;
 
   public void register(WorkSchedule workSchedule) {
-    workScheduleDao.register(workSchedule);
+    workScheduleDao.addWorkSchedule(workSchedule);
   }
 
   public WorkSchedule getWorkSchedule(int workScheduleid) {
