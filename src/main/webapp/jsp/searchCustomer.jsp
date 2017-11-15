@@ -8,18 +8,17 @@
 <title>Search for a Customer</title>
 </head>
 <body>
-	<form:form id="regForm" modelAttribute="customer" action="searchCustomer"
-		method="get">
+	<form:form id="regForm" modelAttribute="customer" action="searchCustomerProcess" method="post">
 
 		<table>
 			<tr>
 				<td><form:label path="customerid">Customer Id:</form:label></td>
-				<td><form:input path="customerid" name="customerid" id="qualificationid" /></td>
+				<td><form:input path="customerid" name="customerid" id="customerid" /></td>
 			</tr>
 
 			<tr>
 				<td></td>
-				<td><form:button id="register" name="register">Register</form:button></td>
+				<td><form:button id="submit" name="submit">Submit</form:button></td>
 			</tr>
 			<tr></tr>
 			<tr>
