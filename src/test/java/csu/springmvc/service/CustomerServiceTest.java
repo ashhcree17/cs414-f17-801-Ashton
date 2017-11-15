@@ -1,6 +1,9 @@
 package csu.springmvc.service;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,5 +40,11 @@ public class CustomerServiceTest {
     Customer customerChk = customerService.getCustomer(customer.getCustomerid());
 
     assertEquals("Joe", customerChk.getName());
+  }
+
+  @Test
+  public void testlistCustomers() {
+    List<Customer> listCustomerChk = customerService.listCustomers();
+    assertEquals("123 Main St", listCustomerChk);
   }
 }

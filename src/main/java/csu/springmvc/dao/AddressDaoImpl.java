@@ -28,13 +28,29 @@ public class AddressDaoImpl implements AddressDao {
         address.getState(), address.getZipcode() });
   }
 
+  public void deleteAddress(int addressid) {
+    
+    String sql = "delete from address where addressid=" + addressid;
+
+    jdbcTemplate.execute(sql);
+  }
+
   public Address getAddress(int addressid) {
 
     String sql = "select * from address where addressid=" + addressid;
 
-    List<Address> addresss = jdbcTemplate.query(sql, new AddressMapper());
+    List<Address> addresses = jdbcTemplate.query(sql, new AddressMapper());
 
-    return addresss.size() > 0 ? addresss.get(0) : null;
+    return addresses.size() > 0 ? addresses.get(0) : null;
+  }
+
+  public List<Address> listAddresses() {
+
+    String sql = "select * from address";
+
+    List<Address> addresses = jdbcTemplate.query(sql, new AddressMapper());
+
+    return addresses;
   }
 }
 

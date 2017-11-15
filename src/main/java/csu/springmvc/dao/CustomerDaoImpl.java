@@ -36,6 +36,15 @@ public class CustomerDaoImpl implements CustomerDao {
 
     return customers.size() > 0 ? customers.get(0) : null;
   }
+
+  public List<Customer> listCustomers() {
+
+    String sql = "select * from customer";
+
+    List<Customer> customers = jdbcTemplate.query(sql, new CustomerMapper());
+
+    return customers;
+  }
 }
 
 class CustomerMapper implements RowMapper<Customer> {
