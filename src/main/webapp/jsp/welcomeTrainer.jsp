@@ -23,9 +23,6 @@
 			<td><a href="registerRoutine">Register Routine</a></td>
 		</tr>
 		<tr>
-			<td><a href="searchCustomer">Assign Routine to Customer</a></td>
-		</tr>
-		<tr>
 		</tr>
 		<tr>
 			<td><a href="home.jsp">Home</a></td>
