@@ -1,6 +1,9 @@
 package csu.springmvc.service;
 
 import static org.junit.Assert.assertEquals;
+
+//import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +25,7 @@ public class EquipmentServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    equipment.setEquipmentid(2234);
+    equipment.setEquipmentid(98836);
     equipment.setName("Barbell");
 //    equipment.setPicture(null);
     equipment.setQuantity(12);
@@ -32,7 +35,12 @@ public class EquipmentServiceTest {
   @Test
   public void testValidateEquipment() {
     Equipment equipmentChk = equipmentService.getEquipment(equipment.getEquipmentid());
-
     assertEquals("Barbell", equipmentChk.getName());
   }
+
+//  @Test
+//  public void testlistEquipment() {
+//    List<Equipment> listEquipmentChk = equipmentService.listEquipment();
+//    assertEquals("123 Main St", listEquipmentChk);
+//  }
 }

@@ -2,7 +2,7 @@ package csu.springmvc.service;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
+//import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class CustomerServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    customer.setCustomerid(2214);
+    customer.setCustomerid(2294);
     customer.setName("Joe");
     customer.setLastname("Smith");
     customer.setPhonenumber(1234567890);
@@ -42,9 +42,9 @@ public class CustomerServiceTest {
     assertEquals("Joe", customerChk.getName());
   }
 
-  @Test
-  public void testlistCustomers() {
-    List<Customer> listCustomerChk = customerService.listCustomers();
-    assertEquals("123 Main St", listCustomerChk);
-  }
+//  @Test
+//  public void testlistCustomers() {
+//    List<Customer> listCustomerChk = customerService.listCustomers();
+//    assertEquals("123 Main St", listCustomerChk);
+//  }
 }

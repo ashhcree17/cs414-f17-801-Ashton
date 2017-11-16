@@ -8,7 +8,7 @@
 <title>Address Registration</title>
 </head>
 <body>
-	<form:form id="regForm" modelAttribute="address" action="registerAddressProcess"
+	<form:form id="regForm" modelAttribute="address" action="addAddressProcess"
 		method="post">
 
 		<table>

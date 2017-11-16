@@ -1,5 +1,6 @@
 package csu.springmvc.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import csu.springmvc.dao.EquipmentDao;
@@ -16,5 +17,9 @@ public class EquipmentServiceImpl implements EquipmentService {
 
   public Equipment getEquipment(int equipmentid) {
     return equipmentDao.getEquipment(equipmentid);
+  }
+
+  public List<Equipment> listEquipment() {
+    return equipmentDao.listEquipment();
   }
 }

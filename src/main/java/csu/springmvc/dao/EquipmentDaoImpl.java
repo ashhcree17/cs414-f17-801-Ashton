@@ -35,6 +35,15 @@ public class EquipmentDaoImpl implements EquipmentDao {
 
     return equipments.size() > 0 ? equipments.get(0) : null;
   }
+
+  public List<Equipment> listEquipment() {
+
+    String sql = "select * from equipment";
+
+    List<Equipment> equipment = jdbcTemplate.query(sql, new EquipmentMapper());
+
+    return equipment;
+  }
 }
 
 class EquipmentMapper implements RowMapper<Equipment> {

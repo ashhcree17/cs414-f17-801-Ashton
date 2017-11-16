@@ -13,22 +13,22 @@ import csu.springmvc.model.Address;
 import csu.springmvc.service.AddressService;
 
 @Controller
-public class AddressRegistrationController {
+public class AddressController {
   @Autowired
   public AddressService addressService;
 
-  @RequestMapping(value = "/registerAddress", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerAddress");
+  @RequestMapping(value = "/addAddress", method = RequestMethod.GET)
+  public ModelAndView addAddress(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("addAddress");
     mav.addObject("address", new Address());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerAddressProcess", method = RequestMethod.POST)
-  public ModelAndView addAddress(HttpServletRequest request, HttpServletResponse response,
+  @RequestMapping(value = "/addAddressProcess", method = RequestMethod.POST)
+  public ModelAndView addAddressProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("address") Address address) {
-
+    
     addressService.addAddress(address);
 
     return new ModelAndView("successAddress", "street1", address.getStreet1());
