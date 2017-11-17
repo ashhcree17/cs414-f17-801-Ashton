@@ -58,7 +58,7 @@ class CustomerMapper implements RowMapper<Customer> {
     customer.setPhonenumber(rs.getInt("phonenumber"));
     customer.setEmail(rs.getString("email"));
     customer.setInsurance(rs.getString("insurance"));
-    customer.setMembership(rs.getString("insurance"));
+    customer.setMembership(rs.getObject("membership"));
 
     return customer;
   }
