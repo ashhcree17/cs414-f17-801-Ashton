@@ -60,11 +60,11 @@ public class Customer {
     this.phonenumber = phonenumber;
   }
 
-  public MembershipStatus getMembership() {
-    return membership;
+  public String getMembership() {
+    return membership.name();
   }
 
-  public void setMembership(MembershipStatus membership) {
-    this.membership = membership;
+  public void setMembership(String membership) {
+    this.membership = MembershipStatus.valueOf(membership);
   }
 }
