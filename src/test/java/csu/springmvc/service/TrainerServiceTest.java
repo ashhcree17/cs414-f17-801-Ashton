@@ -23,7 +23,7 @@ public class TrainerServiceTest {
   
   @Before
   public void setUp() throws Exception {
-    trainer.setTrainerid(6789814);
+    trainer.setTrainerid(6789834);
     trainer.setUsername("joesmith12");
     trainer.setPassword("iLOVEtheGYM21");
     trainer.setName("Joe");

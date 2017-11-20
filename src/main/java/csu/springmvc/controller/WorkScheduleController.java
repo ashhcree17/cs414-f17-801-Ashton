@@ -13,22 +13,22 @@ import csu.springmvc.model.WorkSchedule;
 import csu.springmvc.service.WorkScheduleService;
 
 @Controller
-public class WorkScheduleRegistrationController {
+public class WorkScheduleController {
   @Autowired
   public WorkScheduleService workScheduleService;
 
-  @RequestMapping(value = "/registerWorkSchedule", method = RequestMethod.GET)
+  @RequestMapping(value = "/createWorkSchedule", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerWorkSchedule");
+    ModelAndView mav = new ModelAndView("createWorkSchedule");
     mav.addObject("workSchedule", new WorkSchedule());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerWorkScheduleProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/createWorkScheduleProcess", method = RequestMethod.POST)
   public ModelAndView addWorkSchedule(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("workSchedule") WorkSchedule workSchedule) {
-    workScheduleService.register(workSchedule);
+    workScheduleService.createWorkSchedule(workSchedule);
 
     return new ModelAndView("successWorkSchedule", "day", workSchedule.getDay());
   }

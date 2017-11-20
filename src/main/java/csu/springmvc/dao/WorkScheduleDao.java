@@ -4,6 +4,6 @@ import csu.springmvc.model.WorkSchedule;
 
 public interface WorkScheduleDao {
 
-  void addWorkSchedule(WorkSchedule workSchedule);
+  void createWorkSchedule(WorkSchedule workSchedule);
   WorkSchedule getWorkSchedule(int workScheduleid);
 }

@@ -30,7 +30,7 @@
 				<td><a href="createQualification">Create Qualification</a></td>
 			</tr>
 			<tr>
-				<td><a href="registerWorkSchedule">Register Work Schedule</a></td>
+				<td><a href="createWorkSchedule">Create Work Schedule</a></td>
 			</tr>
 			<tr>
 				<td><a href="home.jsp">Home</a></td>

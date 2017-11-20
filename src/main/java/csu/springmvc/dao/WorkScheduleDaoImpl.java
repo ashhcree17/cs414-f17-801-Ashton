@@ -19,7 +19,7 @@ public class WorkScheduleDaoImpl implements WorkScheduleDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void addWorkSchedule(WorkSchedule workSchedule) {
+  public void createWorkSchedule(WorkSchedule workSchedule) {
 
     String sql = "insert into workSchedule values(?,?,?,?)";
 

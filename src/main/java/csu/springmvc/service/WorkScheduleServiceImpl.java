@@ -10,8 +10,8 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
   @Autowired
   public WorkScheduleDao workScheduleDao;
 
-  public void register(WorkSchedule workSchedule) {
-    workScheduleDao.addWorkSchedule(workSchedule);
+  public void createWorkSchedule(WorkSchedule workSchedule) {
+    workScheduleDao.createWorkSchedule(workSchedule);
   }
 
   public WorkSchedule getWorkSchedule(int workScheduleid) {

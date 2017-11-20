@@ -9,7 +9,7 @@
 		<title>WorkSchedule Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="workSchedule" action="registerWorkScheduleProcess"
+		<form:form id="regForm" modelAttribute="workSchedule" action="createWorkScheduleProcess"
 			method="post">
 			<table>
 				<tr>
