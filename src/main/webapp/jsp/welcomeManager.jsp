@@ -27,7 +27,7 @@
 				<td><a href="createAddress">Create Address</a></td>
 			</tr>
 			<tr>
-				<td><a href="registerQualification">Register Qualification</a></td>
+				<td><a href="createQualification">Create Qualification</a></td>
 			</tr>
 			<tr>
 				<td><a href="registerWorkSchedule">Register Work Schedule</a></td>

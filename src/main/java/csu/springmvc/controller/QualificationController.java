@@ -13,23 +13,23 @@ import csu.springmvc.model.Qualification;
 import csu.springmvc.service.QualificationService;
 
 @Controller
-public class QualificationRegistrationController {
+public class QualificationController {
   @Autowired
   public QualificationService qualificationService;
 
-  @RequestMapping(value = "/registerQualification", method = RequestMethod.GET)
+  @RequestMapping(value = "/createQualification", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerQualification");
+    ModelAndView mav = new ModelAndView("createQualification");
     mav.addObject("qualification", new Qualification());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerQualificationProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/createQualificationProcess", method = RequestMethod.POST)
   public ModelAndView addQualification(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("qualification") Qualification qualification) {
 
-    qualificationService.register(qualification);
+    qualificationService.createQualification(qualification);
 
     return new ModelAndView("success", "name", qualification.getName());
   }

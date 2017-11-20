@@ -10,8 +10,8 @@ public class QualificationServiceImpl implements QualificationService {
   @Autowired
   public QualificationDao qualificationDao;
 
-  public void register(Qualification qualification) {
-    qualificationDao.addQualification(qualification);
+  public void createQualification(Qualification qualification) {
+    qualificationDao.createQualification(qualification);
   }
 
   public Qualification getQualification(int qualificationid) {

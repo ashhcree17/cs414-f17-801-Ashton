@@ -4,6 +4,6 @@ import csu.springmvc.model.Qualification;
 
 public interface QualificationDao {
 
-  void addQualification(Qualification qualification);
+  void createQualification(Qualification qualification);
   Qualification getQualification(int qualificationid);
 }

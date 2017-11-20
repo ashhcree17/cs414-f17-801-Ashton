@@ -8,7 +8,7 @@
 		<title>Qualification Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="qualification" action="registerQualificationProcess"
+		<form:form id="regForm" modelAttribute="qualification" action="createQualificationProcess"
 			method="post">
 			<table>
 				<tr>

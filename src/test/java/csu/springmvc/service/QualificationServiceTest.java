@@ -24,7 +24,7 @@ public class QualificationServiceTest {
   public void setUp() throws Exception {
     qualification.setQualificationid(2494);
     qualification.setName("CPR Certified");
-    qualificationService.register(qualification);
+    qualificationService.createQualification(qualification);
   }
 
   @Test
