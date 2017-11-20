@@ -6,7 +6,7 @@ import csu.springmvc.model.Address;
 
 public interface AddressDao {
 
-  void addAddress(Address address);
+  void createAddress(Address address);
   void deleteAddress(int addressid);
   Address getAddress(int addressid);
   List<Address> listAddresses();

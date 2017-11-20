@@ -17,19 +17,19 @@ public class AddressController {
   @Autowired
   public AddressService addressService;
 
-  @RequestMapping(value = "/addAddress", method = RequestMethod.GET)
-  public ModelAndView addAddress(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("addAddress");
+  @RequestMapping(value = "/createAddress", method = RequestMethod.GET)
+  public ModelAndView createAddress(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("createAddress");
     mav.addObject("address", new Address());
     
     return mav;
   }
 
-  @RequestMapping(value = "/addAddressProcess", method = RequestMethod.POST)
-  public ModelAndView addAddressProcess(HttpServletRequest request, HttpServletResponse response,
+  @RequestMapping(value = "/createAddressProcess", method = RequestMethod.POST)
+  public ModelAndView createAddressProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("address") Address address) {
     
-    addressService.addAddress(address);
+    addressService.createAddress(address);
 
     return new ModelAndView("successAddress", "street1", address.getStreet1());
   }

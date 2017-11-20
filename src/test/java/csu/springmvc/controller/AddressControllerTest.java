@@ -9,9 +9,9 @@ import csu.springmvc.controller.AddressController;
 public class AddressControllerTest {
   
   @Test
-  public void testAddAddress() {
+  public void testCreateAddress() {
       AddressController addressController = new AddressController();
-      ModelAndView mav = addressController.addAddress(null, null);
-      Assert.assertEquals("addAddress", mav.getViewName());
+      ModelAndView mav = addressController.createAddress(null, null);
+      Assert.assertEquals("createAddress", mav.getViewName());
   }
 }

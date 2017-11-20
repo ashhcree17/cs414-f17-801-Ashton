@@ -25,14 +25,14 @@ public class AddressServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    address1.setAddressid(12585);
+    address1.setAddressid(12595);
     address1.setStreet1("123 Main St");
     address1.setStreet2("Apt 123");
     address1.setCity("Denver");
     address1.setState("CO");
     address1.setZipcode(12345);
     
-    addressService.addAddress(address1);
+    addressService.createAddress(address1);
   }
 
   @Test
