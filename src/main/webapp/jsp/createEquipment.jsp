@@ -8,7 +8,7 @@
 		<title>Equipment Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="equipment" action="registerEquipmentProcess"
+		<form:form id="regForm" modelAttribute="equipment" action="createEquipmentProcess"
 			method="post">
 			<table>
 				<tr>

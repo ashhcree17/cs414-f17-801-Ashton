@@ -25,11 +25,11 @@ public class EquipmentServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    equipment.setEquipmentid(90056);
+    equipment.setEquipmentid(90076);
     equipment.setName("Barbell");
 //    equipment.setPicture(null);
     equipment.setQuantity(12);
-    equipmentService.register(equipment);
+    equipmentService.createEquipment(equipment);
   }
 
   @Test

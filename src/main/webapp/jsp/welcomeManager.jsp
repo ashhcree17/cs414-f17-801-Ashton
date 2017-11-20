@@ -21,7 +21,7 @@
 				<td><a href="hireTrainer">Hire Trainer</a></td>
 			</tr>
 			<tr>
-				<td><a href="registerEquipment">Register Equipment</a></td>
+				<td><a href="createEquipment">Create Equipment</a></td>
 			</tr>
 			<tr>
 				<td><a href="createAddress">Create Address</a></td>

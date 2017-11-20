@@ -6,7 +6,7 @@ import csu.springmvc.model.Equipment;
 
 public interface EquipmentService {
 
-  void register(Equipment equipment);
+  void createEquipment(Equipment equipment);
   Equipment getEquipment(int equipmentid);
   List<Equipment> listEquipment();
 }

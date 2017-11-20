@@ -13,23 +13,23 @@ import csu.springmvc.model.Equipment;
 import csu.springmvc.service.EquipmentService;
 
 @Controller
-public class EquipmentRegistrationController {
+public class EquipmentController {
   @Autowired
   public EquipmentService equipmentService;
 
-  @RequestMapping(value = "/registerEquipment", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerEquipment");
+  @RequestMapping(value = "/createEquipment", method = RequestMethod.GET)
+  public ModelAndView createEquipment(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("createEquipment");
     mav.addObject("equipment", new Equipment());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerEquipmentProcess", method = RequestMethod.POST)
-  public ModelAndView addEquipment(HttpServletRequest request, HttpServletResponse response,
+  @RequestMapping(value = "/createEquipmentProcess", method = RequestMethod.POST)
+  public ModelAndView createEquipmentProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("equipment") Equipment equipment) {
 
-    equipmentService.register(equipment);
+    equipmentService.createEquipment(equipment);
 
     return new ModelAndView("success", "name", equipment.getName());
   }

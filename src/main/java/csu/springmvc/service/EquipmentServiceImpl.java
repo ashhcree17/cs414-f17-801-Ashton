@@ -11,8 +11,8 @@ public class EquipmentServiceImpl implements EquipmentService {
   @Autowired
   public EquipmentDao equipmentDao;
 
-  public void register(Equipment equipment) {
-    equipmentDao.addEquipment(equipment);
+  public void createEquipment(Equipment equipment) {
+    equipmentDao.createEquipment(equipment);
   }
 
   public Equipment getEquipment(int equipmentid) {
