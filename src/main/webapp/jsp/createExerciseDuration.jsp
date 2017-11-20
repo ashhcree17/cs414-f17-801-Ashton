@@ -8,7 +8,7 @@
 		<title>Exercise Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="exercise" action="registerExerciseSetsProcess"
+		<form:form id="regForm" modelAttribute="exercise" action="createExerciseDurationProcess"
 			method="post">
 			<table>
 				<tr>
@@ -21,15 +21,15 @@
 				</tr>
 				<tr>
 					<td><form:label path="duration">Duration</form:label></td>
-					<td><form:input path="duration" name="duration" id="duration" readonly="true" /></td>
+					<td><form:input path="duration" name="duration" id="duration" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="numberOfSets">Number of Sets</form:label></td>
-					<td><form:input path="numberOfSets" name="numberOfSets" id="numberOfSets" /></td>
+					<td><form:input path="numberOfSets" name="numberOfSets" id="numberOfSets" readonly="true" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="repsPerSet">Repetitions per Set</form:label></td>
-					<td><form:input path="repsPerSet" name="repsPerSet" id="repsPerSet" /></td>
+					<td><form:input path="repsPerSet" name="repsPerSet" id="repsPerSet" readonly="true" /></td>
 				</tr>
 				<tr>
 					<td></td>

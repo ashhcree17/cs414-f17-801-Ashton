@@ -22,7 +22,7 @@ public class RoutineServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    routine.setRoutineid(2514);
+    routine.setRoutineid(2524);
     routine.setName("Example");
     routineService.register(routine);
   }

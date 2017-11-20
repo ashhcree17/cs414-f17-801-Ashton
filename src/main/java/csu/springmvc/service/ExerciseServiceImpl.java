@@ -10,12 +10,12 @@ public class ExerciseServiceImpl implements ExerciseService {
   @Autowired
   public ExerciseDao exerciseDao;
 
-  public void registerDuration(Exercise exercise) {
-    exerciseDao.registerDuration(exercise);
+  public void createExerciseDuration(Exercise exercise) {
+    exerciseDao.createExerciseDuration(exercise);
   }
   
-  public void registerSets(Exercise exercise) {
-    exerciseDao.registerSets(exercise);
+  public void createExerciseSets(Exercise exercise) {
+    exerciseDao.createExerciseSets(exercise);
   }
 
   public Exercise getExercise(int exerciseid) {

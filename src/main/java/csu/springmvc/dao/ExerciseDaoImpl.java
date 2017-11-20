@@ -19,7 +19,7 @@ public class ExerciseDaoImpl implements ExerciseDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void registerDuration(Exercise exercise) {
+  public void createExerciseDuration(Exercise exercise) {
 
     String sql = "insert into exercise values(?,?,?,?,?)";
 
@@ -27,7 +27,7 @@ public class ExerciseDaoImpl implements ExerciseDao {
         exercise.getName(), exercise.getDuration(), null, null });
   }
   
-  public void registerSets(Exercise exercise) {
+  public void createExerciseSets(Exercise exercise) {
 
     String sql = "insert into exercise values(?,?,?,?,?)";
 

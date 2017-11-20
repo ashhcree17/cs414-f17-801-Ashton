@@ -13,40 +13,40 @@ import csu.springmvc.model.Exercise;
 import csu.springmvc.service.ExerciseService;
 
 @Controller
-public class ExerciseRegistrationController {
+public class ExerciseController {
   @Autowired
   public ExerciseService exerciseService;
 
-  @RequestMapping(value = "/registerExerciseDuration", method = RequestMethod.GET)
+  @RequestMapping(value = "/createExerciseDuration", method = RequestMethod.GET)
   public ModelAndView showRegisterDuration(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerExerciseDuration");
+    ModelAndView mav = new ModelAndView("createExerciseDuration");
     mav.addObject("exercise", new Exercise());
     
     return mav;
   }
   
-  @RequestMapping(value = "/registerExerciseSets", method = RequestMethod.GET)
+  @RequestMapping(value = "/createExerciseSets", method = RequestMethod.GET)
   public ModelAndView showRegisterSets(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerExerciseSets");
+    ModelAndView mav = new ModelAndView("createExerciseSets");
     mav.addObject("exercise", new Exercise());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerExerciseDurationProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/createExerciseDurationProcess", method = RequestMethod.POST)
   public ModelAndView addExerciseDuration(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("exercise") Exercise exercise) {
 
-    exerciseService.registerDuration(exercise);
+    exerciseService.createExerciseDuration(exercise);
 
     return new ModelAndView("success", "name", exercise.getName());
   }
 
-  @RequestMapping(value = "/registerExerciseSetsProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/createExerciseSetsProcess", method = RequestMethod.POST)
   public ModelAndView addExerciseSets(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("exercise") Exercise exercise) {
 
-    exerciseService.registerSets(exercise);
+    exerciseService.createExerciseSets(exercise);
 
     return new ModelAndView("success", "name", exercise.getName());
   }
