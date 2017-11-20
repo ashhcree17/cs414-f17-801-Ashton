@@ -18,7 +18,7 @@ public class RoutineController {
   public RoutineService routineService;
 
   @RequestMapping(value = "/createRoutine", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView createRoutine(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("createRoutine");
     mav.addObject("routine", new Routine());
     
@@ -26,7 +26,7 @@ public class RoutineController {
   }
 
   @RequestMapping(value = "/createRoutineProcess", method = RequestMethod.POST)
-  public ModelAndView addRoutine(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView createRoutineProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("routine") Routine routine) {
 
     routineService.createRoutine(routine);

@@ -18,7 +18,7 @@ public class WorkScheduleController {
   public WorkScheduleService workScheduleService;
 
   @RequestMapping(value = "/createWorkSchedule", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView createWorkSchedule(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("createWorkSchedule");
     mav.addObject("workSchedule", new WorkSchedule());
     
@@ -26,7 +26,7 @@ public class WorkScheduleController {
   }
 
   @RequestMapping(value = "/createWorkScheduleProcess", method = RequestMethod.POST)
-  public ModelAndView addWorkSchedule(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView createWorkScheduleProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("workSchedule") WorkSchedule workSchedule) {
     workScheduleService.createWorkSchedule(workSchedule);
 

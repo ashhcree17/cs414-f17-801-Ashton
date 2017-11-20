@@ -18,7 +18,7 @@ public class ManagerController {
   public ManagerService managerService;
 
   @RequestMapping(value = "/createManager", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView createManager(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("createManager");
     mav.addObject("manager", new Manager());
     
@@ -26,7 +26,7 @@ public class ManagerController {
   }
 
   @RequestMapping(value = "/createManagerProcess", method = RequestMethod.POST)
-  public ModelAndView addManager(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView createManagerProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("manager") Manager manager) {
 
     managerService.createManager(manager);

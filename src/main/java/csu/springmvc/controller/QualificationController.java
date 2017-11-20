@@ -18,7 +18,7 @@ public class QualificationController {
   public QualificationService qualificationService;
 
   @RequestMapping(value = "/createQualification", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView createQualification(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("createQualification");
     mav.addObject("qualification", new Qualification());
     
@@ -26,7 +26,7 @@ public class QualificationController {
   }
 
   @RequestMapping(value = "/createQualificationProcess", method = RequestMethod.POST)
-  public ModelAndView addQualification(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView createQualificationProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("qualification") Qualification qualification) {
 
     qualificationService.createQualification(qualification);

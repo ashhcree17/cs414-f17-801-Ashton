@@ -18,7 +18,7 @@ public class ExerciseController {
   public ExerciseService exerciseService;
 
   @RequestMapping(value = "/createExerciseDuration", method = RequestMethod.GET)
-  public ModelAndView showRegisterDuration(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView createExerciseDuration(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("createExerciseDuration");
     mav.addObject("exercise", new Exercise());
     
@@ -26,7 +26,7 @@ public class ExerciseController {
   }
   
   @RequestMapping(value = "/createExerciseSets", method = RequestMethod.GET)
-  public ModelAndView showRegisterSets(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView createExerciseSets(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("createExerciseSets");
     mav.addObject("exercise", new Exercise());
     
@@ -34,7 +34,7 @@ public class ExerciseController {
   }
 
   @RequestMapping(value = "/createExerciseDurationProcess", method = RequestMethod.POST)
-  public ModelAndView addExerciseDuration(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView createExerciseDurationProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("exercise") Exercise exercise) {
 
     exerciseService.createExerciseDuration(exercise);
@@ -43,7 +43,7 @@ public class ExerciseController {
   }
 
   @RequestMapping(value = "/createExerciseSetsProcess", method = RequestMethod.POST)
-  public ModelAndView addExerciseSets(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView createExerciseSetsProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("exercise") Exercise exercise) {
 
     exerciseService.createExerciseSets(exercise);
