@@ -13,23 +13,23 @@ import csu.springmvc.model.Manager;
 import csu.springmvc.service.ManagerService;
 
 @Controller
-public class ManagerRegistrationController {
+public class ManagerController {
   @Autowired
   public ManagerService managerService;
 
-  @RequestMapping(value = "/registerManager", method = RequestMethod.GET)
+  @RequestMapping(value = "/createManager", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerManager");
+    ModelAndView mav = new ModelAndView("createManager");
     mav.addObject("manager", new Manager());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerManagerProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/createManagerProcess", method = RequestMethod.POST)
   public ModelAndView addManager(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("manager") Manager manager) {
 
-    managerService.register(manager);
+    managerService.createManager(manager);
 
     return new ModelAndView("welcome", "name", manager.getName());
   }

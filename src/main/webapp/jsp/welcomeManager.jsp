@@ -15,10 +15,10 @@
 			<tr>
 			</tr>
 			<tr>
-				<td><a href="registerCustomer">Register Customer</a></td>
+				<td><a href="hireTrainer">Hire Trainer</a></td>
 			</tr>
 			<tr>
-				<td><a href="hireTrainer">Hire Trainer</a></td>
+				<td><a href="createCustomer">Create Customer</a></td>
 			</tr>
 			<tr>
 				<td><a href="createEquipment">Create Equipment</a></td>

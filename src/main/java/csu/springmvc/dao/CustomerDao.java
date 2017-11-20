@@ -6,7 +6,7 @@ import csu.springmvc.model.Customer;
 
 public interface CustomerDao {
 
-  void addCustomer(Customer customer);
+  void createCustomer(Customer customer);
   Customer getCustomer(int customerid);
   List<Customer> listCustomers();
 }

@@ -13,23 +13,40 @@ import csu.springmvc.model.Customer;
 import csu.springmvc.service.CustomerService;
 
 @Controller
-public class CustomerRegistrationController {
+public class CustomerController {
   @Autowired
   public CustomerService customerService;
 
-  @RequestMapping(value = "/registerCustomer", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerCustomer");
+  @RequestMapping(value = "/createCustomer", method = RequestMethod.GET)
+  public ModelAndView createCustomer(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("createCustomer");
     mav.addObject("customer", new Customer());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerCustomerProcess", method = RequestMethod.POST)
-  public ModelAndView addCustomer(HttpServletRequest request, HttpServletResponse response,
+  @RequestMapping(value = "/modifyCustomer", method = RequestMethod.GET)
+  public ModelAndView modifyCustomer(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("modifyCustomer");
+    mav.addObject("customer", new Customer());
+    
+    return mav;
+  }
+
+  @RequestMapping(value = "/createCustomerProcess", method = RequestMethod.POST)
+  public ModelAndView createCustomerProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("customer") Customer customer) {
 
-    customerService.register(customer);
+    customerService.createCustomer(customer);
+
+    return new ModelAndView("success", "name", customer.getName());
+  }
+
+  @RequestMapping(value = "/modifyCustomerProcess", method = RequestMethod.POST)
+  public ModelAndView modifyCustomerProcess(HttpServletRequest request, HttpServletResponse response,
+      @ModelAttribute("customer") Customer customer) {
+
+    customerService.createCustomer(customer);
 
     return new ModelAndView("success", "name", customer.getName());
   }

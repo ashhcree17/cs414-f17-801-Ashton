@@ -12,8 +12,8 @@ public class CustomerServiceImpl implements CustomerService {
   @Autowired
   public CustomerDao customerDao;
 
-  public void register(Customer customer) {
-    customerDao.addCustomer(customer);
+  public void createCustomer(Customer customer) {
+    customerDao.createCustomer(customer);
   }
 
   public Customer getCustomer(int customerid) {

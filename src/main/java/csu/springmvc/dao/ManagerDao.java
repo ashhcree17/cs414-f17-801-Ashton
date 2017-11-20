@@ -5,7 +5,7 @@ import csu.springmvc.model.Manager;
 
 public interface ManagerDao {
 
-  void addManager(Manager manager);
+  void createManager(Manager manager);
   Manager getManager(int managerid);
   Manager validateManager(Login login);
 }

@@ -18,7 +18,7 @@ public class CustomerDaoImpl implements CustomerDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void addCustomer(Customer customer) {
+  public void createCustomer(Customer customer) {
 
     String sql = "insert into customer values(?,?,?,?,?,?,?)";
 

@@ -1,7 +1,5 @@
 package csu.springmvc.model;
 
-import csu.springmvc.model.MembershipStatus;
-
 public class Customer {
 
   private int customerid;
@@ -10,7 +8,7 @@ public class Customer {
   private String email;
   private String insurance;
   private int phonenumber;
-  private MembershipStatus membership;
+  private String membership;
   
   public int getCustomerid() {
     return customerid;
@@ -61,10 +59,10 @@ public class Customer {
   }
 
   public String getMembership() {
-    return membership.name();
+    return membership;
   }
 
   public void setMembership(String membership) {
-    this.membership = MembershipStatus.valueOf(membership);
+    this.membership = membership;
   }
 }

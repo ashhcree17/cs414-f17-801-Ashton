@@ -13,7 +13,7 @@
 
 	<context:component-scan base-package="csu.springmvc" />
 	<context:annotation-config />
-	
+		
 	<bean id="addressService" class="csu.springmvc.service.AddressServiceImpl" />
 	<bean id="addressDao" class="csu.springmvc.dao.AddressDaoImpl" />
 	

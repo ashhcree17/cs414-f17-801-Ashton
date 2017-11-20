@@ -21,7 +21,7 @@ public class ManagerDaoImpl implements ManagerDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void addManager(Manager manager) {
+  public void createManager(Manager manager) {
 
     String sql = "insert into manager values(?,?,?,?,?,?,?,?)";
 

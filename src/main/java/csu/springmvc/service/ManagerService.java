@@ -5,7 +5,7 @@ import csu.springmvc.model.Manager;
 
 public interface ManagerService {
 
-  void register(Manager manager);
+  void createManager(Manager manager);
 
   Manager validateManager(Login login);
 }

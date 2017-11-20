@@ -11,12 +11,11 @@ public class ManagerServiceImpl implements ManagerService {
   @Autowired
   public ManagerDao managerDao;
 
-  public void register(Manager manager) {
-    managerDao.addManager(manager);
+  public void createManager(Manager manager) {
+    managerDao.createManager(manager);
   }
 
   public Manager validateManager(Login login) {
     return managerDao.validateManager(login);
   }
-
 }

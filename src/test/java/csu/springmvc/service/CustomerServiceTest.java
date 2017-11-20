@@ -25,14 +25,14 @@ public class CustomerServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    customer.setCustomerid(2564);
+    customer.setCustomerid(2604);
     customer.setName("Joe");
     customer.setLastname("Smith");
     customer.setPhonenumber(1234567890);
     customer.setEmail("joesmith@email.com");
     customer.setInsurance("Aetna");
     customer.setMembership("ACTIVE");
-    customerService.register(customer);
+    customerService.createCustomer(customer);
   }
 
   @Test

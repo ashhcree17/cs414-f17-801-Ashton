@@ -8,7 +8,7 @@
 		<title>Customer Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="customer" action="registerCustomerProcess"
+		<form:form id="regForm" modelAttribute="customer" action="createCustomerProcess"
 			method="post">
 			<table>
 				<tr>
@@ -36,7 +36,7 @@
 					<td><form:input path="phonenumber" name="phonenumber" id="phonenumber" /></td>
 				</tr>
 				<tr>
-					<td><form:label path="membership">Membership Status</form:label></td>
+					<td><form:label path="membership">Membership Status (ACTIVE or INACTIVE)</form:label></td>
 					<td><form:input path="membership" name="membership" id="membership" /></td>
 				</tr>
 				<tr>
