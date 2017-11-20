@@ -13,23 +13,23 @@ import csu.springmvc.model.Routine;
 import csu.springmvc.service.RoutineService;
 
 @Controller
-public class RoutineRegistrationController {
+public class RoutineController {
   @Autowired
   public RoutineService routineService;
 
-  @RequestMapping(value = "/registerRoutine", method = RequestMethod.GET)
+  @RequestMapping(value = "/createRoutine", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
-    ModelAndView mav = new ModelAndView("registerRoutine");
+    ModelAndView mav = new ModelAndView("createRoutine");
     mav.addObject("routine", new Routine());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerRoutineProcess", method = RequestMethod.POST)
+  @RequestMapping(value = "/createRoutineProcess", method = RequestMethod.POST)
   public ModelAndView addRoutine(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("routine") Routine routine) {
 
-    routineService.register(routine);
+    routineService.createRoutine(routine);
 
     return new ModelAndView("success", "name", routine.getName());
   }

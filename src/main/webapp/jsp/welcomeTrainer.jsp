@@ -15,13 +15,13 @@
 			<tr>
 			</tr>
 			<tr>
-				<td><a href="createExerciseDuration">Register Exercise with Duration</a></td>
+				<td><a href="createExerciseDuration">Create Exercise with Duration</a></td>
 			</tr>
 			<tr>
-				<td><a href="createExerciseSets">Register Exercise with Sets</a></td>
+				<td><a href="createExerciseSets">Create Exercise with Sets</a></td>
 			</tr>
 			<tr>
-				<td><a href="registerRoutine">Register Routine</a></td>
+				<td><a href="createRoutine">Create Routine</a></td>
 			</tr>
 			<tr>
 			</tr>

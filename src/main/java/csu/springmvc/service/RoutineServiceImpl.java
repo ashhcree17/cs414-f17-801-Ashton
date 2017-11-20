@@ -10,8 +10,8 @@ public class RoutineServiceImpl implements RoutineService {
   @Autowired
   public RoutineDao routineDao;
 
-  public void register(Routine routine) {
-    routineDao.addRoutine(routine);
+  public void createRoutine(Routine routine) {
+    routineDao.createRoutine(routine);
   }
 
   public Routine getRoutine(int routineid) {

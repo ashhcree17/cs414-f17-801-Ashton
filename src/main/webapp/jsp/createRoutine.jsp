@@ -8,7 +8,7 @@
 		<title>Routine Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="routine" action="registerRoutineProcess"
+		<form:form id="regForm" modelAttribute="routine" action="createRoutineProcess"
 			method="post">
 			<table>
 				<tr>

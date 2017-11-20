@@ -4,6 +4,6 @@ import csu.springmvc.model.Routine;
 
 public interface RoutineDao {
 
-  void addRoutine(Routine routine);
+  void createRoutine(Routine routine);
   Routine getRoutine(int routineid);
 }
