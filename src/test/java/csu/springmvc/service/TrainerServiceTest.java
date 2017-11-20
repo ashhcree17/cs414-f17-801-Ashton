@@ -23,9 +23,7 @@ public class TrainerServiceTest {
   
   @Before
   public void setUp() throws Exception {
-    trainer.setTrainerid(6789894);
-//    trainer.setUsername("joesmith12");
-//    trainer.setPassword("iLOVEtheGYM21");
+    trainer.setTrainerid(6789904);
     trainer.setName("Joe");
     trainer.setLastname("Smith");
     trainer.setPhonenumber(1234567890);
@@ -36,12 +34,16 @@ public class TrainerServiceTest {
 
   @Test
   public void testValidateUser() {
+    trainer.setUsername("joesmith12");
+    trainer.setPassword("iLOVEtheGYM21");
+    trainerService.registerTrainer(trainer);
+    
     Login login = new Login();
     login.setUsername("joesmith12");
     login.setPassword("iLOVEtheGYM21");
 
     Trainer trainerChk = trainerService.validateTrainer(login);
 
-//    assertEquals("Joe", trainerChk.getName());
+    assertEquals("Joe", trainerChk.getName());
   }
 }
