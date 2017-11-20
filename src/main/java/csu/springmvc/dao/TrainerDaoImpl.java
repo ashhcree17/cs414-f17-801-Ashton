@@ -19,14 +19,14 @@ public class TrainerDaoImpl implements TrainerDao {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public void register(Trainer trainer) {
+  public void registerTrainer(Trainer trainer) {
     
     jdbcTemplate.update(
         "update trainer set username = ?, password = ? where trainerid = ?", 
         trainer.getUsername(), trainer.getPassword(), trainer.getTrainerid());
   }
   
-  public void hire(Trainer trainer) {
+  public void createTrainer(Trainer trainer) {
 
     String sql = "insert into trainer (trainerid, name, lastname, phonenumber, "
         + "email, insurance) values(?,?,?,?,?,?)";

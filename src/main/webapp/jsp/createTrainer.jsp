@@ -8,7 +8,7 @@
 		<title>Trainer Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="trainer" action="hireTrainerProcess"
+		<form:form id="regForm" modelAttribute="trainer" action="createTrainerProcess"
 			method="post">
 			<table>
 				<tr>

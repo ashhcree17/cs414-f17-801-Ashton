@@ -24,14 +24,14 @@ public class TrainerServiceTest {
   @Before
   public void setUp() throws Exception {
     trainer.setTrainerid(6789874);
-    trainer.setUsername("joesmith12");
-    trainer.setPassword("iLOVEtheGYM21");
+//    trainer.setUsername("joesmith12");
+//    trainer.setPassword("iLOVEtheGYM21");
     trainer.setName("Joe");
     trainer.setLastname("Smith");
     trainer.setPhonenumber(1234567890);
     trainer.setEmail("joesmith@email.com");
     trainer.setInsurance("Aetna");
-    trainerService.register(trainer);
+    trainerService.createTrainer(trainer);
   }
 
   @Test

@@ -17,7 +17,7 @@
 				<td><a href="createManager">Register (with Manager ID)</a></td>
 			</tr>
 			<tr>
-				<td><a href="registerTrainer">Register (with Trainer ID)</a></td>
+				<td><a href="createTrainer">Register (with Trainer ID)</a></td>
 			</tr>
 		</table>
 	</body>

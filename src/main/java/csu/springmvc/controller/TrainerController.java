@@ -13,23 +13,40 @@ import csu.springmvc.model.Trainer;
 import csu.springmvc.service.TrainerService;
 
 @Controller
-public class TrainerRegistrationController {
+public class TrainerController {
   @Autowired
   public TrainerService trainerService;
 
+  @RequestMapping(value = "/createTrainer", method = RequestMethod.GET)
+  public ModelAndView createTrainer(HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView("createTrainer");
+    mav.addObject("trainer", new Trainer());
+    
+    return mav;
+  }
+
   @RequestMapping(value = "/registerTrainer", method = RequestMethod.GET)
-  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView registerTrainer(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("registerTrainer");
     mav.addObject("trainer", new Trainer());
     
     return mav;
   }
 
-  @RequestMapping(value = "/registerTrainerProcess", method = RequestMethod.POST)
-  public ModelAndView addTrainer(HttpServletRequest request, HttpServletResponse response,
+  @RequestMapping(value = "/createTrainerProcess", method = RequestMethod.POST)
+  public ModelAndView createTrainerProcess(HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("trainer") Trainer trainer) {
 
-    trainerService.register(trainer);
+    trainerService.createTrainer(trainer);
+
+    return new ModelAndView("success", "name", trainer.getName());
+  }
+
+  @RequestMapping(value = "/registerTrainerProcess", method = RequestMethod.POST)
+  public ModelAndView registerTrainerProcess(HttpServletRequest request, HttpServletResponse response,
+      @ModelAttribute("trainer") Trainer trainer) {
+
+    trainerService.registerTrainer(trainer);
 
     return new ModelAndView("success", "name", trainer.getName());
   }

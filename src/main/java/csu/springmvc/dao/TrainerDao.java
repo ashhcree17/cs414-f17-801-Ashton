@@ -5,8 +5,8 @@ import csu.springmvc.model.Trainer;
 
 public interface TrainerDao {
 
-  void register(Trainer trainer);
-  void hire(Trainer trainer);
+  void registerTrainer(Trainer trainer);
+  void createTrainer(Trainer trainer);
   Trainer validateTrainer(Login login);
   Trainer getTrainer(int trainerid);
 }

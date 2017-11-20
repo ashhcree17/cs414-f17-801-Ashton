@@ -15,7 +15,7 @@
 			<tr>
 			</tr>
 			<tr>
-				<td><a href="hireTrainer">Hire Trainer</a></td>
+				<td><a href="createTrainer">Create (Hire) Trainer</a></td>
 			</tr>
 			<tr>
 				<td><a href="createCustomer">Create Customer</a></td>

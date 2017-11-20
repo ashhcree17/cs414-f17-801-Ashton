@@ -11,12 +11,12 @@ public class TrainerServiceImpl implements TrainerService {
   @Autowired
   public TrainerDao trainerDao;
 
-  public void register(Trainer trainer) {
-    trainerDao.register(trainer);
+  public void registerTrainer(Trainer trainer) {
+    trainerDao.registerTrainer(trainer);
   }
   
-  public void hire(Trainer trainer) {
-    trainerDao.hire(trainer);
+  public void createTrainer(Trainer trainer) {
+    trainerDao.createTrainer(trainer);
   }
 
   public Trainer validateTrainer(Login login) {
