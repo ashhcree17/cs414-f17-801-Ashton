@@ -24,7 +24,7 @@
 				<td><a href="registerEquipment">Register Equipment</a></td>
 			</tr>
 			<tr>
-				<td><a href="registerAddress">Register Address</a></td>
+				<td><a href="createAddress">Create Address</a></td>
 			</tr>
 			<tr>
 				<td><a href="registerQualification">Register Qualification</a></td>
