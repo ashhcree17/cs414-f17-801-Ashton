@@ -28,7 +28,7 @@ public class ExerciseServiceTest {
 
   @Test
   public void testValidateExerciseDuration() {
-    exercise1.setExerciseid(5094);
+    exercise1.setExerciseid(5104);
     exercise1.setName("Barbell Exercise");
     exercise1.setDuration(360);             // in Seconds
     exerciseService.createExerciseDuration(exercise1);
@@ -40,7 +40,7 @@ public class ExerciseServiceTest {
 
   @Test
   public void testValidateExerciseSets() {
-    exercise2.setExerciseid(2952);
+    exercise2.setExerciseid(2962);
     exercise2.setName("Dumbbell Exercise");
     exercise2.setNumberOfSets(3);
     exercise2.setRepsPerSet(12);
