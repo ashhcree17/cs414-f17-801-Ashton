@@ -31,6 +31,6 @@ public class ManagerController {
 
     managerService.createManager(manager);
 
-    return new ModelAndView("welcome", "name", manager.getName());
+    return new ModelAndView("success", "name", manager.getName());
   }
 }
