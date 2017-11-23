@@ -43,7 +43,7 @@ class WorkScheduleMapper implements RowMapper<WorkSchedule> {
     WorkSchedule workSchedule = new WorkSchedule();
 
     workSchedule.setWorkScheduleid(rs.getInt("workScheduleid"));
-    workSchedule.setDay(rs.getDate("day"));
+    workSchedule.setDay(rs.getString("day"));
     workSchedule.setStartTime(rs.getString("startTime"));
     workSchedule.setEndTime(rs.getString("endTime"));
 

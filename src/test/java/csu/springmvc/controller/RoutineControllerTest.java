@@ -44,7 +44,7 @@ public class RoutineControllerTest {
   @Test
   public void testCreateRoutineProcess() throws Exception {
     this.mockMvc.perform(post("/createRoutineProcess")
-        .param("routineid", "78902")
+        .param("routineid", "78906")
         .param("name", "Routine1")
           )
         .andExpect(status().isOk())

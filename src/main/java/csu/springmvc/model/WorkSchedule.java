@@ -1,11 +1,9 @@
 package csu.springmvc.model;
 
-import java.sql.Date;
-
 public class WorkSchedule {
 
   private int workScheduleid;
-  private Date day;
+  private String day;
   private String startTime;
   private String endTime;
   
@@ -17,11 +15,11 @@ public class WorkSchedule {
     this.workScheduleid = workScheduleid;
   }
 
-  public Date getDay() {
+  public String getDay() {
     return day;
   }
 
-  public void setDay(Date day) {
+  public void setDay(String day) {
     this.day = day;
   }
 

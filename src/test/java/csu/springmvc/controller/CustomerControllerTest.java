@@ -44,7 +44,7 @@ public class CustomerControllerTest {
   @Test
   public void testCreateCustomerProcess() throws Exception {
     this.mockMvc.perform(post("/createCustomerProcess")
-        .param("customerid", "78901")
+        .param("customerid", "78905")
         .param("name", "Joe")
         .param("lastname", "Smith")
         .param("email", "joesmith@email.com")

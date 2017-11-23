@@ -2,9 +2,6 @@ package csu.springmvc.service;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +23,8 @@ public class WorkScheduleServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    workSchedule.setWorkScheduleid(2594);
-    workSchedule.setDay(Date.valueOf(LocalDate.of(2017, 11, 20)));
+    workSchedule.setWorkScheduleid(2634);
+    workSchedule.setDay("2017-11-20");
     workSchedule.setStartTime("10:30 AM");
     workSchedule.setEndTime("06:30 PM");
     workScheduleService.createWorkSchedule(workSchedule);
