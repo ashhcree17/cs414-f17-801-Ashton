@@ -44,7 +44,7 @@ public class QualificationControllerTest {
   @Test
   public void testCreateQualificationProcess() throws Exception {
     this.mockMvc.perform(post("/createQualificationProcess")
-        .param("qualificationid", "78905")
+        .param("qualificationid", "78906")
         .param("name", "CPR Certified")
           )
         .andExpect(status().isOk())

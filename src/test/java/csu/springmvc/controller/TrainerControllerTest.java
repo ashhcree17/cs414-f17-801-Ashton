@@ -44,7 +44,7 @@ public class TrainerControllerTest {
   @Test
   public void testCreateTrainerProcess() throws Exception {
     this.mockMvc.perform(post("/createTrainerProcess")
-        .param("trainerid", "78906")
+        .param("trainerid", "78907")
         .param("username", "joesmith")
         .param("password", "iLOVEtheGYM21")
         .param("name", "Joe")

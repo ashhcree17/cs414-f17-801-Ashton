@@ -23,7 +23,7 @@ public class WorkScheduleServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    workSchedule.setWorkScheduleid(2634);
+    workSchedule.setWorkScheduleid(2635);
     workSchedule.setDay("2017-11-20");
     workSchedule.setStartTime("10:30 AM");
     workSchedule.setEndTime("06:30 PM");
