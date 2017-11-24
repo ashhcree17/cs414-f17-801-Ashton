@@ -2,3 +2,8 @@ language: java
 
 services:
   - mysql
+  
+before_script:
+  - mysql -e 'DROP DATABASE IF EXISTS globogym'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS globogym;'  
+  - mysql -u root --default-character-set=utf8 globogym < docs/globogym.sql
