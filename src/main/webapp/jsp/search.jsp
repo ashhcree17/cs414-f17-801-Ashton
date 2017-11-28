@@ -11,14 +11,7 @@
 		<form:form method="post" action="searchProcess">
 			<table align="center">
 				<tr>
-					<td><form:label path="username">Username: </form:label></td>
-					<td><form:input path="username" name="username" id="username" /></td>
-					
-					<td>
-						<form:label path="searchTerm" name="searchTerm" id="searchTerm">
-							Enter Search Term
-						</form:label>
-					</td>
+					<td><form:label path="searchTerm">Enter Search Term</form:label></td>
 					<td><form:button id="search" name="search">Search</form:button></td>
 				</tr>
 			</table>
