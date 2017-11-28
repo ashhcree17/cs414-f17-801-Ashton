@@ -8,17 +8,9 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<form:form method="get" modelAttribute="searchCriteria">
-		    <fieldset>
-		        <legend>Search Criteria</legend>
-		        <table>
-		            <tr>
-		                <td><form:label path="category">Book Category</form:label></td>
-		                <td><form:select path="category" items="${categories}" itemValue="id" itemLabel="name"/></td>
-		            </tr>
-		        </table>
-		    </fieldset>
-		    <button id="search">Search</button>
+		<form:form method="post" action="search">
+			<input name="searchText" id="searchText">Enter Search Term
+			<input type="button" value="Search" id="searchButton"></input>
 		</form:form>
 	</body>
 </html>
