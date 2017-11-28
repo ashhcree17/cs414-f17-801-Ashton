@@ -15,7 +15,7 @@
 					<td><form:input path="username" name="username" id="username" /></td>
 					
 					<td>
-						<form:label path="searchText" name="searchText" id="searchText">
+						<form:label path="searchTerm" name="searchTerm" id="searchTerm">
 							Enter Search Term
 						</form:label>
 					</td>
