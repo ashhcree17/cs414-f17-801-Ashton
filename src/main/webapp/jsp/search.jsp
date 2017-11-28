@@ -5,12 +5,23 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>Search</title>
 	</head>
 	<body>
-		<form:form method="post" action="search">
-			<input name="searchText" id="searchText">Enter Search Term
-			<input type="button" value="Search" id="searchButton"></input>
+		<form:form method="post" action="searchProcess">
+			<table align="center">
+				<tr>
+					<td><form:label path="username">Username: </form:label></td>
+					<td><form:input path="username" name="username" id="username" /></td>
+					
+					<td>
+						<form:label path="searchText" name="searchText" id="searchText">
+							Enter Search Term
+						</form:label>
+					</td>
+					<td><form:button id="search" name="search">Search</form:button></td>
+				</tr>
+			</table>
 		</form:form>
 	</body>
 </html>
