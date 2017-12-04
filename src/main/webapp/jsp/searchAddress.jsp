@@ -8,7 +8,7 @@
 
 <div class="row">
      <div class="small-3 columns">
-        <input type="text" id="txt" name="searchString">
+        <input type="text" id="txt" name="searchTerm">
       </div>
 
        <div class="small-5 columns end">

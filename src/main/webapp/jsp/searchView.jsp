@@ -7,6 +7,10 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-	
+		<table>
+			<tr>
+				<td>Success adding ${pSearchTerm}</td>
+			</tr>
+		</table>
 	</body>
 </html>
