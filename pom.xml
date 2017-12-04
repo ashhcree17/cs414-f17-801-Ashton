@@ -100,6 +100,12 @@
 		    <artifactId>commons-logging</artifactId>
 		    <version>1.2</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>displaytag</groupId>
+		    <artifactId>displaytag</artifactId>
+		    <version>1.2</version>
+		</dependency>
 
 		<!-- Servlet API -->
 		<dependency>

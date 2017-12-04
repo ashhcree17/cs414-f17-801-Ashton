@@ -27,6 +27,9 @@
 				<td><a href="createAddress">Create Address</a></td>
 			</tr>
 			<tr>
+				<td><a href="searchAddress">Modify Address</a></td>
+			</tr>
+			<tr>
 				<td><a href="createQualification">Create Qualification</a></td>
 			</tr>
 			<tr>
