@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import csu.springmvc.service.AddressService;
+import csu.springmvc.model.Address;
 
 @Controller
 public class SearchController {
@@ -48,5 +50,14 @@ public class SearchController {
        mav.addObject("searchResult", addressService.getAddress(Integer.parseInt(pSearchTerm)));      
     
        return new ModelAndView("searchView", "pSearchTerm", pSearchTerm);
+    }
+    
+    @RequestMapping(value="/modifyViewProcess")
+    public ModelAndView modifyViewProcess(HttpServletRequest request, HttpServletResponse response, 
+        @ModelAttribute(value = "address") Address address) {
+        ModelAndView mav = new ModelAndView("modifyView");
+        mav.addObject(address);   
+
+       return new ModelAndView("successModify", "address", address);
     }
 }

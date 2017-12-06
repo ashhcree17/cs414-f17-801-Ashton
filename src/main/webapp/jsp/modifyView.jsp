@@ -8,8 +8,8 @@
 		<title>Address Registration</title>
 	</head>
 	<body>
-		<form:form id="regForm" modelAttribute="address" action="createAddressProcess"
-			method="post">
+		<form:form id="regForm" modelAttribute="modifyView" 
+			action="modifyViewProcess" method="post">
 			<table>
 				<tr>
 					<td><form:label path="addressid">Address Id:</form:label></td>
