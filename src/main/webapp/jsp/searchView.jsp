@@ -9,7 +9,7 @@
 	<body>
 		<table>
 			<tr>
-				<td>Success adding ${pSearchTerm}</td>
+				<td>Success searching for ${pSearchTerm}</td>
 			</tr>
 		</table>
 	</body>
