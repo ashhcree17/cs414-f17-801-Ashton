@@ -36,4 +36,17 @@ public class SearchController {
     
        return new ModelAndView("searchView", "pSearchTerm", pSearchTerm);
     }
+    
+    @RequestMapping(value="/modifyView")
+    public ModelAndView modifyView(HttpServletRequest request, HttpServletResponse response, 
+        @RequestParam(value = "searchTerm", required = false) String pSearchTerm) {
+        ModelAndView mav = new ModelAndView("searchAddress");
+        
+       addressService.getAddress(Integer.parseInt(pSearchTerm));
+    
+       mav.addObject("searchTerm", pSearchTerm);
+       mav.addObject("searchResult", addressService.getAddress(Integer.parseInt(pSearchTerm)));      
+    
+       return new ModelAndView("searchView", "pSearchTerm", pSearchTerm);
+    }
 }
