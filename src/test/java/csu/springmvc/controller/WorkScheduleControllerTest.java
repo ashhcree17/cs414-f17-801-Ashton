@@ -45,7 +45,7 @@ public class WorkScheduleControllerTest {
   @Test
   public void testCreateWorkScheduleProcess() throws Exception {
     this.mockMvc.perform(post("/createWorkScheduleProcess")
-        .param("workScheduleid", "78920")
+        .param("workScheduleid", "78921")
         .param("day", "2017-11-23")
         .param("startTime", "08:30 AM")
         .param("endTime", "10:30 PM")

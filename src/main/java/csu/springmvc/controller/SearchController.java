@@ -21,28 +21,30 @@ public class SearchController {
     
     @RequestMapping(value="/searchAddress", method = RequestMethod.GET)
     public ModelAndView searchAddress(HttpServletRequest request, HttpServletResponse response) {
-       ModelAndView mav = new ModelAndView("searchAddress");
-    
-       return mav;
+      
+      ModelAndView mav = new ModelAndView("searchAddress");
+      return mav;
     }
     
-    @RequestMapping(value="/searchView")
+    @RequestMapping(value="/searchView", method = RequestMethod.POST)
     public ModelAndView searchView(HttpServletRequest request, HttpServletResponse response, 
         @RequestParam(value = "searchTerm", required = false) String pSearchTerm) {
-        ModelAndView mav = new ModelAndView("searchAddress");
-        
-       addressService.getAddress(Integer.parseInt(pSearchTerm));
+      
+      ModelAndView mav = new ModelAndView("searchAddress");
+      
+//      addressService.getAddress(Integer.parseInt(pSearchTerm));
     
-       mav.addObject("searchTerm", pSearchTerm);
-       mav.addObject("searchResult", addressService.getAddress(Integer.parseInt(pSearchTerm)));      
+      mav.addObject("searchTerm", pSearchTerm);
+      mav.addObject("searchResult", addressService.getAddress(Integer.parseInt(pSearchTerm)));      
     
-       return new ModelAndView("searchView", "pSearchTerm", pSearchTerm);
+      return new ModelAndView("searchView", "pSearchTerm", pSearchTerm);
     }
     
     @RequestMapping(value="/modifyView")
     public ModelAndView modifyView(HttpServletRequest request, HttpServletResponse response, 
         @RequestParam(value = "searchTerm", required = false) String pSearchTerm) {
-        ModelAndView mav = new ModelAndView("searchAddress");
+      
+      ModelAndView mav = new ModelAndView("searchView");
         
        addressService.getAddress(Integer.parseInt(pSearchTerm));
     

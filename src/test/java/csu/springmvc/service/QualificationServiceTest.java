@@ -22,7 +22,7 @@ public class QualificationServiceTest {
 
   @Before
   public void setUp() throws Exception {
-    qualification.setQualificationid(2637);
+    qualification.setQualificationid(2638);
     qualification.setName("CPR Certified");
     qualificationService.createQualification(qualification);
   }

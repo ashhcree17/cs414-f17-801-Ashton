@@ -11,20 +11,15 @@
 	<body>
 		<form:form id="regForm" modelAttribute="searchAddress" action="searchView"
 					method="post">
-		<div class="row">
-		     <div class="small-3 columns">
-		        <input type="text" id="txt" name="searchTerm">
-		      </div>
+			<div class="row">
+				<div class="small-3 columns">
+				   <input type="text" id="txt" name="searchTerm">
+				</div>
 		
 		       <div class="small-5 columns end">
 		         <button id="button-id" type="submit">Search Address by Id</button>
 		       </div>
-		
 		   </div>
 		</form:form>
-
-		 <div class="row">
-		      <div> ${searchTerm} </div>
-		</div>
 	</body>
 </html>
