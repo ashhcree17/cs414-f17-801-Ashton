@@ -13,32 +13,44 @@
 			<table>
 				<tr>
 					<td><form:label path="addressid">Address Id:</form:label></td>
-					<td><form:input path="addressid" name="addressid" id="addressid" /></td>
+					<td><form:input path="addressid" name="addressid" id="addressid" />
+						${address.getAddressId}
+					</td>
 				</tr>
 				<tr>
 					<td><form:label path="street1">Street 1</form:label></td>
-					<td><form:input path="street1" name="street1" id="street1" /></td>
+					<td><form:input path="street1" name="street1" id="street1" />
+						${address.getStreet1}
+					</td>
 				</tr>
 				<tr>
 					<td><form:label path="street2">Street 2</form:label></td>
-					<td><form:input path="street2" name="street2" id="street2" /></td>
+					<td><form:input path="street2" name="street2" id="street2" />
+						${address.getStreet2}
+					</td>
 				</tr>
 				<tr>
 					<td><form:label path="city">City</form:label></td>
-					<td><form:input path="city" name="city" id="city" /></td>
+					<td><form:input path="city" name="city" id="city" />
+						${address.getCity}
+					</td>
 				</tr>
 				<tr>
 					<td><form:label path="state">State</form:label></td>
-					<td><form:input path="state" name="state" id="state" /></td>
+					<td><form:input path="state" name="state" id="state" />
+						${address.getState}
+					</td>
 				</tr>
 				<tr>
 					<td><form:label path="zipcode">Zip Code</form:label></td>
-					<td><form:input path="zipcode" name="zipcode" id="zipcode" /></td>
+					<td><form:input path="zipcode" name="zipcode" id="zipcode" />
+						${address.getZipcode}
+					</td>
 				</tr>
 	
 				<tr>
 					<td></td>
-					<td><form:button id="register" name="register">Register</form:button></td>
+					<td><form:button id="button-id" type="submit">Update</form:button></td>
 				</tr>
 				<tr></tr>
 				<tr>

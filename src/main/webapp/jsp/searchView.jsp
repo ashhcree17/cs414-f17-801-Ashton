@@ -10,19 +10,25 @@
 	<body>
 		<form:form id="regForm" modelAttribute="searchView" 
 			action="modifyView" method="post">
-			<table>
-				<tr>
-					<td>Search Results for Address</td>
-				</tr>
-				<tr>
-					<td>Id: ${pSearchTerm}</td>
-			 		<td>
-				 		<button id="button-id" type="submit">
-				 			Modify
-				 		</button>
-				 	</td>	
-				</tr>
-			</table>
+			
+			<h2>Search Results for Address</h2>
+			<div class="row">
+				<div class="small-3 columns">
+				   Id: ${pSearchTerm}
+				</div>
+			
+				
+				<div class="small-3 columns">
+				   To modify this address, please re-enter the Id seen above.
+				</div>
+				<div class="small-3 columns">
+				   <input type="text" id="txt" name="pSearchTerm">
+				</div>
+		
+		       <div class="small-5 columns end">
+		         <button id="button-id" type="submit">Modify</button>
+		       </div>
+		   </div>
 		</form:form>
 	</body>
 </html>

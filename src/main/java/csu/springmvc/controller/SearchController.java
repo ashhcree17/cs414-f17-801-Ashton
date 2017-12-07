@@ -31,8 +31,6 @@ public class SearchController {
         @RequestParam(value = "searchTerm", required = false) String pSearchTerm) {
       
       ModelAndView mav = new ModelAndView("searchAddress");
-      
-//      addressService.getAddress(Integer.parseInt(pSearchTerm));
     
       mav.addObject("searchTerm", pSearchTerm);
       mav.addObject("searchResult", addressService.getAddress(Integer.parseInt(pSearchTerm)));      
@@ -40,18 +38,19 @@ public class SearchController {
       return new ModelAndView("searchView", "pSearchTerm", pSearchTerm);
     }
     
-    @RequestMapping(value="/modifyView")
-    public ModelAndView modifyView(HttpServletRequest request, HttpServletResponse response, 
-        @RequestParam(value = "searchTerm", required = false) String pSearchTerm) {
+    @RequestMapping(value="/modifyView", method = RequestMethod.GET)
+    public ModelAndView modifyView(HttpServletRequest request, HttpServletResponse response) {
       
-      ModelAndView mav = new ModelAndView("searchView");
-        
-       addressService.getAddress(Integer.parseInt(pSearchTerm));
+      ModelAndView mav = new ModelAndView("modifyView");
+      return mav;
+    }
     
-       mav.addObject("searchTerm", pSearchTerm);
-       mav.addObject("searchResult", addressService.getAddress(Integer.parseInt(pSearchTerm)));      
+    @RequestMapping(value="/modifyView", method = RequestMethod.POST)
+    public ModelAndView modifyView(HttpServletRequest request, HttpServletResponse response, 
+        @RequestParam(value = "pSearchTerm", required = false) String pSearchTerm) {
     
-       return new ModelAndView("searchView", "pSearchTerm", pSearchTerm);
+      return new ModelAndView("modifyView", "address", 
+          addressService.getAddress(Integer.parseInt(pSearchTerm)));
     }
     
     @RequestMapping(value="/modifyViewProcess")
