@@ -51,7 +51,7 @@ public class ExerciseControllerTest {
   @Test
   public void testCreateExerciseDurationProcess() throws Exception {
     this.mockMvc.perform(post("/createExerciseDurationProcess")
-        .param("exerciseid", "78925")
+        .param("exerciseid", "78929")
         .param("name", "Dumbbell")
         .param("duration", "120")
           )
@@ -63,7 +63,7 @@ public class ExerciseControllerTest {
   @Test
   public void testCreateExerciseSetsProcess() throws Exception {
     this.mockMvc.perform(post("/createExerciseSetsProcess")
-        .param("exerciseid", "78926")
+        .param("exerciseid", "78930")
         .param("name", "Dumbbell")
         .param("numberOfSets", "3")
         .param("repsPerSet", "12")

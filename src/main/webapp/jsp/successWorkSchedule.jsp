@@ -3,7 +3,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<style type="text/css">
+			h2 {
+				background-color: #c7c7c7;
+			    font-family:Arial, sans-serif;
+			    font-size:34px;
+			    text-align: center;
+			    padding:10px 5px;
+			    border-style:solid;
+			    border-width:1px;
+			    overflow:hidden;
+			    word-break:normal;
+			    border-color:#ccc;
+			    color:#333;
+			}
+			
+			body {
+			    background-color: #f0f0f0;
+			    font-family:Arial, sans-serif;
+			    font-size:14px;
+			    font-weight:normal;
+			    padding:10px 5px;
+			    overflow:hidden;
+			    word-break:normal;
+			    color:#333;
+			    border:none;
+			}
+		</style>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Work Schedule Success</title>
 	</head>

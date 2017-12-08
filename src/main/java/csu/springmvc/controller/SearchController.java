@@ -49,8 +49,10 @@ public class SearchController {
     public ModelAndView modifyView(HttpServletRequest request, HttpServletResponse response, 
         @RequestParam(value = "pSearchTerm", required = false) String pSearchTerm) {
     
-      return new ModelAndView("modifyView", "address", 
-          addressService.getAddress(Integer.parseInt(pSearchTerm)));
+      ModelAndView mav = new ModelAndView("modifyView");
+      mav.addObject(addressService.getAddress(Integer.parseInt(pSearchTerm)));
+      
+      return mav;
     }
     
     @RequestMapping(value="/modifyViewProcess")

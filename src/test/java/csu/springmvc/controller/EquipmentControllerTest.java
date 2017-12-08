@@ -44,7 +44,7 @@ public class EquipmentControllerTest {
   @Test
   public void testCreateEquipmentProcess() throws Exception {
     this.mockMvc.perform(post("/createEquipmentProcess")
-        .param("equipmentid", "78911")
+        .param("equipmentid", "78913")
         .param("name", "Dumbbell")
         .param("quantity", "12")
           )
